@@ -1,0 +1,47 @@
+name: Generate hero video assets
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - "assets/DJI_0112.MP4"
+
+permissions:
+  contents: write
+
+jobs:
+  build-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Convert to WebM (VP9)
+        run: |
+          ffmpeg -y -i assets/DJI_0112.MP4 -t 00:00:15 \
+            -vf "scale=-2:1080:flags=lanczos,fps=30" \
+            -c:v libvpx-vp9 -crf 33 -b:v 0 -row-mt 1 -an \
+            assets/hero.webm
+
+      - name: Convert to MP4 (H.264)
+        run: |
+          ffmpeg -y -i assets/DJI_0112.MP4 -t 00:00:15 \
+            -vf "scale=-2:1080:flags=lanczos,fps=30" \
+            -c:v libx264 -preset slow -crf 23 -profile:v high \
+            -pix_fmt yuv420p -movflags +faststart -an \
+            assets/hero.mp4
+
+      - name: Create poster image (JPEG)
+        run: |
+          ffmpeg -y -ss 00:00:02 -i assets/hero.mp4 -frames:v 1 assets/hero-poster.jpg
+
+      - name: Commit generated assets
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "assets/hero.webm assets/hero.mp4 assets/hero-poster.jpg"
+          message: "chore: generate hero video assets"
