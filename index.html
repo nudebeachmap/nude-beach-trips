@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nude Beach Trips</title>
+<meta name="description" content="Respectful, small-group nude beach getaways. Visual‑first, cinematic, and chill." />
+<!-- Google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#fff; --muted:#d9e2ea; --bg:#0B2A3D; --accent:#F2C14E; --line:rgba(255,255,255,.25);
+  }
+  *{box-sizing:border-box} html,body{height:100%} body{margin:0;background:#0B2A3D;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  h1,h2{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
+  a{color:var(--ink)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  /* ---- HEADER ---- */
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0))}
+  .logo{font-weight:800;letter-spacing:.3px}
+  .cta{background:var(--accent);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none}
+  /* ---- HERO ---- */
+  .hero{position:relative;height:100svh;display:grid;place-items:center;overflow:hidden;
+        background-image:url('./assets/hero-poster.jpg');
+        background-size:cover;
+        background-position:center;
+        animation:heroZoom 20s ease-in-out infinite alternate;}
+  @keyframes heroZoom{
+    from{transform:scale(1);} 
+    to{transform:scale(1.05);} 
+  }
+  .hero .overlay{position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 70%, rgba(11,42,61,.0), rgba(11,42,61,.85))}
+  .hero .grain{position:absolute;inset:-10%;opacity:.18;mix-blend:overlay;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.5"/></svg>') repeat;animation:grain 10s steps(10) infinite}
+  @keyframes grain{to{transform:translate3d(-10%, -10%,0)}}
+  .hero-content{position:relative;text-align:center;padding:0 20px}
+  .hero h1{font-size:clamp(36px,7.5vw,86px);text-transform:uppercase;letter-spacing:.5px}
+  .hero p{max-width:740px;margin:12px auto 26px;color:var(--muted)}
+  .stack-rotate{display:grid;gap:6px;font-size:clamp(18px,2.6vw,28px);font-weight:800;letter-spacing:.12em}
+  .stack-rotate span{opacity:0;transform:translateY(10px);animation:fadeUp 8s infinite}
+  .stack-rotate span:nth-child(1){animation-delay:0s}
+  .stack-rotate span:nth-child(2){animation-delay:2.7s}
+  .stack-rotate span:nth-child(3){animation-delay:5.4s}
+  @keyframes fadeUp{0%{opacity:0;transform:translateY(12px)}10%,30%{opacity:1;transform:none}40%,100%{opacity:0}}
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.22);font-weight:800;text-decoration:none}
+  .btn.primary{background:var(--accent);border-color:transparent;color:#000}
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .hero{animation:none}
+    .stack-rotate span{animation:none;opacity:1}
+    .grain{display:none}
+  }
+  /* ---- DATES SECTION ---- */
+  .section{padding:80px 0}
+  .dates .wrap{max-width:820px}
+  .dates h2{text-align:center;font-size:clamp(28px,4.5vw,46px);margin-bottom:18px}
+  .dates p.lead{text-align:center;color:var(--muted);margin:0 0 24px}
+  .board{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
+  .row{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .city{font-weight:800}
+  .date{color:var(--muted)}
+  .more{border:1px solid var(--line);padding:8px 12px;border-radius:8px;background:transparent;color:#fff;cursor:pointer}
+  .details{display:none;padding:16px;border-top:1px dashed var(--line);background:rgba(0,0,0,.18)}
+  .row.open + .details{display:block}
+  .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:var(--accent);text-transform:uppercase}
+  /* ---- FOOTER ---- */
+  footer{padding:40px 20px;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Nude Beach Trips</div>
+    <a href="#dates" class="cta">Join the list</a>
+  </header>
+
+  <section class="hero" aria-label="Hero">
+    <!-- Overlay and grain for cinematic feel -->
+    <div class="overlay"></div>
+    <div class="grain"></div>
+
+    <div class="hero-content">
+      <h1>NUDE BEACH TRIPS</h1>
+      <div class="stack-rotate" aria-live="polite">
+        <span>FREEDOM.</span>
+        <span>SUN.</span>
+        <span>SEA.</span>
+      </div>
+      <p>Visual‑first, small groups, consent‑forward culture. Cinematic beaches. Zero awkward vibes.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#dates">Tour Dates</a>
+        <a class="btn" href="#about">About</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates" class="dates section">
+    <div class="wrap">
+      <h2>Tour Dates</h2>
+      <p class="lead">If nothing’s listed, we’re scouting. Add your email below to hear first.</p>
+
+      <div id="board" class="board" role="list"></div>
+
+      <div class="section" style="padding:30px 0 0">
+        <!-- Replace data-netlify attribute on Vercel; handle form submission on your provider -->
+        <form name="signup" method="post" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <input type="email" name="email" placeholder="you@email.com" required
+                 style="padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:#fff;min-width:260px">
+          <button class="btn primary" type="submit">Keep me posted</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="wrap">
+      <h2>About</h2>
+      <p style="max-width:760px;color:var(--muted)">
+        By Nude Beach Map. We keep it respectful, friendly, and SFW in public spaces. Clear etiquette. Beautiful places.
+      </p>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Nude Beach Trips · 18+ · Respect policy</footer>
+
+<script>
+  // --- Render tour dates like a concert board ---
+  // If this array is empty, you'll get a big COMING SOON banner automatically.
+  const trips = [
+    // Example trip (uncomment to test a live row):
+    // { city: "Zipolite, Mexico", date: "Feb 12–16, 2026", blurb: "Sunset swims, cove walks, and easy vibe. Small group.", img: "./assets/hero-poster.jpg" }
+  ];
+
+  const board = document.getElementById('board');
+
+  if (!trips.length){
+    const soon = document.createElement('div');
+    soon.className = 'soon';
+    soon.textContent = 'COMING SOON';
+    board.appendChild(soon);
+  } else {
+    trips.forEach((t, i) => {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.setAttribute('role','listitem');
+      row.innerHTML = `
+        <div class="city">${t.city}</div>
+        <div class="date">${t.date}</div>
+        <button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>
+      `;
+      const details = document.createElement('div');
+      details.className = 'details';
+      details.id = `d-${i}`;
+      details.innerHTML = `
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
+          <img src="${t.img || './assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
+          <div>
+            <p style="margin:0 0 12px">${t.blurb || ''}</p>
+            <a class="btn primary" href="#signup">Join Waitlist</a>
+          </div>
+        </div>
+      `;
+      board.appendChild(row);
+      board.appendChild(details);
+
+      row.querySelector('.more').addEventListener('click', (e)=>{
+        const open = row.classList.toggle('open');
+        e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
+  // Year in footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
