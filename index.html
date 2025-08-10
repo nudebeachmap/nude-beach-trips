@@ -1,4 +1,4 @@
-o<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -10,7 +10,7 @@ o<!doctype html>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== Brand palette (from your sheet) ===== */
+  /* ===== Brand palette ===== */
   :root{
     --ink:#26150e;       /* deep brown */
     --teal:#0cbab4;      /* brand teal */
@@ -34,6 +34,7 @@ o<!doctype html>
     font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   }
   h1,h2{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
+  a{color:var(--white)}
 
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
@@ -112,12 +113,12 @@ o<!doctype html>
   </header>
 
   <section class="hero" aria-label="Video hero">
-    <video class="bg" autoplay muted loop playsinline preload="auto" poster="./assets/hero-poster.jpg">
+    <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <!-- If you make a WebM too, add it above the MP4 for better compression -->
-      <!-- <source src="./assets/hero.webm" type="video/webm"> -->
-      <source src="./assets/DJI_0112.MP4" type="video/mp4">
+      <!-- <source src="/assets/hero.webm" type="video/webm"> -->
+      <source src="/assets/hero.mp4" type="video/mp4">
     </video>
-    <img class="poster" src="./assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
+    <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
     <div class="overlay"></div>
     <div class="teal-wash"></div>
 
@@ -127,7 +128,7 @@ o<!doctype html>
       <!-- “by” line with logo -->
       <p class="byline">
         by
-        <img src="./assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
+        <img src="/assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
       </p>
 
       <div class="stack-rotate" aria-live="polite">
@@ -183,7 +184,7 @@ o<!doctype html>
 <script>
   // --- Tour dates: set empty for "COMING SOON" ---
   const trips = [
-    // { city: "Zipolite, Mexico", date: "Feb 12–16, 2026", blurb: "Sunset swims, cove walks, easy vibe.", img: "./assets/hero-poster.jpg" }
+    // { city: "Zipolite, Mexico", date: "Feb 12–16, 2026", blurb: "Sunset swims, cove walks, easy vibe.", img: "/assets/hero-poster.jpg" }
   ];
   const board = document.getElementById('board');
   if (!trips.length){
@@ -194,12 +195,14 @@ o<!doctype html>
       row.innerHTML=`<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
       const details=document.createElement('div'); details.className='details'; details.id=`d-${i}`;
       details.innerHTML=`<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
-          <img src="${t.img || './assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.25)">
+          <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.25)">
           <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#signup">Join Waitlist</a></div>
         </div>`;
       board.appendChild(row); board.appendChild(details);
+
       row.querySelector('.more').addEventListener('click', e=>{
-        const open=row.classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded', open?'true':'false');
+        const open=row.classList.toggle('open');
+        e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     });
   }
@@ -207,3 +210,4 @@ o<!doctype html>
 </script>
 </body>
 </html>
+
