@@ -1,98 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Nude Beach Trips</title>
-<meta name="description" content="Respectful, small-group nude beach getaways. Visual-first, cinematic, and chill." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  /* ... existing styles ... */
-  .byline {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    justify-content: center;
-    margin: 14px 0 22px;
-    color: #e8f7f6;
-    font-size: clamp(22px, 3vw, 36px);
-    font-weight: 700;
-  }
-  .byline a {
-    display: inline-flex;
-    align-items: center;
-  }
-  .byline img {
-    height: 68px;
-    width: auto;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .35));
-  }
-</style>
-</head>
-<body>
-<header class="site-header">
-  <div class="logo-word">Nude Beach Trips</div>
-  <a href="#dates" class="cta">Join the list</a>
-</header>
-<section class="hero" aria-label="Video hero">
-  <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
-    <source src="/assets/hero.mp4" type="video/mp4">
-  </video>
-  <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
-  <div class="overlay"></div>
-  <div class="teal-wash"></div>
-  <div class="hero-content">
-    <h1>NUDE BEACH TRIPS</h1>
-    <p class="byline">
-      by
-      <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
-        <img src="/assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
-      </a>
-    </p>
-    <div class="stack-rotate" aria-live="polite">
-      <span>RELAX.</span>
-      <span>SUN.</span>
-      <span>SEA.</span>
-    </div>
-    <p style="max-width:740px;margin:14px auto 26px">Small groups, great locations. Zero Awkward vibes.</p>
-    <div class="hero-actions">
-      <a class="btn primary" href="#dates">Tour Dates</a>
-      <a class="btn ghost" href="#about">About</a>
-    </div>
-  </div>
-</section>
-<section class="feature" aria-label="Community vibe">
-  <div class="wrap" style="padding:0 20px">
-    <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
-      <img src="/assets/people.jpg" alt="">
-    </div>
-    <div class="float-card reveal" data-reveal>
-      <div class="float-row">
-        <div>
-          <h3>Clothing optional, friendly, naturist.</h3>
-          <p>We keep it laid-back. Clear naturist etiquette, and a warm, welcoming culture.</p>
-        </div>
-        <div>
-          <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
-          <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
-          <div class="float-badge"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="about" class="section">
-  <div class="wrap">
-    <h2>About</h2>
-    <p style="max-width:760px;color:#d9e2ea">
-      By <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>. Curated trips for newbies and naturist experts. Beautiful places.
-    </p>
-  </div>
-</section>
-<footer>© 2025 Nude Beach Trips · <a href="#" id="respectLink" class="link">Respect policy</a></footer>
-
 <!-- HubSpot Email Signup Form -->
 <section id="dates" class="dates section">
   <div class="wrap">
@@ -101,34 +6,21 @@
     <div id="board" class="board" role="list"></div>
 
     <div class="section" style="padding:30px 0 0">
-      <script src="https://js.hsforms.net/forms/embed/45610755.js" defer></script>
-      <div class="hs-form-frame"
-           data-region="na1"
-           data-form-id="d44bc7d9-db7f-4142-93ca-f2f7d1e522e2"
-           data-portal-id="45610755"></div>
+      <!-- HubSpot Embed Script -->
+      <script src="https://js.hsforms.net/forms/embed/v2.js" defer></script>
+      <script>
+        window.addEventListener('load', function () {
+          if (window.hbspt) {
+            hbspt.forms.create({
+              region: "na1",
+              portalId: "45610755",
+              formId: "d44bc7d9-db7f-4142-93ca-f2f7d1e522e2",
+              target: "#hubspotForm"
+            });
+          }
+        });
+      </script>
+      <div id="hubspotForm"></div>
     </div>
   </div>
 </section>
-
-<dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
-  <div class="policy-header">
-    <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
-    <button class="close-btn" id="policyClose" aria-label="Close">Close</button>
-  </div>
-  <div class="policy-body">
-  <p style="margin:0 0 10px">• Nudity is expected but not enforced. Participate at your own pace.</p>
-  <p style="margin:0 0 10px">• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
-  <p style="margin:0 0 10px">• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
-  <p style="margin:0">• Respect others. Ask before photos, give personal space, and leave no trace.</p>
-</div>
-</dialog>
-<script>
-const dialog = document.getElementById('policyDialog');
-const openLink = document.getElementById('respectLink');
-const closeBtn = document.getElementById('policyClose');
-openLink.addEventListener('click', (e)=>{ e.preventDefault(); dialog.showModal(); });
-closeBtn.addEventListener('click', ()=> dialog.close());
-dialog.addEventListener('click', (e)=>{ if(e.target === dialog) dialog.close(); });
-</script>
-</body>
-</html>
