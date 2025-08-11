@@ -52,11 +52,11 @@
   .byline{
     display:flex;gap:14px;align-items:center;justify-content:center;
     margin:14px 0 22px;color:#e8f7f6;
-    font-size:clamp(18px,2.6vw,28px); /* ~2x text size */
+    font-size:clamp(18px,2.6vw,28px);
     font-weight:700;
   }
   .byline a{display:inline-flex;align-items:center}
-  .byline img{height:68px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))} /* ~2x logo size */
+  .byline img{height:68px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
 
   .hero p{max-width:740px;margin:14px auto 26px;color:#d9e2ea}
   .stack-rotate{display:grid;gap:6px;font-size:clamp(18px,2.6vw,28px);font-weight:800;letter-spacing:.12em}
@@ -93,7 +93,7 @@
   .row.open + .details{display:block}
   .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:linear-gradient(180deg,var(--sun),var(--amber));text-transform:uppercase}
 
-  /* ===== Feature overlay strip (people photo) ===== */
+  /* ===== Feature overlay strip ===== */
   .feature{position:relative;margin:80px 0 0}
   .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
   .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
@@ -120,6 +120,45 @@
   .policy-body{padding:18px}
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
   dialog::backdrop{background:rgba(0,0,0,.55)}
+
+  /* ===== HubSpot form styling ===== */
+  .hs-form-frame { display:flex; justify-content:center; }
+  .hs-form-frame .hs-form { width:100%; max-width:560px; }
+  .hs-form-frame .hs-form fieldset,
+  .hs-form-frame .hs-form .hs-form-field { margin:0; padding:0; border:0; }
+  .hs-form-frame .hs-form .hs-form-field + .hs-form-field { margin-top:12px; }
+  .hs-form-frame .hs-form label {
+    display:block; font-size:14px; color:#d9e2ea; margin:0 0 6px;
+  }
+  .hs-form-frame .hs-form input[type="email"],
+  .hs-form-frame .hs-form input[type="text"],
+  .hs-form-frame .hs-form input[type="tel"],
+  .hs-form-frame .hs-form select,
+  .hs-form-frame .hs-form textarea {
+    width:100%; padding:12px 14px; border-radius:10px;
+    border:1px solid var(--line); background:transparent; color:#fff; outline:none;
+  }
+  .hs-form-frame .hs-form input::placeholder,
+  .hs-form-frame .hs-form textarea::placeholder { color:#c9d3dd; opacity:.8; }
+  .hs-form-frame .hs-error-msg, 
+  .hs-form-frame .hs-error-msgs label {
+    color:#ffd1d1; font-size:13px; margin-top:6px;
+  }
+  .hs-form-frame .hs-form input[type="submit"],
+  .hs-form-frame .hs-form .hs-button {
+    display:inline-block; padding:12px 18px; border-radius:12px;
+    border:0; background:var(--accent); color:#000;
+    font-weight:800; cursor:pointer; margin-top:10px;
+  }
+  @media (min-width:640px){
+    .hs-form-frame .hs_submit { display:flex; gap:10px; align-items:center; }
+    .hs-form-frame .hs-email ~ .hs-submit { margin-top:0; }
+  }
+  .hs-form-frame .submitted-message {
+    color:#e8f7f6; background:rgba(255,255,255,.06);
+    border:1px solid var(--line); border-radius:12px;
+    padding:14px; text-align:center;
+  }
 </style>
 </head>
 <body>
@@ -131,8 +170,6 @@
   <!-- HERO -->
   <section class="hero" aria-label="Video hero">
     <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <!-- Optional WebM for Chrome/Firefox -->
-      <!-- <source src="/assets/hero.webm" type="video/webm"> -->
       <source src="/assets/hero.mp4" type="video/mp4">
     </video>
     <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
@@ -141,7 +178,6 @@
 
     <div class="hero-content">
       <h1>NUDE BEACH TRIPS</h1>
-      <!-- byline: bigger + clickable logo -->
       <p class="byline">
         by
         <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
@@ -169,20 +205,21 @@
       <div id="board" class="board" role="list"></div>
 
       <div class="section" style="padding:30px 0 0">
-        <form name="signup" method="post" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <input type="email" name="email" placeholder="you@email.com" required
-                 style="padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:#fff;min-width:260px">
-          <button class="btn primary" type="submit">Keep me posted</button>
-        </form>
+        <!-- HubSpot form embed -->
+        <script src="https://js.hsforms.net/forms/embed/45610755.js" defer></script>
+        <div class="hs-form-frame" 
+             data-region="na1" 
+             data-form-id="d44bc7d9-db7f-4142-93ca-f2f7d1e522e2" 
+             data-portal-id="45610755">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE OVERLAY STRIP (people photo) -->
+  <!-- FEATURE -->
   <section class="feature" aria-label="Community vibe">
     <div class="wrap" style="padding:0 20px">
       <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
-        <!-- Replace with your image -->
         <img src="/assets/people.jpg" alt="">
       </div>
 
@@ -221,10 +258,10 @@
       <button class="close-btn" id="policyClose" aria-label="Close">Close</button>
     </div>
     <div class="policy-body">
-      <p style="margin:0 0 10px">• Nudity is expected but not enforced. Participate at your own pace.</p>
-      <p style="margin:0 0 10px">• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
-      <p style="margin:0 0 10px">• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
-      <p style="margin:0">• Respect others. Ask before photos, give personal space, and leave no trace.</p>
+      <p>• Nudity is expected but not enforced. Participate at your own pace.</p>
+      <p>• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
+      <p>• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
+      <p>• Respect others. Ask before photos, give personal space, and leave no trace.</p>
     </div>
   </dialog>
 
@@ -235,17 +272,25 @@
   ];
   const board = document.getElementById('board');
   if (!trips.length){
-    const soon = document.createElement('div'); soon.className='soon'; soon.textContent='COMING SOON'; board.appendChild(soon);
+    const soon = document.createElement('div'); 
+    soon.className='soon'; 
+    soon.textContent='COMING SOON'; 
+    board.appendChild(soon);
   } else {
     trips.forEach((t,i)=>{
-      const row=document.createElement('div'); row.className='row'; row.setAttribute('role','listitem');
+      const row=document.createElement('div'); 
+      row.className='row'; 
+      row.setAttribute('role','listitem');
       row.innerHTML=`<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
-      const details=document.createElement('div'); details.className='details'; details.id=`d-${i}`;
+      const details=document.createElement('div'); 
+      details.className='details'; 
+      details.id=`d-${i}`;
       details.innerHTML=`<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
           <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
-          <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#signup">Join Waitlist</a></div>
+          <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#dates">Join Waitlist</a></div>
         </div>`;
-      board.appendChild(row); board.appendChild(details);
+      board.appendChild(row); 
+      board.appendChild(details);
       row.querySelector('.more').addEventListener('click', e=>{
         const open=row.classList.toggle('open');
         e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
