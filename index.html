@@ -93,7 +93,7 @@
   .row.open + .details{display:block}
   .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:linear-gradient(180deg,var(--sun),var(--amber));text-transform:uppercase}
 
-  /* ===== Feature overlay strip ===== */
+  /* ===== Feature overlay strip (people photo) ===== */
   .feature{position:relative;margin:80px 0 0}
   .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
   .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
@@ -121,7 +121,7 @@
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
   dialog::backdrop{background:rgba(0,0,0,.55)}
 
-  /* ===== HubSpot form styling ===== */
+  /* ===== HubSpot form — native styling ===== */
   .hs-form-frame { display:flex; justify-content:center; }
   .hs-form-frame .hs-form { width:100%; max-width:560px; }
   .hs-form-frame .hs-form fieldset,
@@ -135,20 +135,33 @@
   .hs-form-frame .hs-form input[type="tel"],
   .hs-form-frame .hs-form select,
   .hs-form-frame .hs-form textarea {
-    width:100%; padding:12px 14px; border-radius:10px;
-    border:1px solid var(--line); background:transparent; color:#fff; outline:none;
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:#fff;
+    outline:none;
   }
   .hs-form-frame .hs-form input::placeholder,
   .hs-form-frame .hs-form textarea::placeholder { color:#c9d3dd; opacity:.8; }
-  .hs-form-frame .hs-error-msg, 
+  /* validation */
+  .hs-form-frame .hs-error-msg,
   .hs-form-frame .hs-error-msgs label {
     color:#ffd1d1; font-size:13px; margin-top:6px;
   }
+  /* primary button match */
   .hs-form-frame .hs-form input[type="submit"],
   .hs-form-frame .hs-form .hs-button {
-    display:inline-block; padding:12px 18px; border-radius:12px;
-    border:0; background:var(--accent); color:#000;
-    font-weight:800; cursor:pointer; margin-top:10px;
+    display:inline-block;
+    padding:12px 18px;
+    border-radius:12px;
+    border:0;
+    background:var(--accent);
+    color:#000;
+    font-weight:800;
+    cursor:pointer;
+    margin-top:10px;
   }
   @media (min-width:640px){
     .hs-form-frame .hs_submit { display:flex; gap:10px; align-items:center; }
@@ -158,6 +171,13 @@
     color:#e8f7f6; background:rgba(255,255,255,.06);
     border:1px solid var(--line); border-radius:12px;
     padding:14px; text-align:center;
+  }
+
+  /* ===== Hide HubSpot free branding (visual only) ===== */
+  /* This targets the small "Create your own free forms" bar that HubSpot injects. */
+  .hs-form iframe + div,
+  .hs-form .legal-consent-container + div {
+    display: none !important;
   }
 </style>
 </head>
@@ -170,6 +190,8 @@
   <!-- HERO -->
   <section class="hero" aria-label="Video hero">
     <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <!-- Optional WebM for Chrome/Firefox -->
+      <!-- <source src="/assets/hero.webm" type="video/webm"> -->
       <source src="/assets/hero.mp4" type="video/mp4">
     </video>
     <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
@@ -178,6 +200,7 @@
 
     <div class="hero-content">
       <h1>NUDE BEACH TRIPS</h1>
+      <!-- byline: bigger + clickable logo -->
       <p class="byline">
         by
         <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
@@ -216,10 +239,11 @@
     </div>
   </section>
 
-  <!-- FEATURE -->
+  <!-- FEATURE OVERLAY STRIP (people photo) -->
   <section class="feature" aria-label="Community vibe">
     <div class="wrap" style="padding:0 20px">
       <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
+        <!-- Replace with your image -->
         <img src="/assets/people.jpg" alt="">
       </div>
 
@@ -258,10 +282,10 @@
       <button class="close-btn" id="policyClose" aria-label="Close">Close</button>
     </div>
     <div class="policy-body">
-      <p>• Nudity is expected but not enforced. Participate at your own pace.</p>
-      <p>• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
-      <p>• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
-      <p>• Respect others. Ask before photos, give personal space, and leave no trace.</p>
+      <p style="margin:0 0 10px">• Nudity is expected for the comfort of others. Participate at your own pace.</p>
+      <p style="margin:0 0 10px">• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
+      <p style="margin:0 0 10px">• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
+      <p style="margin:0">• Respect others. Ask before photos, give personal space, and leave no trace.</p>
     </div>
   </dialog>
 
@@ -272,25 +296,17 @@
   ];
   const board = document.getElementById('board');
   if (!trips.length){
-    const soon = document.createElement('div'); 
-    soon.className='soon'; 
-    soon.textContent='COMING SOON'; 
-    board.appendChild(soon);
+    const soon = document.createElement('div'); soon.className='soon'; soon.textContent='COMING SOON'; board.appendChild(soon);
   } else {
     trips.forEach((t,i)=>{
-      const row=document.createElement('div'); 
-      row.className='row'; 
-      row.setAttribute('role','listitem');
+      const row=document.createElement('div'); row.className='row'; row.setAttribute('role','listitem');
       row.innerHTML=`<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
-      const details=document.createElement('div'); 
-      details.className='details'; 
-      details.id=`d-${i}`;
+      const details=document.createElement('div'); details.className='details'; details.id=`d-${i}`;
       details.innerHTML=`<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
           <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
           <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#dates">Join Waitlist</a></div>
         </div>`;
-      board.appendChild(row); 
-      board.appendChild(details);
+      board.appendChild(row); board.appendChild(details);
       row.querySelector('.more').addEventListener('click', e=>{
         const open=row.classList.toggle('open');
         e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -317,7 +333,20 @@
     });
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
+
+  // --- Add placeholder to HubSpot email field if missing ---
+  document.addEventListener("DOMContentLoaded", function() {
+    const observer = new MutationObserver(() => {
+      const emailInput = document.querySelector('.hs-form input[type="email"]');
+      if (emailInput && !emailInput.placeholder) {
+        emailInput.placeholder = 'you@email.com';
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
 </script>
 </body>
 </html>
+
+
 
