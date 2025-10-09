@@ -25,6 +25,7 @@
   }
   h1,h2{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
   a{color:var(--white)}
+
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
   /* ===== Header ===== */
@@ -47,8 +48,13 @@
   .hero-content{position:relative;text-align:center;padding:0 20px}
   .hero h1{font-size:clamp(36px,7.5vw,86px);text-transform:uppercase;letter-spacing:.5px}
 
-  /* Byline */
-  .byline{display:flex;gap:14px;align-items:center;justify-content:center;margin:14px 0 22px;color:#e8f7f6;font-size:clamp(18px,2.6vw,28px);font-weight:700}
+  /* Byline - bigger + clickable logo */
+  .byline{
+    display:flex;gap:14px;align-items:center;justify-content:center;
+    margin:14px 0 22px;color:#e8f7f6;
+    font-size:clamp(18px,2.6vw,28px);
+    font-weight:700;
+  }
   .byline a{display:inline-flex;align-items:center}
   .byline img{height:68px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
 
@@ -87,7 +93,7 @@
   .row.open + .details{display:block}
   .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:linear-gradient(180deg,var(--sun),var(--amber));text-transform:uppercase}
 
-  /* ===== Feature overlay strip ===== */
+  /* ===== Feature overlay strip (people photo) ===== */
   .feature{position:relative;margin:80px 0 0}
   .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
   .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
@@ -145,7 +151,7 @@
     color:#e8f7f6; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center;
   }
 
-  /* (Note: hiding HubSpot branding via CSS may violate free-tier T&Cs) */
+  /* ===== Hide HubSpot free branding (visual only) ===== */
   .hs-form iframe + div,
   .hs-form .legal-consent-container + div { display: none !important; }
 </style>
@@ -159,6 +165,8 @@
   <!-- HERO -->
   <section class="hero" aria-label="Video hero">
     <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <!-- Optional WebM for Chrome/Firefox -->
+      <!-- <source src="/assets/hero.webm" type="video/webm"> -->
       <source src="/assets/hero.mp4" type="video/mp4">
     </video>
     <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
@@ -174,7 +182,9 @@
         </a>
       </p>
       <div class="stack-rotate" aria-live="polite">
-        <span>RELAX.</span><span>SUN.</span><span>SEA.</span>
+        <span>RELAX.</span>
+        <span>SUN.</span>
+        <span>SEA.</span>
       </div>
       <p style="max-width:740px;margin:14px auto 26px">Small groups, great locations. Zero Awkward vibes.</p>
       <div class="hero-actions">
@@ -192,16 +202,14 @@
       <div id="board" class="board" role="list"></div>
 
       <div class="section" style="padding:30px 0 0">
-        <!-- ✅ HubSpot Forms v2 loader -->
+        <!-- ✅ HubSpot form embed (correct) -->
         <script src="https://js.hsforms.net/forms/v2.js" async></script>
-
-        <!-- Mount point -->
         <div id="hubspot-form" class="hs-form-frame"></div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE OVERLAY STRIP -->
+  <!-- FEATURE OVERLAY STRIP (people photo) -->
   <section class="feature" aria-label="Community vibe">
     <div class="wrap" style="padding:0 20px">
       <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
@@ -251,17 +259,19 @@
   </dialog>
 
 <script>
-  // --- Tour dates: set empty for "COMING SOON"
-  const trips = [];
+  // --- Tour dates: set empty for "COMING SOON" ---
+  const trips = [
+    // { city: "Zipolite, Mexico", date: "Feb 12–16, 2026", blurb: "Sunset swims, cove walks, easy vibe.", img: "/assets/hero-poster.jpg" }
+  ];
   const board = document.getElementById('board');
   if (!trips.length){
     const soon = document.createElement('div'); soon.className='soon'; soon.textContent='COMING SOON'; board.appendChild(soon);
   } else {
     trips.forEach((t,i)=>{
       const row=document.createElement('div'); row.className='row'; row.setAttribute('role','listitem');
-      row.innerHTML=`<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
-      const details=document.createElement('div'); details.className='details'; details.id=`d-${i}`;
-      details.innerHTML=`<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
+      row.innerHTML = `<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
+      const details=document.createElement('div'); details.className='details'; details.id = `d-${i}`;
+      details.innerHTML = `<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
           <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
           <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#dates">Join Waitlist</a></div>
         </div>`;
@@ -281,7 +291,7 @@
   closeBtn.addEventListener('click', ()=> dialog.close());
   dialog.addEventListener('click', (e)=>{ if(e.target === dialog) dialog.close(); });
 
-  // Reveal on scroll
+  // Reveal on scroll (feature image + card)
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -293,35 +303,27 @@
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
 
-  // ---- HubSpot form create (lazy after script ready) ----
-  function createHSForm(){
-    if (!window.hbspt || !hbspt.forms) return false;
+  // --- HubSpot form create (wait for v2.js) ---
+  (function waitHS(){
+    if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
     hbspt.forms.create({
       region: "na1",
       portalId: "45610755",
       formId: "d44bc7d9-db7f-4142-93ca-f2f7d1e522e2",
-      target: "#hubspot-form",
-      onFormReady: function(){ console.log("🟢 HS form ready"); },
-      onFormSubmit: function(){ console.log("✅ HS form submitted"); }
+      target: "#hubspot-form"
     });
-    return true;
-  }
-
-  // Wait for v2.js
-  (function waitHs(){
-    if (!createHSForm()) setTimeout(waitHs, 80);
   })();
 
-  // Add placeholder to email once form exists
-  const mo = new MutationObserver(()=>{
-    const emailInput = document.querySelector('.hs-form input[type="email"]');
-    if (emailInput && !emailInput.placeholder) emailInput.placeholder = 'you@email.com';
+  // --- Add placeholder to HubSpot email field if missing ---
+  document.addEventListener("DOMContentLoaded", function() {
+    const observer = new MutationObserver(() => {
+      const emailInput = document.querySelector('.hs-form input[type="email"]');
+      if (emailInput && !emailInput.placeholder) {
+        emailInput.placeholder = 'you@email.com';
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   });
-  mo.observe(document.body, { childList:true, subtree:true });
-
-  // ---- CSP hint (if you use strict CSP, allow these in script/connect) ----
-  // js.hsforms.net forms.hubspot.com api.hsforms.com api-na1.hsforms.com
 </script>
 </body>
 </html>
-
