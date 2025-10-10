@@ -261,27 +261,29 @@
 <script>
   // --- Tour dates: set empty for "COMING SOON" ---
   const trips = [
-    // { city: "Zipolite, Mexico", date: "Feb 12–16, 2026", blurb: "Sunset swims, cove walks, easy vibe.", img: "/assets/hero-poster.jpg" }
-  ];
-  const board = document.getElementById('board');
-  if (!trips.length){
-    const soon = document.createElement('div'); soon.className='soon'; soon.textContent='COMING SOON'; board.appendChild(soon);
-  } else {
-    trips.forEach((t,i)=>{
-      const row=document.createElement('div'); row.className='row'; row.setAttribute('role','listitem');
-      row.innerHTML = `<div class="city">${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
-      const details=document.createElement('div'); details.className='details'; details.id = `d-${i}`;
-      details.innerHTML = `<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
-          <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
-          <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="#dates">Join Waitlist</a></div>
-        </div>`;
-      board.appendChild(row); board.appendChild(details);
-      row.querySelector('.more').addEventListener('click', e=>{
-        const open=row.classList.toggle('open');
-        e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+  { city: "Vancouver, Canada", date: "TBC August 2025", blurb: "First-ever Nude Beach Trip in Canada. Relaxed and scenic.", img: "/assets/vancouver.jpg" },
+  { city: "Zipolite, Mexico", date: "Jan 24–28, 2026", blurb: "Our flagship trip on Mexico’s famous clothing-optional beach.", img: "/assets/zipolite.jpg", link: "zipolite.html" }
+];
+const board = document.getElementById('board');
+if (!trips.length){
+  const soon = document.createElement('div'); soon.className='soon'; soon.textContent='COMING SOON'; board.appendChild(soon);
+} else {
+  trips.forEach((t,i)=>{
+    const row=document.createElement('div'); row.className='row'; row.setAttribute('role','listitem');
+    const clickable = t.link ? `onclick="window.location='${t.link}'" style='cursor:pointer'` : "";
+    row.innerHTML=`<div class="city" ${clickable}>${t.city}</div><div class="date">${t.date}</div><button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>`;
+    const details=document.createElement('div'); details.className='details'; details.id=`d-${i}`;
+    details.innerHTML=`<div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
+        <img src="${t.img || '/assets/hero-poster.jpg'}" alt="" style="width:100%;border-radius:10px;border:1px solid var(--line)">
+        <div><p style="margin:0 0 12px">${t.blurb || ''}</p><a class="btn primary" href="${t.link || '#dates'}">Learn More</a></div>
+      </div>`;
+    board.appendChild(row); board.appendChild(details);
+    row.querySelector('.more').addEventListener('click', e=>{
+      const open=row.classList.toggle('open');
+      e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-  }
+  });
+}
 
   // Respect Policy modal
   const dialog = document.getElementById('policyDialog');
