@@ -6,35 +6,130 @@
 <title>Zipolite, Mexico – Nude Beach Trips</title>
 <meta name="description" content="Join our clothing-optional Nude Beach Trip in Zipolite, Mexico. Small groups, warm community, zero awkward vibes." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;background:#0b2a3d;color:#fff;font-family:Inter,system-ui;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-h1,h2{font-family:"Playfair Display",Georgia,serif}
-a{color:#0cbab4;text-decoration:none}
-.hero{position:relative;height:70vh;display:grid;place-items:center;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
-.hero h1{position:relative;z-index:1;font-size:clamp(36px,7vw,80px)}
-.section{padding:60px 0}
-.btn{display:inline-block;padding:12px 18px;background:#f8c014;color:#000;font-weight:800;border-radius:12px;cursor:pointer;text-decoration:none}
-.dialog{border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;max-width:480px;width:90%}
-.dialog-header{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid rgba(255,255,255,.2)}
-.dialog-body{padding:18px}
-.close-btn{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
-dialog::backdrop{background:rgba(0,0,0,.55)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-.gallery img{width:100%;border-radius:10px;object-fit:cover}
+  /* --- Reusing your Brand Palette --- */
+  :root{
+    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --white:#ffffff;
+    --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
+  }
+
+  /* --- Base Styles --- */
+  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.6;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0;}
+  a{color:var(--teal); text-decoration:none;}
+  
+  /* --- Hero --- */
+  .hero{position:relative; height:60vh; display:grid; place-items:center; overflow:hidden;}
+  .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.6) contrast(1.1);}
+  .hero-content{position:relative; z-index:1; text-align:center;}
+  .hero h1{font-size:clamp(40px,8vw,90px); margin:0; line-height:1;}
+  .hero p{font-size: 1.2rem; opacity: 0.9; margin-top: 10px;}
+
+  /* --- Sections --- */
+  .section{padding:80px 0;}
+  
+  /* --- Buttons --- */
+  .btn{
+    display:inline-block; padding:14px 24px; background:var(--sun); color:#000; 
+    font-weight:800; border-radius:12px; cursor:pointer; text-decoration:none; border:none;
+    transition: transform 0.2s ease;
+  }
+  .btn:hover{transform: translateY(-2px); background:var(--amber);}
+  .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
+  .btn.outline:hover{background: rgba(255,255,255,0.1);}
+
+  /* --- Room Grid (The Brochure Part) --- */
+  .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+  
+  .room-card{
+    background: rgba(0,0,0,0.2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .room-img{ height: 240px; width: 100%; object-fit: cover; }
+  .room-details{ padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+  .room-title{ font-size: 1.5rem; margin-bottom: 8px; font-weight: 700; color: var(--teal); }
+  .room-desc{ color: #d9e2ea; font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+  .room-meta{ display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 20px; }
+  .price{ font-size: 1.5rem; font-weight: 800; }
+  .price span{ font-size: 0.9rem; font-weight: 400; opacity: 0.7; }
+
+  /* --- Gallery --- */
+  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px;}
+  .gallery img{width:100%; border-radius:10px; object-fit:cover; height: 250px;}
+
+  /* --- Modal (Jotform Container) --- */
+  .dialog{
+    border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff;
+    max-width:800px; width:94%; height: 85vh; /* Tall for the form */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .dialog-header{
+    display:flex; justify-content:space-between; align-items:center; 
+    padding:16px 20px; border-bottom:1px solid var(--line); background: rgba(0,0,0,0.2);
+  }
+  .close-btn{background:transparent; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px 12px; cursor:pointer;}
+  .dialog-body{ height: 100%; overflow: hidden; background: #fff;} /* White background for Jotform */
+  dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
+  
+  /* Footer */
+  footer{padding:40px 0; text-align:center; opacity: 0.6; font-size: 0.9rem;}
 </style>
 </head>
 <body>
+
   <section class="hero">
-    <img src="/assets/zipolite-hero.jpg" alt="Zipolite Beach">
-    <h1>Zipolite, Mexico</h1>
+    <img src="/assets/zipolite-hero.jpg" alt="Zipolite Beach"> 
+    <div class="hero-content wrap">
+      <h1>Zipolite, Mexico</h1>
+      <p>Jan 24–28, 2027 • Clothing Optional Retreat</p>
+    </div>
   </section>
 
   <section class="section wrap">
-    <h2>Trip Overview</h2>
-    <p>Join our flagship Nude Beach Trip in Zipolite — Mexico’s most famous clothing-optional beach. Expect small groups, clear etiquette, and a relaxed, social vibe. We’ll explore hidden coves, local food, and the vibrant naturist scene.</p>
-    <button class="btn" id="interestBtn">Express Interest</button>
+    <div style="max-width: 800px;">
+      <h2>Trip Overview</h2>
+      <p>Join our flagship Nude Beach Trip in Zipolite — Mexico’s most famous clothing-optional beach. Expect small groups, clear etiquette, and a relaxed, social vibe. We’ll explore hidden coves, local food, and the vibrant naturist scene.</p>
+      <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <button class="btn scroll-trigger">Apply for Invitation</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Accommodation & Pricing</h2>
+    <p style="color: #d9e2ea;">Choose your preferred room type. All prices include accommodation and daily activities.</p>
+    
+    <div class="room-grid">
+      
+      <div class="room-card">
+        <img src="/assets/room-deluxe.jpg" alt="Deluxe Room" class="room-img"> <div class="room-details">
+          <div class="room-title">Deluxe Ocean View</div>
+          <div class="room-desc">
+            King size bed, private balcony with direct ocean views, air conditioning, and ensuite bathroom. Perfect for couples.
+          </div>
+          <div class="room-meta">
+            <div class="price">$2,200 <span>/ person</span></div>
+            <button class="btn outline open-application">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="/assets/room-standard.jpg" alt="Standard Room" class="room-img"> <div class="room-details">
+          <div class="room-title">Standard Garden Room</div>
+          <div class="room-desc">
+            Queen bed, ground floor with garden patio. Ceiling fans and beautiful natural breeze. Quiet and private.
+          </div>
+          <div class="room-meta">
+            <div class="price">$1,600 <span>/ person</span></div>
+            <button class="btn outline open-application">Apply</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <section class="section wrap">
@@ -46,30 +141,50 @@ dialog::backdrop{background:rgba(0,0,0,.55)}
     </div>
   </section>
 
-  <footer style="padding:40px 0;text-align:center">© 2025 Nude Beach Trips · <a href="index.html">Back to main site</a></footer>
+  <footer>
+    © 2025 Nude Beach Trips · <a href="index.html">Back to main site</a>
+  </footer>
 
-  <dialog class="dialog" id="interestForm">
+  <dialog class="dialog" id="applicationModal">
     <div class="dialog-header">
-      <strong>Express Interest</strong>
+      <strong>Apply for Invitation</strong>
       <button class="close-btn" id="closeDialog">Close</button>
     </div>
     <div class="dialog-body">
-      <!-- Replace this later with your HubSpot form -->
-      <form>
-        <label>Name</label><br>
-        <input type="text" style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px"><br>
-        <label>Email</label><br>
-        <input type="email" style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px"><br>
-        <button class="btn" type="submit">Submit</button>
-      </form>
+      
+      <iframe
+        id="JotFormIFrame-0000000000"
+        title="Nude Beach Application"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allowfullscreen="true"
+        allow="geolocation; microphone; camera"
+        src="https://form.jotform.com/23330000000" 
+        frameborder="0"
+        style="min-width:100%; max-width:100%; height:100%; border:none;"
+        scrolling="yes"
+      >
+      </iframe>
+
     </div>
   </dialog>
 
 <script>
-  const dialog=document.getElementById('interestForm');
-  document.getElementById('interestBtn').addEventListener('click',()=>dialog.showModal());
-  document.getElementById('closeDialog').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('click',(e)=>{if(e.target===dialog)dialog.close()});
+  const dialog = document.getElementById('applicationModal');
+  const closeBtn = document.getElementById('closeDialog');
+  
+  // Open modal when ANY 'Apply' button is clicked
+  const triggers = document.querySelectorAll('.open-application, .scroll-trigger');
+  triggers.forEach(btn => {
+    btn.addEventListener('click', () => dialog.showModal());
+  });
+
+  // Close modal logic
+  closeBtn.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => {
+    if(e.target === dialog) dialog.close();
+  });
 </script>
+
 </body>
 </html>
