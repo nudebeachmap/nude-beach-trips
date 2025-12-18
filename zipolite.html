@@ -14,7 +14,7 @@
     --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
   }
 
-  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.6;}
+  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.6; overflow-x: hidden;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0;}
   a{color:var(--teal); text-decoration:none;}
@@ -51,7 +51,7 @@
   .amenity-item{ display: flex; align-items: center; gap: 10px; font-weight: 600; }
   .check{ color: var(--teal); }
 
-  /* --- Room Grid & Mini Gallery --- */
+  /* --- Room Grid --- */
   .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-top: 40px; }
   
   .room-card{
@@ -63,27 +63,42 @@
   .room-media { position: relative; height: 240px; overflow: hidden; cursor: pointer; }
   .room-media img { 
     position: absolute; inset:0; width: 100%; height: 100%; object-fit: cover; 
-    opacity: 0; transition: opacity 1s ease; 
+    transition: transform 0.5s ease;
   }
-  .room-media img.active { opacity: 1; }
+  .room-card:hover .room-media img { transform: scale(1.05); }
+  
   .gallery-icon {
-    position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); 
-    color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;
-    pointer-events: none;
+    position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); 
+    color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    pointer-events: none; display: flex; align-items: center; gap: 6px;
   }
 
   .room-details{ padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
   .room-title{ font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; color: var(--teal); line-height: 1.2; }
   .room-desc{ color: #d9e2ea; font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+  .room-desc strong { color: #fff; }
+  .room-desc em { display:block; margin-top:8px; font-size: 0.85rem; opacity: 0.6; font-style: normal; }
   
   .room-meta{ display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 20px; }
   .price{ font-size: 1.6rem; font-weight: 800; line-height: 1; }
   .price span{ font-size: 0.75rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
   .per-person { font-size:0.85rem; opacity:0.7; margin-top:6px; font-style: italic; }
 
-  /* --- Gallery --- */
-  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px;}
-  .gallery img{width:100%; border-radius:10px; object-fit:cover; height: 250px;}
+  /* --- Scrolling Footer Gallery --- */
+  .marquee-section { padding: 60px 0; background: #000; overflow: hidden; }
+  .marquee-track {
+    display: flex; gap: 16px; width: max-content;
+    animation: scroll 60s linear infinite;
+  }
+  .marquee-track img {
+    height: 300px; width: auto; border-radius: 8px; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;
+  }
+  .marquee-track img:hover { opacity: 1; }
+  
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
 
   /* --- Modal (Jotform) --- */
   .dialog{
@@ -99,7 +114,7 @@
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
   
-  /* --- Lightbox (Images) --- */
+  /* --- Lightbox --- */
   .lightbox {
     position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95);
     display: none; place-items: center;
@@ -165,12 +180,14 @@
 
         <div class="room-card" data-room="prem_ocean">
           <div class="room-media">
-            <div class="gallery-icon">View Photos</div>
+             <img src="assets/PremSuite5.avif" alt="Premium Suite Ocean">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Premium Suite (Ocean View)</div>
             <div class="room-desc">
               <strong>420 sq ft.</strong> The best rooms in the house. King-size bed, separate sitting area, A/C, Desk, Safe. Private terrace features a hanging bed and loungers with direct sea views.
+              <em>(Units S1, S3)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -184,12 +201,14 @@
 
         <div class="room-card" data-room="prem_dbl">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/PremSuiteDBL1.avif" alt="Premium Suite DBL">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Premium Suite (DBL)</div>
             <div class="room-desc">
                Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers.
+               <em>(Unit S4 or DBL Config)</em>
             </div>
             <div class="room-meta">
                <div>
@@ -203,12 +222,14 @@
 
         <div class="room-card" data-room="std_ocean">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Standard Suite (Ocean View)</div>
             <div class="room-desc">
               <strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed and lounger. Stunning ocean views.
+              <em>(Units H5, H7)</em>
             </div>
             <div class="room-meta">
                <div>
@@ -222,12 +243,14 @@
 
         <div class="room-card" data-room="std_pool">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/StdSuitePool1.avif" alt="Standard Suite Pool">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Standard Suite (Pool View)</div>
             <div class="room-desc">
               King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with a partial/side ocean view.
+              <em>(Unit H8)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -241,12 +264,14 @@
 
         <div class="room-card" data-room="quad">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/QuadRoom1.avif" alt="Quad Room">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Quadruple Room</div>
             <div class="room-desc">
               <strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds</strong>. Separate sitting area. Terrace with lounger and pool view. Sleeps 4.
+              <em>(Units H10, H11, H14)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -260,12 +285,14 @@
 
         <div class="room-card" data-room="triple">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/TripleRoom1.avif" alt="Triple Room">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Triple Room</div>
             <div class="room-desc">
               <strong>323 sq ft.</strong> 1 King bed + 1 Twin bed. Separate sitting area. Private bathroom, A/C, fan, safe. Terrace with pool view.
+              <em>(Units H9, H12)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -279,12 +306,14 @@
 
         <div class="room-card" data-room="std_dbl">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/StdDblPool1.avif" alt="Standard Room">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Standard Room</div>
             <div class="room-desc">
               <strong>194 sq ft.</strong> Simple and comfortable. 1 Double/Queen bed, private bathroom, A/C, safe. Best for solo travelers. Pool view.
+              <em>(Unit H6)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -298,12 +327,14 @@
 
         <div class="room-card" data-room="cabin">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/FamCabinSharedB2.jpg" alt="Private Cabin">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Private Cabin</div>
             <div class="room-desc">
               Rustic charm with pool view. 1 Double bed, <strong>Private Bathroom</strong>, A/C, fan. 
+              <em>(Units C1, C3)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -317,12 +348,14 @@
 
         <div class="room-card" data-room="shared_cabin">
           <div class="room-media">
-             <div class="gallery-icon">View Photos</div>
+             <img src="assets/FamCabinSharedB1.avif" alt="Shared Cabin">
+             <div class="gallery-icon">📷 View Photos</div>
           </div>
           <div class="room-details">
             <div class="room-title">Shared Rustic Cabin</div>
             <div class="room-desc">
               The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong> Safe and Desk included.
+              <em>(Units C2, C4)</em>
             </div>
             <div class="room-meta">
               <div>
@@ -338,12 +371,29 @@
     </div>
   </section>
 
-  <section class="section wrap">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="assets/Zipo1.jpg" alt="Zipolite Beach">
-      <img src="assets/Budamar3.jpg" alt="Hotel Grounds">
-      <img src="assets/Zipo2.webp" alt="Nudists on Beach">
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Budamar3.jpg" alt="">
+      <img src="assets/Budamar4.avif" alt="">
+      <img src="assets/Budamar5.jpg" alt="">
+      <img src="assets/Budamar6.avif" alt="">
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Zipo3.jpg" alt="">
+      <img src="assets/Zipo4.webp" alt="">
+      <img src="assets/Zipo5.webp" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
+      
+      <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Budamar3.jpg" alt="">
+      <img src="assets/Budamar4.avif" alt="">
+      <img src="assets/Budamar5.jpg" alt="">
+      <img src="assets/Budamar6.avif" alt="">
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Zipo3.jpg" alt="">
+      <img src="assets/Zipo4.webp" alt="">
+      <img src="assets/Zipo5.webp" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
     </div>
   </section>
 
@@ -381,16 +431,25 @@
   </div>
 
 <script>
-  // --- DATA: Configure Images Here ---
+  // --- DATA: Renamed files in action ---
   const roomImages = {
     prem_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
-    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuite5.avif', 'PremSuite4.jpg'], // Uses the specific DBL file + generics
-    std_ocean:  ['StdSuiteOcean1.avif', 'StdDblPool3.avif', 'StdDblPool4.jpg'],
+    
+    // UPDATED with cleaned names
+    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'], 
+    
+    std_ocean:  ['StdSuiteOcean1.avif', 'Standard Suite, Ensuite, Sea View (DBL) 2.avif', 'Standard Suite, Ensuite, Sea View (DBL) 3.avif'],
+    
     std_pool:   ['StdSuitePool1.avif', 'StdDblPool2.jpg', 'StdDblPool5.jpg'],
-    quad:       ['QuadRoom1.avif', 'PremSuite3.avif', 'PremSuite2.webp'],
-    triple:     ['TripleRoom1.avif', 'StdDblPool6.jpg', 'StdDblPool7.jpg'],
+    
+    quad:       ['QuadRoom1.avif', 'Quadruple Room, Ensuite, Pool View 2.avif', 'Quadruple Room, Ensuite, Pool View 3.jpg'],
+    
+    triple:     ['TripleRoom1.avif', 'Triple Room, Ensuite, Pool View 2.avif', 'Triple Room, Ensuite, Pool View 3.avif'],
+    
     std_dbl:    ['StdDblPool1.avif', 'StdDblPool2.jpg', 'StdDblPool3.avif', 'StdDblPool4.jpg'],
+    
     cabin:      ['FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif'],
+    
     shared_cabin: ['FamCabinSharedB1.avif', 'FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif', 'FamCabinSharedB5.avif']
   };
 
@@ -401,40 +460,18 @@
     heroes[heroIdx].classList.remove('active');
     heroIdx = (heroIdx + 1) % heroes.length;
     heroes[heroIdx].classList.add('active');
-  }, 5000); // 5 seconds per slide
+  }, 5000); 
 
-  // --- LOGIC: Room Mini-Sliders & Interaction ---
+  // --- LOGIC: Lightbox ---
   document.querySelectorAll('.room-card').forEach(card => {
     const key = card.dataset.room;
     const mediaContainer = card.querySelector('.room-media');
     const images = roomImages[key];
 
     if(!images || images.length === 0) return;
-
-    // 1. Populate Images
-    images.forEach((filename, index) => {
-      const img = document.createElement('img');
-      img.src = 'assets/' + filename;
-      if(index === 0) img.classList.add('active');
-      mediaContainer.appendChild(img);
-    });
-
-    // 2. Auto-Rotate Mini Slider
-    let imgIdx = 0;
-    const roomImgs = mediaContainer.querySelectorAll('img');
-    if(roomImgs.length > 1) {
-      setInterval(() => {
-        roomImgs[imgIdx].classList.remove('active');
-        imgIdx = (imgIdx + 1) % roomImgs.length;
-        roomImgs[imgIdx].classList.add('active');
-      }, 3500); // 3.5 seconds rotation
-    }
-
-    // 3. Click to Open Lightbox
     mediaContainer.addEventListener('click', () => openLightbox(images));
   });
 
-  // --- LOGIC: Lightbox ---
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   let currentLbImages = [];
@@ -448,7 +485,7 @@
   }
 
   function updateLb() {
-    lbImg.src = 'assets/' + currentLbImages[currentLbIdx];
+    lbImg.src = 'assets/' + encodeURIComponent(currentLbImages[currentLbIdx]);
   }
 
   document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
@@ -460,17 +497,14 @@
     currentLbIdx = (currentLbIdx - 1 + currentLbImages.length) % currentLbImages.length;
     updateLb();
   };
-  
-  // Close on background click
   lb.onclick = (e) => { if(e.target === lb) lb.classList.remove('open'); };
 
-  // --- LOGIC: Modal (App) ---
+  // --- LOGIC: Modal ---
   const dialog = document.getElementById('applicationModal');
   const closeBtn = document.getElementById('closeDialog');
   const triggers = document.querySelectorAll('.open-application, .scroll-trigger');
-  
   triggers.forEach(btn => btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // prevent lightbox trigger if buttons overlap
+      e.stopPropagation();
       dialog.showModal();
   }));
   closeBtn.addEventListener('click', () => dialog.close());
