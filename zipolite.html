@@ -1,17 +1,125 @@
-<div class="room-grid">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Zipolite, Mexico – Nude Beach Trips</title>
+<meta name="description" content="Join our clothing-optional Nude Beach Trip in Zipolite, Mexico. Small groups, warm community, zero awkward vibes." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* --- Brand Palette --- */
+  :root{
+    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --white:#ffffff;
+    --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
+  }
+
+  /* --- Base Styles --- */
+  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.6;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0;}
+  a{color:var(--teal); text-decoration:none;}
+  
+  /* --- Hero --- */
+  .hero{position:relative; height:60vh; display:grid; place-items:center; overflow:hidden;}
+  .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.6) contrast(1.1);}
+  .hero-content{position:relative; z-index:1; text-align:center;}
+  .hero h1{font-size:clamp(40px,8vw,90px); margin:0; line-height:1;}
+  .hero p{font-size: 1.2rem; opacity: 0.9; margin-top: 10px;}
+
+  /* --- Sections --- */
+  .section{padding:80px 0;}
+  
+  /* --- Buttons --- */
+  .btn{
+    display:inline-block; padding:14px 24px; background:var(--sun); color:#000; 
+    font-weight:800; border-radius:12px; cursor:pointer; text-decoration:none; border:none;
+    transition: transform 0.2s ease;
+  }
+  .btn:hover{transform: translateY(-2px); background:var(--amber);}
+  .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
+  .btn.outline:hover{background: rgba(255,255,255,0.1);}
+
+  /* --- Room Grid --- */
+  .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+  
+  .room-card{
+    background: rgba(0,0,0,0.2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    display: flex; flex-direction: column; transition: transform 0.2s ease;
+  }
+  .room-card:hover{ transform: translateY(-5px); border-color: var(--teal); }
+  
+  .room-img{ height: 240px; width: 100%; object-fit: cover; background: #000; }
+  
+  .room-details{ padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+  .room-title{ font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; color: var(--teal); line-height: 1.2; }
+  .room-desc{ color: #d9e2ea; font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+  .room-desc em { display:block; margin-top:8px; font-size: 0.85rem; opacity: 0.6; font-style: normal; }
+  
+  .room-meta{ display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 20px; }
+  .price{ font-size: 1.6rem; font-weight: 800; line-height: 1; }
+  .price span{ font-size: 0.75rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
+  .per-person { font-size:0.85rem; opacity:0.7; margin-top:6px; font-style: italic; }
+
+  /* --- Gallery --- */
+  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px;}
+  .gallery img{width:100%; border-radius:10px; object-fit:cover; height: 250px;}
+
+  /* --- Modal (Jotform Container) --- */
+  .dialog{
+    border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff;
+    max-width:800px; width:94%; height: 85vh; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .dialog-header{
+    display:flex; justify-content:space-between; align-items:center; 
+    padding:16px 20px; border-bottom:1px solid var(--line); background: rgba(0,0,0,0.2);
+  }
+  .close-btn{background:transparent; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px 12px; cursor:pointer;}
+  .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
+  dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
+  
+  footer{padding:40px 0; text-align:center; opacity: 0.6; font-size: 0.9rem;}
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="assets/zipolite-hero.jpg" alt="Zipolite Beach"> 
+    <div class="hero-content wrap">
+      <h1>Zipolite, Mexico</h1>
+      <p>Jan 24–28, 2027 • Clothing Optional Retreat</p>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div style="max-width: 800px;">
+      <h2>Trip Overview</h2>
+      <p>Join our flagship Nude Beach Trip in Zipolite — Mexico’s most famous clothing-optional beach. Expect small groups, clear etiquette, and a relaxed, social vibe. We’ll explore hidden coves, local food, and the vibrant naturist scene.</p>
+      <div style="margin-top: 20px;">
+        <button class="btn scroll-trigger">Apply for Invitation</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Accommodation & Pricing</h2>
+    <p style="color: #d9e2ea;">Prices listed are the <strong>Total Cost</strong> for 4 nights (including taxes). Per-person estimates are provided for shared groups.</p>
+    
+    <div class="room-grid">
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=2670&auto=format&fit=crop" alt="Premium Suite" class="room-img">
+        <img src="assets/room-premium.jpg" alt="Premium Suite" class="room-img">
         <div class="room-details">
           <div class="room-title">Premium Suite (Ocean View)</div>
           <div class="room-desc">
-            The best rooms in the house (First/Ground Floor). King-size bed, private terrace with hanging bed, loungers, and direct ocean view.
-            <br><em>(Units S1, S3)</em>
+            The best rooms in the house. King-size bed, private bathroom, A/C, fan. Private terrace features a hanging bed and loungers with direct ocean views.
+            <em>(Units S1, S3 - First/Ground Floor)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$1,445 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($723 per person if shared)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,445</div>
+              <div class="per-person">$723 per person (if 2 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -19,17 +127,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=2674&auto=format&fit=crop" alt="Quad Suite" class="room-img">
+        <img src="assets/room-quad-suite.jpg" alt="Quad Suite" class="room-img">
         <div class="room-details">
           <div class="room-title">Quadruple Suite (Ocean View)</div>
           <div class="room-desc">
-             Huge group suite. 2 King beds, terrace with hanging bed, loungers, and ocean view. Perfect for a group of 4 friends.
-             <br><em>(Unit S4)</em>
+             Massive suite for groups. 2 King-size beds, private bathroom, A/C, fan. Large terrace with hanging bed, loungers, and ocean view.
+             <em>(Unit S4 - Ground Floor)</em>
           </div>
           <div class="room-meta">
              <div>
-              <div class="price">$1,670 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($418 per person / 4 guests)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,670</div>
+              <div class="per-person">$418 per person (if 4 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -37,17 +145,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop" alt="Standard Suite" class="room-img">
+        <img src="assets/room-std-suite-ocean.jpg" alt="Standard Suite Ocean" class="room-img">
         <div class="room-details">
           <div class="room-title">Standard Suite (Ocean View)</div>
           <div class="room-desc">
-            King bed, private terrace with hanging bed & lounger. Stunning ocean views from the 1st or 2nd floor.
-            <br><em>(Units H5, H7)</em>
+            King-size bed, private bathroom, A/C, fan. Terrace with hanging bed and lounger. Stunning ocean views.
+            <em>(Units H5, H7 - 1st or 2nd Floor)</em>
           </div>
           <div class="room-meta">
              <div>
-              <div class="price">$1,255 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($628 per person if shared)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,255</div>
+              <div class="per-person">$628 per person (if 2 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -55,17 +163,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=2649&auto=format&fit=crop" alt="Pool View Suite" class="room-img">
+        <img src="assets/room-std-suite-pool.jpg" alt="Pool View Suite" class="room-img">
         <div class="room-details">
           <div class="room-title">Standard Suite (Pool View)</div>
           <div class="room-desc">
-            King bed, terrace with hanging bed. Faces the pool with a partial side ocean view.
-            <br><em>(Unit H8)</em>
+            King-size bed, private bathroom, A/C, fan. Terrace with hanging bed. Faces the pool with a partial/side ocean view.
+            <em>(Unit H8)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$1,225 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($613 per person if shared)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,225</div>
+              <div class="per-person">$613 per person (if 2 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -73,17 +181,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2670&auto=format&fit=crop" alt="Quad Room" class="room-img">
+        <img src="assets/room-quad-room.jpg" alt="Quad Room" class="room-img">
         <div class="room-details">
           <div class="room-title">Quadruple Room</div>
           <div class="room-desc">
-            Great for groups. Mix of King/Single beds (Configs vary). Terrace with lounger and pool view. Sleeps 4.
-            <br><em>(Units H10, H11, H14)</em>
+            Great for friends. Mix of beds (2 King + 1 Single OR 1 King/1 Queen/1 Single). Terrace with lounger and pool view.
+            <em>(Units H10, H11, H14)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$1,300 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($325 per person / 4 guests)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,300</div>
+              <div class="per-person">$325 per person (if 4 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -91,17 +199,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=2670&auto=format&fit=crop" alt="Triple Room" class="room-img">
+        <img src="assets/room-triple.jpg" alt="Triple Room" class="room-img">
         <div class="room-details">
           <div class="room-title">Triple Room</div>
           <div class="room-desc">
-            1 King bed + 1 Single bed. Private bath, A/C, fan, and terrace with pool view.
-            <br><em>(Units H9, H12)</em>
+            1 King bed + 1 Single bed. Private bathroom, A/C, fan, and terrace with pool view.
+            <em>(Units H9, H12)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$1,105 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($368 per person / 3 guests)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$1,105</div>
+              <div class="per-person">$368 per person (if 3 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -109,17 +217,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1505693416388-b034680950db?q=80&w=2671&auto=format&fit=crop" alt="Standard Room" class="room-img">
+        <img src="assets/room-standard.jpg" alt="Standard Room" class="room-img">
         <div class="room-details">
           <div class="room-title">Standard Room</div>
           <div class="room-desc">
             Simple and comfortable. 1 Double bed, private bathroom, and A/C. Best for solo travelers or budget couples.
-            <br><em>(Unit H6)</em>
+            <em>(Unit H6)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$915 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($458 per person if shared)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$915</div>
+              <div class="per-person">$458 per person (if 2 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -127,17 +235,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2674&auto=format&fit=crop" alt="Cabin" class="room-img">
+        <img src="assets/room-cabin.jpg" alt="Cabin" class="room-img">
         <div class="room-details">
           <div class="room-title">Private Cabin</div>
           <div class="room-desc">
-            Rustic charm. 1 Double bed, private bathroom, A/C, fan. Pool view.
-            <br><em>(Units C1, C3)</em>
+            Rustic charm with pool view. 1 Double bed, private bathroom, A/C, fan. 
+            <em>(Units C1, C3)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$885 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($443 per person if shared)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$885</div>
+              <div class="per-person">$443 per person (if 2 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -145,17 +253,17 @@
       </div>
 
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2670&auto=format&fit=crop" alt="Shared Cabin" class="room-img">
+        <img src="assets/room-shared-cabin.jpg" alt="Shared Cabin" class="room-img">
         <div class="room-details">
           <div class="room-title">Shared Rustic Cabin</div>
           <div class="room-desc">
             The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong>
-            <br><em>(Units C2, C4)</em>
+            <em>(Units C2, C4)</em>
           </div>
           <div class="room-meta">
             <div>
-              <div class="price">$830 <span style="font-size:0.8rem; display:block; font-weight:normal">Total for 4 Nights</span></div>
-              <div style="font-size:0.8rem; opacity:0.7; margin-top:4px">($208 per person / 4 guests)</div>
+              <div class="price"><span>TOTAL (4 NIGHTS)</span>$830</div>
+              <div class="per-person">$208 per person (if 4 share)</div>
             </div>
             <button class="btn outline open-application">Apply</button>
           </div>
@@ -163,3 +271,61 @@
       </div>
 
     </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="assets/zipolite1.jpg" alt="">
+      <img src="assets/zipolite2.jpg" alt="">
+      <img src="assets/zipolite3.jpg" alt="">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Nude Beach Trips · <a href="index.html">Back to main site</a>
+  </footer>
+
+  <dialog class="dialog" id="applicationModal">
+    <div class="dialog-header">
+      <strong>Apply for Invitation</strong>
+      <button class="close-btn" id="closeDialog">Close</button>
+    </div>
+    <div class="dialog-body">
+      
+      <iframe
+        id="JotFormIFrame-253504449025050"
+        title="Nude Beach Application"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allowfullscreen="true"
+        allow="geolocation; microphone; camera"
+        src="https://form.jotform.com/253504449025050" 
+        frameborder="0"
+        style="min-width:100%; max-width:100%; height:100%; border:none;"
+        scrolling="yes"
+      >
+      </iframe>
+
+    </div>
+  </dialog>
+
+<script>
+  const dialog = document.getElementById('applicationModal');
+  const closeBtn = document.getElementById('closeDialog');
+  
+  // Open modal when ANY 'Apply' button is clicked
+  const triggers = document.querySelectorAll('.open-application, .scroll-trigger');
+  triggers.forEach(btn => {
+    btn.addEventListener('click', () => dialog.showModal());
+  });
+
+  // Close modal logic
+  closeBtn.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => {
+    if(e.target === dialog) dialog.close();
+  });
+</script>
+
+</body>
+</html>
