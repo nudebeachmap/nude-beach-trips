@@ -369,7 +369,7 @@
                   <div class="room-title">Premium Suite (Ocean View)</div>
                   <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. King-size bed, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,445</div><div class="per-person">$723/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1445</div><div class="per-person">$723/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -381,7 +381,7 @@
                   <div class="room-title">Premium Suite (DBL with Ocean View)</div>
                   <div class="room-desc">Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,670</div><div class="per-person">$835/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1670</div><div class="per-person">$835/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -393,7 +393,7 @@
                   <div class="room-title">Quadruple Room (Pool View)</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds</strong>. Sitting area. Terrace with pool view. Sleeps 4.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,300</div><div class="per-person">$325/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1300</div><div class="per-person">$325/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -405,7 +405,7 @@
                   <div class="room-title">Standard Suite (Ocean View)</div>
                   <div class="room-desc"><strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,255</div><div class="per-person">$628/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1255</div><div class="per-person">$628/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -417,7 +417,7 @@
                   <div class="room-title">Standard Suite (Pool View)</div>
                   <div class="room-desc">King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with partial ocean view.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,225</div><div class="per-person">$613/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1225</div><div class="per-person">$613/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -429,7 +429,7 @@
                   <div class="room-title">Triple Room (Pool View)</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> 1 King bed + 1 Twin bed. Sitting area. Private bathroom, A/C, fan, safe. Terrace with pool view.</div>
                   <div class="room-meta">
-                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,105</div><div class="per-person">$368/pp (sharing)</div></div>
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1105</div><div class="per-person">$368/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
                   </div>
                 </div>
@@ -651,12 +651,12 @@
 
         <div class="faq-item">
           <div class="faq-header">
-            <span>Can I get a refund?</span>
+            <span>Can I get a refund if I cancel?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Yes. Cancel >30 days before: Full refund (minus card fees). 14-30 days: 50% refund. Less than 14 days: No refund. We strongly advise travel insurance.
+              <p>Yes! If you cancel 30 days prior to the event you can get a full refund (minus card processing fees). 30 to 14 days: 50% refund. 14 days or less: no refund. We strongly recommend private travel insurance.</p>
             </div>
           </div>
         </div>
@@ -680,7 +680,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.
+              <p>Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.</p>
             </div>
           </div>
         </div>
@@ -814,13 +814,13 @@
   const jotformFieldID = "roomPreference"; 
   const baseURL = "https://form.jotform.com/253504449025050";
 
-  // MAPPING: HTML ID -> JotForm Exact String
+  // MAPPING: Ensure these match your JotForm Options EXACTLY (Commaless)
   const roomMap = {
-    prem_ocean:   "Premium Suite (Ocean View) $1,445",
-    prem_dbl:     "Premium Suite (DBL with Ocean View) $1,670",
-    quad:         "Quadruple Room (Pool View) $1,300",
-    std_ocean:    "Standard Suite (Ocean View) $1,255",
-    std_pool:     "Standard Suite (Pool View) $1,225",
+    prem_ocean:   "Premium Suite (Ocean View) $1445",
+    prem_dbl:     "Premium Suite (DBL with Ocean View) $1670",
+    quad:         "Quadruple Room (Pool View) $1300",
+    std_ocean:    "Standard Suite (Ocean View) $1255",
+    std_pool:     "Standard Suite (Pool View) $1225",
     triple:       "Triple Room (Pool View) $1105", 
     std_dbl:      "Standard Room (Pool View) $915",
     cabin:        "Private Cabin (Pool View) $885",
@@ -918,3 +918,5 @@
   };
   lb.onclick = (e) => { if(e.target === lb) lb.classList.remove('open'); };
 </script>
+</body>
+</html>
