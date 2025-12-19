@@ -7,6 +7,8 @@
 <meta name="description" content="Join our exclusive Nude Beach Map Takeover in Zipolite. 4 Days of freedom, friends, and sun." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
 <style>
   /* --- Brand Palette --- */
   :root{
@@ -26,6 +28,18 @@
   
   a{color:var(--teal); text-decoration:none; transition: color 0.2s;}
   a:hover{color:var(--white);}
+
+  /* --- HEADER (Matches Index) --- */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;
+    background:linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0));
+  }
+  .header-left { display: flex; align-items: center; gap: 10px; }
+  .logo-img { height: 32px; width: auto; border-radius: 4px; }
+  .logo-word{font-weight:800;letter-spacing:.3px; color: #fff;}
+  .cta{background:var(--sun);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none; font-size: 0.9rem;}
   
   /* --- Hero Slider --- */
   .hero{position:relative; height:70vh; overflow:hidden;}
@@ -58,7 +72,7 @@
   .amenities-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 24px; opacity: 0.9; font-size: 0.95rem; text-align: left;}
   .check{ color: var(--teal); margin-right: 6px; }
 
-  /* --- Master Accordion (Accom) --- */
+  /* --- Master Accordion --- */
   .accordion-item {
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.03);
@@ -121,9 +135,9 @@
   .price span{ font-size: 0.7rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
   .per-person { font-size:0.8rem; opacity:0.7; margin-top:6px; font-style: italic; }
 
-  /* --- Tour Grid (2 Per Row) --- */
+  /* --- Tour Grid --- */
   .tour-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
-  @media(min-width: 768px) { .tour-grid { grid-template-columns: 1fr 1fr; } } /* Enforce 2 columns */
+  @media(min-width: 768px) { .tour-grid { grid-template-columns: 1fr 1fr; } }
   
   .tour-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; }
   .tour-img { height: 220px; width: 100%; object-fit: cover; }
@@ -134,6 +148,10 @@
   .hosts-grid { display: grid; gap: 40px; align-items: center; margin-top: 60px; }
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+
+  /* --- FAQ (Accordion Reuse) --- */
+  .faq-header { padding: 20px; background: rgba(255,255,255,0.05); }
+  .faq-title { font-size: 1.1rem; font-weight: 600; color: #fff; }
 
   /* --- Footer Scroll --- */
   .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
@@ -165,6 +183,14 @@
 </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="header-left">
+      <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
+      <div class="logo-word">Nude Beach Trips</div>
+    </div>
+    <a href="#pricing" class="cta">Book Now</a>
+  </header>
 
   <section class="hero">
     <div class="hero-slide active" style="background-image: url('assets/Zipo1.jpg');"></div>
@@ -202,6 +228,7 @@
         <div class="amenities-grid">
           <div><span class="check">✓</span> Beachfront</div>
           <div><span class="check">✓</span> Private Pool</div>
+          <div><span class="check">✓</span> Restaurant / Bar on site</div>
           <div><span class="check">✓</span> Free WiFi</div>
           <div><span class="check">✓</span> A/C in Suites</div>
           <div><span class="check">✓</span> Entire Hotel Private</div>
@@ -243,12 +270,12 @@
 
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🏐 Beach Fun</h3>
-          <p style="font-size:0.9rem; margin:0;">Learn to surf, play volleyball, or toss a frisbee—all in the buff.</p>
+          <p style="font-size:0.9rem; margin:0;">Learn to surf, play volleyball, or toss a frisbee—all in the buff steps from your room.</p>
         </div>
 
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">💆‍♀️ Relax & Transit</h3>
-          <p style="font-size:0.9rem; margin:0;">Massages available (extra). Airport transfers at group rates.</p>
+          <p style="font-size:0.9rem; margin:0;">Massages & Spa available (extra). Airport transfers at group rates.</p>
         </div>
 
       </div>
@@ -410,8 +437,8 @@
             <span class="tour-price">$600 MXN / person</span>
             <h3>Marine Safari & Sunrise</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We pick you up at 5:30 AM (Sunrise) or 9:30 AM. We board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
-              We'll visit virgin beaches (La Boquilla, La Mina) and go <strong>snorkeling</strong> (gear included).
+              We'll pick you up at 5:30 AM (Sunrise) or 9:30 AM. We board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
+              Then we'll visit three virgin beaches (La Boquilla, La Mina, Estacahuite) and go <strong>snorkeling</strong> (gear included).
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 3 Hours. Clothing Optional. Includes transport.</em></p>
           </div>
@@ -423,7 +450,7 @@
             <span class="tour-price">$1,200 MXN / person</span>
             <h3>Bioluminescence Lagoon</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
+              We depart daily at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
               The water is warm (thermal springs). Swim in the stars! We'll stop for dinner (optional) on the way back.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 11:30 PM. Clothing Optional in parts.</em></p>
@@ -436,7 +463,7 @@
             <span class="tour-price">$2,000 MXN / person</span>
             <h3>Magical Waterfalls Hike</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We leave early (7:00 AM) to beat the heat. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>. 
+              We leave at 7:00 AM. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>. 
               Swim in fresh mountain springs and explore a hidden cave jacuzzi. 
               <strong>Includes delicious Buffet Breakfast</strong> (Mole, meats, coffee).
             </p>
@@ -450,8 +477,8 @@
             <span class="tour-price">$1,000 MXN / person</span>
             <h3>Mangroves & Turtle Release</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We depart at 3:00 PM. We'll explore the mangroves by boat to spot birds, iguanas, and crocodiles. 
-              We'll visit a crocodile sanctuary on an island. On the return, we help <strong>release newborn turtles</strong> into the ocean at sunset.
+              We depart at 3:00 PM. We'll explore the mangroves by boat (non-motorized) to spot birds, iguanas, and crocodiles. 
+              We'll visit a crocodile sanctuary on an island. On the return, we help <strong>release newborn turtles</strong> into the ocean.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 7:00 PM.</em></p>
           </div>
@@ -461,29 +488,96 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap" style="max-width: 800px;">
+      <div class="text-container">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="accordion-list">
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="acc-title">Is nudity mandatory?</span>
+            <span class="acc-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Nudity is optional throughout the hotel and on the tours (though highly encouraged on the beach!). The environment is relaxed and natural. In town and at restaurants, light clothing is expected.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="acc-title">Can I come alone?</span>
+            <span class="acc-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Absolutely! Our trips are designed for community. You'll meet plenty of other friendly travelers at the welcome dinner and daily activities. It's a very safe and social environment.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="acc-title">How do I pay for extras?</span>
+            <span class="acc-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Zipolite is a cash-based economy. Please bring Mexican Pesos for tours, extra meals, and tips. ATMs are available but can sometimes run out of cash.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="acc-title">How do I get there?</span>
+            <span class="acc-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section class="marquee-section">
     <div class="marquee-track">
-      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Zipo1.jpg" alt="">
       <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Budamar2.avif" alt="">
       <img src="assets/Zipo3.jpg" alt="">
       <img src="assets/Budamar3.jpg" alt="">
       <img src="assets/Zipo4.webp" alt="">
       <img src="assets/Budamar4.avif" alt="">
       <img src="assets/Zipo5.webp" alt="">
       <img src="assets/Budamar5.jpg" alt="">
-      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Zipo7.webp" alt="">
       <img src="assets/Budamar6.avif" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Budamar7.jpg" alt="">
       
-      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Zipo1.jpg" alt="">
       <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Budamar2.avif" alt="">
       <img src="assets/Zipo3.jpg" alt="">
       <img src="assets/Budamar3.jpg" alt="">
       <img src="assets/Zipo4.webp" alt="">
       <img src="assets/Budamar4.avif" alt="">
       <img src="assets/Zipo5.webp" alt="">
       <img src="assets/Budamar5.jpg" alt="">
-      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Zipo7.webp" alt="">
       <img src="assets/Budamar6.avif" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Budamar7.jpg" alt="">
     </div>
   </section>
 
@@ -517,7 +611,7 @@
     });
   });
 
-  // --- DATA & LIGHTBOX (Corrected Full List) ---
+  // --- DATA & LIGHTBOX ---
   const roomImages = {
     // 1. Premium Ocean (PremSuite1-5)
     prem_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
