@@ -213,17 +213,8 @@
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
   
-  /* --- Policy Modal (Matches Index Page) --- */
-  dialog.policy { 
-    border: none; 
-    border-radius: 14px; 
-    padding: 0; 
-    background: rgba(11,42,61,.96); 
-    color: #fff; 
-    max-width: 680px; 
-    width: 92%; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  }
+  /* --- Policy Modal (Small) --- */
+  dialog.policy { border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:600px; width:90%; height:auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
   .policy-header {
     display: flex; 
     justify-content: space-between; 
@@ -275,7 +266,7 @@
         <strong>This is a Nude Beach Map Takeover.</strong> We have booked the entire hotel for our group, ensuring a safe, exclusive, and comfortable environment with no unknowns.
       </p>
       <p style="color: #d9e2ea; margin-bottom: 24px;">
-        Zipolite is Mexico’s only legal nude beach. Our trip is timed perfectly to enjoy the calm before the storm: The famous <strong>Zipolite Nudist Festival</strong> begins immediately after we check out. You can extend your stay to party, or just enjoy our curated warm-up and a taste of the opening ceremony on the last night.
+        Zipolite is Mexico’s only legal nude beach. Our trip is timed perfectly to enjoy the calm before the storm: The famous <a href="https://www.zipolite-mexico.com/zipolite-nudist-festival/" target="_blank" style="color:var(--sun); text-decoration:underline;">Zipolite Nudist Festival</a> begins immediately after we check out. You can extend your stay to party, or just enjoy our curated warm-up and a taste of the opening ceremony on the last night.
       </p>
     </div>
 
@@ -284,7 +275,10 @@
         <h3>Your Hosts</h3>
         <p style="margin-bottom: 16px;">
           Organized by <strong>Matt & Megan</strong> from <a href="https://nudebeachmap.com" target="_blank">NudeBeachMap.com</a> 
-          and your local expert <strong>Francelli Rentería</strong> (<a href="https://francellirenteria.com/" target="_blank">francellirenteria.com</a>).
+          and your local Mexican expert <strong>Francelli Rentería</strong> (<a href="https://francellirenteria.com/" target="_blank">francellirenteria.com</a>).
+        </p>
+        <p style="margin-bottom: 20px; font-style: italic; color: #fff;">
+          This is a curated and boutique getaway for people who want to experience the vibe of Zipolite like a local.
         </p>
         <p style="color: #d9e2ea; margin-bottom: 20px;">
           <strong>The Venue: Buda Mar.</strong> A stunning beachfront sanctuary right in the center of the beach, just steps from the main street. Ocean sounds, breakfasts, and zero awkward vibes.
@@ -292,7 +286,7 @@
         <div class="amenities-grid">
           <div><span class="check">✓</span> Beachfront</div>
           <div><span class="check">✓</span> Private Pool</div>
-          <div><span class="check">✓</span> Restaurant / Bar on site</div>
+          <div><span class="check">✓</span> Restaurant on site</div>
           <div><span class="check">✓</span> Free WiFi</div>
           <div><span class="check">✓</span> A/C in Suites</div>
           <div><span class="check">✓</span> Entire Hotel Private</div>
@@ -498,10 +492,10 @@
         <div class="tour-card">
           <img src="assets/TourMarine.jpg" alt="Marine Safari" class="tour-img">
           <div class="tour-content">
-            <span class="tour-price">$600 MXN / person</span>
+            <span class="tour-price">700 MXN (40 USD) / person</span>
             <h3>Marine Safari & Sunrise</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We'll pick you up at 5:30 AM (Sunrise) or 9:30 AM. We board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
+              We'll get picked up at 9:30 AM. We board the boat at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
               Then we'll visit three virgin beaches (La Boquilla, La Mina, Estacahuite) and go <strong>snorkeling</strong> (gear included).
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 3 Hours. Clothing Optional. Includes transport.</em></p>
@@ -511,40 +505,40 @@
         <div class="tour-card">
           <img src="assets/TourBio.jpg" alt="Bioluminescence" class="tour-img">
           <div class="tour-content">
-            <span class="tour-price">$1,200 MXN / person</span>
+            <span class="tour-price">$1,300 MXN (72 USD) / person</span>
             <h3>Bioluminescence Lagoon</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We depart daily at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
+              We depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
               The water is warm (thermal springs). Swim in the stars! We'll stop for dinner (optional) on the way back.
             </p>
-            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 11:30 PM. Clothing Optional in parts.</em></p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 6.5 Hours. Return approx 11:30 PM. Clothing Optional at certain locations.</em></p>
           </div>
         </div>
 
         <div class="tour-card">
           <img src="assets/TourWaterfall.jpg" alt="Waterfalls" class="tour-img">
           <div class="tour-content">
-            <span class="tour-price">$2,000 MXN / person</span>
+            <span class="tour-price">$2,000 MXN (110 USD) / person</span>
             <h3>Magical Waterfalls Hike</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
               We leave at 7:00 AM. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>. 
               Swim in fresh mountain springs and explore a hidden cave jacuzzi. 
-              <strong>Includes delicious Buffet Breakfast</strong> (Mole, meats, coffee).
+              <strong>Includes delicious Buffet Breakfast</strong> (mole, meats, coffee).
             </p>
-            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 3:00 PM. Clothing Optional at falls.</em></p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 8 hours. Return approx 3:00 PM. Clothing Optional at falls.</em></p>
           </div>
         </div>
 
         <div class="tour-card">
           <img src="assets/TourMangrove.jpg" alt="Mangroves" class="tour-img">
           <div class="tour-content">
-            <span class="tour-price">$1,000 MXN / person</span>
+            <span class="tour-price">$1,000 MXN (55 USD) / person</span>
             <h3>Mangroves & Turtle Release</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
               We depart at 3:00 PM. We'll explore the mangroves by boat (non-motorized) to spot birds, iguanas, and crocodiles. 
               We'll visit a crocodile sanctuary on an island. On the return, we help <strong>release newborn turtles</strong> into the ocean.
             </p>
-            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 7:00 PM.</em></p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 4 hours. Clothing is required for this trip. Return approx 7:00 PM.</em></p>
           </div>
         </div>
 
@@ -585,7 +579,7 @@
 
         <div class="faq-item">
           <div class="faq-header">
-            <span>What are the ages?</span>
+            <span>What are the ages of people going?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-body">
@@ -609,12 +603,12 @@
 
         <div class="faq-item">
           <div class="faq-header">
-            <span>Can I bring my family?</span>
+            <span>Why do you keep a 50:50 gender balance?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Yes! We love naturist families. Note: The hotel does not have cribs, and some upper-floor rooms have low railings, so please request a ground-floor suite for safety.
+              <p>To ensure we don't have 20 single people and one couple, or all families and one single person. We strive for a healthy mix of younger and older families, couples, and singles. We definitely welcome singles, but this is not a singles party.</p>
             </div>
           </div>
         </div>
@@ -633,12 +627,12 @@
 
         <div class="faq-item">
           <div class="faq-header">
-            <span>Why do you keep a 50:50 gender balance?</span>
+            <span>Can I bring my family and children?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              <p>To ensure we don't have 20 single people and one couple, or all families and one single person. We strive for a healthy mix of younger and older families, couples, and singles. We definitely welcome singles, but this is not a singles party.</p>
+              <p>Yes! This is a family-friendly event and everyone is welcome. Please note that the hotel does not provide baby beds and some upper rooms may not be suitable for little ones (high stairs and low railings). Please request a ground floor room if that is your preference.</p>
             </div>
           </div>
         </div>
@@ -650,19 +644,19 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              No. This is strictly a platonic, family-friendly naturist event. We respect all lifestyles, but this is not the place for that.
+              <p>No. This is strictly a platonic, family-friendly naturist event. We respect all lifestyles, but this is not the place for that. You will be very disappointed if that is your intent and it does not align with our <a href="#" class="respect-trigger" style="text-decoration: underline; font-weight: bold;">Respect Policy</a>.</p>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-header">
-            <span>Can I get a refund?</span>
+            <span>Can I get a refund if I cancel?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Yes. Cancel >30 days before: Full refund (minus card fees). 14-30 days: 50% refund. Less than 14 days: No refund. We strongly advise travel insurance.
+              <p>Yes! If you cancel 30 days prior to the event you can get a full refund (minus card processing fees). 30 to 14 days: 50% refund. 14 days or less: no refund. We strongly recommend private travel insurance.</p>
             </div>
           </div>
         </div>
@@ -686,7 +680,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.
+              <p>Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.</p>
             </div>
           </div>
         </div>
