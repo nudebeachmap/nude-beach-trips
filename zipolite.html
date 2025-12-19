@@ -29,17 +29,19 @@
   a{color:var(--teal); text-decoration:none; transition: color 0.2s;}
   a:hover{color:var(--white);}
 
-  /* --- HEADER (Matches Index) --- */
+  /* --- HEADER --- */
   .site-header{
     position:fixed;top:0;left:0;right:0;z-index:999;
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px;
-    background:linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0));
+    padding:14px 20px;
+    background:linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,0));
   }
-  .header-left { display: flex; align-items: center; gap: 10px; }
-  .logo-img { height: 32px; width: auto; border-radius: 4px; }
-  .logo-word{font-weight:800;letter-spacing:.3px; color: #fff;}
-  .cta{background:var(--sun);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none; font-size: 0.9rem;}
+  /* Link wrapper for logo */
+  .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none !important; }
+  .logo-img { height: 38px; width: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  .logo-word{font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.1rem;}
+  .cta{background:var(--sun);color:#000;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none; font-size: 0.9rem; transition: transform 0.2s;}
+  .cta:hover{transform: scale(1.05); background: var(--amber);}
   
   /* --- Hero Slider --- */
   .hero{position:relative; height:70vh; overflow:hidden;}
@@ -51,8 +53,8 @@
   }
   .hero-slide.active { opacity: 1; }
   .hero-content{position:relative; z-index:1; text-align:center; height:100%; display:grid; place-items:center; padding: 0 20px;}
-  .hero h1{font-size:clamp(48px,9vw,100px); margin:0; line-height:1; text-transform: uppercase; letter-spacing: 2px;}
-  .hero p{font-size: 1.3rem; opacity: 0.9; margin-top: 16px; font-weight: 300;}
+  .hero h1{font-size:clamp(48px,9vw,100px); margin:0; line-height:1; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);}
+  .hero p{font-size: 1.3rem; opacity: 0.95; margin-top: 16px; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
 
   /* --- Sections --- */
   .section{padding:80px 0;}
@@ -68,11 +70,11 @@
   .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
   .btn.outline:hover{background: rgba(255,255,255,0.1); color: #fff;}
 
-  /* --- Amenities & List --- */
+  /* --- Amenities --- */
   .amenities-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 24px; opacity: 0.9; font-size: 0.95rem; text-align: left;}
   .check{ color: var(--teal); margin-right: 6px; }
 
-  /* --- Master Accordion --- */
+  /* --- Master Accordion (Accom) --- */
   .accordion-item {
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.03);
@@ -149,9 +151,40 @@
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
-  /* --- FAQ (Accordion Reuse) --- */
-  .faq-header { padding: 20px; background: rgba(255,255,255,0.05); }
-  .faq-title { font-size: 1.1rem; font-weight: 600; color: #fff; }
+  /* --- FAQ (Clean Style) --- */
+  .faq-list { display: grid; gap: 16px; }
+  .faq-item {
+    background: #fff; /* White bg for contrast */
+    color: #000;      /* Dark text */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .faq-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    user-select: none;
+  }
+  .faq-icon { 
+    font-size: 1.5rem; 
+    font-weight: 300; 
+    transition: transform 0.3s ease;
+    color: var(--teal);
+  }
+  .faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #f4f4f4;
+  }
+  .faq-content { padding: 24px; font-size: 0.95rem; line-height: 1.6; color: #333; }
+  
+  .faq-item.open .faq-icon { transform: rotate(45deg); } /* Rotates + to x */
+  .faq-item.open .faq-body { max-height: 500px; }
 
   /* --- Footer Scroll --- */
   .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
@@ -170,6 +203,9 @@
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
   
+  /* --- Policy Modal (Small) --- */
+  dialog.policy { border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:600px; width:90%; height:auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+  
   /* --- Lightbox --- */
   .lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: none; place-items: center; }
   .lightbox.open { display: grid; }
@@ -185,10 +221,10 @@
 <body>
 
   <header class="site-header">
-    <div class="header-left">
+    <a href="index.html" class="header-left">
       <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
       <div class="logo-word">Nude Beach Trips</div>
-    </div>
+    </a>
     <a href="#pricing" class="cta">Book Now</a>
   </header>
 
@@ -490,55 +526,103 @@
 
   <section class="section">
     <div class="wrap" style="max-width: 800px;">
-      <div class="text-container">
+      <div class="text-container" style="margin-bottom: 30px;">
         <h2>Frequently Asked Questions</h2>
       </div>
-      <div class="accordion-list">
+      <div class="faq-list">
         
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">Is nudity mandatory?</span>
-            <span class="acc-icon">▼</span>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Do I have to get naked?</span>
+            <span class="faq-icon">+</span>
           </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p>Nudity is optional throughout the hotel and on the tours (though highly encouraged on the beach!). The environment is relaxed and natural. In town and at restaurants, light clothing is expected.</p>
+          <div class="faq-body">
+            <div class="faq-content">
+              Nudity is never mandatory—we believe it should be a personal choice, not enforced. However, this is a shared naturist experience. If you are "curious but nervous", you are 100% welcome! Everyone is on their own journey. But if you have absolutely no intent to participate in the social nude environment, you will not receive an invite.
             </div>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">Can I come alone?</span>
-            <span class="acc-icon">▼</span>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Why do you screen people?</span>
+            <span class="faq-icon">+</span>
           </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p>Absolutely! Our trips are designed for community. You'll meet plenty of other friendly travelers at the welcome dinner and daily activities. It's a very safe and social environment.</p>
+          <div class="faq-body">
+            <div class="faq-content">
+              To guarantee a safe, creeper-free environment. We don't ask for invasive ID uploads; instead, we check your social media to verify you are a real person with a genuine interest in the community. Blank or anonymous profiles will sadly not be approved.
             </div>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">How do I pay for extras?</span>
-            <span class="acc-icon">▼</span>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>What are the ages?</span>
+            <span class="faq-icon">+</span>
           </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p>Zipolite is a cash-based economy. Please bring Mexican Pesos for tours, extra meals, and tips. ATMs are available but can sometimes run out of cash.</p>
+          <div class="faq-body">
+            <div class="faq-content">
+              Our primary focus is the 18-55 demographic to cultivate a younger naturist community, though we welcome the young-at-heart. The activities and vibe are tailored to this energy.
             </div>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">How do I get there?</span>
-            <span class="acc-icon">▼</span>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>How do you keep this a safe space?</span>
+            <span class="faq-icon">+</span>
           </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p>Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.</p>
+          <div class="faq-body">
+            <div class="faq-content">
+              Safety is our priority. Every guest must agree to our <a href="#" class="respect-trigger" style="text-decoration: underline; font-weight: bold;">Respect Policy</a>. We vet every attendee, and anyone violating our simple rules of consent and courtesy will be asked to leave immediately.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Can I bring my family?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes! We love naturist families. Note: The hotel does not have cribs, and some upper-floor rooms have low railings, so please request a ground-floor suite for safety.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Is this a lifestyle group?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              No. This is strictly a platonic, family-friendly naturist event. We respect all lifestyles, but this is not the place for that.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Can I get a refund?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes. Cancel >30 days before: Full refund (minus card fees). 14-30 days: 50% refund. Less than 14 days: No refund. We strongly advise travel insurance.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>How do I get there?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Fly into Huatulco (HUX) or Puerto Escondido (PXM). We can help arrange group transport or private taxis from the airport to the hotel.
             </div>
           </div>
         </div>
@@ -595,6 +679,19 @@
     </div>
   </dialog>
 
+  <dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
+    <div class="policy-header">
+      <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
+      <button class="close-btn" id="policyClose" aria-label="Close">Close</button>
+    </div>
+    <div class="policy-body">
+      <p style="margin:0 0 10px">• Nudity is expected for the comfort of others. Participate at your own pace.</p>
+      <p style="margin:0 0 10px">• We reserve the right to approve participants to maintain an even mix — single men and women are welcome.</p>
+      <p style="margin:0 0 10px">• This is not a dating trip or a lifestyle trip. It’s about community, comfort, and body freedom.</p>
+      <p style="margin:0">• Respect others. Ask before photos, give personal space, and leave no trace.</p>
+    </div>
+  </dialog>
+
   <div class="lightbox" id="lightbox">
     <div class="lb-close" id="lbClose">&times;</div>
     <div class="lb-nav lb-prev" id="lbPrev">&#10094;</div>
@@ -603,7 +700,7 @@
   </div>
 
 <script>
-  // --- ACCORDION LOGIC ---
+  // --- ACCORDION LOGIC (Rooms) ---
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
@@ -611,33 +708,53 @@
     });
   });
 
+  // --- FAQ TOGGLE LOGIC ---
+  document.querySelectorAll('.faq-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const icon = item.querySelector('.faq-icon');
+      
+      // Toggle Open class
+      item.classList.toggle('open');
+      
+      // Toggle Icon (+ to -) logic visually handled by CSS rotation
+      // But we can swap text if needed:
+      if(item.classList.contains('open')) {
+        icon.textContent = '+'; // The rotation makes it look like X
+      } else {
+        icon.textContent = '+';
+      }
+    });
+  });
+
+  // --- POLICY LINK TRIGGER ---
+  const policyDialog = document.getElementById('policyDialog');
+  const policyClose = document.getElementById('policyClose');
+  
+  // Triggers inside FAQ
+  document.querySelectorAll('.respect-trigger').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      policyDialog.showModal();
+    });
+  });
+  
+  policyClose.addEventListener('click', () => policyDialog.close());
+  policyDialog.addEventListener('click', (e) => {
+    if(e.target === policyDialog) policyDialog.close();
+  });
+
+
   // --- DATA & LIGHTBOX ---
   const roomImages = {
-    // 1. Premium Ocean (PremSuite1-5)
     prem_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
-    
-    // 2. Premium DBL (PremSuiteDBL1-10)
     prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'], 
-    
-    // 3. Std Ocean (StdSuiteOcean1-10)
     std_ocean:  ['StdSuiteOcean1.avif', 'StdSuiteOcean2.avif', 'StdSuiteOcean3.avif', 'StdSuiteOcean4.jpg', 'StdSuiteOcean5.avif', 'StdSuiteOcean6.avif', 'StdSuiteOcean7.avif', 'StdSuiteOcean8.jpg', 'StdSuiteOcean9.jpg', 'StdSuiteOcean10.avif'],
-    
-    // 4. Std Pool (StdSuitePool1-6)
     std_pool:   ['StdSuitePool1.avif', 'StdSuitePool2.avif', 'StdSuitePool3.avif', 'StdSuitePool4.avif', 'StdSuitePool5.jpg', 'StdSuitePool6.jpg'],
-    
-    // 5. Quad (QuadRoom1-5)
     quad:       ['QuadRoom1.avif', 'QuadRoom2.avif', 'QuadRoom3.jpg', 'QuadRoom4.avif', 'QuadRoom5.avif'],
-    
-    // 6. Triple (TripleRoom1-4)
     triple:     ['TripleRoom1.avif', 'TripleRoom2.avif', 'TripleRoom3.avif', 'TripleRoom4.jpg'],
-    
-    // 7. Std Dbl (StdDblPool1-7)
     std_dbl:    ['StdDblPool1.avif', 'StdDblPool2.jpg', 'StdDblPool3.avif', 'StdDblPool4.jpg', 'StdDblPool5.jpg', 'StdDblPool6.jpg', 'StdDblPool7.jpg'],
-    
-    // 8. Cabin (FamCabinSharedB2-4)
     cabin:      ['FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif'],
-    
-    // 9. Shared Cabin (FamCabinSharedB1-5)
     shared_cabin: ['FamCabinSharedB1.avif', 'FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif', 'FamCabinSharedB5.avif']
   };
 
