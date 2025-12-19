@@ -34,13 +34,13 @@
   .site-header{
     position:fixed;top:0;left:0;right:0;z-index:10;
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px;
-    background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
+    padding:14px 20px;
+    background:linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0));
   }
-  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .logo-img { height: 38px; width: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
   .logo-word{font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.1rem;}
-  .cta{background:var(--accent);color:#000;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none; font-size: 0.9rem;}
+  .cta{background:var(--accent);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none}
 
   /* ===== Hero (video) ===== */
   .hero{position:relative;height:100svh;display:grid;place-items:center;overflow:hidden}
@@ -119,75 +119,71 @@
   /* ===== Footer & modal ===== */
   footer{padding:40px 20px;text-align:center;color:#d9e2ea}
   .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  
+  /* --- Policy Modal --- */
   dialog.policy{border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;max-width:680px;width:92%}
   .policy-header{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
   .policy-body{padding:18px}
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
-  dialog::backdrop{background:rgba(0,0,0,.55)}
+  
+  /* --- NEWSLETTER MODAL (New) --- */
+  dialog.newsletter {
+    border: none;
+    border-radius: 16px;
+    padding: 30px;
+    background: #0b2a3d; /* Dark theme background */
+    color: #fff;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    border: 1px solid var(--line);
+  }
+  dialog.newsletter::backdrop { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  
+  .newsletter-header { text-align: center; margin-bottom: 20px; }
+  .newsletter-header h3 { color: var(--sun); font-size: 1.8rem; margin-bottom: 8px; }
+  .newsletter-header p { opacity: 0.8; font-size: 0.95rem; }
 
-  /* ===== HubSpot form — native styling ===== */
-  .hs-form-frame { display:flex; justify-content:center; }
-  .hs-form-frame .hs-form { width:100%; max-width:560px; }
-  .hs-form-frame .hs-form fieldset,
-  .hs-form-frame .hs-form .hs-form-field { margin:0; padding:0; border:0; }
-  .hs-form-frame .hs-form .hs-form-field + .hs-form-field { margin-top:12px; }
+  /* --- HubSpot Styling --- */
   .hs-form-frame .hs-form label { display:block; font-size:14px; color:#d9e2ea; margin:0 0 6px; }
-  .hs-form-frame .hs-form input[type="email"],
-  .hs-form-frame .hs-form input[type="text"],
-  .hs-form-frame .hs-form input[type="tel"],
-  .hs-form-frame .hs-form select,
-  .hs-form-frame .hs-form textarea {
-    width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line); background:transparent; color:#fff; outline:none;
+  .hs-form-frame .hs-form input[type="email"] {
+    width:100%; padding:14px; border-radius:10px; border:1px solid var(--line); 
+    background:rgba(255,255,255,0.05); color:#fff; outline:none;
   }
-  .hs-form-frame .hs-form input::placeholder,
-  .hs-form-frame .hs-form textarea::placeholder { color:#c9d3dd; opacity:.8; }
-  .hs-form-frame .hs-error-msg,
-  .hs-form-frame .hs-error-msgs label { color:#ffd1d1; font-size:13px; margin-top:6px; }
+  .hs-form-frame .hs-form input[type="submit"] {
+    display:inline-block !important; width: 100%;
+    padding:14px !important; border-radius:10px !important; border:0 !important; 
+    background:var(--accent) !important; color:#000 !important; 
+    font-weight:800 !important; cursor:pointer !important; margin-top:16px !important;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .hs-form-frame .hs-form input[type="submit"]:hover { background: var(--amber) !important; }
   
-  /* --- FIX: FORCE HUBSPOT BUTTON TO MATCH THEME --- */
-  .hs-form-frame .hs-form input[type="submit"],
-  .hs-form-frame .hs-form .hs-button {
-    display:inline-block !important; 
-    padding:12px 18px !important; 
-    border-radius:12px !important; 
-    border:0 !important; 
-    background:var(--accent) !important; 
-    color:#000 !important; 
-    font-family: inherit !important;
-    font-weight:800 !important; 
-    cursor:pointer !important; 
-    margin-top:10px !important;
-    font-size: 1rem !important;
-    text-transform: none !important;
-    transition: transform 0.2s ease !important;
-  }
-  
-  .hs-form-frame .hs-form input[type="submit"]:hover,
-  .hs-form-frame .hs-form .hs-button:hover {
-    transform: translateY(-2px) !important;
-    background: var(--amber) !important;
-  }
+  /* Hide standard hubspot junk */
+  .hs-form iframe + div, .hs-form .legal-consent-container + div { display: none !important; }
 
-  @media (min-width:640px){
-    .hs-form-frame .hs_submit { display:flex; gap:10px; align-items:center; }
-    .hs-form-frame .hs-email ~ .hs-submit { margin-top:0; }
+  /* --- Big CTA Button on Page --- */
+  .cta-box {
+    text-align: center; margin-top: 40px; padding: 40px;
+    background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid var(--line);
   }
-  .hs-form-frame .submitted-message {
-    color:#e8f7f6; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center;
+  .cta-big {
+    background: var(--teal); color: #000; font-size: 1.2rem; padding: 16px 32px;
+    border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
+    transition: transform 0.2s ease;
   }
+  .cta-big:hover { transform: scale(1.05); background: #fff; }
 
-  /* ===== Hide HubSpot free branding (visual only) ===== */
-  .hs-form iframe + div,
-  .hs-form .legal-consent-container + div { display: none !important; }
 </style>
 </head>
 <body>
+  
   <header class="site-header">
-    <div class="header-left">
+    <a href="#" class="header-left">
       <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
       <div class="logo-word">Nude Beach Trips</div>
-    </div>
-    <a href="#dates" class="cta">Join the list</a>
+    </a>
+    <button id="navJoin" class="cta">Join the list</button>
   </header>
 
   <section class="hero" aria-label="Video hero">
@@ -222,13 +218,14 @@
   <section id="dates" class="dates section">
     <div class="wrap">
       <h2>Tour Dates</h2>
-      <p class="lead">We're scouting and adding more events soon. Add your email below to hear first.</p>
+      <p class="lead">We're scouting and adding more events soon. Be the first to know.</p>
       <div id="board" class="board" role="list"></div>
 
-      <div class="section" style="padding:30px 0 0">
-        <script src="https://js.hsforms.net/forms/v2.js" async></script>
-        <div id="hubspot-form" class="hs-form-frame"></div>
+      <div class="cta-box">
+        <button id="open-newsletter" class="cta-big">Get on the list</button>
+        <p style="margin-top:12px; font-size: 0.9rem; opacity:0.7">Founding spots will be limited. Unsubscribe anytime.</p>
       </div>
+
     </div>
   </section>
 
@@ -278,17 +275,26 @@
     </div>
   </dialog>
 
+  <dialog class="newsletter" id="newsletterDialog">
+    <button class="close-btn" id="newsletterClose" style="float:right; margin-top:-10px;">✕</button>
+    <div class="newsletter-header">
+      <h3>Join Our Community</h3>
+      <p>Get insider access to the best naturist destinations.</p>
+    </div>
+    <div id="hubspot-form" class="hs-form-frame"></div>
+  </dialog>
+
 <script>
-  // --- Tour dates: set empty for "COMING SOON" ---
+  // --- Tour Dates Data ---
  const trips = [
   { 
-    city: "Vancouver, Canada", 
+    city: "Vancouver, Canada 🇨🇦", 
     date: "TBC August 2026", 
     blurb: "First-ever nude beach cruise in Vancouver. Relaxed and scenic.", 
     img: "/assets/vancouver-thumb.jpg" 
   },
   { 
-    city: "Zipolite, Mexico", 
+    city: "Zipolite, Mexico 🇲🇽", 
     date: "Jan 24–28, 2027", 
     blurb: "4 Nights at Mexico's famous clothing-optional beach. Perfect for newbie nudies. Enjoy curated activities or just chill on the beach. You choose!", 
     img: "/assets/zipolite-thumb.jpg", 
@@ -340,7 +346,7 @@ if (!trips.length){
     });
   });
 }
-  // Respect Policy modal
+  // --- Respect Policy Logic ---
   const dialog = document.getElementById('policyDialog');
   const openLink = document.getElementById('respectLink');
   const closeBtn = document.getElementById('policyClose');
@@ -348,7 +354,19 @@ if (!trips.length){
   closeBtn.addEventListener('click', ()=> dialog.close());
   dialog.addEventListener('click', (e)=>{ if(e.target === dialog) dialog.close(); });
 
-  // Reveal on scroll (feature image + card)
+  // --- Newsletter Modal Logic ---
+  const newsModal = document.getElementById('newsletterDialog');
+  const newsOpen = document.getElementById('open-newsletter');
+  const newsNav = document.getElementById('navJoin');
+  const newsClose = document.getElementById('newsletterClose');
+
+  const openNews = () => newsModal.showModal();
+  newsOpen.addEventListener('click', openNews);
+  newsNav.addEventListener('click', (e) => { e.preventDefault(); openNews(); });
+  newsClose.addEventListener('click', () => newsModal.close());
+  newsModal.addEventListener('click', (e) => { if(e.target === newsModal) newsModal.close(); });
+
+  // --- Reveal on scroll ---
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -360,7 +378,7 @@ if (!trips.length){
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
 
-  // --- HubSpot form create (wait for v2.js) ---
+  // --- HubSpot form create ---
   (function waitHS(){
     if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
     hbspt.forms.create({
@@ -371,7 +389,7 @@ if (!trips.length){
     });
   })();
 
-  // --- Add placeholder to HubSpot email field if missing ---
+  // --- HubSpot Email Placeholder ---
   document.addEventListener("DOMContentLoaded", function() {
     const observer = new MutationObserver(() => {
       const emailInput = document.querySelector('.hs-form input[type="email"]');
