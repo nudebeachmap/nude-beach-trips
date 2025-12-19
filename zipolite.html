@@ -36,7 +36,6 @@
     padding:14px 20px;
     background:linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,0));
   }
-  /* Link wrapper for logo */
   .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none !important; }
   .logo-img { height: 38px; width: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
   .logo-word{font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.1rem;}
@@ -152,39 +151,50 @@
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
   /* --- FAQ (Clean Style) --- */
-  .faq-list { display: grid; gap: 16px; }
+  .faq-list { display: grid; gap: 0; }
   .faq-item {
-    background: #fff; /* White bg for contrast */
-    color: #000;      /* Dark text */
-    border-radius: 8px;
-    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
   }
+  .faq-item:first-child { border-top: 1px solid var(--line); }
+  
   .faq-header {
-    padding: 20px 24px;
+    padding: 24px 0;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #fff;
+    transition: color 0.2s;
     user-select: none;
   }
+  .faq-header:hover { color: var(--sun); }
+  
   .faq-icon { 
-    font-size: 1.5rem; 
+    font-size: 1.6rem; 
     font-weight: 300; 
+    color: var(--sun);
     transition: transform 0.3s ease;
-    color: var(--teal);
   }
+  
   .faq-body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background: #f4f4f4;
   }
-  .faq-content { padding: 24px; font-size: 0.95rem; line-height: 1.6; color: #333; }
+  .faq-content { 
+    padding: 0 0 24px 0; 
+    font-size: 1rem; 
+    line-height: 1.6; 
+    color: #d9e2ea;
+    max-width: 90%;
+  }
   
+  /* Open State */
   .faq-item.open .faq-icon { transform: rotate(45deg); } /* Rotates + to x */
-  .faq-item.open .faq-body { max-height: 500px; }
+  .faq-item.open .faq-body { max-height: 600px; }
 
   /* --- Footer Scroll --- */
   .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
@@ -196,15 +206,32 @@
   .marquee-track img:hover { opacity: 1; }
   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-  /* --- Modal --- */
+  /* --- Modal (App) --- */
   .dialog{ border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:800px; width:94%; height: 85vh; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
   .dialog-header{ display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-bottom:1px solid var(--line); background: rgba(0,0,0,0.2); }
   .close-btn{background:transparent; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px 12px; cursor:pointer;}
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
   
-  /* --- Policy Modal (Small) --- */
-  dialog.policy { border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:600px; width:90%; height:auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+  /* --- Policy Modal (Matches Index Page) --- */
+  dialog.policy { 
+    border: none; 
+    border-radius: 14px; 
+    padding: 0; 
+    background: rgba(11,42,61,.96); 
+    color: #fff; 
+    max-width: 680px; 
+    width: 92%; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  }
+  .policy-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 16px 18px; 
+    border-bottom: 1px solid var(--line);
+  }
+  .policy-body { padding: 18px; }
   
   /* --- Lightbox --- */
   .lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: none; place-items: center; }
@@ -216,6 +243,7 @@
   .lb-next { right: 10px; }
 
   footer{padding:40px 0; text-align:center; opacity: 0.6; font-size: 0.9rem;}
+  .link { color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -538,7 +566,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Nudity is never mandatory—we believe it should be a personal choice, not enforced. However, this is a shared naturist experience. If you are "curious but nervous", you are 100% welcome! Everyone is on their own journey. But if you have absolutely no intent to participate in the social nude environment, you will not receive an invite.
+              Nudity is never mandatory—we believe it should be a personal choice, not enforced. If you want to come along to try it but aren't sure you'll be able to, that's totally fine! Everyone's on a journey to feel comfortable in their skin. However, the answer lies in intent: <strong>If you have no intent on participating in the social nude space at all, then you won't receive an invite.</strong>
             </div>
           </div>
         </div>
@@ -550,7 +578,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              To guarantee a safe, creeper-free environment. We don't ask for invasive ID uploads; instead, we check your social media to verify you are a real person with a genuine interest in the community. Blank or anonymous profiles will sadly not be approved.
+              <p>To ensure it is a safe place for everybody. Rather than provide ID (invasive!), we ask for a link to your social media accounts. We check to ensure you are a real person with a genuine interest in the community. Unfortunately, if you have a blank profile or no followers, you probably won't be invited.</p>
             </div>
           </div>
         </div>
@@ -562,7 +590,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Our primary focus is the 18-55 demographic to cultivate a younger naturist community, though we welcome the young-at-heart. The activities and vibe are tailored to this energy.
+              <p>Our focus is the 18-55 demographic. There are plenty of wonderful clubs and spaces in North America and beyond for 55+, and in fact, most established clubs are dominated by that demographic. We created this space to facilitate younger people embracing their bodies. The activities, locations, and vibe are geared towards this energy.</p>
             </div>
           </div>
         </div>
@@ -574,7 +602,7 @@
           </div>
           <div class="faq-body">
             <div class="faq-content">
-              Safety is our priority. Every guest must agree to our <a href="#" class="respect-trigger" style="text-decoration: underline; font-weight: bold;">Respect Policy</a>. We vet every attendee, and anyone violating our simple rules of consent and courtesy will be asked to leave immediately.
+              <p>Safety is our priority. Every guest must agree to our <a href="#" class="respect-trigger" style="text-decoration: underline; font-weight: bold;">Respect Policy</a>. We vet every attendee, and anyone violating our simple rules of consent and courtesy will be asked to leave immediately.</p>
             </div>
           </div>
         </div>
@@ -587,6 +615,30 @@
           <div class="faq-body">
             <div class="faq-content">
               Yes! We love naturist families. Note: The hotel does not have cribs, and some upper-floor rooms have low railings, so please request a ground-floor suite for safety.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Can I come alone?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              <p>Absolutely! Our trips are designed for community. You'll meet plenty of other friendly travelers at the welcome dinner and daily activities. It's a very safe and social environment for solo travelers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Why do you keep a 50:50 gender balance?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              <p>To ensure we don't have 20 single people and one couple, or all families and one single person. We strive for a healthy mix of younger and older families, couples, and singles. We definitely welcome singles, but this is not a singles party.</p>
             </div>
           </div>
         </div>
@@ -611,6 +663,18 @@
           <div class="faq-body">
             <div class="faq-content">
               Yes. Cancel >30 days before: Full refund (minus card fees). 14-30 days: 50% refund. Less than 14 days: No refund. We strongly advise travel insurance.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>How do I pay for extras?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              <p>Zipolite is a cash-based economy. Please bring Mexican Pesos for tours, extra meals, and tips. ATMs are available but can sometimes run out of cash.</p>
             </div>
           </div>
         </div>
@@ -666,7 +730,7 @@
   </section>
 
   <footer>
-    © 2025 Nude Beach Trips · <a href="index.html">Back to main site</a>
+    © 2025 Nude Beach Trips · <a href="index.html">Back to main site</a> · <a href="#" class="respect-trigger link">Respect policy</a>
   </footer>
 
   <dialog class="dialog" id="applicationModal">
@@ -731,7 +795,7 @@
   const policyDialog = document.getElementById('policyDialog');
   const policyClose = document.getElementById('policyClose');
   
-  // Triggers inside FAQ
+  // Triggers inside FAQ and Footer
   document.querySelectorAll('.respect-trigger').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
