@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Zipolite, Mexico – Nude Beach Trips</title>
-<meta name="description" content="Join our clothing-optional Nude Beach Trip in Zipolite, Mexico. Small groups, warm community, zero awkward vibes." />
+<meta name="description" content="Join our exclusive Nude Beach Map Takeover in Zipolite. 4 Days of freedom, friends, and sun." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -14,14 +14,23 @@
     --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
   }
 
-  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.6; overflow-x: hidden;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 20px;}
-  h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0;}
+  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.7; overflow-x: hidden;}
+  
+  /* --- Layout Utilities --- */
+  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+  
+  /* Limits text width for readability (like your homepage) */
+  .text-container { max-width: 680px; margin: 0 auto; text-align: center; }
+  
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
+  h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; color: var(--sun); }
+  h3 { font-size: 1.5rem; color: var(--teal); margin-bottom: 10px; }
+  
   a{color:var(--teal); text-decoration:none; transition: color 0.2s;}
   a:hover{color:var(--white);}
   
   /* --- Hero Slider --- */
-  .hero{position:relative; height:60vh; overflow:hidden;}
+  .hero{position:relative; height:70vh; overflow:hidden;}
   .hero-slide {
     position: absolute; inset: 0; width: 100%; height: 100%;
     background-size: cover; background-position: center;
@@ -29,113 +38,123 @@
     filter: brightness(.6) contrast(1.1);
   }
   .hero-slide.active { opacity: 1; }
-  .hero-content{position:relative; z-index:1; text-align:center; height:100%; display:grid; place-items:center;}
-  .hero h1{font-size:clamp(40px,8vw,90px); margin:0; line-height:1;}
-  .hero p{font-size: 1.2rem; opacity: 0.9; margin-top: 10px;}
+  .hero-content{position:relative; z-index:1; text-align:center; height:100%; display:grid; place-items:center; padding: 0 20px;}
+  .hero h1{font-size:clamp(48px,9vw,100px); margin:0; line-height:1; text-transform: uppercase; letter-spacing: 2px;}
+  .hero p{font-size: 1.3rem; opacity: 0.9; margin-top: 16px; font-weight: 300;}
 
   /* --- Sections --- */
   .section{padding:80px 0;}
-  .bg-dark{ background: rgba(0,0,0,0.2); }
+  .bg-dark{ background: rgba(0,0,0,0.25); }
   
   /* --- Buttons --- */
   .btn{
-    display:inline-block; padding:14px 24px; background:var(--sun); color:#000; 
-    font-weight:800; border-radius:12px; cursor:pointer; text-decoration:none; border:none;
-    transition: transform 0.2s ease;
+    display:inline-block; padding:14px 28px; background:var(--sun); color:#000; 
+    font-weight:800; border-radius:50px; cursor:pointer; text-decoration:none; border:none;
+    font-size: 1rem; transition: transform 0.2s ease, background 0.2s;
   }
   .btn:hover{transform: translateY(-2px); background:var(--amber);}
   .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
-  .btn.outline:hover{background: rgba(255,255,255,0.1);}
+  .btn.outline:hover{background: rgba(255,255,255,0.1); color: #fff;}
 
-  /* --- Amenities --- */
-  .amenities-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 24px; opacity: 0.9; font-size: 0.9rem;}
+  /* --- Amenities & List --- */
+  .amenities-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 24px; opacity: 0.9; font-size: 0.95rem; text-align: left;}
   .check{ color: var(--teal); margin-right: 6px; }
 
-  /* --- Accordion Styles (Rooms & Tours) --- */
+  /* --- Master Accordion (Accom) --- */
   .accordion-item {
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.03);
     border-radius: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     overflow: hidden;
     transition: background 0.2s;
   }
   .accordion-item:hover { background: rgba(255,255,255,0.06); }
   
   .accordion-header {
-    padding: 20px 24px;
+    padding: 24px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    background: linear-gradient(90deg, rgba(248, 192, 20, 0.1), transparent);
   }
-  .acc-title { font-size: 1.1rem; font-weight: 700; color: var(--teal); }
-  .acc-price { font-weight: 600; opacity: 0.9; }
-  .acc-icon { transition: transform 0.3s ease; font-size: 1.2rem; margin-left: 14px; }
+  .acc-title { font-size: 1.4rem; font-weight: 700; color: var(--sun); display: block;}
+  .acc-subtitle { font-size: 0.95rem; color: #fff; opacity: 0.8; margin-top: 4px; font-weight: 400; display: block;}
+  .acc-icon { transition: transform 0.3s ease; font-size: 1.5rem; margin-left: 14px; }
   
   .accordion-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background: rgba(0,0,0,0.2);
+    transition: max-height 0.5s ease-out;
+    background: rgba(0,0,0,0.3);
   }
-  .accordion-content { padding: 24px; }
+  .accordion-content { padding: 20px; }
   
-  /* Open State */
-  .accordion-item.open .accordion-header { background: rgba(255,255,255,0.08); }
+  .accordion-item.open .accordion-header { background: rgba(255,255,255,0.1); }
   .accordion-item.open .acc-icon { transform: rotate(180deg); }
-  .accordion-item.open .accordion-body { max-height: 1200px; /* arbitrary large number */ }
+  .accordion-item.open .accordion-body { max-height: 5000px; } /* Huge height to allow grid */
 
-  /* Room Content Layout */
-  .room-layout { display: grid; gap: 24px; }
-  @media(min-width: 768px) { .room-layout { grid-template-columns: 300px 1fr; } }
+  /* --- Room Grid --- */
+  .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
   
-  .room-media { 
-    height: 200px; border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; background: #000;
+  .room-card{
+    background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    display: flex; flex-direction: column; transition: transform 0.2s ease;
   }
-  .room-media img { width: 100%; height: 100%; object-fit: cover; }
-  .gallery-hint {
-    position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7);
-    color: #fff; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; pointer-events: none;
+  .room-card:hover{ border-color: var(--teal); }
+  
+  .room-media { position: relative; height: 220px; overflow: hidden; cursor: pointer; background: #000; }
+  .room-media img { position: absolute; inset:0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .room-card:hover .room-media img { transform: scale(1.05); }
+  .gallery-icon {
+    position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); 
+    color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    pointer-events: none; display: flex; align-items: center; gap: 6px;
   }
 
-  /* --- Hosts Section --- */
+  .room-details{ padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+  .room-title{ font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; color: var(--teal); line-height: 1.2; }
+  .room-desc{ color: #d9e2ea; font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
+  .room-desc strong { color: #fff; }
+  .room-meta{ display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 16px; }
+  .price{ font-size: 1.4rem; font-weight: 800; line-height: 1; }
+  .price span{ font-size: 0.7rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
+  .per-person { font-size:0.8rem; opacity:0.7; margin-top:6px; font-style: italic; }
+
+  /* --- Tour Grid (New Style) --- */
+  .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+  .tour-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); }
+  .tour-img { height: 200px; width: 100%; object-fit: cover; }
+  .tour-content { padding: 24px; }
+  .tour-price { color: var(--sun); font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; display: block; }
+
+  /* --- Hosts --- */
   .hosts-grid { display: grid; gap: 40px; align-items: center; margin-top: 60px; }
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
-  .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); }
+  .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
-  /* --- Scrolling Footer Gallery --- */
-  .marquee-section { padding: 60px 0; background: #000; overflow: hidden; }
-  .marquee-track {
-    display: flex; gap: 16px; width: max-content;
-    animation: scroll 60s linear infinite;
+  /* --- Footer Scroll --- */
+  .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
+  .marquee-track { display: flex; gap: 10px; width: max-content; animation: scroll 60s linear infinite; }
+  .marquee-track img { 
+    height: 220px; /* Fixed height for mobile */
+    width: auto; border-radius: 8px; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; 
   }
-  .marquee-track img {
-    height: 300px; width: auto; border-radius: 8px; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;
-  }
+  @media(min-width: 768px) { .marquee-track img { height: 300px; } } /* Taller on desktop */
   .marquee-track img:hover { opacity: 1; }
   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-  /* --- Modal (Jotform) --- */
-  .dialog{
-    border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff;
-    max-width:800px; width:94%; height: 85vh; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  }
-  .dialog-header{
-    display:flex; justify-content:space-between; align-items:center; 
-    padding:16px 20px; border-bottom:1px solid var(--line); background: rgba(0,0,0,0.2);
-  }
+  /* --- Modal --- */
+  .dialog{ border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:800px; width:94%; height: 85vh; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .dialog-header{ display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-bottom:1px solid var(--line); background: rgba(0,0,0,0.2); }
   .close-btn{background:transparent; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px 12px; cursor:pointer;}
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
   
   /* --- Lightbox --- */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95);
-    display: none; place-items: center;
-  }
+  .lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: none; place-items: center; }
   .lightbox.open { display: grid; }
   .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
   .lb-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; }
@@ -161,26 +180,33 @@
   </section>
 
   <section class="section wrap">
+    <div class="text-container">
+      <h2>4 Days of Freedom</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 24px;">
+        <strong>This is a Nude Beach Map Takeover.</strong> We have booked the entire hotel for our group, ensuring a safe, exclusive, and comfortable environment with no unknowns.
+      </p>
+      <p style="color: #d9e2ea; margin-bottom: 24px;">
+        Zipolite is Mexico’s only legal nude beach. Our trip is timed perfectly to enjoy the calm before the storm: The famous <strong>Zipolite Nudist Festival</strong> begins immediately after we check out. You can extend your stay to party, or just enjoy our curated warm-up and a taste of the opening ceremony on the last night.
+      </p>
+    </div>
+
     <div class="hosts-grid">
       <div>
-        <h2>4 Days of Freedom</h2>
-        <p>
-          Zipolite is Mexico’s only legal nude beach—a legendary haven for free spirits since the 60s. 
-          <a href="https://nudebeachmap.com/places/zipolite/" target="_blank" style="text-decoration: underline;">Read more about Zipolite here.</a>
-        </p>
-        <p style="color: #d9e2ea; margin-bottom: 24px;">
-          This isn't just a hotel booking. It's a curated group experience designed to be safe, respectful, and zero-awkward. 
-          Whether you are a seasoned naturist or a first-timer, you’ll find a welcoming community vibe.
-        </p>
-        
-        <h3 style="margin-top: 30px; font-size: 1.2rem;">Your Hosts</h3>
-        <p style="font-size: 0.95rem; margin-bottom: 12px;">
+        <h3>Your Hosts</h3>
+        <p style="margin-bottom: 16px;">
           Organized by <strong>Matt & Megan</strong> from <a href="https://nudebeachmap.com" target="_blank">NudeBeachMap.com</a> 
           and your local expert <strong>Francelli Rentería</strong> (<a href="https://francellirenteria.com/" target="_blank">francellirenteria.com</a>).
         </p>
-        <p style="font-size: 0.95rem; color: #d9e2ea;">
-          We handle the logistics, the vetting, and the vibe. You just show up and relax.
+        <p style="color: #d9e2ea; margin-bottom: 20px;">
+          <strong>The Venue: Buda Mar.</strong> A stunning beachfront sanctuary right in the center of the beach, just steps from the main street. Ocean sounds, cooked-to-order breakfasts, and zero awkward vibes.
         </p>
+        <div class="amenities-grid">
+          <div><span class="check">✓</span> Beachfront</div>
+          <div><span class="check">✓</span> Private Pool</div>
+          <div><span class="check">✓</span> Free WiFi</div>
+          <div><span class="check">✓</span> A/C in Suites</div>
+          <div><span class="check">✓</span> Entire Hotel Private</div>
+        </div>
       </div>
       
       <img src="assets/MattMegsFran.jpeg" alt="Matt, Megan and Francelli" class="host-img">
@@ -188,279 +214,232 @@
   </section>
 
   <section class="section bg-dark">
-    <div class="wrap" style="text-align: center; max-width: 800px;">
-      <h2>The Venue: Buda Mar</h2>
-      <p style="margin-bottom: 20px;">
-        A beachfront sanctuary where ocean sounds create the perfect backdrop. 
-        Relax poolside, enjoy cooked-to-order breakfasts, and watch the sunset from the terrace.
+    <div class="text-container">
+      <h2>The Experience</h2>
+      <p style="font-size: 1.1rem; color: #fff;">Do everything. Or do nothing. It's up to you.</p>
+      <p style="color:#d9e2ea; margin-top: 10px;">
+        We provide the structure; you bring the vibe. All of the following are included in your experience (participation optional):
       </p>
-      
-      <div class="amenities-grid" style="justify-content: center;">
-        <div><span class="check">✓</span> Beachfront Access</div>
-        <div><span class="check">✓</span> Outdoor Pool</div>
-        <div><span class="check">✓</span> Free WiFi</div>
-        <div><span class="check">✓</span> Welcome Dinner</div>
-        <div><span class="check">✓</span> Daily Breakfast</div>
-        <div><span class="check">✓</span> Pet Friendly</div>
+      <div class="amenities-grid" style="justify-content:center; margin-top: 30px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">🍸 Welcome Dinner</h3>
+          <p style="font-size:0.9rem; margin:0;">Kick off the trip with drinks and local food to meet your new friends.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">🧘‍♀️ Beach Yoga</h3>
+          <p style="font-size:0.9rem; margin:0;">Morning sessions on the sand to center yourself.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">🏖 Hidden Cove Visit</h3>
+          <p style="font-size:0.9rem; margin:0;">Group walk to the stunning Playa del Amor.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">🍹 Mezcal Tasting</h3>
+          <p style="font-size:0.9rem; margin:0;">Sample the famous spirit of Oaxaca.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section wrap" id="pricing">
-    <div style="text-align: center; margin-bottom: 40px;">
+    <div class="text-container" style="margin-bottom: 40px;">
       <h2>Accommodation & Pricing</h2>
-      <p style="font-size: 1.25rem; color: var(--sun); font-weight: 700;">
-        From $830 USD for 4 Nights
-      </p>
-      <p style="font-size: 0.9rem; opacity: 0.8;">
-        Price includes: 4 Nights Accommodation, Daily Breakfast, and Welcome Dinner.
-        <br>(Click a room to see details)
+      <p style="color: #d9e2ea;">
+        We have secured the entire hotel. Prices below are the <strong>Total Cost for 4 Nights</strong> including taxes, breakfast, and welcome dinner.
       </p>
     </div>
     
     <div class="accordion-list">
-
-      <div class="accordion-item" data-room="prem_ocean">
+      
+      <div class="accordion-item">
         <div class="accordion-header">
-          <span class="acc-title">Premium Suite (Ocean View)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,445 USD</span>
-            <span class="acc-icon">▼</span>
+          <div>
+            <span class="acc-title">View All Rooms</span>
+            <span class="acc-subtitle">Prices from $830 USD (Total for 4 nights)</span>
           </div>
+          <span class="acc-icon">▼</span>
         </div>
         <div class="accordion-body">
           <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/PremSuite5.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>The Best in House.</strong> 420 sq ft. King-size bed, separate sitting area, A/C, Desk, Safe. Private terrace features a hanging bed and loungers with direct sea views.</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 16px;">Price is total for 4 nights (approx $723/pp if sharing).</p>
-                <button class="btn open-application">Apply for this Room</button>
+            
+            <div class="room-grid">
+
+              <div class="room-card" data-room="prem_ocean">
+                <div class="room-media"><img src="assets/PremSuite5.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Premium Suite (Ocean View)</div>
+                  <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. King-size bed, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,445</div><div class="per-person">$723/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+
+              <div class="room-card" data-room="prem_dbl">
+                <div class="room-media"><img src="assets/PremSuiteDBL1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Premium Suite (DBL)</div>
+                  <div class="room-desc">Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,670</div><div class="per-person">$835/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="quad">
+                <div class="room-media"><img src="assets/QuadRoom1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Quadruple Room</div>
+                  <div class="room-desc"><strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds</strong>. Sitting area. Terrace with pool view. Sleeps 4.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,300</div><div class="per-person">$325/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="std_ocean">
+                <div class="room-media"><img src="assets/StdSuiteOcean1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Standard Suite (Ocean View)</div>
+                  <div class="room-desc"><strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,255</div><div class="per-person">$628/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="std_pool">
+                <div class="room-media"><img src="assets/StdSuitePool1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Standard Suite (Pool View)</div>
+                  <div class="room-desc">King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with partial ocean view.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,225</div><div class="per-person">$613/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="triple">
+                <div class="room-media"><img src="assets/TripleRoom1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Triple Room</div>
+                  <div class="room-desc"><strong>323 sq ft.</strong> 1 King bed + 1 Twin bed. Sitting area. Private bathroom, A/C, fan, safe. Terrace with pool view.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1,105</div><div class="per-person">$368/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="std_dbl">
+                <div class="room-media"><img src="assets/StdDblPool1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Standard Room</div>
+                  <div class="room-desc"><strong>194 sq ft.</strong> Simple and comfortable. 1 Double/Queen bed, private bathroom, A/C, safe. Pool view.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$915</div><div class="per-person">$458/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="cabin">
+                <div class="room-media"><img src="assets/FamCabinSharedB2.jpg" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Private Cabin</div>
+                  <div class="room-desc">Rustic charm with pool view. 1 Double bed, <strong>Private Bathroom</strong>, A/C, fan.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$885</div><div class="per-person">$443/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="room-card" data-room="shared_cabin">
+                <div class="room-media"><img src="assets/FamCabinSharedB1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-details">
+                  <div class="room-title">Rustic Cabin (Shared Bath)</div>
+                  <div class="room-desc">The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong> Safe and Desk included.</div>
+                  <div class="room-meta">
+                    <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$830</div><div class="per-person">$208/pp (sharing)</div></div>
+                    <button class="btn outline open-application">Apply</button>
+                  </div>
+                </div>
+              </div>
+
+            </div> </div>
         </div>
       </div>
-
-      <div class="accordion-item" data-room="prem_dbl">
-        <div class="accordion-header">
-          <span class="acc-title">Premium Suite (DBL)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,670 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/PremSuiteDBL1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Spacious Luxury.</strong> King-size bed, private bathroom, A/C, fan. Large terrace with hanging bed and loungers. Perfect for couples wanting extra space.</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 16px;">Price is total for 4 nights (approx $835/pp if sharing).</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="quad">
-        <div class="accordion-header">
-          <span class="acc-title">Quadruple Room (Group)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,300 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/QuadRoom1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Best Value for Groups.</strong> 323 sq ft. Two King Beds. Terrace with pool view. Sleeps up to 4 friends comfortably.</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 16px;">Total for 4 nights (Only $325 per person with 4 guests).</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="std_ocean">
-        <div class="accordion-header">
-          <span class="acc-title">Standard Suite (Ocean View)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,255 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/StdSuiteOcean1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Ocean Views.</strong> 215 sq ft. King-size bed, private bathroom, A/C, fan. Terrace with hanging bed. Stunning views of the Pacific.</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 16px;">Price is total for 4 nights.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="std_pool">
-        <div class="accordion-header">
-          <span class="acc-title">Standard Suite (Pool View)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,225 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/StdSuitePool1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Poolside Comfort.</strong> King-size bed, private bathroom, A/C. Faces the pool with a partial side ocean view.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="triple">
-        <div class="accordion-header">
-          <span class="acc-title">Triple Room</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$1,105 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/TripleRoom1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Great for 3.</strong> 1 King bed + 1 Twin bed. Private bathroom, A/C, fan. Terrace with pool view.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="std_dbl">
-        <div class="accordion-header">
-          <span class="acc-title">Standard Room</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$915 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/StdDblPool1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Simple & Cozy.</strong> 194 sq ft. 1 Double/Queen bed, private bathroom, A/C. Pool view. Ideal for solo travelers.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="cabin">
-        <div class="accordion-header">
-          <span class="acc-title">Private Cabin</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$885 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/FamCabinSharedB2.jpg" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>Rustic Charm.</strong> 1 Double bed, Private Bathroom, A/C, fan. Pool view.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item" data-room="shared_cabin">
-        <div class="accordion-header">
-          <span class="acc-title">Rustic Cabin (Shared Bath)</span>
-          <div style="display:flex; align-items:center;">
-            <span class="acc-price">$830 USD</span>
-            <span class="acc-icon">▼</span>
-          </div>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="room-layout">
-              <div class="room-media"><img src="assets/FamCabinSharedB1.avif" alt="Room"><div class="gallery-hint">📷 View Photos</div></div>
-              <div>
-                <p><strong>The Budget Choice.</strong> 2 Double beds, fan only. <strong>Note: Shared external bathroom.</strong> Great for adventurers on a budget.</p>
-                <button class="btn open-application">Apply for this Room</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <section class="section bg-dark">
-    <div class="wrap" style="max-width: 800px;">
-      <h2 style="text-align: center;">Optional Adventures</h2>
-      <p style="text-align: center; margin-bottom: 30px; color:#d9e2ea;">
-        Enhance your trip with these optional guided tours (extra cost).
-      </p>
+    <div class="wrap">
+      <div class="text-container">
+        <h2>Optional Adventures</h2>
+        <p style="margin-bottom: 30px; color:#d9e2ea;">
+          Enhance your trip with these curated local tours. 
+          <br><em style="font-size: 0.9rem; color: var(--sun);">*All tours are optional extras, payable in cash (Pesos) upon arrival.</em>
+        </p>
+      </div>
 
-      <div class="accordion-list">
+      <div class="tour-grid">
         
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">Marine Safari & Snorkel</span>
-            <span class="acc-icon">▼</span>
-          </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p><strong>Boat Tour (6:00 AM - 12:00 PM)</strong></p>
-              <p>Explore virgin beaches, snorkel in crystal waters, and spot marine life (dolphins, turtles, rays). Includes snorkel gear. Breakfast stop at Playa Panteón (extra).</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">Bioluminescence Lagoon</span>
-            <span class="acc-icon">▼</span>
-          </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p><strong>Night Tour (5:00 PM - 11:30 PM)</strong></p>
-              <p>A magical evening boat ride into the lagoon to see the water glow at night. Includes a stop for dinner (extra cost) after the experience.</p>
-            </div>
+        <div class="tour-card">
+          <img src="assets/TourMarine.jpg" alt="Marine Safari" class="tour-img">
+          <div class="tour-content">
+            <span class="tour-price">$600 MXN / person</span>
+            <h3>Marine Safari & Sunrise</h3>
+            <p style="font-size: 0.9rem; color: #d9e2ea;">
+              We pick you up at 5:30 AM (Sunrise) or 9:30 AM. Board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
+              Includes visits to virgin beaches (La Boquilla, La Mina) and <strong>snorkeling</strong> (gear included).
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 3 Hours. Clothing Optional. Includes transport.</em></p>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <span class="acc-title">Magical Waterfalls</span>
-            <span class="acc-icon">▼</span>
+        <div class="tour-card">
+          <img src="assets/TourBio.jpg" alt="Bioluminescence" class="tour-img">
+          <div class="tour-content">
+            <span class="tour-price">$1,200 MXN / person</span>
+            <h3>Bioluminescence Lagoon</h3>
+            <p style="font-size: 0.9rem; color: #d9e2ea;">
+              Depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
+              The water is warm (thermal springs). Swim in the stars! Includes stop for dinner (extra cost) on return.
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 11:30 PM. Clothing Optional in parts.</em></p>
           </div>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              <p><strong>Jungle Hike (6:00 AM - 2:00 PM)</strong></p>
-              <p>A guided 20-min hike along the river to a majestic 30-meter waterfall. Swim in fresh mountain water. <strong>Includes Buffet Breakfast.</strong></p>
-            </div>
+        </div>
+
+        <div class="tour-card">
+          <img src="assets/TourWaterfall.jpg" alt="Waterfalls" class="tour-img">
+          <div class="tour-content">
+            <span class="tour-price">$2,000 MXN / person</span>
+            <h3>Magical Waterfalls Hike</h3>
+            <p style="font-size: 0.9rem; color: #d9e2ea;">
+              Depart 7:00 AM. A guided jungle walk (20 mins) along the river to a majestic <strong>30-meter waterfall</strong>. 
+              Swim in fresh mountain springs and explore a hidden cave jacuzzi. 
+              <strong>Includes delicious Buffet Breakfast</strong> (Mole, meats, coffee).
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 3:00 PM. Clothing Optional at falls.</em></p>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <img src="assets/TourMangrove.jpg" alt="Mangroves" class="tour-img">
+          <div class="tour-content">
+            <span class="tour-price">$1,000 MXN / person</span>
+            <h3>Mangroves & Turtle Release</h3>
+            <p style="font-size: 0.9rem; color: #d9e2ea;">
+              Depart 3:00 PM. An eco-tour through the mangroves to spot birds, iguanas, and crocodiles. 
+              Visit a crocodile sanctuary on an island. On the return, we participate in a <strong>newborn turtle release</strong> into the ocean.
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 7:00 PM.</em></p>
           </div>
         </div>
 
@@ -470,10 +449,27 @@
 
   <section class="marquee-section">
     <div class="marquee-track">
-      <img src="assets/Budamar1.jpg" alt=""><img src="assets/Budamar3.jpg" alt=""><img src="assets/Budamar4.avif" alt=""><img src="assets/Budamar5.jpg" alt=""><img src="assets/Budamar6.avif" alt="">
-      <img src="assets/Zipo2.webp" alt=""><img src="assets/Zipo3.jpg" alt=""><img src="assets/Zipo4.webp" alt=""><img src="assets/Zipo5.webp" alt=""><img src="assets/Zipo11.jpg" alt="">
-      <img src="assets/Budamar1.jpg" alt=""><img src="assets/Budamar3.jpg" alt=""><img src="assets/Budamar4.avif" alt=""><img src="assets/Budamar5.jpg" alt=""><img src="assets/Budamar6.avif" alt="">
-      <img src="assets/Zipo2.webp" alt=""><img src="assets/Zipo3.jpg" alt=""><img src="assets/Zipo4.webp" alt=""><img src="assets/Zipo5.webp" alt=""><img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Zipo3.jpg" alt="">
+      <img src="assets/Budamar3.jpg" alt="">
+      <img src="assets/Zipo4.webp" alt="">
+      <img src="assets/Budamar4.avif" alt="">
+      <img src="assets/Zipo5.webp" alt="">
+      <img src="assets/Budamar5.jpg" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Budamar6.avif" alt="">
+      
+      <img src="assets/Zipo2.webp" alt="">
+      <img src="assets/Budamar1.jpg" alt="">
+      <img src="assets/Zipo3.jpg" alt="">
+      <img src="assets/Budamar3.jpg" alt="">
+      <img src="assets/Zipo4.webp" alt="">
+      <img src="assets/Budamar4.avif" alt="">
+      <img src="assets/Zipo5.webp" alt="">
+      <img src="assets/Budamar5.jpg" alt="">
+      <img src="assets/Zipo11.jpg" alt="">
+      <img src="assets/Budamar6.avif" alt="">
     </div>
   </section>
 
@@ -503,15 +499,6 @@
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
-      const body = item.querySelector('.accordion-body');
-      
-      // Close others (Optional - remove if you want multiple open)
-      document.querySelectorAll('.accordion-item').forEach(other => {
-        if(other !== item && other.classList.contains('open')) {
-          other.classList.remove('open');
-        }
-      });
-
       item.classList.toggle('open');
     });
   });
@@ -539,19 +526,16 @@
   }, 5000); 
 
   // Lightbox Trigger
-  document.querySelectorAll('.room-media').forEach(media => {
-    // Find parent accordion item to get ID
-    const item = media.closest('.accordion-item');
-    if(!item) return; 
-    const key = item.dataset.room;
+  document.querySelectorAll('.room-card').forEach(card => {
+    const key = card.dataset.room;
+    const mediaContainer = card.querySelector('.room-media');
     const images = roomImages[key];
 
-    if(images && images.length > 0) {
-      media.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent accordion toggle
-        openLightbox(images);
-      });
-    }
+    if(!images || images.length === 0) return;
+    mediaContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(images);
+    });
   });
 
   const lb = document.getElementById('lightbox');
