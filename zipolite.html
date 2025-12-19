@@ -18,8 +18,6 @@
   
   /* --- Layout Utilities --- */
   .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
-  
-  /* Limits text width for readability (like your homepage) */
   .text-container { max-width: 680px; margin: 0 auto; text-align: center; }
   
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
@@ -94,7 +92,7 @@
   
   .accordion-item.open .accordion-header { background: rgba(255,255,255,0.1); }
   .accordion-item.open .acc-icon { transform: rotate(180deg); }
-  .accordion-item.open .accordion-body { max-height: 5000px; } /* Huge height to allow grid */
+  .accordion-item.open .accordion-body { max-height: 6000px; }
 
   /* --- Room Grid --- */
   .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -123,11 +121,13 @@
   .price span{ font-size: 0.7rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
   .per-person { font-size:0.8rem; opacity:0.7; margin-top:6px; font-style: italic; }
 
-  /* --- Tour Grid (New Style) --- */
-  .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-  .tour-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); }
-  .tour-img { height: 200px; width: 100%; object-fit: cover; }
-  .tour-content { padding: 24px; }
+  /* --- Tour Grid (2 Per Row) --- */
+  .tour-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
+  @media(min-width: 768px) { .tour-grid { grid-template-columns: 1fr 1fr; } } /* Enforce 2 columns */
+  
+  .tour-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; }
+  .tour-img { height: 220px; width: 100%; object-fit: cover; }
+  .tour-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
   .tour-price { color: var(--sun); font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; display: block; }
 
   /* --- Hosts --- */
@@ -139,10 +139,9 @@
   .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
   .marquee-track { display: flex; gap: 10px; width: max-content; animation: scroll 60s linear infinite; }
   .marquee-track img { 
-    height: 220px; /* Fixed height for mobile */
-    width: auto; border-radius: 8px; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; 
+    height: 220px; width: auto; border-radius: 8px; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; 
   }
-  @media(min-width: 768px) { .marquee-track img { height: 300px; } } /* Taller on desktop */
+  @media(min-width: 768px) { .marquee-track img { height: 300px; } }
   .marquee-track img:hover { opacity: 1; }
   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -198,7 +197,7 @@
           and your local expert <strong>Francelli Rentería</strong> (<a href="https://francellirenteria.com/" target="_blank">francellirenteria.com</a>).
         </p>
         <p style="color: #d9e2ea; margin-bottom: 20px;">
-          <strong>The Venue: Buda Mar.</strong> A stunning beachfront sanctuary right in the center of the beach, just steps from the main street. Ocean sounds, cooked-to-order breakfasts, and zero awkward vibes.
+          <strong>The Venue: Buda Mar.</strong> A stunning beachfront sanctuary right in the center of the beach, just steps from the main street. Ocean sounds, breakfasts, and zero awkward vibes.
         </p>
         <div class="amenities-grid">
           <div><span class="check">✓</span> Beachfront</div>
@@ -221,22 +220,37 @@
         We provide the structure; you bring the vibe. All of the following are included in your experience (participation optional):
       </p>
       <div class="amenities-grid" style="justify-content:center; margin-top: 30px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🍸 Welcome Dinner</h3>
           <p style="font-size:0.9rem; margin:0;">Kick off the trip with drinks and local food to meet your new friends.</p>
         </div>
+        
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🧘‍♀️ Beach Yoga</h3>
           <p style="font-size:0.9rem; margin:0;">Morning sessions on the sand to center yourself.</p>
         </div>
+        
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🏖 Hidden Cove Visit</h3>
           <p style="font-size:0.9rem; margin:0;">Group walk to the stunning Playa del Amor.</p>
         </div>
+        
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🍹 Mezcal Tasting</h3>
           <p style="font-size:0.9rem; margin:0;">Sample the famous spirit of Oaxaca.</p>
         </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">🏐 Beach Fun</h3>
+          <p style="font-size:0.9rem; margin:0;">Learn to surf, play volleyball, or toss a frisbee—all in the buff.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+          <h3 style="font-size:1.1rem; color:#fff;">💆‍♀️ Relax & Transit</h3>
+          <p style="font-size:0.9rem; margin:0;">Massages available (extra). Airport transfers at group rates.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -245,7 +259,7 @@
     <div class="text-container" style="margin-bottom: 40px;">
       <h2>Accommodation & Pricing</h2>
       <p style="color: #d9e2ea;">
-        We have secured the entire hotel. Prices below are the <strong>Total Cost for 4 Nights</strong> including taxes, breakfast, and welcome dinner.
+        We have secured the entire hotel. Prices below are the <strong>Total Cost for 4 Nights</strong> including taxes, Continental Breakfast (fruit, cereal, coffee), and welcome dinner. <em style="font-size: 0.85rem;">(Cooked breakfast available à la carte).</em>
       </p>
     </div>
     
@@ -265,7 +279,7 @@
             <div class="room-grid">
 
               <div class="room-card" data-room="prem_ocean">
-                <div class="room-media"><img src="assets/PremSuite5.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/PremSuite5.avif" alt="Premium Suite Ocean"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Premium Suite (Ocean View)</div>
                   <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. King-size bed, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views.</div>
@@ -277,7 +291,7 @@
               </div>
 
               <div class="room-card" data-room="prem_dbl">
-                <div class="room-media"><img src="assets/PremSuiteDBL1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/PremSuiteDBL1.avif" alt="Premium Suite DBL"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Premium Suite (DBL)</div>
                   <div class="room-desc">Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers.</div>
@@ -289,7 +303,7 @@
               </div>
 
               <div class="room-card" data-room="quad">
-                <div class="room-media"><img src="assets/QuadRoom1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/QuadRoom1.avif" alt="Quad Room"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Quadruple Room</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds</strong>. Sitting area. Terrace with pool view. Sleeps 4.</div>
@@ -301,7 +315,7 @@
               </div>
 
               <div class="room-card" data-room="std_ocean">
-                <div class="room-media"><img src="assets/StdSuiteOcean1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Standard Suite (Ocean View)</div>
                   <div class="room-desc"><strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views.</div>
@@ -325,7 +339,7 @@
               </div>
 
               <div class="room-card" data-room="triple">
-                <div class="room-media"><img src="assets/TripleRoom1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/TripleRoom1.avif" alt="Triple Room"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Triple Room</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> 1 King bed + 1 Twin bed. Sitting area. Private bathroom, A/C, fan, safe. Terrace with pool view.</div>
@@ -337,7 +351,7 @@
               </div>
 
               <div class="room-card" data-room="std_dbl">
-                <div class="room-media"><img src="assets/StdDblPool1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/StdDblPool1.avif" alt="Standard Room"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Standard Room</div>
                   <div class="room-desc"><strong>194 sq ft.</strong> Simple and comfortable. 1 Double/Queen bed, private bathroom, A/C, safe. Pool view.</div>
@@ -349,7 +363,7 @@
               </div>
 
               <div class="room-card" data-room="cabin">
-                <div class="room-media"><img src="assets/FamCabinSharedB2.jpg" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/FamCabinSharedB2.jpg" alt="Private Cabin"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Private Cabin</div>
                   <div class="room-desc">Rustic charm with pool view. 1 Double bed, <strong>Private Bathroom</strong>, A/C, fan.</div>
@@ -361,7 +375,7 @@
               </div>
 
               <div class="room-card" data-room="shared_cabin">
-                <div class="room-media"><img src="assets/FamCabinSharedB1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media"><img src="assets/FamCabinSharedB1.avif" alt="Shared Cabin"><div class="gallery-icon">📷 Photos</div></div>
                 <div class="room-details">
                   <div class="room-title">Rustic Cabin (Shared Bath)</div>
                   <div class="room-desc">The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong> Safe and Desk included.</div>
@@ -396,8 +410,8 @@
             <span class="tour-price">$600 MXN / person</span>
             <h3>Marine Safari & Sunrise</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We pick you up at 5:30 AM (Sunrise) or 9:30 AM. Board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
-              Includes visits to virgin beaches (La Boquilla, La Mina) and <strong>snorkeling</strong> (gear included).
+              We pick you up at 5:30 AM (Sunrise) or 9:30 AM. We board at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
+              We'll visit virgin beaches (La Boquilla, La Mina) and go <strong>snorkeling</strong> (gear included).
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 3 Hours. Clothing Optional. Includes transport.</em></p>
           </div>
@@ -409,8 +423,8 @@
             <span class="tour-price">$1,200 MXN / person</span>
             <h3>Bioluminescence Lagoon</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              Depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
-              The water is warm (thermal springs). Swim in the stars! Includes stop for dinner (extra cost) on return.
+              We depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
+              The water is warm (thermal springs). Swim in the stars! We'll stop for dinner (optional) on the way back.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 11:30 PM. Clothing Optional in parts.</em></p>
           </div>
@@ -422,7 +436,7 @@
             <span class="tour-price">$2,000 MXN / person</span>
             <h3>Magical Waterfalls Hike</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              Depart 7:00 AM. A guided jungle walk (20 mins) along the river to a majestic <strong>30-meter waterfall</strong>. 
+              We leave early (7:00 AM) to beat the heat. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>. 
               Swim in fresh mountain springs and explore a hidden cave jacuzzi. 
               <strong>Includes delicious Buffet Breakfast</strong> (Mole, meats, coffee).
             </p>
@@ -436,8 +450,8 @@
             <span class="tour-price">$1,000 MXN / person</span>
             <h3>Mangroves & Turtle Release</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              Depart 3:00 PM. An eco-tour through the mangroves to spot birds, iguanas, and crocodiles. 
-              Visit a crocodile sanctuary on an island. On the return, we participate in a <strong>newborn turtle release</strong> into the ocean.
+              We depart at 3:00 PM. We'll explore the mangroves by boat to spot birds, iguanas, and crocodiles. 
+              We'll visit a crocodile sanctuary on an island. On the return, we help <strong>release newborn turtles</strong> into the ocean at sunset.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Return approx 7:00 PM.</em></p>
           </div>
@@ -503,16 +517,33 @@
     });
   });
 
-  // --- DATA & LIGHTBOX ---
+  // --- DATA & LIGHTBOX (Corrected Full List) ---
   const roomImages = {
+    // 1. Premium Ocean (PremSuite1-5)
     prem_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
-    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif'], 
-    std_ocean:  ['StdSuiteOcean1.avif', 'Standard Suite, Ensuite, Sea View (DBL) 2.avif', 'Standard Suite, Ensuite, Sea View (DBL) 3.avif'],
-    std_pool:   ['StdSuitePool1.avif', 'StdDblPool2.jpg', 'StdDblPool5.jpg'],
-    quad:       ['QuadRoom1.avif', 'Quadruple Room, Ensuite, Pool View 2.avif', 'Quadruple Room, Ensuite, Pool View 3.jpg'],
-    triple:     ['TripleRoom1.avif', 'Triple Room, Ensuite, Pool View 2.avif', 'Triple Room, Ensuite, Pool View 3.avif'],
-    std_dbl:    ['StdDblPool1.avif', 'StdDblPool2.jpg', 'StdDblPool3.avif', 'StdDblPool4.jpg'],
+    
+    // 2. Premium DBL (PremSuiteDBL1-10)
+    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'], 
+    
+    // 3. Std Ocean (StdSuiteOcean1-10)
+    std_ocean:  ['StdSuiteOcean1.avif', 'StdSuiteOcean2.avif', 'StdSuiteOcean3.avif', 'StdSuiteOcean4.jpg', 'StdSuiteOcean5.avif', 'StdSuiteOcean6.avif', 'StdSuiteOcean7.avif', 'StdSuiteOcean8.jpg', 'StdSuiteOcean9.jpg', 'StdSuiteOcean10.avif'],
+    
+    // 4. Std Pool (StdSuitePool1-6)
+    std_pool:   ['StdSuitePool1.avif', 'StdSuitePool2.avif', 'StdSuitePool3.avif', 'StdSuitePool4.avif', 'StdSuitePool5.jpg', 'StdSuitePool6.jpg'],
+    
+    // 5. Quad (QuadRoom1-5)
+    quad:       ['QuadRoom1.avif', 'QuadRoom2.avif', 'QuadRoom3.jpg', 'QuadRoom4.avif', 'QuadRoom5.avif'],
+    
+    // 6. Triple (TripleRoom1-4)
+    triple:     ['TripleRoom1.avif', 'TripleRoom2.avif', 'TripleRoom3.avif', 'TripleRoom4.jpg'],
+    
+    // 7. Std Dbl (StdDblPool1-7)
+    std_dbl:    ['StdDblPool1.avif', 'StdDblPool2.jpg', 'StdDblPool3.avif', 'StdDblPool4.jpg', 'StdDblPool5.jpg', 'StdDblPool6.jpg', 'StdDblPool7.jpg'],
+    
+    // 8. Cabin (FamCabinSharedB2-4)
     cabin:      ['FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif'],
+    
+    // 9. Shared Cabin (FamCabinSharedB1-5)
     shared_cabin: ['FamCabinSharedB1.avif', 'FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif', 'FamCabinSharedB5.avif']
   };
 
