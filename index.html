@@ -139,10 +139,31 @@
   .hs-form-frame .hs-form textarea::placeholder { color:#c9d3dd; opacity:.8; }
   .hs-form-frame .hs-error-msg,
   .hs-form-frame .hs-error-msgs label { color:#ffd1d1; font-size:13px; margin-top:6px; }
+  
+  /* --- HUBSPOT OVERRIDE (Fixing the ugly button) --- */
   .hs-form-frame .hs-form input[type="submit"],
   .hs-form-frame .hs-form .hs-button {
-    display:inline-block; padding:12px 18px; border-radius:12px; border:0; background:var(--accent); color:#000; font-weight:800; cursor:pointer; margin-top:10px;
+    display:inline-block !important; 
+    padding:12px 18px !important; 
+    border-radius:12px !important; 
+    border:0 !important; 
+    background:var(--accent) !important; 
+    color:#000 !important; 
+    font-family: inherit !important;
+    font-weight:800 !important; 
+    cursor:pointer !important; 
+    margin-top:10px !important;
+    font-size: 1rem !important;
+    text-transform: none !important;
+    transition: transform 0.2s ease !important;
   }
+  
+  .hs-form-frame .hs-form input[type="submit"]:hover,
+  .hs-form-frame .hs-form .hs-button:hover {
+    transform: translateY(-2px) !important;
+    background: var(--amber) !important;
+  }
+
   @media (min-width:640px){
     .hs-form-frame .hs_submit { display:flex; gap:10px; align-items:center; }
     .hs-form-frame .hs-email ~ .hs-submit { margin-top:0; }
@@ -162,11 +183,8 @@
     <a href="#dates" class="cta">Join the list</a>
   </header>
 
-  <!-- HERO -->
   <section class="hero" aria-label="Video hero">
     <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <!-- Optional WebM for Chrome/Firefox -->
-      <!-- <source src="/assets/hero.webm" type="video/webm"> -->
       <source src="/assets/hero.mp4" type="video/mp4">
     </video>
     <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
@@ -194,7 +212,6 @@
     </div>
   </section>
 
-  <!-- DATES -->
   <section id="dates" class="dates section">
     <div class="wrap">
       <h2>Tour Dates</h2>
@@ -202,14 +219,12 @@
       <div id="board" class="board" role="list"></div>
 
       <div class="section" style="padding:30px 0 0">
-        <!-- ✅ HubSpot form embed (correct) -->
         <script src="https://js.hsforms.net/forms/v2.js" async></script>
         <div id="hubspot-form" class="hs-form-frame"></div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE OVERLAY STRIP (people photo) -->
   <section class="feature" aria-label="Community vibe">
     <div class="wrap" style="padding:0 20px">
       <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
@@ -232,7 +247,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="wrap">
       <h2>About</h2>
@@ -244,7 +258,6 @@
 
   <footer>© 2025 Nude Beach Trips · <a href="#" id="respectLink" class="link">Respect policy</a></footer>
 
-  <!-- Respect Policy modal -->
   <dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
     <div class="policy-header">
       <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
