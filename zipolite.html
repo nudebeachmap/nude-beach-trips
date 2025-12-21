@@ -20,7 +20,8 @@
   
   /* --- Layout Utilities --- */
   .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
-  .text-container { max-width: 680px; margin: 0 auto; text-align: center; }
+  /* FIX: Added padding: 0 20px so text doesn't touch mobile screen edges */
+  .text-container { max-width: 680px; margin: 0 auto; text-align: center; padding: 0 20px; }
   
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
   h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; color: var(--sun); }
@@ -233,7 +234,8 @@
   .lb-prev { left: 10px; }
   .lb-next { right: 10px; }
 
-  footer{padding:40px 0; text-align:center; opacity: 0.6; font-size: 0.9rem;}
+  /* FIX: Added side padding to footer so it doesn't touch edges on mobile */
+  footer{padding:40px 20px; text-align:center; opacity: 0.6; font-size: 0.9rem;}
   .link { color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 </style>
 </head>
@@ -858,7 +860,8 @@
 
   // --- DATA & LIGHTBOX ---
   const roomImages = {
-    prem_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
+    // FIX: Changed this from prem_ocean to quad_ocean to match HTML
+    quad_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
     prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'], 
     std_ocean:  ['StdSuiteOcean1.avif', 'StdSuiteOcean2.avif', 'StdSuiteOcean3.avif', 'StdSuiteOcean4.jpg', 'StdSuiteOcean5.avif', 'StdSuiteOcean6.avif', 'StdSuiteOcean7.avif', 'StdSuiteOcean8.jpg', 'StdSuiteOcean9.jpg', 'StdSuiteOcean10.avif'],
     std_pool:   ['StdSuitePool1.avif', 'StdSuitePool2.avif', 'StdSuitePool3.avif', 'StdSuitePool4.avif', 'StdSuitePool5.jpg', 'StdSuitePool6.jpg'],
