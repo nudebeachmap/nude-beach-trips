@@ -37,15 +37,15 @@
     padding-right: max(20px, env(safe-area-inset-right));
   }
 
-  /* ✅ FIX: bring text in on mobile, keep desktop the same */
+  /* ✅ Text container (keeps breathing room on mobile) */
   .text-container{
     max-width: 680px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 14px; /* mobile breathing room */
+    padding: 0 14px;
   }
   @media (min-width: 768px){
-    .text-container{ padding: 0; } /* desktop unchanged */
+    .text-container{ padding: 0; }
   }
 
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
@@ -215,6 +215,22 @@
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
+  /* ✅ FIX: give hosts text the same mobile breathing room as text-container,
+     and force long URLs to wrap instead of pushing to the edge */
+  .hosts-text{
+    padding: 0 14px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px){
+    .hosts-text{ padding: 0; max-width: none; margin: 0; }
+  }
+  .hosts-text, .hosts-text *{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
   /* --- FAQ --- */
   .faq-list { display: grid; gap: 0; }
   .faq-item { border-bottom: 1px solid var(--line); background: transparent; }
@@ -249,6 +265,8 @@
     line-height: 1.6;
     color: #d9e2ea;
     max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .faq-item.open .faq-body { max-height: 800px; }
 
@@ -362,7 +380,7 @@
     </div>
 
     <div class="hosts-grid">
-      <div>
+      <div class="hosts-text">
         <h3>Your Hosts</h3>
         <p style="margin-bottom: 16px;">
           Organized by <strong>Matt & Megan</strong> from <a href="https://nudebeachmap.com" target="_blank">NudeBeachMap.com</a>
