@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Zipolite, Mexico – Nude Beach Trips</title>
 <meta name="description" content="Join our exclusive Nude Beach Map Takeover in Zipolite. 4 Days of freedom, friends, and sun." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -16,17 +16,37 @@
     --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
   }
 
-  body{margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height: 1.7; overflow-x: hidden;}
-  
+  /* --- Global guards (mobile overflow + safe sizing) --- */
+  *{ box-sizing: border-box; }
+  html, body { width:100%; max-width:100%; overflow-x:hidden; }
+  img{ display:block; max-width:100%; height:auto; }
+  body{
+    margin:0;
+    background:var(--bg1);
+    color:var(--white);
+    font-family:Inter,system-ui;
+    line-height: 1.7;
+    overflow-x:hidden;
+  }
+
   /* --- Layout Utilities --- */
-  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
-  /* FIX: Added padding: 0 20px so text doesn't touch mobile screen edges */
-  .text-container { max-width: 680px; margin: 0 auto; text-align: center; padding: 0 20px; }
-  
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+  .text-container{
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0; /* rely on .wrap for padding */
+  }
+
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
   h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; color: var(--sun); }
   h3 { font-size: 1.5rem; color: var(--teal); margin-bottom: 10px; }
-  
+
   a{color:var(--teal); text-decoration:none; transition: color 0.2s;}
   a:hover{color:var(--white);}
 
@@ -34,15 +54,18 @@
   .site-header{
     position:fixed;top:0;left:0;right:0;z-index:999;
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 20px;
+    padding:14px max(16px, env(safe-area-inset-right)) 14px max(16px, env(safe-area-inset-left));
     background:linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,0));
   }
-  .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none !important; }
+  .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none !important; min-width: 0; }
   .logo-img { height: 38px; width: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-  .logo-word{font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.1rem;}
+  .logo-word{
+    font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
   .cta{background:var(--sun);color:#000;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none; font-size: 0.9rem; transition: transform 0.2s;}
   .cta:hover{transform: scale(1.05); background: var(--amber);}
-  
+
   /* --- Hero Slider --- */
   .hero{position:relative; height:70vh; overflow:hidden;}
   .hero-slide {
@@ -52,17 +75,34 @@
     filter: brightness(.6) contrast(1.1);
   }
   .hero-slide.active { opacity: 1; }
-  .hero-content{position:relative; z-index:1; text-align:center; height:100%; display:grid; place-items:center; padding: 0 20px;}
-  .hero h1{font-size:clamp(48px,9vw,100px); margin:0; line-height:1; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);}
-  .hero p{font-size: 1.3rem; opacity: 0.95; margin-top: 16px; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
+  .hero-content{
+    position:relative; z-index:1; text-align:center; height:100%;
+    display:grid; place-items:center;
+  }
+  .hero h1{
+    font-size:clamp(44px,9vw,100px);
+    margin:0; line-height:1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .hero p{
+    font-size: 1.3rem;
+    opacity: 0.95;
+    margin-top: 16px;
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
 
   /* --- Sections --- */
   .section{padding:80px 0;}
   .bg-dark{ background: rgba(0,0,0,0.25); }
-  
+
   /* --- Buttons --- */
   .btn{
-    display:inline-block; padding:14px 28px; background:var(--sun); color:#000; 
+    display:inline-block; padding:14px 28px; background:var(--sun); color:#000;
     font-weight:800; border-radius:50px; cursor:pointer; text-decoration:none; border:none;
     font-size: 1rem; transition: transform 0.2s ease, background 0.2s;
   }
@@ -71,7 +111,12 @@
   .btn.outline:hover{background: rgba(255,255,255,0.1); color: #fff;}
 
   /* --- Amenities --- */
-  .amenities-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 24px; opacity: 0.9; font-size: 0.95rem; text-align: left;}
+  .amenities-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px; margin-top: 24px; opacity: 0.9;
+    font-size: 0.95rem; text-align: left;
+  }
   .check{ color: var(--teal); margin-right: 6px; }
 
   /* --- Master Accordion (Accom) --- */
@@ -84,7 +129,7 @@
     transition: background 0.2s;
   }
   .accordion-item:hover { background: rgba(255,255,255,0.06); }
-  
+
   .accordion-header {
     padding: 24px;
     cursor: pointer;
@@ -93,11 +138,12 @@
     align-items: center;
     user-select: none;
     background: linear-gradient(90deg, rgba(248, 192, 20, 0.1), transparent);
+    gap: 14px;
   }
   .acc-title { font-size: 1.4rem; font-weight: 700; color: var(--sun); display: block;}
   .acc-subtitle { font-size: 0.95rem; color: #fff; opacity: 0.8; margin-top: 4px; font-weight: 400; display: block;}
-  .acc-icon { transition: transform 0.3s ease; font-size: 1.5rem; margin-left: 14px; }
-  
+  .acc-icon { transition: transform 0.3s ease; font-size: 1.5rem; margin-left: 14px; flex: 0 0 auto; }
+
   .accordion-body {
     max-height: 0;
     overflow: hidden;
@@ -105,34 +151,47 @@
     background: rgba(0,0,0,0.3);
   }
   .accordion-content { padding: 20px; }
-  
+
   .accordion-item.open .accordion-header { background: rgba(255,255,255,0.1); }
   .accordion-item.open .acc-icon { transform: rotate(180deg); }
   .accordion-item.open .accordion-body { max-height: 6000px; }
 
-  /* --- Room Grid --- */
-  .room-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-  
+  /* --- Room Grid (mobile-safe) --- */
+  .room-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
+  @media (max-width: 380px){
+    .room-grid{ grid-template-columns: 1fr; }
+  }
+
   .room-card{
-    background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
-    display: flex; flex-direction: column; transition: transform 0.2s ease;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    min-width: 0;
   }
   .room-card:hover{ border-color: var(--teal); }
-  
+
   .room-media { position: relative; height: 220px; overflow: hidden; cursor: pointer; background: #000; }
   .room-media img { position: absolute; inset:0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
   .room-card:hover .room-media img { transform: scale(1.05); }
   .gallery-icon {
-    position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); 
+    position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7);
     color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
     pointer-events: none; display: flex; align-items: center; gap: 6px;
   }
 
-  .room-details{ padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+  .room-details{ padding: 20px; flex-grow: 1; display: flex; flex-direction: column; min-width: 0; }
   .room-title{ font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; color: var(--teal); line-height: 1.2; }
   .room-desc{ color: #d9e2ea; font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
   .room-desc strong { color: #fff; }
-  .room-meta{ display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 16px; }
+  .room-meta{ display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 16px; gap: 14px; }
   .price{ font-size: 1.4rem; font-weight: 800; line-height: 1; }
   .price span{ font-size: 0.7rem; display:block; font-weight:normal; margin-bottom: 4px; letter-spacing: 0.5px; opacity: 0.8; }
   .per-person { font-size:0.8rem; opacity:0.7; margin-top:6px; font-style: italic; }
@@ -140,7 +199,7 @@
   /* --- Tour Grid --- */
   .tour-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
   @media(min-width: 768px) { .tour-grid { grid-template-columns: 1fr 1fr; } }
-  
+
   .tour-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; }
   .tour-img { height: 220px; width: 100%; object-fit: cover; }
   .tour-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -151,14 +210,11 @@
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
-  /* --- FAQ (Clean Style) --- */
+  /* --- FAQ --- */
   .faq-list { display: grid; gap: 0; }
-  .faq-item {
-    border-bottom: 1px solid var(--line);
-    background: transparent;
-  }
+  .faq-item { border-bottom: 1px solid var(--line); background: transparent; }
   .faq-item:first-child { border-top: 1px solid var(--line); }
-  
+
   .faq-header {
     padding: 24px 0;
     cursor: pointer;
@@ -170,42 +226,56 @@
     color: #fff;
     transition: color 0.2s;
     user-select: none;
+    gap: 14px;
   }
   .faq-header:hover { color: var(--sun); }
-  
-  .faq-icon { 
-    font-size: 1.6rem; 
-    font-weight: 300; 
+  .faq-icon {
+    font-size: 1.8rem;
+    font-weight: 300;
     color: var(--sun);
-    transition: transform 0.3s ease;
+    line-height: 1;
+    flex: 0 0 auto;
+    transition: transform 0.2s ease;
   }
-  
-  .faq-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  .faq-content { 
-    padding: 0 0 24px 0; 
-    font-size: 1rem; 
-    line-height: 1.6; 
+  .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-content {
+    padding: 0 0 24px 0;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #d9e2ea;
-    max-width: 90%;
+    max-width: 100%;
   }
-  
-  /* Open State */
-  .faq-item.open .faq-icon { transform: rotate(45deg); } /* Rotates + to x */
-  .faq-item.open .faq-body { max-height: 600px; }
+  .faq-item.open .faq-body { max-height: 800px; }
 
-  /* --- Footer Scroll --- */
+  /* --- Footer Scroll (marquee) --- */
   .marquee-section { padding: 40px 0; background: #000; overflow: hidden; }
-  .marquee-track { display: flex; gap: 10px; width: max-content; animation: scroll 60s linear infinite; }
-  .marquee-track img { 
-    height: 220px; width: auto; border-radius: 8px; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; 
+  .marquee-track{
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    white-space: nowrap;
+    will-change: transform;
+    transform: translate3d(0,0,0);
+    animation: scroll 60s linear infinite;
+  }
+  .marquee-track img {
+    height: 220px;
+    width: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    flex: 0 0 auto;
   }
   @media(min-width: 768px) { .marquee-track img { height: 300px; } }
   .marquee-track img:hover { opacity: 1; }
-  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes scroll { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+
+  /* If user prefers reduced motion, show a scrollable strip instead */
+  @media (prefers-reduced-motion: reduce){
+    .marquee-section{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .marquee-track{ animation: none; padding: 0 10px; }
+  }
 
   /* --- Modal (App) --- */
   .dialog{ border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:800px; width:94%; height: 85vh; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
@@ -213,30 +283,42 @@
   .close-btn{background:transparent; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px 12px; cursor:pointer;}
   .dialog-body{ height: 100%; overflow: hidden; background: #fff;}
   dialog::backdrop{background:rgba(0,0,0,.8); backdrop-filter: blur(4px);}
-  
-  /* --- Policy Modal (Small) --- */
+
+  /* --- Policy Modal --- */
   dialog.policy { border:none; border-radius:14px; padding:0; background:var(--bg1); color:#fff; max-width:600px; width:90%; height:auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
   .policy-header {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 16px 18px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
     border-bottom: 1px solid var(--line);
   }
   .policy-body { padding: 18px; }
-  
+
   /* --- Lightbox --- */
   .lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: none; place-items: center; }
   .lightbox.open { display: grid; }
-  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; background: #000; }
   .lb-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; }
   .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 40px; cursor: pointer; padding: 20px; user-select: none; }
   .lb-prev { left: 10px; }
   .lb-next { right: 10px; }
 
-  /* FIX: Added side padding to footer so it doesn't touch edges on mobile */
-  footer{padding:40px 20px; text-align:center; opacity: 0.6; font-size: 0.9rem;}
+  /* Footer */
+  footer{
+    padding:40px max(20px, env(safe-area-inset-right)) 40px max(20px, env(safe-area-inset-left));
+    text-align:center; opacity: 0.6; font-size: 0.9rem;
+  }
   .link { color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  /* --- Mobile tweaks --- */
+  @media (max-width: 520px){
+    .section{ padding: 56px 0; }
+    .hero{ height: 64vh; }
+    .hero h1{ letter-spacing: 1px; }
+    .hero p{ font-size: 1.05rem; }
+    .accordion-header{ padding: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -252,7 +334,7 @@
   <section class="hero">
     <div class="hero-slide active" style="background-image: url('assets/Zipo1.jpg');"></div>
     <div class="hero-slide" style="background-image: url('assets/Zipo7.webp');"></div>
-    
+
     <div class="hero-content wrap">
       <div>
         <h1>Zipolite, Mexico</h1>
@@ -268,7 +350,9 @@
         <strong>This is a Nude Beach Map Takeover.</strong> We have booked the entire hotel for our group, ensuring a safe, exclusive, and comfortable environment with no unknowns.
       </p>
       <p style="color: #d9e2ea; margin-bottom: 24px;">
-        Zipolite is Mexico’s only legal nude beach. Our trip is timed perfectly to enjoy the calm before the storm: The famous <a href="https://www.zipolite-mexico.com/zipolite-nudist-festival/" target="_blank" style="color:var(--sun); text-decoration:underline;">Zipolite Nudist Festival</a> begins immediately after we check out. You can extend your stay to party, or just enjoy our curated warm-up and a taste of the opening ceremony on the last night.
+        Zipolite is Mexico’s only legal nude beach. Our trip is timed perfectly to enjoy the calm before the storm: The famous
+        <a href="https://www.zipolite-mexico.com/zipolite-nudist-festival/" target="_blank" style="color:var(--sun); text-decoration:underline;">Zipolite Nudist Festival</a>
+        begins immediately after we check out. You can extend your stay to party, or just enjoy our curated warm-up and a taste of the opening ceremony on the last night.
       </p>
     </div>
 
@@ -276,7 +360,7 @@
       <div>
         <h3>Your Hosts</h3>
         <p style="margin-bottom: 16px;">
-          Organized by <strong>Matt & Megan</strong> from <a href="https://nudebeachmap.com" target="_blank">NudeBeachMap.com</a> 
+          Organized by <strong>Matt & Megan</strong> from <a href="https://nudebeachmap.com" target="_blank">NudeBeachMap.com</a>
           and your local Mexican expert <strong>Francelli Rentería</strong> (<a href="https://francellirenteria.com/" target="_blank">francellirenteria.com</a>).
         </p>
         <p style="margin-bottom: 20px; font-style: italic; color: #fff;">
@@ -294,35 +378,35 @@
           <div><span class="check">✓</span> Entire Hotel Private</div>
         </div>
       </div>
-      
+
       <img src="assets/MattMegsFran.jpeg" alt="Matt, Megan and Francelli" class="host-img">
     </div>
   </section>
 
   <section class="section bg-dark">
-    <div class="text-container">
+    <div class="text-container wrap">
       <h2>The Experience</h2>
       <p style="font-size: 1.1rem; color: #fff;">Do everything. Or do nothing. It's up to you.</p>
       <p style="color:#d9e2ea; margin-top: 10px;">
         We provide the structure; you bring the vibe. All of the following are included in your experience (participation optional):
       </p>
+
       <div class="amenities-grid" style="justify-content:center; margin-top: 30px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-        
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🍸 Welcome Dinner</h3>
           <p style="font-size:0.9rem; margin:0;">Kick off the trip with drinks and local food to meet your new friends.</p>
         </div>
-        
+
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🧘‍♀️ Beach Yoga</h3>
           <p style="font-size:0.9rem; margin:0;">Morning sessions on the sand to center yourself.</p>
         </div>
-        
+
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🏖 Hidden Cove Visit</h3>
           <p style="font-size:0.9rem; margin:0;">Group walk to the stunning Playa del Amor.</p>
         </div>
-        
+
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
           <h3 style="font-size:1.1rem; color:#fff;">🍹 Mezcal Tasting</h3>
           <p style="font-size:0.9rem; margin:0;">Sample the famous spirit of Oaxaca.</p>
@@ -337,7 +421,6 @@
           <h3 style="font-size:1.1rem; color:#fff;">💆‍♀️ Relax & Transit</h3>
           <p style="font-size:0.9rem; margin:0;">Massages & Spa available (extra). Airport transfers at group rates.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -349,9 +432,8 @@
         We have secured the entire hotel. Prices below are the <strong>Total Cost for 4 Nights</strong> including taxes, Continental Breakfast (fruit, cereal, coffee), and welcome dinner. <em style="font-size: 0.85rem;">(Cooked breakfast available à la carte).</em>
       </p>
     </div>
-    
+
     <div class="accordion-list">
-      
       <div class="accordion-item">
         <div class="accordion-header">
           <div>
@@ -362,11 +444,13 @@
         </div>
         <div class="accordion-body">
           <div class="accordion-content">
-            
             <div class="room-grid">
 
               <div class="room-card" data-room="quad_ocean">
-                <div class="room-media"><img src="assets/PremSuite5.avif" alt="Premium Suite Ocean"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/PremSuite5.avif" alt="Premium Suite Ocean">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Quad Suite (Ocean View)</div>
                   <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. 2 King-size beds, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views.Sleeps 4</div>
@@ -378,7 +462,10 @@
               </div>
 
               <div class="room-card" data-room="prem_dbl">
-                <div class="room-media"><img src="assets/PremSuiteDBL1.avif" alt="Premium Suite DBL"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/PremSuiteDBL1.avif" alt="Premium Suite DBL">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Premium Suite (DBL with Ocean View)</div>
                   <div class="room-desc">Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers. Sleeps 2.</div>
@@ -390,7 +477,10 @@
               </div>
 
               <div class="room-card" data-room="quad">
-                <div class="room-media"><img src="assets/QuadRoom1.avif" alt="Quad Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/QuadRoom1.avif" alt="Quad Room">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Quadruple Room (Pool View)</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds and 1 single bed</strong>. Sitting area. A/C and fan. Terrace with pool view. Sleeps 4.</div>
@@ -402,7 +492,10 @@
               </div>
 
               <div class="room-card" data-room="std_ocean">
-                <div class="room-media"><img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Standard Suite (Ocean View)</div>
                   <div class="room-desc"><strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views. Sleeps 2.</div>
@@ -414,7 +507,10 @@
               </div>
 
               <div class="room-card" data-room="std_pool">
-                <div class="room-media"><img src="assets/StdSuitePool1.avif" alt="Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/StdSuitePool1.avif" alt="Room">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Standard Suite (Pool View)</div>
                   <div class="room-desc">King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with partial ocean view. Sleeps 2.</div>
@@ -426,7 +522,10 @@
               </div>
 
               <div class="room-card" data-room="triple">
-                <div class="room-media"><img src="assets/TripleRoom1.avif" alt="Triple Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/TripleRoom1.avif" alt="Triple Room">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Triple Room (Pool View)</div>
                   <div class="room-desc"><strong>323 sq ft.</strong> 1 King bed + 1 Twin bed. Sitting area. Private bathroom, A/C, fan, safe. Terrace with pool view. Sleeps 3.</div>
@@ -438,7 +537,10 @@
               </div>
 
               <div class="room-card" data-room="std_dbl">
-                <div class="room-media"><img src="assets/StdDblPool1.avif" alt="Standard Room"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/StdDblPool1.avif" alt="Standard Room">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Standard Room (Pool View)</div>
                   <div class="room-desc"><strong>194 sq ft.</strong> Simple and comfortable. 1 Double bed, private bathroom, A/C, safe. Pool view. Sleeps 2.</div>
@@ -450,7 +552,10 @@
               </div>
 
               <div class="room-card" data-room="cabin">
-                <div class="room-media"><img src="assets/FamCabinSharedB2.jpg" alt="Private Cabin"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/FamCabinSharedB2.jpg" alt="Private Cabin">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Private Cabin (Pool View)</div>
                   <div class="room-desc">Rustic charm with pool view. 1 Double bed, <strong>Private Bathroom</strong>, A/C, fan. Sleeps 2</div>
@@ -462,7 +567,10 @@
               </div>
 
               <div class="room-card" data-room="shared_cabin">
-                <div class="room-media"><img src="assets/FamCabinSharedB1.avif" alt="Shared Cabin"><div class="gallery-icon">📷 Photos</div></div>
+                <div class="room-media">
+                  <img src="assets/FamCabinSharedB1.avif" alt="Shared Cabin">
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
                 <div class="room-details">
                   <div class="room-title">Rustic Cabin (Pool View w/ shared bathroom)</div>
                   <div class="room-desc">The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong> Safe and Desk included. Sleeps 4</div>
@@ -473,8 +581,10 @@
                 </div>
               </div>
 
-            </div> </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -484,20 +594,20 @@
       <div class="text-container">
         <h2>Optional Adventures</h2>
         <p style="margin-bottom: 30px; color:#d9e2ea;">
-          Enhance your trip with these curated local tours. 
+          Enhance your trip with these curated local tours.
           <br><em style="font-size: 0.9rem; color: var(--sun);">*All tours are optional extras, payable in cash (Pesos) upon arrival.</em>
         </p>
       </div>
 
       <div class="tour-grid">
-        
+
         <div class="tour-card">
           <img src="assets/TourMarine.jpg" alt="Marine Safari" class="tour-img">
           <div class="tour-content">
             <span class="tour-price">700 MXN (40 USD) / person</span>
             <h3>Marine Safari & Sunrise</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We'll get picked up at 9:30 AM. We board the boat at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>. 
+              We'll get picked up at 9:30 AM. We board the boat at Playa Panteón and set out to spot <strong>dolphins, whales, and turtles</strong>.
               Then we'll visit three virgin beaches (La Boquilla, La Mina, Estacahuite) and go <strong>snorkeling</strong> (gear included).
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 3 Hours. Clothing Optional. Includes transport.</em></p>
@@ -510,7 +620,7 @@
             <span class="tour-price">$1,300 MXN (72 USD) / person</span>
             <h3>Bioluminescence Lagoon</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>. 
+              We depart at 5:00 PM for a magical night tour. We enter the lagoon to see the water <strong>glow in the dark</strong>.
               The water is warm (thermal springs). Swim in the stars! We'll stop for dinner (optional) on the way back.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 6.5 Hours. Return approx 11:30 PM. Clothing Optional at certain locations.</em></p>
@@ -523,8 +633,8 @@
             <span class="tour-price">$2,000 MXN (110 USD) / person</span>
             <h3>Magical Waterfalls Hike</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We leave at 7:00 AM. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>. 
-              Swim in fresh mountain springs and explore a hidden cave jacuzzi. 
+              We leave at 7:00 AM. We'll guide you on a 20-min jungle walk to a majestic <strong>30-meter waterfall</strong>.
+              Swim in fresh mountain springs and explore a hidden cave jacuzzi.
               <strong>Includes delicious Buffet Breakfast</strong> (mole, meats, coffee).
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 8 hours. Return approx 3:00 PM. Clothing Optional at falls.</em></p>
@@ -537,7 +647,7 @@
             <span class="tour-price">$1,000 MXN (55 USD) / person</span>
             <h3>Mangroves & Turtle Release</h3>
             <p style="font-size: 0.9rem; color: #d9e2ea;">
-              We depart at 3:00 PM. We'll explore the mangroves by boat (non-motorized) to spot birds, iguanas, and crocodiles. 
+              We depart at 3:00 PM. We'll explore the mangroves by boat (non-motorized) to spot birds, iguanas, and crocodiles.
               We'll visit a crocodile sanctuary on an island. On the return, we help <strong>release newborn turtles</strong> into the ocean.
             </p>
             <p style="font-size: 0.85rem; margin-top: 10px;"><em>Duration: 4 hours. Clothing is required for this trip. Return approx 7:00 PM.</em></p>
@@ -553,8 +663,8 @@
       <div class="text-container" style="margin-bottom: 30px;">
         <h2>Frequently Asked Questions</h2>
       </div>
+
       <div class="faq-list">
-        
         <div class="faq-item">
           <div class="faq-header">
             <span>Do I have to get naked?</span>
@@ -686,9 +796,8 @@
             </div>
           </div>
         </div>
-
       </div>
-      
+
       <p style="text-align: center; margin-top: 40px; color: #d9e2ea;">
         Got a question we didn't answer? We're here to help anytime - <a href="mailto:admin@nudebeachmap.com" style="color: var(--sun);">email admin@nudebeachmap.com</a>
       </p>
@@ -712,7 +821,8 @@
       <img src="assets/Budamar6.avif" alt="">
       <img src="assets/Zipo11.jpg" alt="">
       <img src="assets/Budamar7.jpg" alt="">
-      
+
+      <!-- Duplicate set for seamless scroll -->
       <img src="assets/Zipo1.jpg" alt="">
       <img src="assets/Budamar1.jpg" alt="">
       <img src="assets/Zipo2.webp" alt="">
@@ -773,35 +883,27 @@
     });
   });
 
-  // --- FAQ TOGGLE LOGIC ---
+  // --- FAQ TOGGLE LOGIC (fix icon) ---
   document.querySelectorAll('.faq-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
       const icon = item.querySelector('.faq-icon');
-      
-      // Toggle Open class
       item.classList.toggle('open');
-      
-      // Toggle Icon
-      if(item.classList.contains('open')) {
-        icon.textContent = '+'; 
-      } else {
-        icon.textContent = '+';
-      }
+      icon.textContent = item.classList.contains('open') ? '×' : '+';
     });
   });
 
   // --- POLICY LINK TRIGGER ---
   const policyDialog = document.getElementById('policyDialog');
   const policyClose = document.getElementById('policyClose');
-  
+
   document.querySelectorAll('.respect-trigger').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       policyDialog.showModal();
     });
   });
-  
+
   policyClose.addEventListener('click', () => policyDialog.close());
   policyDialog.addEventListener('click', (e) => {
     if(e.target === policyDialog) policyDialog.close();
@@ -812,18 +914,16 @@
   const closeBtn = document.getElementById('closeDialog');
   const iframe = document.getElementById('JotFormIFrame-253504449025050');
 
-  // JotForm Configuration
-  const jotformFieldID = "roomPreference"; 
+  const jotformFieldID = "roomPreference";
   const baseURL = "https://form.jotform.com/253504449025050";
 
-  // MAPPING: Ensure these match your JotForm Options EXACTLY (Commaless)
   const roomMap = {
     quad_ocean:   "Quad Suite (Ocean View) $1670",
     prem_dbl:     "Premium Suite (DBL with Ocean View) $1445",
     quad:         "Quadruple Room (Pool View) $1300",
     std_ocean:    "Standard Suite (Ocean View) $1255",
     std_pool:     "Standard Suite (Pool View) $1225",
-    triple:       "Triple Room (Pool View) $1105", 
+    triple:       "Triple Room (Pool View) $1105",
     std_dbl:      "Standard Room (Pool View) $915",
     cabin:        "Private Cabin (Pool View) $885",
     shared_cabin: "Rustic Cabin (Pool View w/ shared bathroom) $830"
@@ -831,24 +931,19 @@
 
   document.querySelectorAll('.open-application').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Stop accordion from toggling
-      
-      // 1. Get the Data ID from the card
+      e.stopPropagation();
+
       const card = btn.closest('.room-card');
       let roomValue = "";
-      
+
       if(card) {
         const roomKey = card.dataset.room;
-        roomValue = roomMap[roomKey] || ""; // Look up exact string
+        roomValue = roomMap[roomKey] || "";
       }
 
-      // 2. Build new URL with Pre-fill
       let newSrc = `${baseURL}?inline=true`;
-      if(roomValue) {
-        newSrc += `&${jotformFieldID}=${encodeURIComponent(roomValue)}`;
-      }
+      if(roomValue) newSrc += `&${jotformFieldID}=${encodeURIComponent(roomValue)}`;
 
-      // 3. Update Iframe and Show
       iframe.src = newSrc;
       dialog.showModal();
     });
@@ -857,12 +952,51 @@
   closeBtn.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (e) => { if(e.target === dialog) dialog.close(); });
 
+  // --- Image fallback helpers (AVIF -> WEBP -> JPG -> PNG) ---
+  function buildFallbacks(src){
+    const clean = (src || "").split("?")[0];
+    if(!clean) return [];
+    const list = [clean];
+
+    const pushIf = (s) => { if(s && !list.includes(s)) list.push(s); };
+
+    if (/\.avif$/i.test(clean)) {
+      pushIf(clean.replace(/\.avif$/i, ".webp"));
+      pushIf(clean.replace(/\.avif$/i, ".jpg"));
+      pushIf(clean.replace(/\.avif$/i, ".jpeg"));
+      pushIf(clean.replace(/\.avif$/i, ".png"));
+    } else if (/\.webp$/i.test(clean)) {
+      pushIf(clean.replace(/\.webp$/i, ".jpg"));
+      pushIf(clean.replace(/\.webp$/i, ".jpeg"));
+      pushIf(clean.replace(/\.webp$/i, ".png"));
+    }
+
+    return list;
+  }
+
+  function setImgWithFallback(imgEl, src){
+    const tries = buildFallbacks(src);
+    let i = 0;
+
+    const tryNext = () => {
+      if(i >= tries.length) return;
+      imgEl.src = tries[i++];
+    };
+
+    imgEl.onerror = () => tryNext();
+    tryNext();
+  }
+
+  // Apply fallback to all page images (covers marquee + cards)
+  document.querySelectorAll("img").forEach(img => {
+    const src = img.getAttribute("src");
+    if(src) setImgWithFallback(img, src);
+  });
 
   // --- DATA & LIGHTBOX ---
   const roomImages = {
-    // FIX: Changed this from prem_ocean to quad_ocean to match HTML
     quad_ocean: ['PremSuite5.avif', 'PremSuite4.jpg', 'PremSuite3.avif', 'PremSuite2.webp', 'PremSuite1.avif'],
-    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'], 
+    prem_dbl:   ['PremSuiteDBL1.avif', 'PremSuiteDBL2.avif', 'PremSuiteDBL3.avif', 'PremSuiteDBL4.avif', 'PremSuiteDBL5.avif', 'PremSuiteDBL6.jpg', 'PremSuiteDBL7.avif', 'PremSuiteDBL8.avif', 'PremSuiteDBL9.avif', 'PremSuiteDBL10.avif'],
     std_ocean:  ['StdSuiteOcean1.avif', 'StdSuiteOcean2.avif', 'StdSuiteOcean3.avif', 'StdSuiteOcean4.jpg', 'StdSuiteOcean5.avif', 'StdSuiteOcean6.avif', 'StdSuiteOcean7.avif', 'StdSuiteOcean8.jpg', 'StdSuiteOcean9.jpg', 'StdSuiteOcean10.avif'],
     std_pool:   ['StdSuitePool1.avif', 'StdSuitePool2.avif', 'StdSuitePool3.avif', 'StdSuitePool4.avif', 'StdSuitePool5.jpg', 'StdSuitePool6.jpg'],
     quad:       ['QuadRoom1.avif', 'QuadRoom2.avif', 'QuadRoom3.jpg', 'QuadRoom4.avif', 'QuadRoom5.avif'],
@@ -879,15 +1013,15 @@
     heroes[heroIdx].classList.remove('active');
     heroIdx = (heroIdx + 1) % heroes.length;
     heroes[heroIdx].classList.add('active');
-  }, 5000); 
+  }, 5000);
 
   // Lightbox Trigger
   document.querySelectorAll('.room-card').forEach(card => {
     const key = card.dataset.room;
     const mediaContainer = card.querySelector('.room-media');
     const images = roomImages[key];
-
     if(!images || images.length === 0) return;
+
     mediaContainer.addEventListener('click', (e) => {
       e.stopPropagation();
       openLightbox(images);
@@ -907,7 +1041,8 @@
   }
 
   function updateLb() {
-    lbImg.src = 'assets/' + encodeURIComponent(currentLbImages[currentLbIdx]);
+    const file = currentLbImages[currentLbIdx];
+    setImgWithFallback(lbImg, 'assets/' + file);
   }
 
   document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
