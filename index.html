@@ -91,7 +91,17 @@
   .board{border:1px solid rgba(255,255,255,.22);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
   .row{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.22)}
   .row:last-child{border-bottom:0}
-  .city{font-weight:800}
+
+  /* --- City + flags (fix emoji rendering) --- */
+  .city{font-weight:800; display:flex; align-items:center; gap:10px; min-width:0;}
+  .city .city-text{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .flag{
+    font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif;
+    font-size: 1.05em;
+    line-height: 1;
+    margin-left: 6px;
+  }
+
   .date{color:#d9e2ea}
   .more{border:1px solid rgba(255,255,255,.3);padding:8px 12px;border-radius:8px;background:transparent;color:#fff;cursor:pointer}
   .details{display:none;padding:16px;border-top:1px dashed rgba(255,255,255,.25);background:rgba(0,0,0,.18)}
@@ -119,10 +129,33 @@
   }
 
   /* ===== Footer & modal ===== */
-  footer{padding:40px 20px;text-align:center;color:#d9e2ea}
+  footer{
+    padding:42px 0 54px;
+    text-align:center;
+    color:#d9e2ea;
+    border-top:1px solid var(--line);
+    background:
+      radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.10), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
+  }
+  .footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
+  .footer-top{display:grid;gap:10px;justify-items:center}
   .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
-  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-  .tiny{opacity:.85;font-size:.92rem;max-width:920px;margin:16px auto 0}
+  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .tiny{
+    opacity:.85;
+    font-size:.92rem;
+    max-width:900px;
+    margin:14px auto 0;
+    line-height:1.45;
+  }
+  .tiny-note{
+    margin-top:10px;
+    font-size:.92rem;
+    opacity:.78;
+    max-width:760px;
+    margin-left:auto;margin-right:auto;
+  }
 
   /* --- Policy Modals --- */
   dialog.policy{
@@ -272,24 +305,29 @@
         By <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>.
         Curated trips for newbies and naturist experts. Beautiful places, respectful vibes.
       </p>
-      <p class="tiny">
-        Note: Specific trip pages will include full inclusions/exclusions, payment schedule, cancellation terms, and contact details.
+      <p class="tiny-note">
+        Each trip has its own inclusions/exclusions, payment schedule, cancellation terms, and contact details —
+        always check the individual trip page / booking checkout for the full terms.
       </p>
     </div>
   </section>
 
   <footer>
-    <div>© 2025 Nude Beach Trips</div>
-    <div class="footer-links">
-      <a href="#" id="respectLink" class="link">Respect policy</a>
-      <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
-      <a href="#" id="privacyLink" class="link">Privacy</a>
-      <a href="#" id="liabilityLink" class="link">Liability</a>
-    </div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>© 2025 Nude Beach Trips</div>
+        <div class="footer-links">
+          <a href="#" id="respectLink" class="link">Respect policy</a>
+          <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
+          <a href="#" id="privacyLink" class="link">Privacy</a>
+          <a href="#" id="liabilityLink" class="link">Liability</a>
+        </div>
+      </div>
 
-    <div class="tiny">
-      We’re an event organizer and community brand. We’re not a dating trip and not an adult entertainment service.
-      Participants are responsible for their own travel documents and insurance.
+      <div class="tiny">
+        We’re an event organizer and community brand. We’re not a dating trip and not an adult entertainment service.
+        Participants are responsible for their own travel documents and insurance.
+      </div>
     </div>
   </footer>
 
@@ -357,7 +395,6 @@
       </ul>
       <p>We are not responsible for services provided by third parties (e.g., accommodation, transport operators, restaurants, excursions) beyond what is explicitly stated in the trip inclusions.</p>
       <p>We strongly recommend travel insurance that includes medical coverage and trip interruption/cancellation.</p>
-      <p style="opacity:.85"><em>This is a general summary for the landing page. The full legal language can live on the booking page/checkout.</em></p>
     </div>
   </dialog>
 
@@ -375,13 +412,15 @@
   // --- Tour Dates Data ---
   const trips = [
     {
-      city: "Vancouver, Canada 🇨🇦",
+      city: "Vancouver, Canada",
+      flag: "🇨🇦",
       date: "TBC August 2026",
       blurb: "First-ever nude beach cruise in Vancouver. Relaxed and scenic.",
       img: "/assets/vancouver-thumb.jpg"
     },
     {
-      city: "Zipolite, Mexico 🇲🇽",
+      city: "Zipolite, Mexico",
+      flag: "🇲🇽",
       date: "Jan 24–28, 2027",
       blurb: "4 Nights at Mexico's famous clothing-optional beach. Perfect for newbie nudies. Enjoy curated activities or just chill on the beach. You choose!",
       img: "/assets/zipolite-thumb.jpg",
@@ -404,8 +443,10 @@
 
       row.innerHTML=`
         <div class="city" ${clickable}>
-          <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;margin-right:8px;vertical-align:middle;object-fit:cover">
-          ${t.city}
+          <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
+          <div class="city-text">
+            ${t.city}<span class="flag" aria-hidden="true">${t.flag || ""}</span>
+          </div>
         </div>
         <div class="date">${t.date}</div>
         <button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>
@@ -497,7 +538,7 @@
       if (emailInput && !emailInput.placeholder) {
         emailInput.placeholder = 'you@email.com';
       }
-    });
+    })
     observer.observe(document.body, { childList: true, subtree: true });
   });
 </script>
