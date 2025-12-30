@@ -92,14 +92,15 @@
   .row{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.22)}
   .row:last-child{border-bottom:0}
 
-  /* --- City + flags (fix emoji rendering) --- */
+  /* --- City + flag images (reliable across devices) --- */
   .city{font-weight:800; display:flex; align-items:center; gap:10px; min-width:0;}
   .city .city-text{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .flag{
-    font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif;
-    font-size: 1.05em;
-    line-height: 1;
-    margin-left: 6px;
+  .flagimg{
+    width:20px;height:14px;
+    border-radius:3px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.35);
+    vertical-align:middle;
+    margin-left:8px;
   }
 
   .date{color:#d9e2ea}
@@ -117,7 +118,12 @@
   .float-card h3{font-size:clamp(22px,3.2vw,30px);margin:0;font-family:"Playfair Display", Georgia, serif}
   .float-card p{margin:0;color:#d9e2ea}
   .float-row{display:grid;gap:18px;grid-template-columns:2fr 1fr}
-  .float-badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(12,186,180,.18);font-weight:800;width:max-content}
+  .float-badge{
+    display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);
+    background:rgba(12,186,180,.18);font-weight:800;width:max-content;
+  }
+  .float-badge.btnlike{cursor:pointer; color:#fff; text-decoration:none}
+  .float-badge.btnlike:hover{transform:translateY(-1px)}
   .brand-dot{width:10px;height:10px;border-radius:50%}
   @media (max-width: 820px){.float-row{grid-template-columns:1fr}.float-card{margin:-50px 16px 0}}
 
@@ -142,18 +148,11 @@
   .footer-top{display:grid;gap:10px;justify-items:center}
   .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
   .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-  .tiny{
-    opacity:.88;
-    font-size:.95rem;
-    max-width:900px;
-    margin:14px auto 0;
-    line-height:1.45;
-  }
   .fineprint{
     opacity:.75;
     font-size:.9rem;
     max-width:900px;
-    margin:10px auto 0;
+    margin:12px auto 0;
     line-height:1.45;
   }
 
@@ -291,7 +290,11 @@
           <div>
             <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
             <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
-            <div class="float-badge"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</div>
+
+            <!-- CLICK THIS to open the Respect Policy popup -->
+            <button class="float-badge btnlike" id="respectBadge" type="button" style="border:1px solid var(--line);">
+              <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+            </button>
           </div>
         </div>
       </div>
@@ -320,11 +323,6 @@
         </div>
       </div>
 
-      <div class="tiny">
-        We’re an event organiser and community brand powered by
-        <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>.
-      </div>
-
       <div class="fineprint">
         Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
         Payment securely processed by Stripe Australia.
@@ -339,6 +337,17 @@
       <button class="close-btn" data-close="policyDialog" aria-label="Close">Close</button>
     </div>
     <div class="policy-body">
+      <p><strong>Clothing optional, friendly, naturist.</strong><br>
+      We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
+
+      <p style="margin-top:12px">
+        <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</span>
+        <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</span>
+        <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</span>
+      </p>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
+
       <p>• Nudity may be expected in some settings for the comfort of others. Participate at your own pace.</p>
       <p>• We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.</p>
       <p>• This is not a dating trip or a “lifestyle” trip. It’s about community, comfort, and body freedom.</p>
@@ -410,24 +419,28 @@
   </dialog>
 
 <script>
-  // --- Tour Dates Data ---
+  // --- Tour Dates Data (use flag icons so they ALWAYS display) ---
+  // flagCode = ISO 3166-1 alpha-2 lowercase (e.g. "ca", "mx")
   const trips = [
     {
       city: "Vancouver, Canada",
-      flag: "🇨🇦",
+      flagCode: "ca",
       date: "TBC August 2026",
       blurb: "First-ever nude beach cruise in Vancouver. Relaxed and scenic.",
       img: "/assets/vancouver-thumb.jpg"
     },
     {
       city: "Zipolite, Mexico",
-      flag: "🇲🇽",
+      flagCode: "mx",
       date: "Jan 24–28, 2027",
       blurb: "4 Nights at Mexico's famous clothing-optional beach. Perfect for newbie nudies. Enjoy curated activities or just chill on the beach. You choose!",
       img: "/assets/zipolite-thumb.jpg",
       link: "zipolite.html"
     }
   ];
+
+  // Flag helper (20px wide PNG via FlagCDN)
+  const flagURL = (code) => code ? `https://flagcdn.com/w20/${String(code).toLowerCase()}.png` : "";
 
   const board = document.getElementById('board');
   if (!trips.length){
@@ -442,11 +455,15 @@
       row.setAttribute('role','listitem');
       const clickable = t.link ? `onclick="window.location='${t.link}'" style='cursor:pointer'` : "";
 
+      const flagImg = t.flagCode
+        ? `<img class="flagimg" src="${flagURL(t.flagCode)}" alt="" aria-hidden="true" loading="lazy" decoding="async">`
+        : ``;
+
       row.innerHTML=`
         <div class="city" ${clickable}>
           <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
           <div class="city-text">
-            ${t.city}<span class="flag" aria-hidden="true">${t.flag || ""}</span>
+            ${t.city}${flagImg}
           </div>
         </div>
         <div class="date">${t.date}</div>
@@ -499,6 +516,9 @@
   document.getElementById('cancelLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('cancelDialog'); });
   document.getElementById('privacyLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('privacyDialog'); });
   document.getElementById('liabilityLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
+
+  // Feature badge -> open Respect Policy dialog
+  document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
 
   // --- Newsletter Modal Logic ---
   const newsModal = document.getElementById('newsletterDialog');
