@@ -30,7 +30,6 @@
   }
   h1,h2{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
   a{color:var(--white)}
-
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
   /* ===== Header ===== */
@@ -40,16 +39,14 @@
     padding:14px 20px;
     background:linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0));
   }
-  .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-img { height: 38px; width: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-  .logo-word{font-weight:800; letter-spacing:.5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: 1.1rem;}
+  .header-left{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-img{height:38px;width:auto;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+  .logo-word{font-weight:800;letter-spacing:.5px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-size:1.1rem}
   .cta{background:var(--accent);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none;border:0;cursor:pointer}
 
   /* ===== Hero (video) ===== */
   .hero{position:relative;height:100svh;display:grid;place-items:center;overflow:hidden}
-  .hero video,.hero .poster{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08);
-  }
+  .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08)}
   .hero .overlay{position:absolute;inset:0;background: radial-gradient(90% 70% at 50% 70%, rgba(11,42,61,.05), rgba(11,42,61,.85))}
   .hero .teal-wash{position:absolute;inset:0;background:linear-gradient(180deg, rgba(12,186,180,.15), rgba(12,186,180,.02));mix-blend:soft-light}
   .hero-content{position:relative;text-align:center;padding:0 20px}
@@ -92,16 +89,15 @@
   .row{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.22)}
   .row:last-child{border-bottom:0}
 
-  /* --- City + flag images (reliable across devices) --- */
-  .city{font-weight:800; display:flex; align-items:center; gap:10px; min-width:0;}
-  .city .city-text{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  /* City + flags */
+  .city{font-weight:800;display:flex;align-items:center;gap:10px;min-width:0}
+  .city .city-text{min-width:0;overflow:hidden}
   .flagimg{
-    width:20px;height:14px;
-    border-radius:3px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.35);
-    vertical-align:middle;
-    margin-left:8px;
+    width:20px;height:14px;border-radius:3px;
+    box-shadow:0 1px 6px rgba(0,0,0,.35);
+    vertical-align:middle;margin-left:8px;
   }
+  .city .city-text .line{display:inline}
 
   .date{color:#d9e2ea}
   .more{border:1px solid rgba(255,255,255,.3);padding:8px 12px;border-radius:8px;background:transparent;color:#fff;cursor:pointer}
@@ -109,7 +105,15 @@
   .row.open + .details{display:block}
   .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:linear-gradient(180deg,var(--sun),var(--amber));text-transform:uppercase}
 
-  /* ===== Feature overlay strip (people photo) ===== */
+  /* Mobile: show city as two lines + give it room */
+  @media (max-width: 640px){
+    .row{grid-template-columns:1.6fr 1fr auto}
+    .city .city-text{white-space:normal;line-height:1.05}
+    .city .city-text .line{display:block}
+    .flagimg{margin-left:6px}
+  }
+
+  /* ===== Feature overlay strip ===== */
   .feature{position:relative;margin:80px 0 0}
   .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
   .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
@@ -118,11 +122,26 @@
   .float-card h3{font-size:clamp(22px,3.2vw,30px);margin:0;font-family:"Playfair Display", Georgia, serif}
   .float-card p{margin:0;color:#d9e2ea}
   .float-row{display:grid;gap:18px;grid-template-columns:2fr 1fr}
+
+  /* Badges: unified typography (fixes Respect policy mismatch) */
   .float-badge{
-    display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);
-    background:rgba(12,186,180,.18);font-weight:800;width:max-content;
+    display:inline-flex;gap:8px;align-items:center;
+    padding:8px 12px;border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(12,186,180,.18);
+    font-weight:800;width:max-content;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    font-size:14px;
+    line-height:1;
   }
-  .float-badge.btnlike{cursor:pointer; color:#fff; text-decoration:none}
+  button.float-badge{
+    appearance:none;-webkit-appearance:none;
+    background:rgba(12,186,180,.18);
+    color:#fff;
+    border:1px solid var(--line);
+    cursor:pointer;
+  }
+  .float-badge.btnlike{cursor:pointer;color:#fff;text-decoration:none}
   .float-badge.btnlike:hover{transform:translateY(-1px)}
   .brand-dot{width:10px;height:10px;border-radius:50%}
   @media (max-width: 820px){.float-row{grid-template-columns:1fr}.float-card{margin:-50px 16px 0}}
@@ -134,7 +153,7 @@
     .reveal,.reveal.show{opacity:1; transform:none}
   }
 
-  /* ===== Footer & modal ===== */
+  /* ===== Footer ===== */
   footer{
     padding:42px 0 54px;
     text-align:center;
@@ -156,7 +175,40 @@
     line-height:1.45;
   }
 
-  /* --- Policy Modals --- */
+  /* INF partner row */
+  .footer-bottom{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,.14);
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .inf-text{
+    font-size:.9rem;
+    opacity:.85;
+    text-align:right;
+    max-width:520px;
+  }
+  .inf-logo{display:inline-flex;align-items:center;text-decoration:none}
+  .inf-logo img{
+    height:52px;width:auto;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.04);
+    padding:6px;
+    filter: drop-shadow(0 3px 10px rgba(0,0,0,.35));
+  }
+  .inf-logo img:hover{transform:translateY(-1px)}
+  @media (max-width: 640px){
+    .footer-bottom{justify-content:center}
+    .inf-text{text-align:center}
+    .inf-logo img{height:44px}
+  }
+
+  /* ===== Modals ===== */
   dialog.policy{
     border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
     max-width:780px;width:92%;
@@ -170,256 +222,261 @@
   .policy-body ul{margin:8px 0 12px 18px}
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
 
-  /* --- NEWSLETTER MODAL --- */
-  dialog.newsletter {
-    border: none;
-    border-radius: 16px;
-    padding: 30px;
-    background: #0b2a3d;
-    color: #fff;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    border: 1px solid var(--line);
+  /* Newsletter modal */
+  dialog.newsletter{
+    border:none;border-radius:16px;padding:30px;background:#0b2a3d;color:#fff;
+    max-width:500px;width:90%;
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
+    border:1px solid var(--line);
   }
-  dialog.newsletter::backdrop { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  dialog.newsletter::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  .newsletter-header{text-align:center;margin-bottom:20px}
+  .newsletter-header h3{color:var(--sun);font-size:1.8rem;margin-bottom:8px}
+  .newsletter-header p{opacity:0.8;font-size:0.95rem}
 
-  .newsletter-header { text-align: center; margin-bottom: 20px; }
-  .newsletter-header h3 { color: var(--sun); font-size: 1.8rem; margin-bottom: 8px; }
-  .newsletter-header p { opacity: 0.8; font-size: 0.95rem; }
-
-  /* --- HubSpot Styling --- */
-  .hs-form-frame .hs-form label { display:block; font-size:14px; color:#d9e2ea; margin:0 0 6px; }
-  .hs-form-frame .hs-form input[type="email"] {
-    width:100%; padding:14px; border-radius:10px; border:1px solid var(--line);
-    background:rgba(255,255,255,0.05); color:#fff; outline:none;
+  /* HubSpot styling */
+  .hs-form-frame .hs-form label{display:block;font-size:14px;color:#d9e2ea;margin:0 0 6px}
+  .hs-form-frame .hs-form input[type="email"]{
+    width:100%;padding:14px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(255,255,255,0.05);color:#fff;outline:none;
   }
   .hs-form-frame .hs-form input[type="submit"],
-  .hs-form-frame .hs-form .hs-button {
-    display:inline-block !important; width: 100% !important;
-    padding:14px !important; border-radius:10px !important; border:0 !important;
-    background:var(--accent) !important; color:#000 !important;
-    font-weight:800 !important; cursor:pointer !important; margin-top:16px !important;
-    text-transform: uppercase !important; letter-spacing: 1px !important;
-    font-family: 'Inter', sans-serif !important;
+  .hs-form-frame .hs-form .hs-button{
+    display:inline-block !important;width:100% !important;
+    padding:14px !important;border-radius:10px !important;border:0 !important;
+    background:var(--accent) !important;color:#000 !important;
+    font-weight:800 !important;cursor:pointer !important;margin-top:16px !important;
+    text-transform:uppercase !important;letter-spacing:1px !important;
+    font-family:'Inter', sans-serif !important;
   }
   .hs-form-frame .hs-form input[type="submit"]:hover,
-  .hs-form-frame .hs-form .hs-button:hover {
-    background: var(--amber) !important; transform: translateY(-2px);
+  .hs-form-frame .hs-form .hs-button:hover{
+    background:var(--amber) !important;transform:translateY(-2px);
   }
-  .hs-form iframe + div, .hs-form .legal-consent-container + div { display: none !important; }
+  .hs-form iframe + div, .hs-form .legal-consent-container + div{display:none !important}
 
-  /* --- Big CTA Button on Page --- */
-  .cta-box {
-    text-align: center; margin-top: 40px; padding: 40px;
-    background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid var(--line);
+  /* Big CTA */
+  .cta-box{
+    text-align:center;margin-top:40px;padding:40px;
+    background:rgba(255,255,255,0.03);border-radius:16px;border:1px solid var(--line);
   }
-  .cta-big {
-    background: var(--teal); color: #000; font-size: 1.2rem; padding: 16px 32px;
-    border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
-    transition: transform 0.2s ease;
+  .cta-big{
+    background:var(--teal);color:#000;font-size:1.2rem;padding:16px 32px;
+    border-radius:50px;font-weight:800;border:none;cursor:pointer;
+    transition:transform 0.2s ease;
   }
-  .cta-big:hover { transform: scale(1.05); background: #fff; }
+  .cta-big:hover{transform:scale(1.05);background:#fff}
 </style>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <a href="#" class="header-left">
-      <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
-      <div class="logo-word">Nude Beach Trips</div>
-    </a>
-    <button id="navJoin" class="cta">Join the list</button>
-  </header>
+<header class="site-header">
+  <a href="#" class="header-left">
+    <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
+    <div class="logo-word">Nude Beach Trips</div>
+  </a>
+  <button id="navJoin" class="cta">Join the list</button>
+</header>
 
-  <section class="hero" aria-label="Video hero">
-    <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <source src="/assets/hero.mp4" type="video/mp4">
-    </video>
-    <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
-    <div class="overlay"></div>
-    <div class="teal-wash"></div>
+<section class="hero" aria-label="Video hero">
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
+    <source src="/assets/hero.mp4" type="video/mp4">
+  </video>
+  <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
+  <div class="overlay"></div>
+  <div class="teal-wash"></div>
 
-    <div class="hero-content">
-      <h1>NUDE BEACH TRIPS</h1>
-      <p class="byline">
-        by
-        <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
-          <img src="/assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
-        </a>
-      </p>
-      <div class="stack-rotate" aria-live="polite">
-        <span>RELAX.</span>
-        <span>SUN.</span>
-        <span>SEA.</span>
-      </div>
-      <p style="max-width:740px;margin:14px auto 26px">Small groups, great locations. Zero awkward vibes.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#dates">Tour Dates</a>
-        <a class="btn ghost" href="#about">About</a>
-      </div>
+  <div class="hero-content">
+    <h1>NUDE BEACH TRIPS</h1>
+    <p class="byline">
+      by
+      <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
+        <img src="/assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
+      </a>
+    </p>
+    <div class="stack-rotate" aria-live="polite">
+      <span>RELAX.</span>
+      <span>SUN.</span>
+      <span>SEA.</span>
     </div>
-  </section>
-
-  <section id="dates" class="dates section">
-    <div class="wrap">
-      <h2>Tour Dates</h2>
-      <p class="lead">We're scouting and adding more events soon. Be the first to know.</p>
-      <div id="board" class="board" role="list"></div>
-
-      <div class="cta-box">
-        <button id="open-newsletter" class="cta-big">Get on the list</button>
-        <p style="margin-top:12px; font-size: 0.9rem; opacity:0.7">Spots are limited on our boutique tours. Unsubscribe anytime.</p>
-      </div>
+    <p style="max-width:740px;margin:14px auto 26px">Small groups, great locations. Zero awkward vibes.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#dates">Tour Dates</a>
+      <a class="btn ghost" href="#about">About</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="feature" aria-label="Community vibe">
-    <div class="wrap" style="padding:0 20px">
-      <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
-        <img src="/assets/people.jpg" alt="">
-      </div>
+<section id="dates" class="dates section">
+  <div class="wrap">
+    <h2>Tour Dates</h2>
+    <p class="lead">We're scouting and adding more events soon. Be the first to know.</p>
+    <div id="board" class="board" role="list"></div>
 
-      <div class="float-card reveal" data-reveal>
-        <div class="float-row">
-          <div>
-            <h3>Clothing optional, friendly, naturist.</h3>
-            <p>We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
-          </div>
-          <div>
-            <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
-            <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
+    <div class="cta-box">
+      <button id="open-newsletter" class="cta-big">Get on the list</button>
+      <p style="margin-top:12px; font-size: 0.9rem; opacity:0.7">Spots are limited on our boutique tours. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
 
-            <!-- CLICK THIS to open the Respect Policy popup -->
-            <button class="float-badge btnlike" id="respectBadge" type="button" style="border:1px solid var(--line);">
-              <span class="brand-dot" style="background:#e49d25"></span> Respect policy
-            </button>
-          </div>
+<section class="feature" aria-label="Community vibe">
+  <div class="wrap" style="padding:0 20px">
+    <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
+      <img src="/assets/people.jpg" alt="">
+    </div>
+
+    <div class="float-card reveal" data-reveal>
+      <div class="float-row">
+        <div>
+          <h3>Clothing optional, friendly, naturist.</h3>
+          <p>We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
+        </div>
+        <div>
+          <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
+          <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
+
+          <button class="float-badge btnlike" id="respectBadge" type="button">
+            <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="about" class="section">
-    <div class="wrap">
-      <h2>About</h2>
-      <p style="max-width:760px;color:#d9e2ea">
-        By <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>.
-        Curated trips for newbies and naturist experts. Beautiful places, respectful vibes.
-      </p>
-    </div>
-  </section>
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    <p style="max-width:760px;color:#d9e2ea">
+      By <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>.
+      Curated trips for newbies and naturist experts. Beautiful places, respectful vibes.
+    </p>
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div>© 2025 Nude Beach Trips</div>
-        <div class="footer-links">
-          <a href="#" id="respectLink" class="link">Respect policy</a>
-          <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
-          <a href="#" id="privacyLink" class="link">Privacy</a>
-          <a href="#" id="liabilityLink" class="link">Liability</a>
-        </div>
-      </div>
-
-      <div class="fineprint">
-        Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
-        Payment securely processed by Stripe Australia.
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>© 2025 Nude Beach Trips</div>
+      <div class="footer-links">
+        <a href="#" id="respectLink" class="link">Respect policy</a>
+        <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
+        <a href="#" id="privacyLink" class="link">Privacy</a>
+        <a href="#" id="liabilityLink" class="link">Liability</a>
       </div>
     </div>
-  </footer>
 
-  <!-- ===== Respect Policy Modal ===== -->
-  <dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
-    <div class="policy-header">
-      <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
-      <button class="close-btn" data-close="policyDialog" aria-label="Close">Close</button>
+    <div class="fineprint">
+      Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
+      Payment securely processed by Stripe Australia.
     </div>
-    <div class="policy-body">
-      <p><strong>Clothing optional, friendly, naturist.</strong><br>
-      We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
 
-      <p style="margin-top:12px">
-        <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</span>
-        <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</span>
-        <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</span>
-      </p>
+    <div class="footer-bottom" aria-label="INF corporate partner">
+      <div class="inf-text">An official corporate partner of the INF - upholding naturist values</div>
+      <a class="inf-logo" href="https://inf-fni.org/corporate-partners/" target="_blank" rel="noopener">
+        <img
+          src="https://inf-fni.org/wp-content/uploads/2025/05/INF-Logo-Partner-cmyk-1018x1024.jpg"
+          alt="INF corporate partner logo"
+          loading="lazy"
+          decoding="async"
+        >
+      </a>
+    </div>
+  </div>
+</footer>
 
-      <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
+<!-- ===== Respect Policy Modal ===== -->
+<dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
+  <div class="policy-header">
+    <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
+    <button class="close-btn" data-close="policyDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p><strong>Clothing optional, friendly, naturist.</strong><br>
+    We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
 
-      <p>• Nudity may be expected in some settings for the comfort of others. Participate at your own pace.</p>
-      <p>• We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.</p>
-      <p>• This is not a dating trip or a “lifestyle” trip. It’s about community, comfort, and body freedom.</p>
-      <p>• Respect others. Ask before photos, give personal space, and leave no trace.</p>
-    </div>
-  </dialog>
+    <p style="margin-top:12px">
+      <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</span>
+      <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</span>
+      <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</span>
+    </p>
 
-  <!-- ===== Cancellation Modal ===== -->
-  <dialog class="policy" id="cancelDialog" aria-labelledby="cancelTitle">
-    <div class="policy-header">
-      <strong id="cancelTitle">Cancellation & Refunds</strong>
-      <button class="close-btn" data-close="cancelDialog" aria-label="Close">Close</button>
-    </div>
-    <div class="policy-body">
-      <p><strong>Unless otherwise stated on a specific trip page, the following applies:</strong></p>
-      <ul>
-        <li><strong>30+ days before the event:</strong> Full refund <em>(minus card processing fees)</em>.</li>
-        <li><strong>30 to 14 days before the event:</strong> 50% refund.</li>
-        <li><strong>14 days or less:</strong> No refund.</li>
-      </ul>
-      <p>We strongly recommend <strong>private travel insurance</strong> that covers cancellations, medical care, and unexpected changes.</p>
-      <p>If a trip is cancelled by us for operational/safety reasons, we’ll outline the refund/credit options on the trip page and by email.</p>
-    </div>
-  </dialog>
+    <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
 
-  <!-- ===== Privacy Modal ===== -->
-  <dialog class="policy" id="privacyDialog" aria-labelledby="privacyTitle">
-    <div class="policy-header">
-      <strong id="privacyTitle">Privacy</strong>
-      <button class="close-btn" data-close="privacyDialog" aria-label="Close">Close</button>
-    </div>
-    <div class="policy-body">
-      <p>We collect only the information needed to run trips and communicate with you (e.g., name, email, and any trip-related details you provide).</p>
-      <p><strong>How we use it:</strong> trip administration, updates, participant approvals (where applicable), and customer support.</p>
-      <p><strong>Marketing emails:</strong> If you join the list, you can unsubscribe anytime.</p>
-      <p><strong>Sharing:</strong> We don’t sell your personal data. We may share limited details with essential providers only when required to deliver the trip (e.g., check-in lists), and only to the extent needed.</p>
-      <p><strong>Photos:</strong> We have a strict consent-first culture. No one should be photographed without permission.</p>
-    </div>
-  </dialog>
+    <p>• Nudity may be expected in some settings for the comfort of others. Participate at your own pace.</p>
+    <p>• We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.</p>
+    <p>• This is not a dating trip or a “lifestyle” trip. It’s about community, comfort, and body freedom.</p>
+    <p>• Respect others. Ask before photos, give personal space, and leave no trace.</p>
+  </div>
+</dialog>
 
-  <!-- ===== Liability Modal ===== -->
-  <dialog class="policy" id="liabilityDialog" aria-labelledby="liabilityTitle">
-    <div class="policy-header">
-      <strong id="liabilityTitle">Liability & Assumption of Risk</strong>
-      <button class="close-btn" data-close="liabilityDialog" aria-label="Close">Close</button>
-    </div>
-    <div class="policy-body">
-      <p>By participating in an event/trip, you acknowledge that travel and outdoor activities can involve risks (including illness, injury, weather, ocean conditions, transportation disruptions, and the actions of third parties).</p>
-      <p>You agree that you participate at your own risk and are responsible for:</p>
-      <ul>
-        <li>your own health/fitness and medical needs,</li>
-        <li>your travel documents (passport/visas),</li>
-        <li>your conduct and compliance with local laws and venue rules,</li>
-        <li>your personal property and valuables.</li>
-      </ul>
-      <p>We are not responsible for services provided by third parties (e.g., accommodation, transport operators, restaurants, excursions) beyond what is explicitly stated in the trip inclusions.</p>
-      <p>We strongly recommend travel insurance that includes medical coverage and trip interruption/cancellation.</p>
-    </div>
-  </dialog>
+<!-- ===== Cancellation Modal ===== -->
+<dialog class="policy" id="cancelDialog" aria-labelledby="cancelTitle">
+  <div class="policy-header">
+    <strong id="cancelTitle">Cancellation & Refunds</strong>
+    <button class="close-btn" data-close="cancelDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p><strong>Unless otherwise stated on a specific trip page, the following applies:</strong></p>
+    <ul>
+      <li><strong>30+ days before the event:</strong> Full refund <em>(minus card processing fees)</em>.</li>
+      <li><strong>30 to 14 days before the event:</strong> 50% refund.</li>
+      <li><strong>14 days or less:</strong> No refund.</li>
+    </ul>
+    <p>We strongly recommend <strong>private travel insurance</strong> that covers cancellations, medical care, and unexpected changes.</p>
+    <p>If a trip is cancelled by us for operational/safety reasons, we’ll outline the refund/credit options on the trip page and by email.</p>
+  </div>
+</dialog>
 
-  <!-- ===== Newsletter Modal (HubSpot) ===== -->
-  <dialog class="newsletter" id="newsletterDialog" aria-label="Join the list">
-    <button class="close-btn" data-close="newsletterDialog" style="float:right; margin-top:-10px;">✕</button>
-    <div class="newsletter-header">
-      <h3>Join Our Community</h3>
-      <p>Get insider access to the best naturist destinations.</p>
-    </div>
-    <div id="hubspot-form" class="hs-form-frame"></div>
-  </dialog>
+<!-- ===== Privacy Modal ===== -->
+<dialog class="policy" id="privacyDialog" aria-labelledby="privacyTitle">
+  <div class="policy-header">
+    <strong id="privacyTitle">Privacy</strong>
+    <button class="close-btn" data-close="privacyDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p>We collect only the information needed to run trips and communicate with you (e.g., name, email, and any trip-related details you provide).</p>
+    <p><strong>How we use it:</strong> trip administration, updates, participant approvals (where applicable), and customer support.</p>
+    <p><strong>Marketing emails:</strong> If you join the list, you can unsubscribe anytime.</p>
+    <p><strong>Sharing:</strong> We don’t sell your personal data. We may share limited details with essential providers only when required to deliver the trip (e.g., check-in lists), and only to the extent needed.</p>
+    <p><strong>Photos:</strong> We have a strict consent-first culture. No one should be photographed without permission.</p>
+  </div>
+</dialog>
+
+<!-- ===== Liability Modal ===== -->
+<dialog class="policy" id="liabilityDialog" aria-labelledby="liabilityTitle">
+  <div class="policy-header">
+    <strong id="liabilityTitle">Liability & Assumption of Risk</strong>
+    <button class="close-btn" data-close="liabilityDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p>By participating in an event/trip, you acknowledge that travel and outdoor activities can involve risks (including illness, injury, weather, ocean conditions, transportation disruptions, and the actions of third parties).</p>
+    <p>You agree that you participate at your own risk and are responsible for:</p>
+    <ul>
+      <li>your own health/fitness and medical needs,</li>
+      <li>your travel documents (passport/visas),</li>
+      <li>your conduct and compliance with local laws and venue rules,</li>
+      <li>your personal property and valuables.</li>
+    </ul>
+    <p>We are not responsible for services provided by third parties (e.g., accommodation, transport operators, restaurants, excursions) beyond what is explicitly stated in the trip inclusions.</p>
+    <p>We strongly recommend travel insurance that includes medical coverage and trip interruption/cancellation.</p>
+  </div>
+</dialog>
+
+<!-- ===== Newsletter Modal (HubSpot) ===== -->
+<dialog class="newsletter" id="newsletterDialog" aria-label="Join the list">
+  <button class="close-btn" data-close="newsletterDialog" style="float:right; margin-top:-10px;">✕</button>
+  <div class="newsletter-header">
+    <h3>Join Our Community</h3>
+    <p>Get insider access to the best naturist destinations.</p>
+  </div>
+  <div id="hubspot-form" class="hs-form-frame"></div>
+</dialog>
 
 <script>
-  // --- Tour Dates Data (use flag icons so they ALWAYS display) ---
+  // --- Tour Dates Data ---
   // flagCode = ISO 3166-1 alpha-2 lowercase (e.g. "ca", "mx")
   const trips = [
     {
@@ -459,11 +516,17 @@
         ? `<img class="flagimg" src="${flagURL(t.flagCode)}" alt="" aria-hidden="true" loading="lazy" decoding="async">`
         : ``;
 
+      // Two-line city on mobile: split at comma
+      const parts = String(t.city).split(',').map(s => s.trim()).filter(Boolean);
+      const cityHTML = parts.length >= 2
+        ? `<span class="line">${parts[0]},</span><span class="line">${parts.slice(1).join(', ')}</span>`
+        : `<span class="line">${t.city}</span>`;
+
       row.innerHTML=`
         <div class="city" ${clickable}>
           <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
           <div class="city-text">
-            ${t.city}${flagImg}
+            ${cityHTML}${flagImg}
           </div>
         </div>
         <div class="date">${t.date}</div>
@@ -493,11 +556,10 @@
     });
   }
 
-  // --- Generic dialog helpers ---
+  // Dialog helpers
   function openDialog(id){ document.getElementById(id).showModal(); }
   function closeDialog(id){ document.getElementById(id).close(); }
 
-  // Close buttons (data-close)
   document.addEventListener('click', (e)=>{
     const btn = e.target.closest('[data-close]');
     if (!btn) return;
@@ -505,22 +567,18 @@
     closeDialog(id);
   });
 
-  // Click-outside to close for policy dialogs + newsletter
   ['policyDialog','cancelDialog','privacyDialog','liabilityDialog','newsletterDialog'].forEach(id=>{
     const d = document.getElementById(id);
     d.addEventListener('click', (e)=>{ if(e.target === d) d.close(); });
   });
 
-  // Footer links -> open dialogs
   document.getElementById('respectLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
   document.getElementById('cancelLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('cancelDialog'); });
   document.getElementById('privacyLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('privacyDialog'); });
   document.getElementById('liabilityLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
-
-  // Feature badge -> open Respect Policy dialog
   document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
 
-  // --- Newsletter Modal Logic ---
+  // Newsletter modal logic
   const newsModal = document.getElementById('newsletterDialog');
   const newsOpen = document.getElementById('open-newsletter');
   const newsNav = document.getElementById('navJoin');
@@ -529,7 +587,7 @@
   newsOpen.addEventListener('click', openNews);
   newsNav.addEventListener('click', (e) => { e.preventDefault(); openNews(); });
 
-  // --- Reveal on scroll ---
+  // Reveal on scroll
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -541,7 +599,7 @@
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
 
-  // --- HubSpot form create (THIS IS THE HUBSPOT STUFF) ---
+  // HubSpot form create
   (function waitHS(){
     if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
     hbspt.forms.create({
@@ -552,14 +610,14 @@
     });
   })();
 
-  // --- HubSpot Email Placeholder ---
+  // HubSpot email placeholder
   document.addEventListener("DOMContentLoaded", function() {
     const observer = new MutationObserver(() => {
       const emailInput = document.querySelector('.hs-form input[type="email"]');
       if (emailInput && !emailInput.placeholder) {
         emailInput.placeholder = 'you@email.com';
       }
-    })
+    });
     observer.observe(document.body, { childList: true, subtree: true });
   });
 </script>
