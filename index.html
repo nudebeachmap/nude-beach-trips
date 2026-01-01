@@ -123,7 +123,7 @@
   .float-card p{margin:0;color:#d9e2ea}
   .float-row{display:grid;gap:18px;grid-template-columns:2fr 1fr}
 
-  /* Badges: unified typography (fixes Respect policy mismatch) */
+  /* Badges: unified typography */
   .float-badge{
     display:inline-flex;gap:8px;align-items:center;
     padding:8px 12px;border-radius:999px;
@@ -153,59 +153,84 @@
     .reveal,.reveal.show{opacity:1; transform:none}
   }
 
-  /* ===== Footer ===== */
+  /* ===== Footer (two-tone background aligned with content) ===== */
   footer{
     padding:42px 0 54px;
     text-align:center;
     color:#d9e2ea;
     border-top:1px solid var(--line);
+    /* Keep footer base subtle; the two-tone happens inside .footer-slab */
     background:
       radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.10), transparent 70%),
       linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
   }
   .footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
+
+  /* This creates the "colour change" starting exactly at the inner content edges */
+  .footer-slab{
+    border-radius:18px;
+    overflow:hidden;                 /* hard edge for the colour split */
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.10);
+  }
+  .footer-top-slab{
+    padding:22px 18px 18px;
+    /* darker green-ish zone for © + links */
+    background:
+      radial-gradient(800px 220px at 50% 0%, rgba(12,186,180,.16), transparent 68%),
+      linear-gradient(180deg, rgba(3,34,40,.55), rgba(3,34,40,.72));
+  }
+  .footer-bottom-slab{
+    padding:18px 18px 22px;
+    /* lighter green that deepens downward */
+    background: linear-gradient(180deg, rgba(12,186,180,.14), rgba(3,34,40,.88));
+  }
+
   .footer-top{display:grid;gap:10px;justify-items:center}
   .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
   .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
   .fineprint{
-    opacity:.75;
-    font-size:.9rem;
+    opacity:.82;
+    font-size:.95rem;
     max-width:900px;
-    margin:12px auto 0;
-    line-height:1.45;
+    margin:0 auto;
+    line-height:1.55;
   }
 
   /* INF partner row */
   .footer-bottom{
-    margin-top:18px;
-    padding-top:18px;
+    margin-top:16px;
+    padding-top:16px;
     border-top:1px solid rgba(255,255,255,.14);
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:space-between;
     gap:14px;
     flex-wrap:wrap;
   }
   .inf-text{
-    font-size:.9rem;
-    opacity:.85;
-    text-align:right;
-    max-width:520px;
+    font-size:.95rem;
+    opacity:.92;
+    text-align:left;
+    max-width:560px;
+    line-height:1.3;
   }
   .inf-logo{display:inline-flex;align-items:center;text-decoration:none}
   .inf-logo img{
-    height:52px;width:auto;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.16);
-    background:rgba(255,255,255,.04);
-    padding:6px;
-    filter: drop-shadow(0 3px 10px rgba(0,0,0,.35));
+    height:72px; width:auto;          /* bigger */
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);
+    padding:8px;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,.38));
   }
   .inf-logo img:hover{transform:translateY(-1px)}
   @media (max-width: 640px){
+    .footer-top-slab,.footer-bottom-slab{padding-left:16px;padding-right:16px}
     .footer-bottom{justify-content:center}
     .inf-text{text-align:center}
-    .inf-logo img{height:44px}
+    .inf-logo img{height:86px}
   }
 
   /* ===== Modals ===== */
@@ -336,7 +361,6 @@
         <div>
           <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
           <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
-
           <button class="float-badge btnlike" id="respectBadge" type="button">
             <span class="brand-dot" style="background:#e49d25"></span> Respect policy
           </button>
@@ -358,31 +382,43 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div>© 2025 Nude Beach Trips</div>
-      <div class="footer-links">
-        <a href="#" id="respectLink" class="link">Respect policy</a>
-        <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
-        <a href="#" id="privacyLink" class="link">Privacy</a>
-        <a href="#" id="liabilityLink" class="link">Liability</a>
+
+    <!-- Two-tone block that aligns perfectly with inner width -->
+    <div class="footer-slab">
+
+      <!-- DARK ZONE: © + links -->
+      <div class="footer-top-slab">
+        <div class="footer-top">
+          <div>© 2025 Nude Beach Trips</div>
+          <div class="footer-links">
+            <a href="#" id="respectLink" class="link">Respect policy</a>
+            <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
+            <a href="#" id="privacyLink" class="link">Privacy</a>
+            <a href="#" id="liabilityLink" class="link">Liability</a>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="fineprint">
-      Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
-      Payment securely processed by Stripe Australia.
-    </div>
+      <!-- LIGHTER-THEN-DARKER ZONE: fineprint + INF -->
+      <div class="footer-bottom-slab">
+        <div class="fineprint">
+          Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
+          Payment securely processed by Stripe Australia.
+        </div>
 
-    <div class="footer-bottom" aria-label="INF corporate partner">
-      <div class="inf-text">An official corporate partner of the INF - upholding naturist values</div>
-      <a class="inf-logo" href="https://inf-fni.org/corporate-partners/" target="_blank" rel="noopener">
-        <img
-          src="https://inf-fni.org/wp-content/uploads/2025/05/INF-Logo-Partner-cmyk-1018x1024.jpg"
-          alt="INF corporate partner logo"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
+        <div class="footer-bottom" aria-label="INF corporate partner">
+          <div class="inf-text">An official corporate partner of the INF - upholding naturist values</div>
+          <a class="inf-logo" href="https://inf-fni.org/corporate-partners/" target="_blank" rel="noopener">
+            <img
+              src="https://inf-fni.org/wp-content/uploads/2025/05/INF-Logo-Partner-cmyk-1018x1024.jpg"
+              alt="INF corporate partner logo"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </footer>
@@ -477,7 +513,6 @@
 
 <script>
   // --- Tour Dates Data ---
-  // flagCode = ISO 3166-1 alpha-2 lowercase (e.g. "ca", "mx")
   const trips = [
     {
       city: "Vancouver, Canada",
@@ -496,7 +531,6 @@
     }
   ];
 
-  // Flag helper (20px wide PNG via FlagCDN)
   const flagURL = (code) => code ? `https://flagcdn.com/w20/${String(code).toLowerCase()}.png` : "";
 
   const board = document.getElementById('board');
@@ -516,7 +550,6 @@
         ? `<img class="flagimg" src="${flagURL(t.flagCode)}" alt="" aria-hidden="true" loading="lazy" decoding="async">`
         : ``;
 
-      // Two-line city on mobile: split at comma
       const parts = String(t.city).split(',').map(s => s.trim()).filter(Boolean);
       const cityHTML = parts.length >= 2
         ? `<span class="line">${parts[0]},</span><span class="line">${parts.slice(1).join(', ')}</span>`
@@ -525,9 +558,7 @@
       row.innerHTML=`
         <div class="city" ${clickable}>
           <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
-          <div class="city-text">
-            ${cityHTML}${flagImg}
-          </div>
+          <div class="city-text">${cityHTML}${flagImg}</div>
         </div>
         <div class="date">${t.date}</div>
         <button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>
@@ -556,15 +587,13 @@
     });
   }
 
-  // Dialog helpers
   function openDialog(id){ document.getElementById(id).showModal(); }
   function closeDialog(id){ document.getElementById(id).close(); }
 
   document.addEventListener('click', (e)=>{
     const btn = e.target.closest('[data-close]');
     if (!btn) return;
-    const id = btn.getAttribute('data-close');
-    closeDialog(id);
+    closeDialog(btn.getAttribute('data-close'));
   });
 
   ['policyDialog','cancelDialog','privacyDialog','liabilityDialog','newsletterDialog'].forEach(id=>{
@@ -576,18 +605,16 @@
   document.getElementById('cancelLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('cancelDialog'); });
   document.getElementById('privacyLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('privacyDialog'); });
   document.getElementById('liabilityLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
+
   document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
 
-  // Newsletter modal logic
   const newsModal = document.getElementById('newsletterDialog');
   const newsOpen = document.getElementById('open-newsletter');
   const newsNav = document.getElementById('navJoin');
-
   const openNews = () => newsModal.showModal();
   newsOpen.addEventListener('click', openNews);
-  newsNav.addEventListener('click', (e) => { e.preventDefault(); openNews(); });
+  newsNav.addEventListener('click', (e)=>{ e.preventDefault(); openNews(); });
 
-  // Reveal on scroll
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -599,7 +626,6 @@
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
 
-  // HubSpot form create
   (function waitHS(){
     if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
     hbspt.forms.create({
@@ -610,13 +636,10 @@
     });
   })();
 
-  // HubSpot email placeholder
   document.addEventListener("DOMContentLoaded", function() {
     const observer = new MutationObserver(() => {
       const emailInput = document.querySelector('.hs-form input[type="email"]');
-      if (emailInput && !emailInput.placeholder) {
-        emailInput.placeholder = 'you@email.com';
-      }
+      if (emailInput && !emailInput.placeholder) emailInput.placeholder = 'you@email.com';
     });
     observer.observe(document.body, { childList: true, subtree: true });
   });
