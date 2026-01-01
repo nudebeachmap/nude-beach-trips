@@ -153,59 +153,118 @@
     .reveal,.reveal.show{opacity:1; transform:none}
   }
 
-  /* ===== Footer ===== */
+  /* ===== Footer v2 (spaced + better hierarchy) ===== */
   footer{
-    padding:42px 0 54px;
-    text-align:center;
+    padding: 48px 0 64px;
     color:#d9e2ea;
     border-top:1px solid var(--line);
     background:
-      radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.10), transparent 70%),
-      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
+      radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.14), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.34));
   }
   .footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
-  .footer-top{display:grid;gap:10px;justify-items:center}
-  .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
-  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-  .fineprint{
+
+  .footer-brand{
+    text-align:center;
+    font-weight:900;
+    letter-spacing:.02em;
+    margin-bottom:16px;
+    color:#ffffff;
+  }
+  .footer-brand small{
+    display:block;
     opacity:.75;
-    font-size:.9rem;
-    max-width:900px;
-    margin:12px auto 0;
-    line-height:1.45;
+    font-weight:700;
+    margin-top:6px;
   }
 
-  /* INF partner row */
-  .footer-bottom{
-    margin-top:18px;
-    padding-top:18px;
-    border-top:1px solid rgba(255,255,255,.14);
+  .footer-links{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin: 14px 0 20px;
+  }
+  .footer-links a{
+    text-decoration:none;
+    font-weight:800;
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.06);
+    color:#fff;
+    line-height:1;
+  }
+  .footer-links a:hover{
+    background: rgba(248,192,20,.16);
+    border-color: rgba(248,192,20,.45);
+  }
+
+  .footer-card{
+    margin: 0 auto 22px;
+    max-width: 720px;
+    border:1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.18);
+    border-radius:16px;
+    padding:18px 18px;
+    text-align:center;
+  }
+  .footer-card .fineprint{
+    margin:0;
+    opacity:.82;
+    font-size:.95rem;
+    line-height:1.5;
+  }
+
+  .footer-inf{
+    margin-top: 10px;
+    border:1px solid rgba(248,192,20,.28);
+    background: linear-gradient(180deg, rgba(248,192,20,.14), rgba(12,186,180,.06));
+    border-radius:18px;
+    padding:18px 16px;
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:space-between;
     gap:14px;
-    flex-wrap:wrap;
   }
-  .inf-text{
-    font-size:.9rem;
-    opacity:.85;
-    text-align:right;
-    max-width:520px;
+  .footer-inf .inf-copy{
+    font-weight:800;
+    opacity:.92;
+    line-height:1.25;
+    color:#ffffff;
   }
-  .inf-logo{display:inline-flex;align-items:center;text-decoration:none}
-  .inf-logo img{
-    height:52px;width:auto;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.16);
-    background:rgba(255,255,255,.04);
-    padding:6px;
-    filter: drop-shadow(0 3px 10px rgba(0,0,0,.35));
+  .footer-inf .inf-copy span{
+    display:block;
+    font-weight:700;
+    opacity:.75;
+    margin-top:6px;
+    font-size:.92rem;
   }
-  .inf-logo img:hover{transform:translateY(-1px)}
+
+  .footer-inf a.inf-logo{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+  }
+  .footer-inf a.inf-logo img{
+    height:84px;
+    width:auto;
+    border-radius:14px;
+    padding:8px;
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow: 0 10px 26px rgba(0,0,0,.35);
+  }
+  .footer-inf a.inf-logo img:hover{ transform: translateY(-2px); }
+
   @media (max-width: 640px){
-    .footer-bottom{justify-content:center}
-    .inf-text{text-align:center}
-    .inf-logo img{height:44px}
+    .footer-inf{
+      flex-direction:column;
+      text-align:center;
+      padding:20px 16px;
+    }
+    .footer-inf a.inf-logo img{ height:96px; }
   }
 
   /* ===== Modals ===== */
@@ -229,7 +288,7 @@
     box-shadow:0 20px 60px rgba(0,0,0,0.7);
     border:1px solid var(--line);
   }
-  dialog.newsletter::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  dialog.newsletter::backdrop { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
   .newsletter-header{text-align:center;margin-bottom:20px}
   .newsletter-header h3{color:var(--sun);font-size:1.8rem;margin-bottom:8px}
   .newsletter-header p{opacity:0.8;font-size:0.95rem}
@@ -246,14 +305,14 @@
     padding:14px !important;border-radius:10px !important;border:0 !important;
     background:var(--accent) !important;color:#000 !important;
     font-weight:800 !important;cursor:pointer !important;margin-top:16px !important;
-    text-transform:uppercase !important;letter-spacing:1px !important;
-    font-family:'Inter', sans-serif !important;
+    text-transform: uppercase !important; letter-spacing: 1px !important;
+    font-family: 'Inter', sans-serif !important;
   }
   .hs-form-frame .hs-form input[type="submit"]:hover,
   .hs-form-frame .hs-form .hs-button:hover{
-    background:var(--amber) !important;transform:translateY(-2px);
+    background: var(--amber) !important; transform: translateY(-2px);
   }
-  .hs-form iframe + div, .hs-form .legal-consent-container + div{display:none !important}
+  .hs-form iframe + div, .hs-form .legal-consent-container + div { display: none !important; }
 
   /* Big CTA */
   .cta-box{
@@ -262,10 +321,10 @@
   }
   .cta-big{
     background:var(--teal);color:#000;font-size:1.2rem;padding:16px 32px;
-    border-radius:50px;font-weight:800;border:none;cursor:pointer;
-    transition:transform 0.2s ease;
+    border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
+    transition: transform 0.2s ease;
   }
-  .cta-big:hover{transform:scale(1.05);background:#fff}
+  .cta-big:hover{ transform: scale(1.05); background: #fff; }
 </style>
 </head>
 
@@ -336,7 +395,6 @@
         <div>
           <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
           <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
-
           <button class="float-badge btnlike" id="respectBadge" type="button">
             <span class="brand-dot" style="background:#e49d25"></span> Respect policy
           </button>
@@ -358,23 +416,32 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div>© 2025 Nude Beach Trips</div>
-      <div class="footer-links">
-        <a href="#" id="respectLink" class="link">Respect policy</a>
-        <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
-        <a href="#" id="privacyLink" class="link">Privacy</a>
-        <a href="#" id="liabilityLink" class="link">Liability</a>
+
+    <div class="footer-brand">
+      © 2025 Nude Beach Trips
+      <small>Respectful, small-group nude beach getaways</small>
+    </div>
+
+    <div class="footer-links" aria-label="Policies">
+      <a href="#" id="respectLink">Respect policy</a>
+      <a href="#" id="cancelLink">Cancellation & refunds</a>
+      <a href="#" id="privacyLink">Privacy</a>
+      <a href="#" id="liabilityLink">Liability</a>
+    </div>
+
+    <div class="footer-card">
+      <p class="fineprint">
+        Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
+        Payment securely processed by Stripe Australia.
+      </p>
+    </div>
+
+    <div class="footer-inf" aria-label="INF corporate partner">
+      <div class="inf-copy">
+        An official corporate partner of the INF — upholding naturist values
+        <span>Learn more about INF corporate partners</span>
       </div>
-    </div>
 
-    <div class="fineprint">
-      Nude Beach Trips is operated by NBM Trips, ABN 472 758 778 49.<br>
-      Payment securely processed by Stripe Australia.
-    </div>
-
-    <div class="footer-bottom" aria-label="INF corporate partner">
-      <div class="inf-text">An official corporate partner of the INF - upholding naturist values</div>
       <a class="inf-logo" href="https://inf-fni.org/corporate-partners/" target="_blank" rel="noopener">
         <img
           src="https://inf-fni.org/wp-content/uploads/2025/05/INF-Logo-Partner-cmyk-1018x1024.jpg"
@@ -384,6 +451,7 @@
         >
       </a>
     </div>
+
   </div>
 </footer>
 
@@ -477,7 +545,6 @@
 
 <script>
   // --- Tour Dates Data ---
-  // flagCode = ISO 3166-1 alpha-2 lowercase (e.g. "ca", "mx")
   const trips = [
     {
       city: "Vancouver, Canada",
@@ -496,7 +563,6 @@
     }
   ];
 
-  // Flag helper (20px wide PNG via FlagCDN)
   const flagURL = (code) => code ? `https://flagcdn.com/w20/${String(code).toLowerCase()}.png` : "";
 
   const board = document.getElementById('board');
@@ -516,7 +582,6 @@
         ? `<img class="flagimg" src="${flagURL(t.flagCode)}" alt="" aria-hidden="true" loading="lazy" decoding="async">`
         : ``;
 
-      // Two-line city on mobile: split at comma
       const parts = String(t.city).split(',').map(s => s.trim()).filter(Boolean);
       const cityHTML = parts.length >= 2
         ? `<span class="line">${parts[0]},</span><span class="line">${parts.slice(1).join(', ')}</span>`
@@ -525,9 +590,7 @@
       row.innerHTML=`
         <div class="city" ${clickable}>
           <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
-          <div class="city-text">
-            ${cityHTML}${flagImg}
-          </div>
+          <div class="city-text">${cityHTML}${flagImg}</div>
         </div>
         <div class="date">${t.date}</div>
         <button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>
@@ -556,15 +619,13 @@
     });
   }
 
-  // Dialog helpers
   function openDialog(id){ document.getElementById(id).showModal(); }
   function closeDialog(id){ document.getElementById(id).close(); }
 
   document.addEventListener('click', (e)=>{
     const btn = e.target.closest('[data-close]');
     if (!btn) return;
-    const id = btn.getAttribute('data-close');
-    closeDialog(id);
+    closeDialog(btn.getAttribute('data-close'));
   });
 
   ['policyDialog','cancelDialog','privacyDialog','liabilityDialog','newsletterDialog'].forEach(id=>{
@@ -578,7 +639,6 @@
   document.getElementById('liabilityLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
   document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
 
-  // Newsletter modal logic
   const newsModal = document.getElementById('newsletterDialog');
   const newsOpen = document.getElementById('open-newsletter');
   const newsNav = document.getElementById('navJoin');
@@ -587,7 +647,6 @@
   newsOpen.addEventListener('click', openNews);
   newsNav.addEventListener('click', (e) => { e.preventDefault(); openNews(); });
 
-  // Reveal on scroll
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -599,7 +658,6 @@
   }, {threshold: 0.25});
   els.forEach(el=> io.observe(el));
 
-  // HubSpot form create
   (function waitHS(){
     if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
     hbspt.forms.create({
@@ -610,7 +668,6 @@
     });
   })();
 
-  // HubSpot email placeholder
   document.addEventListener("DOMContentLoaded", function() {
     const observer = new MutationObserver(() => {
       const emailInput = document.querySelector('.hs-form input[type="email"]');
