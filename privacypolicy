@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Privacy Policy – Nude Beach Trips</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
+<style>
+  :root{ --ink:#26150e; --sun:#f8c014; --bg1:#0b2a3d; --white:#ffffff; --line: rgba(255,255,255,.22); }
+  body{ margin:0; background:var(--bg1); color:var(--white); font-family:Inter,system-ui; line-height:1.6; padding:40px 20px; text-align:center; }
+  .wrap{ max-width:600px; margin:0 auto; background:rgba(0,0,0,0.4); padding:40px; border-radius:16px; border:1px solid var(--line); }
+  h1{ font-family:"Playfair Display",serif; color:var(--sun); margin-top:0; }
+  h2{ margin-top:30px; font-size:16px; text-transform:uppercase; letter-spacing:.08em; color:var(--sun); }
+  ul{ text-align:left; padding-left:20px; margin-top:16px; }
+  li{ margin-bottom:14px; }
+  p{ text-align:left; }
+  .btn{ display:inline-block; margin-top:30px; padding:12px 24px; background:var(--sun); color:#000; text-decoration:none; font-weight:800; border-radius:50px; }
+  .btn:hover{ background:#e49d25; }
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <h1>Privacy Policy</h1>
+  <p>
+    This policy explains how Nude Beach Trips (“we”, “us”, “our”) collects, uses,
+    and protects personal information.
+  </p>
+
+  <h2>Who We Are</h2>
+  <p>
+    Nude Beach Trips is operated by <strong>NBM Trips</strong>, an Australian business
+    (ABN 47&nbsp;275&nbsp;877&nbsp;849), and operates independently from Nude Beach Map.
+  </p>
+
+  <h2>Information We Collect</h2>
+  <ul>
+    <li>Name</li>
+    <li>Email address</li>
+    <li>Phone number and social media details (if provided)</li>
+    <li>Billing address</li>
+    <li>Co-traveller details (such as names)</li>
+    <li>Messages and enquiries</li>
+  </ul>
+
+  <h2>How We Use Your Information</h2>
+  <ul>
+    <li>To process bookings and manage trips</li>
+    <li>To communicate with you about enquiries or bookings</li>
+    <li>To coordinate logistics with accommodation providers</li>
+    <li>To meet legal or regulatory requirements</li>
+  </ul>
+
+  <h2>Payments</h2>
+  <p>
+    Payments are processed securely by third-party providers including
+    <strong>WeTravel</strong> and <strong>Stripe</strong>.
+    We do not store or process credit card details ourselves.
+  </p>
+
+  <h2>Sharing Information</h2>
+  <ul>
+    <li>Accommodation or hotel operators (names only, where required)</li>
+    <li>Legal or regulatory authorities, if required by law</li>
+  </ul>
+  <p>We do not sell or rent personal information.</p>
+
+  <h2>Analytics & Tools</h2>
+  <p>
+    We use trusted services such as <strong>HubSpot</strong>, <strong>Google Analytics</strong>,
+    <strong>JotForm</strong>, <strong>WeTravel</strong>, and <strong>Vercel</strong>
+    to operate and improve our website and bookings.
+  </p>
+
+  <h2>Children & Minors</h2>
+  <p>
+    Nude Beach Trips is open to all ages, however only individuals aged 18+
+    may make a booking. Parents or legal guardians may book on behalf of minors
+    and retain full responsibility for them during the trip.
+  </p>
+
+  <h2>International Use</h2>
+  <p>
+    We operate internationally. Personal data may be processed outside your
+    country, in line with applicable privacy laws including Australian,
+    European (GDPR), and other global standards.
+  </p>
+
+  <h2>Your Rights</h2>
+  <p>
+    You may request access to, correction of, or deletion of your personal data,
+    subject to applicable laws.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about privacy can be sent to:<br>
+    <strong>hello@nudebeachtrips.com</strong>
+  </p>
+
+  <a href="javascript:window.close()" class="btn">Close Window</a>
+</div>
+
+</body>
+</html>
