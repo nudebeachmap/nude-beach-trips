@@ -118,6 +118,21 @@
   .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
   .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
   .feature-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);pointer-events:none}
+
+  /* === NEW: rotating images (NBT01..NBT04) === */
+  .media-rotator{position:relative;width:100%;height:100%}
+  .media-rotator img{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 900ms ease;
+    will-change: opacity;
+  }
+  .media-rotator img.is-active{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .media-rotator img{transition:none}
+  }
+
   .float-card{position:relative;max-width:900px;margin:-70px auto 0;background:rgba(11,42,61,.75);border:1px solid var(--line);backdrop-filter: blur(10px);border-radius:16px;padding:24px;display:grid;gap:16px}
   .float-card h3{font-size:clamp(22px,3.2vw,30px);margin:0;font-family:"Playfair Display", Georgia, serif}
   .float-card p{margin:0;color:#d9e2ea}
@@ -349,7 +364,13 @@
 <section class="feature" aria-label="Community vibe">
   <div class="wrap" style="padding:0 20px">
     <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
-      <img src="/assets/people.jpg" alt="">
+      <!-- ROTATING IMAGES (replaces people.jpg) -->
+      <div class="media-rotator" data-rotator data-interval="3000" aria-hidden="true">
+        <img src="/assets/NBT01.jpg" alt="" class="is-active">
+        <img src="/assets/NBT02.jpg" alt="">
+        <img src="/assets/NBT03.jpg" alt="">
+        <img src="/assets/NBT04.jpg" alt="">
+      </div>
     </div>
 
     <div class="float-card reveal" data-reveal>
@@ -644,6 +665,32 @@
     });
     observer.observe(document.body, { childList: true, subtree: true });
   });
+
+  // ===== NEW: Feature image rotator (NBT01..NBT04) =====
+  (function initRotators(){
+    const rotators = document.querySelectorAll('[data-rotator]');
+    rotators.forEach(rotator => {
+      const imgs = Array.from(rotator.querySelectorAll('img'));
+      if (!imgs.length) return;
+
+      // Ensure exactly one starts visible
+      let current = imgs.findIndex(img => img.classList.contains('is-active'));
+      if (current < 0) current = 0;
+      imgs.forEach((img, idx) => img.classList.toggle('is-active', idx === current));
+
+      // Reduced motion: keep first and stop
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced || imgs.length === 1) return;
+
+      const interval = Math.max(1500, parseInt(rotator.getAttribute('data-interval') || '3000', 10));
+
+      setInterval(() => {
+        imgs[current].classList.remove('is-active');
+        current = (current + 1) % imgs.length;
+        imgs[current].classList.add('is-active');
+      }, interval);
+    });
+  })();
 </script>
 </body>
 </html>
