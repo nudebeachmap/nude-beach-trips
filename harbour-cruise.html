@@ -5,175 +5,233 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Clothing-Optional Harbour Cruise – Nude Beach Trips</title>
 
-<meta name="description" content="A clothing-optional harbour cruise focused on comfort, consent, and summer freedom. Limited tickets available." />
+<meta name="description" content="A calm, body-positive, clothing-optional harbour cruise hosted by Nude Beach Map. 19+ only. Limited capacity." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
 
 <style>
-  /* ===== Brand palette (same as index) ===== */
   :root{
-    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --charcoal:#343537; --lemon:#fff200; --white:#ffffff;
-    --bg1:#0b2a3d; --accent: var(--sun); --line: rgba(255,255,255,.22);
+    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --white:#ffffff;
+    --bgBase:#0b2a3d;
+    --line: rgba(255,255,255,.22);
+    --muted:#d9e2ea;
   }
 
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
-    margin:0; color:var(--white);
-    background: radial-gradient(1200px 700px at 50% 10%, rgba(12,186,180,.25), transparent 60%) , #0b2a3d;
+    margin:0;
+    color:var(--white);
     font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     line-height:1.7;
+    background: var(--bgBase);
     min-height:100dvh;
+    display:flex;
+    flex-direction:column;
   }
 
-  h1,h2,h3{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
-  a{color:var(--teal);text-decoration:none}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-  .text-container{max-width:760px;margin:0 auto;text-align:center}
+  /* ===== ONE SINGLE PAGE BACKGROUND (prevents “wonky” section seams) ===== */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(1200px 700px at 50% 10%, rgba(12,186,180,.25), transparent 60%),
+      radial-gradient(900px 420px at 20% 70%, rgba(248,192,20,.10), transparent 65%),
+      linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
+      var(--bgBase);
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,0) 30%, rgba(0,0,0,.22));
+    opacity:.55;
+  }
 
-  /* ===== Header (matches your earlier page) ===== */
+  main{flex:1}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  .text-container{max-width:820px;margin:0 auto;text-align:center}
+
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin-top:0;line-height:1.1}
+  h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
+  a{color:var(--teal);text-decoration:none}
+
+  /* ===== Header ===== */
   .site-header{
     position:fixed;top:0;left:0;right:0;z-index:99;
     display:flex;justify-content:space-between;align-items:center;
     padding:14px 20px;
-    background:linear-gradient(180deg,rgba(0,0,0,.8),transparent);
+    background:linear-gradient(180deg,rgba(0,0,0,.65),transparent);
   }
-  .header-left{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-  .logo-img{height:38px;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
-  .logo-word{font-weight:800;letter-spacing:.5px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-size:1.05rem}
+  .header-left{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-img{height:38px;width:auto;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+  .logo-word{font-weight:800;letter-spacing:.5px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-size:1.1rem}
   .cta{
     background:var(--sun);color:#000;
     padding:10px 18px;border-radius:999px;
-    font-weight:800;border:0;cursor:pointer;text-decoration:none
+    font-weight:800;border:0;cursor:pointer;
+    text-decoration:none;
   }
 
-  /* ===== HERO ===== */
-  .hero{position:relative;height:70vh;min-height:520px;overflow:hidden}
+  /* ===== Hero ===== */
+  .hero{position:relative;height:72vh;overflow:hidden}
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background: radial-gradient(90% 70% at 50% 70%, rgba(11,42,61,.10), rgba(11,42,61,.85));
+    pointer-events:none;
+  }
   .hero-slide{
     position:absolute;inset:0;
     background-size:cover;
-    background-position:center;
-    opacity:0;
-    transition:opacity 1.8s ease;
-    filter:brightness(.62) contrast(1.05) saturate(1.08);
+    background-repeat:no-repeat;
+    opacity:0;transition:opacity 1.6s ease;
+    filter:contrast(1.05) saturate(1.08) brightness(.65);
+    transform:scale(1.02);
   }
   .hero-slide.active{opacity:1}
-  /* Align harbour1 + harbour3 to bottom */
-  .hero-slide.bottom{background-position:bottom center;}
+  /* Align harbour1 + harbour3 to show more bottom */
+  .hero-slide.pos-bottom{background-position:center bottom}
+  .hero-slide.pos-center{background-position:center center}
 
   .hero-content{
-    position:relative;height:100%;
-    display:grid;place-items:center;text-align:center;
-    padding:92px 20px 24px;
+    position:relative;
+    height:100%;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding-top:44px;
   }
   .hero h1{
-    font-size:clamp(44px,9vw,90px);
+    font-size:clamp(44px,8.5vw,90px);
     text-transform:uppercase;
-    text-shadow:0 4px 20px rgba(0,0,0,.55)
+    text-shadow:0 4px 20px rgba(0,0,0,.55);
+    margin:0 0 10px;
+    letter-spacing:.5px;
   }
-  .hero p{font-size:1.1rem;color:#d9e2ea;margin:10px 0 0}
+  .hero p{font-size:1.15rem;color:var(--muted);margin:0}
 
-  /* ===== Sections (fix background consistency) ===== */
-  .section{padding:80px 0}
-  /* Instead of totally different backgrounds, use ONE consistent "dark slab" overlay */
-  .bg-dark{
-    background: rgba(0,0,0,.22);
-    border-top:1px solid rgba(255,255,255,.08);
-    border-bottom:1px solid rgba(255,255,255,.08);
-  }
+  /* ===== Sections ===== */
+  .section{padding:84px 0}
+  .section.sep{border-top:1px solid rgba(255,255,255,.10)}
+  .section.tight{padding:72px 0}
 
-  h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
-
-  /* ===== 3-image strip under intro ===== */
+  /* ===== 3-image strip ===== */
   .strip{
-    margin-top:26px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
+    max-width:980px;margin:38px auto 0;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:16px;
   }
   .strip img{
-    width:100%;
-    height:160px;
-    object-fit:cover;
-    border-radius:14px;
-    border:1px solid var(--line);
-    filter:contrast(1.05) saturate(1.08);
+    width:100%;height:200px;object-fit:cover;
+    border-radius:16px;border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+    filter:contrast(1.03) saturate(1.05);
   }
-  @media (max-width: 760px){
-    .strip{grid-template-columns:1fr}
-    .strip img{height:200px}
+  @media (max-width:820px){
+    .strip{grid-template-columns:1fr;max-width:560px}
+    .strip img{height:210px}
   }
 
-  /* ===== Yacht section (simple layout) ===== */
-  .yacht{
-    max-width:980px;margin:0 auto;
-    display:grid;grid-template-columns:1fr 1fr;gap:22px;
-    align-items:center;
+  /* ===== Soft panel surface ===== */
+  .panel{
+    background: rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:18px;
+    padding:26px;
+    box-shadow:0 18px 44px rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
   }
-  .yacht img{
-    width:100%;height:360px;object-fit:cover;
-    border-radius:16px;border:1px solid var(--line);
+  .panel p{color:var(--muted)}
+  .bullets{color:var(--muted);margin:0;padding-left:18px;text-align:left;display:inline-block}
+  .bullets li{margin:6px 0}
+
+  /* ===== Experience block ===== */
+  .experience{max-width:900px;margin:0 auto}
+  .experience .meta{margin:0 auto 22px;color:var(--muted)}
+  .experience strong{color:#fff}
+
+  /* ===== Yacht section ===== */
+  .yacht-grid{
+    display:grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap:22px;
+    align-items:stretch;
+    max-width:1060px;
+    margin:0 auto;
   }
-  .yacht .card{
-    background:rgba(255,255,255,.05);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:22px;
-    text-align:left;
+  .yacht-img{
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.15);
+    box-shadow:0 18px 44px rgba(0,0,0,.25);
   }
-  .yacht ul{margin:10px 0 0;padding-left:18px;color:#d9e2ea}
-  .yacht li{margin:8px 0}
-  @media (max-width: 920px){
-    .yacht{grid-template-columns:1fr}
-    .yacht img{height:280px}
-    .yacht .card{text-align:left}
+  .yacht-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .yacht-card h3{
+    margin:0 0 12px;
+    font-size:1.6rem;
+    color:#fff;
+    font-family:"Playfair Display",Georgia,serif;
+  }
+  .yacht-card ul{margin:0;padding-left:18px;color:var(--muted)}
+  .yacht-card li{margin:10px 0}
+  .yacht-kicker{max-width:860px;margin:10px auto 26px;color:var(--muted);text-align:center}
+  @media (max-width:920px){
+    .yacht-grid{grid-template-columns:1fr;max-width:720px}
+    .yacht-img img{height:320px}
   }
 
   /* ===== Ticket card ===== */
   .ticket-card{
     max-width:460px;margin:0 auto;
-    background:rgba(255,255,255,.05);
-    border:1px solid var(--line);
-    border-radius:16px;padding:28px;
-    text-align:center
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:18px;padding:28px;
+    text-align:center;
+    box-shadow:0 18px 44px rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
   }
-  .ticket-price{
-    font-size:2.4rem;font-weight:800;color:var(--sun)
-  }
-  .ticket-meta{opacity:.8;font-size:.95rem;margin-top:6px}
+  .ticket-price{font-size:2.4rem;font-weight:800;color:var(--sun)}
+  .ticket-meta{opacity:.86;font-size:.95rem;margin-top:8px;color:var(--muted)}
   .btn{
-    display:inline-block;margin-top:20px;
+    display:inline-block;margin-top:18px;
     background:var(--sun);color:#000;
     padding:14px 28px;border-radius:50px;
-    font-weight:800;border:none;cursor:pointer
+    font-weight:800;border:none;cursor:pointer;
   }
-  .btn:hover{background:var(--amber);transform:translateY(-1px)}
-  .mini-note{font-size:.85rem;opacity:.75;margin-top:10px}
+  .fine{font-size:.85rem;opacity:.8;margin-top:10px;color:var(--muted)}
 
   /* ===== FAQ ===== */
-  .faq-wrap{max-width:820px;margin:0 auto}
-  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-wrap{max-width:860px;margin:0 auto}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.14)}
   .faq-header{
-    display:flex;justify-content:space-between;
-    padding:22px 0;cursor:pointer;font-weight:600
+    display:flex;justify-content:space-between;gap:12px;
+    padding:22px 0;cursor:pointer;font-weight:700;
   }
-  .faq-body{max-height:0;overflow:hidden;transition:max-height .3s}
-  .faq-item.open .faq-body{max-height:900px}
-  .faq-content{padding-bottom:20px;color:#d9e2ea}
+  .faq-header span{opacity:.8}
+  .faq-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-item.open .faq-body{max-height:520px}
+  .faq-content{padding:0 0 20px;color:var(--muted)}
+  .faq-content p{margin:0 0 12px}
 
   /* ===== Footer ===== */
   footer{
-    border-top:1px solid var(--line);
-    padding:40px 20px;text-align:center;
-    color:#d9e2ea;
-    background:rgba(0,0,0,.12);
+    border-top:1px solid rgba(255,255,255,.14);
+    padding:40px 20px;
+    text-align:center;
+    color:var(--muted);
+    background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.22));
   }
+  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
-  /* ===== Modals (EXACT policy styling from index) ===== */
+  /* ===== Modals (Respect Policy EXACT style/structure from index) ===== */
   dialog.policy{
     border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
     max-width:780px;width:92%;
@@ -182,12 +240,12 @@
   }
   dialog.policy::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
   .policy-header{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
-  .policy-body{padding:18px;color:#d9e2ea}
+  .policy-body{padding:18px;color:var(--muted)}
   .policy-body p{margin:0 0 10px}
   .policy-body ul{margin:8px 0 12px 18px}
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
 
-  /* badges used inside policy modal (same as index snippet) */
+  /* Badge (same look as index) */
   .float-badge{
     display:inline-flex;gap:8px;align-items:center;
     padding:8px 12px;border-radius:999px;
@@ -198,45 +256,55 @@
     font-size:14px;
     line-height:1;
   }
+  button.float-badge{
+    appearance:none;-webkit-appearance:none;
+    background:rgba(12,186,180,.18);
+    color:#fff;
+    border:1px solid var(--line);
+    cursor:pointer;
+  }
   .brand-dot{width:10px;height:10px;border-radius:50%}
 
-  /* Apply modal (simple, matches style) */
-  dialog.apply{
-    border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
-    width:min(980px,94%);
+  /* Apply modal */
+  dialog#applicationModal{
+    border:none;border-radius:16px;padding:0;
+    width:min(980px,92vw);
     box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    border: 1px solid var(--line);
+    border:1px solid rgba(255,255,255,.18);
+    overflow:hidden;
+    background:#0b2a3d;
   }
-  dialog.apply::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
-  .apply-body iframe{width:100%;height:80vh;border:0}
+  dialog#applicationModal::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-slide{transition:none}
+    .faq-body{transition:none}
+  }
 </style>
 </head>
 
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="header-left">
-    <img src="assets/nude-beach-map-logo.gif" class="logo-img" alt="Nude Beach Trips">
+  <a href="/" class="header-left">
+    <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
     <span class="logo-word">Nude Beach Trips</span>
   </a>
-  <div style="display:flex;gap:10px;align-items:center">
-    <button id="respectBadge" class="cta" style="background:transparent;color:#fff;border:1px solid var(--line)">Respect policy</button>
-    <a href="#tickets" class="cta">Book Ticket</a>
-  </div>
+  <a href="#tickets" class="cta">Book Ticket</a>
 </header>
 
 <main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-slide active bottom" style="background-image:url('assets/harbour1.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('assets/harbour2.jpg')"></div>
-  <div class="hero-slide bottom" style="background-image:url('assets/harbour3.jpg')"></div>
+<section class="hero" aria-label="Harbour cruise hero">
+  <div class="hero-slide pos-bottom active" style="background-image:url('assets/harbour1.jpg')"></div>
+  <div class="hero-slide pos-center" style="background-image:url('assets/harbour2.jpg')"></div>
+  <div class="hero-slide pos-bottom" style="background-image:url('assets/harbour3.jpg')"></div>
 
   <div class="hero-content wrap">
     <div>
       <h1>Harbour Cruise</h1>
-      <p>Vancouver • Sat 15th August, 2026 • 11am–5pm • <strong>19+</strong></p>
+      <p>Clothing-Optional • 11am–5pm • 19+ • Limited Capacity</p>
     </div>
   </div>
 </section>
@@ -246,65 +314,100 @@
   <div class="text-container">
     <h2>A Floating Nude Beach</h2>
 
-    <p style="color:#d9e2ea">
-      This is a calm, body-positive cruise for people who like nude beaches — and for newbies who are curious and want to try
-      a clothes-free event in a relaxed setting.
+    <p style="color:var(--muted);max-width:760px;margin:0 auto 16px">
+      This is a calm, body-positive cruise for people who like nude beaches — and for newbies who are curious
+      and want to try a clothes-free event in a relaxed setting.
     </p>
 
-    <p style="color:#d9e2ea">
+    <p style="color:var(--muted);max-width:760px;margin:0 auto 22px">
       Not a party boat. Not a dating event. Just summer, scenery, swimming, and a respectful crowd — hosted by Nude Beach Map.
     </p>
 
-    <!-- 3-image strip -->
-    <div class="strip" aria-label="Harbour Cruise photo strip">
-      <img src="assets/harbour-strip1.jpg" alt="Harbour Cruise photo 1" loading="lazy" decoding="async">
-      <img src="assets/harbour-strip2.jpg" alt="Harbour Cruise photo 2" loading="lazy" decoding="async">
-      <img src="assets/harbour-strip3.jpg" alt="Harbour Cruise photo 3" loading="lazy" decoding="async">
+    <div style="margin-top:18px">
+      <button class="float-badge btnlike" id="respectBadge" type="button">
+        <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+      </button>
+    </div>
+
+    <div class="strip" aria-label="Harbour cruise photo strip">
+      <img src="assets/harbour-strip1.jpg" alt="Cruise vibe photo 1" loading="lazy" decoding="async">
+      <img src="assets/harbour-strip2.jpg" alt="Cruise vibe photo 2" loading="lazy" decoding="async">
+      <img src="assets/harbour-strip3.jpg" alt="Cruise vibe photo 3" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="section bg-dark">
-  <div class="text-container wrap">
+<section class="section sep wrap">
+  <div class="text-container">
     <h2>The Experience</h2>
 
-    <p style="color:#d9e2ea">
-      Cruise leaves Granville Island <strong>11am–5pm</strong>.
-      Anchor and beach location depends on weather conditions, with at least <strong>2 hours of swimming time</strong>.
-    </p>
+    <div class="experience panel">
+      <p class="meta">
+        Cruise leaves Granville Island <strong>11am–5pm</strong>. Anchor and beach location depends on weather conditions,
+        with at least <strong>2 hours of swimming time</strong>.
+      </p>
 
-    <p style="color:#d9e2ea">
-      We’ll cruise out from Granville Island. Once we’re clear of the busy harbour — and conditions allow —
-      the captain will give the go-ahead for clothing-optional time onboard. We anticipate this will be once we leave the busy Vancouver harbour.
-      We’ll find a secluded cove and drop anchor for swim time.
-    </p>
+      <p>
+        We’ll cruise out from Granville Island. Once we’re clear of the busy harbour — and conditions allow —
+        the captain will give the go-ahead for clothing-optional time onboard (we anticipate this is after we leave the main Vancouver harbour).
+        Then we’ll find a secluded cove, drop anchor, and settle in for swim time.
+      </p>
 
-    <p style="color:#d9e2ea;margin-top:18px">
-      • Clothing optional (never mandatory)<br>
-      • Swim stop(s) if conditions permit<br>
-      • BYO food & drinks<br>
-      • Hosted & moderated by Nude Beach Map<br>
-      • Strict respect & consent policy
-    </p>
+      <ul class="bullets" aria-label="Cruise highlights">
+        <li>Clothing optional</li>
+        <li>Swim stop at anchor in a beautiful setting</li>
+        <li>BYO food & drinks</li>
+        <li>Hosted & moderated by Nude Beach Map</li>
+        <li>Strict respect & consent culture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THE DAY LOOKS LIKE -->
+<section class="section sep wrap">
+  <div class="text-container">
+    <h2>What the Day Looks Like</h2>
+
+    <div class="panel" style="max-width:860px;margin:0 auto;text-align:left">
+      <ul class="bullets" style="max-width:780px">
+        <li><strong>11:00am</strong> – Departure from Granville Island</li>
+        <li>Scenic cruising through Burrard Inlet and <strong>Howe Sound or Indian Arm</strong> (weather dependent)</li>
+        <li>Anchoring near a quiet beach or sheltered bay</li>
+        <li><strong>Clothing-Optional</strong> – once the captain confirms it’s appropriate, we strip off</li>
+        <li>At least <strong>2 hours</strong> anchored for swimming + lounging (conditions permitting)</li>
+        <li><strong>5:00pm</strong> – Return to Granville Island</li>
+      </ul>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0">
+
+      <p style="margin:0;color:var(--muted)">
+        Some people strip off straight away. Others ease into it. Both are completely fine.
+        The vibe is friendly, respectful, and beginner-safe — the kind of day you’ll look back on and think,
+        “Why didn’t I do this sooner?”
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- THE YACHT -->
-<section class="section wrap">
-  <div class="text-container" style="margin-bottom:18px">
+<section class="section sep wrap" id="yacht">
+  <div class="text-container">
     <h2>The Yacht</h2>
-    <p style="color:#d9e2ea">
-      A custom-designed 94-foot superyacht with plenty of room to spread out — lounge up front, soak up views on the flybridge,
+    <p class="yacht-kicker">
+      A custom-designed <strong>94-foot</strong> superyacht with plenty of room to spread out — lounge up front, soak up views on the flybridge,
       and enjoy the coastline in comfort.
     </p>
   </div>
 
-  <div class="yacht">
-    <img src="assets/yacht1.jpg" alt="Superyacht on the water" loading="lazy" decoding="async">
+  <div class="yacht-grid">
+    <div class="yacht-img" aria-label="Yacht image">
+      <img src="assets/yacht1.jpg" alt="The yacht on the water" loading="lazy" decoding="async">
+    </div>
 
-    <div class="card">
-      <h3 style="margin:0 0 10px;color:#fff">What you’ll love onboard</h3>
+    <div class="panel yacht-card">
+      <h3>What you’ll love onboard</h3>
       <ul>
         <li><strong>Bow area:</strong> spacious deck + bench lounging with front-row views</li>
         <li><strong>Sunbeds:</strong> two large sunbeds for total relaxation</li>
@@ -317,31 +420,24 @@
 </section>
 
 <!-- TICKETS -->
-<section class="section bg-dark wrap" id="tickets">
+<section class="section sep wrap" id="tickets">
   <div class="text-container">
     <h2>Tickets</h2>
-    <p style="color:#d9e2ea;margin-bottom:30px">
-      One simple ticket. No tiers. No upsells. Screening required to keep the space safe & balanced.
-    </p>
+    <p style="color:var(--muted);margin:0 0 28px">One simple ticket. No tiers. No upsells.</p>
 
     <div class="ticket-card">
-      <h3>Harbour Cruise Ticket</h3>
+      <h3 style="margin:0 0 10px">Harbour Cruise Ticket</h3>
       <div class="ticket-price">$198</div>
-      <div class="ticket-meta">Per person • Limited capacity • 19+</div>
-      <button class="btn open-application" type="button">Apply for Invitation</button>
-      <p class="mini-note">
-        We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.
-      </p>
-      <p class="mini-note">
-        <a href="#" id="respectLinkInline" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Read the Respect Policy</a>
-      </p>
+      <div class="ticket-meta">Per person • 19+ • Limited capacity</div>
+      <button class="btn open-application">Apply for Invitation</button>
+      <p class="fine">Short screening to keep the space safe & balanced</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section wrap" id="faq">
-  <div class="text-container" style="margin-bottom:12px">
+<section class="section sep wrap" id="faq">
+  <div class="text-container">
     <h2>FAQ</h2>
   </div>
 
@@ -351,18 +447,12 @@
       <div class="faq-header">Do I have to get naked? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          <p>We don’t believe that nudity should ever be enforced, so the answer is <strong>no</strong>.</p>
-
-          <p><strong>But… why do you want to come to an event if you have no intent to participate.</strong></p>
-
-          <p> What matters is your vibe and your intent. This cruise is for people who are
-             genuinely curious about a clothes-free, respectful space — even if you’re not
-            sure how quickly you’ll feel comfortable.
-</p>
-
-<p>
-  Some people strip off straight away. Others take their time. Both are totally fine.
-</p>
+          <p><strong>No.</strong> Nudity is never enforced.</p>
+          <p>
+            What matters is <strong>intent</strong>. If you’re coming because you’re curious and want to try a clothes-free social space,
+            that’s perfect — even if you’re not sure how fast you’ll jump in.
+          </p>
+          <p>Some people strip off straight away. Others take their time. Both are totally fine.</p>
         </div>
       </div>
     </div>
@@ -371,7 +461,7 @@
       <div class="faq-header">Why do you screen guests? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          To ensure a genuine, respectful mix of people. This keeps the vibe relaxed, safe, and non-creepy — especially for first-timers.
+          To keep the vibe relaxed, respectful, and balanced. 
         </div>
       </div>
     </div>
@@ -380,36 +470,52 @@
       <div class="faq-header">Is this a party cruise? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          No. This is a social, body-positive environment — not a booze cruise, not a dating event, and not a “scene.”
+          No. It’s social and fun, but it’s not a booze cruise. Think chill music, good chats, swim time, and lots of personal space.
         </div>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-header">What if I’m brand new to nude beaches? <span>+</span></div>
+      <div class="faq-header">Is this a dating / lifestyle event? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          Perfect. This is a relaxed, hosted, newbie-friendly way to try a clothes-free event in a respectful setting.
-          Take it at your own pace.
+          No. This is a relaxed, body-positive social cruise hosted by Nude Beach Map — not a dating event and not a “lifestyle” scene.
         </div>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-header">What’s included? <span>+</span></div>
+      <div class="faq-header">Are singles welcome? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          The yacht + crew, hosted vibe by Nude Beach Map, and time anchored for swimming (conditions permitting).
-          Food and drinks are BYO — and there’s a BBQ + fridge onboard.
+          Yes — single men and women are welcome. Screening helps us keep a respectful, balanced mix onboard.
         </div>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-header">What should I bring? <span>+</span></div>
+      <div class="faq-header">What’s the phone / photo policy? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          A towel, sunscreen, water, snacks/lunch, a light layer for later, and anything you want for a comfortable day on the water.
+          Consent-first. No photos or video of anyone else without clear permission. If you’re snapping a selfie, make sure nobody’s in the background.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Can I share photos online after? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Only photos of <strong>yourself</strong> (or your partner with their permission). No posting images where other guests appear, even in the background.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Is BYO food and drinks allowed? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Yes. Bring what you like. There’s a BBQ and galley onboard — throw your lunch on the grill if you want and store your drinks in the fridge.
         </div>
       </div>
     </div>
@@ -418,16 +524,25 @@
       <div class="faq-header">Where do we anchor? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          The exact anchor + beach location depends on weather and conditions. We aim for a secluded bay with safe swimming and privacy.
+          It depends on weather and sea conditions. We’ll aim for a quiet bay with good privacy and safe swimming conditions.
         </div>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-header">Can I take photos? <span>+</span></div>
+      <div class="faq-header">When does clothing-optional time start? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          Consent-first, always. No one should be photographed without permission. We’ll cover the rules before we depart.
+          Only once the captain gives the OK. We expect that will be after we leave the busy Vancouver harbour and conditions allow.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">What if the weather is bad? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Route and anchoring are weather-dependent. If conditions don’t allow for a safe swim stop, we’ll keep it scenic and safe and adjust the plan.
         </div>
       </div>
     </div>
@@ -436,9 +551,8 @@
       <div class="faq-header">Why is this event 19+? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          Make no mistake this is a “family friendly” cruise. However the difficulties with children on a moving boat,
-          challenging swimming surfaces and no lifeguards make it necessary to have this event as strictly 19+.
-          It also ensures everyone is of legal drinking age.
+          Make no mistake — this is a “family friendly” vibe. But kids on a moving boat, tricky swim surfaces, and no lifeguards makes it necessary
+          to keep this event strictly 19+. It also ensures everyone is of legal drinking age.
         </div>
       </div>
     </div>
@@ -450,9 +564,12 @@
 
 <footer>
   © 2026 Nude Beach Trips · Operated by Nude Beach Map
+  <div class="footer-links">
+    <a href="#" id="respectLink" class="link">Respect policy</a>
+  </div>
 </footer>
 
-<!-- ===== Respect Policy Modal (EXACT from index) ===== -->
+<!-- ===== Respect Policy Modal (EXACT style/structure from index) ===== -->
 <dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
   <div class="policy-header">
     <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
@@ -463,9 +580,15 @@
     We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
 
     <p style="margin-top:12px">
-      <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</span>
-      <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</span>
-      <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</span>
+      <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px">
+        <span class="brand-dot" style="background:#0cbab4"></span> Small groups
+      </span>
+      <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px">
+        <span class="brand-dot" style="background:#f8c014"></span> Beautiful spots
+      </span>
+      <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex">
+        <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+      </span>
     </p>
 
     <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
@@ -478,16 +601,11 @@
 </dialog>
 
 <!-- APPLY MODAL -->
-<dialog class="apply" id="applicationModal" aria-label="Apply for invitation">
-  <div class="policy-header">
-    <strong>Harbour Cruise Application</strong>
-    <button class="close-btn" data-close="applicationModal" aria-label="Close">Close</button>
-  </div>
-  <div class="apply-body">
-    <iframe
-      title="Application form"
-      src="https://form.jotform.com/253504449025050?ticket=Harbour%20Cruise%20$198"></iframe>
-  </div>
+<dialog id="applicationModal" aria-label="Application form">
+  <iframe
+    src="https://form.jotform.com/253504449025050?ticket=Harbour%20Cruise%20$198"
+    style="width:100%;height:80vh;border:none"
+    title="Harbour cruise application"></iframe>
 </dialog>
 
 <script>
@@ -495,18 +613,24 @@
   (function(){
     let i=0;
     const slides=document.querySelectorAll('.hero-slide');
+    if(!slides.length) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
     setInterval(()=>{
       slides[i].classList.remove('active');
       i=(i+1)%slides.length;
       slides[i].classList.add('active');
-    },5000);
+    }, 5200);
   })();
 
-  /* FAQ */
+  /* FAQ toggles */
   document.querySelectorAll('.faq-header').forEach(h=>{
-    h.onclick=()=>h.parentElement.classList.toggle('open');
+    h.addEventListener('click', ()=> h.parentElement.classList.toggle('open'));
   });
 
+  /* Dialog helpers (match index behaviour) */
   function openDialog(id){ document.getElementById(id).showModal(); }
   function closeDialog(id){ document.getElementById(id).close(); }
 
@@ -521,14 +645,13 @@
     d.addEventListener('click', (e)=>{ if(e.target === d) d.close(); });
   });
 
-  // Respect policy triggers
+  document.getElementById('respectLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
   document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
-  document.getElementById('respectLinkInline').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
 
-  // Apply modal
-  const applyModal=document.getElementById('applicationModal');
+  /* Application modal */
+  const appModal=document.getElementById('applicationModal');
   document.querySelectorAll('.open-application').forEach(b=>{
-    b.onclick=()=>applyModal.showModal();
+    b.addEventListener('click', ()=> appModal.showModal());
   });
 </script>
 
