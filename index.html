@@ -174,30 +174,26 @@
     text-align:center;
     color:#d9e2ea;
     border-top:1px solid var(--line);
-    /* Keep footer base subtle; the two-tone happens inside .footer-slab */
     background:
       radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.10), transparent 70%),
       linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
   }
   .footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
 
-  /* This creates the "colour change" starting exactly at the inner content edges */
   .footer-slab{
     border-radius:18px;
-    overflow:hidden;                 /* hard edge for the colour split */
+    overflow:hidden;
     border:1px solid rgba(255,255,255,.14);
     background: rgba(0,0,0,.10);
   }
   .footer-top-slab{
     padding:22px 18px 18px;
-    /* darker green-ish zone for © + links */
     background:
       radial-gradient(800px 220px at 50% 0%, rgba(12,186,180,.16), transparent 68%),
       linear-gradient(180deg, rgba(3,34,40,.55), rgba(3,34,40,.72));
   }
   .footer-bottom-slab{
     padding:18px 18px 22px;
-    /* lighter green that deepens downward */
     background: linear-gradient(180deg, rgba(12,186,180,.14), rgba(3,34,40,.88));
   }
 
@@ -213,7 +209,6 @@
     line-height:1.55;
   }
 
-  /* INF partner row */
   .footer-bottom{
     margin-top:16px;
     padding-top:16px;
@@ -233,7 +228,7 @@
   }
   .inf-logo{display:inline-flex;align-items:center;text-decoration:none}
   .inf-logo img{
-    height:72px; width:auto;          /* bigger */
+    height:72px; width:auto;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.18);
     background:rgba(255,255,255,.06);
@@ -262,7 +257,6 @@
   .policy-body ul{margin:8px 0 12px 18px}
   .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
 
-  /* Newsletter modal */
   dialog.newsletter{
     border:none;border-radius:16px;padding:30px;background:#0b2a3d;color:#fff;
     max-width:500px;width:90%;
@@ -274,7 +268,6 @@
   .newsletter-header h3{color:var(--sun);font-size:1.8rem;margin-bottom:8px}
   .newsletter-header p{opacity:0.8;font-size:0.95rem}
 
-  /* HubSpot styling */
   .hs-form-frame .hs-form label{display:block;font-size:14px;color:#d9e2ea;margin:0 0 6px}
   .hs-form-frame .hs-form input[type="email"]{
     width:100%;padding:14px;border-radius:10px;border:1px solid var(--line);
@@ -295,7 +288,6 @@
   }
   .hs-form iframe + div, .hs-form .legal-consent-container + div{display:none !important}
 
-  /* Big CTA */
   .cta-box{
     text-align:center;margin-top:40px;padding:40px;
     background:rgba(255,255,255,0.03);border-radius:16px;border:1px solid var(--line);
@@ -364,7 +356,6 @@
 <section class="feature" aria-label="Community vibe">
   <div class="wrap" style="padding:0 20px">
     <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
-      <!-- ROTATING IMAGES (replaces people.jpg) -->
       <div class="media-rotator" data-rotator data-interval="3000" aria-hidden="true">
         <img src="/assets/NBT01.jpg" alt="" class="is-active">
         <img src="/assets/NBT02.jpg" alt="">
@@ -403,14 +394,10 @@
 
 <footer>
   <div class="footer-inner">
-
-    <!-- Two-tone block that aligns perfectly with inner width -->
     <div class="footer-slab">
-
-      <!-- DARK ZONE: © + links -->
       <div class="footer-top-slab">
         <div class="footer-top">
-          <div>© 2025 Nude Beach Trips</div>
+          <div>© 2026 Nude Beach Trips</div>
           <div class="footer-links">
             <a href="#" id="respectLink" class="link">Respect policy</a>
             <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
@@ -420,7 +407,6 @@
         </div>
       </div>
 
-      <!-- LIGHTER-THEN-DARKER ZONE: fineprint + INF -->
       <div class="footer-bottom-slab">
         <div class="fineprint">
           Nude Beach Trips is operated by Nude Beach Map, BN 709086508BC0001.<br>
@@ -539,9 +525,10 @@
     {
       city: "Vancouver, Canada",
       flagCode: "ca",
-      date: "TBC August 2026",
+      date: "Sat 15th August, 2026",
       blurb: "First-ever nude beach cruise in Vancouver. Relaxed and scenic.",
-      img: "/assets/vancouver-thumb.jpg"
+      img: "/assets/vancouver-thumb.jpg",
+      link: "harbour-cruise.html"
     },
     {
       city: "Zipolite, Mexico",
@@ -566,6 +553,7 @@
       const row=document.createElement('div');
       row.className='row';
       row.setAttribute('role','listitem');
+
       const clickable = t.link ? `onclick="window.location='${t.link}'" style='cursor:pointer'` : "";
 
       const flagImg = t.flagCode
@@ -673,12 +661,10 @@
       const imgs = Array.from(rotator.querySelectorAll('img'));
       if (!imgs.length) return;
 
-      // Ensure exactly one starts visible
       let current = imgs.findIndex(img => img.classList.contains('is-active'));
       if (current < 0) current = 0;
       imgs.forEach((img, idx) => img.classList.toggle('is-active', idx === current));
 
-      // Reduced motion: keep first and stop
       const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced || imgs.length === 1) return;
 
