@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Clothing-Optional Harbour Cruise – Nude Beach Trips</title>
+
+<meta name="description" content="A clothing-optional harbour cruise focused on freedom, connection, and summer energy. Limited tickets available." />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
+<style>
+/* === SAME CORE STYLES AS YOUR ZIPOLITE PAGE === */
+:root{
+  --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --white:#ffffff;
+  --bg1:#0b2a3d; --line: rgba(255,255,255,.22);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg1);color:#fff;
+  font-family:Inter,system-ui;line-height:1.7;
+  min-height:100dvh;display:flex;flex-direction:column;
+}
+main{flex:1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.text-container{max-width:680px;margin:0 auto;text-align:center}
+h1,h2,h3{font-family:"Playfair Display",serif;margin-top:0}
+h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
+a{color:var(--teal);text-decoration:none}
+
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:99;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 20px;
+  background:linear-gradient(180deg,rgba(0,0,0,.8),transparent);
+}
+.logo-img{height:38px;border-radius:6px}
+.logo-word{font-weight:800}
+.cta{
+  background:var(--sun);color:#000;
+  padding:10px 18px;border-radius:999px;
+  font-weight:800
+}
+
+/* Hero */
+.hero{position:relative;height:70vh;overflow:hidden}
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;transition:opacity 2s;
+  filter:brightness(.6)
+}
+.hero-slide.active{opacity:1}
+.hero-content{
+  position:relative;height:100%;
+  display:grid;place-items:center;text-align:center
+}
+.hero h1{
+  font-size:clamp(44px,9vw,90px);
+  text-transform:uppercase;
+  text-shadow:0 4px 20px rgba(0,0,0,.5)
+}
+.hero p{font-size:1.2rem}
+
+/* Sections */
+.section{padding:80px 0}
+.bg-dark{background:rgba(0,0,0,.25)}
+
+/* Ticket card */
+.ticket-card{
+  max-width:460px;margin:0 auto;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  border-radius:16px;padding:28px;
+  text-align:center
+}
+.ticket-price{
+  font-size:2.4rem;font-weight:800;color:var(--sun)
+}
+.ticket-meta{opacity:.8;font-size:.95rem;margin-top:6px}
+
+.btn{
+  display:inline-block;margin-top:20px;
+  background:var(--sun);color:#000;
+  padding:14px 28px;border-radius:50px;
+  font-weight:800;border:none;cursor:pointer
+}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-header{
+  display:flex;justify-content:space-between;
+  padding:22px 0;cursor:pointer;font-weight:600
+}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-item.open .faq-body{max-height:400px}
+.faq-content{padding-bottom:20px;color:#d9e2ea}
+
+/* Footer (simplified – keep your full one if desired) */
+footer{
+  border-top:1px solid var(--line);
+  padding:40px 20px;text-align:center
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="/" class="header-left">
+    <img src="assets/nude-beach-map-logo.gif" class="logo-img">
+    <span class="logo-word">Nude Beach Trips</span>
+  </a>
+  <a href="#tickets" class="cta">Book Ticket</a>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slide active" style="background-image:url('assets/harbour1.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/harbour2.jpg')"></div>
+
+  <div class="hero-content wrap">
+    <div>
+      <h1>Harbour Cruise</h1>
+      <p>Clothing-Optional • Summer Evening • Limited Capacity</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section wrap">
+  <div class="text-container">
+    <h2>A Floating Nude Beach</h2>
+    <p>
+      This is not a party boat.  
+      It’s a relaxed, body-positive harbour cruise for people who value comfort,
+      consent, and genuine connection.
+    </p>
+    <p style="color:#d9e2ea">
+      Think sun on your skin, cool water nearby, good music, easy conversations,
+      and a respectful crowd — all while anchored in one of the most beautiful
+      stretches of coastline around.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section bg-dark">
+  <div class="text-container wrap">
+    <h2>The Experience</h2>
+    <p style="color:#d9e2ea">
+      • Clothing optional (never mandatory)<br>
+      • Swim stops (conditions permitting)<br>
+      • BYO food & drinks<br>
+      • Hosted & moderated by Nude Beach Map<br>
+      • Strict respect & consent policy
+    </p>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="section wrap" id="tickets">
+  <div class="text-container">
+    <h2>Tickets</h2>
+    <p style="color:#d9e2ea;margin-bottom:30px">
+      One simple ticket. No tiers. No upsells.
+    </p>
+
+    <div class="ticket-card">
+      <h3>Harbour Cruise Ticket</h3>
+      <div class="ticket-price">$198</div>
+      <div class="ticket-meta">Per person • Limited capacity</div>
+      <button class="btn open-application">Apply for Invitation</button>
+      <p style="font-size:.85rem;opacity:.75;margin-top:10px">
+        Screening required to keep the space safe & balanced
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-dark">
+  <div class="wrap" style="max-width:800px">
+    <div class="text-container">
+      <h2>FAQ</h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Do I have to be nude? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          No. Clothing is optional. Participation is about intent and respect,
+          not enforcement.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Why do you screen guests? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          To ensure a genuine, respectful mix of people. This keeps the vibe
+          relaxed and non-creepy.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Is this a party cruise? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          No. This is a social, body-positive environment — not a booze cruise,
+          not a lifestyle event.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2025 Nude Beach Trips · Operated by Nude Beach Map
+</footer>
+
+<!-- APPLY MODAL -->
+<dialog id="applicationModal">
+  <iframe
+    src="https://form.jotform.com/253504449025050?ticket=Harbour%20Cruise%20$198"
+    style="width:100%;height:80vh;border:none"></iframe>
+</dialog>
+
+<script>
+/* Hero slider */
+let i=0;const slides=document.querySelectorAll('.hero-slide');
+setInterval(()=>{
+  slides[i].classList.remove('active');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+},5000);
+
+/* FAQ */
+document.querySelectorAll('.faq-header').forEach(h=>{
+  h.onclick=()=>h.parentElement.classList.toggle('open');
+});
+
+/* Modal */
+const modal=document.getElementById('applicationModal');
+document.querySelectorAll('.open-application').forEach(b=>{
+  b.onclick=()=>modal.showModal();
+});
+modal.onclick=e=>{if(e.target===modal)modal.close();}
+</script>
+
+</body>
+</html>
