@@ -47,10 +47,10 @@
     max-width: 680px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 14px; /* mobile breathing room */
+    padding: 0 14px;
   }
   @media (min-width: 768px){
-    .text-container{ padding: 0; } /* desktop unchanged */
+    .text-container{ padding: 0; }
   }
 
   h1,h2,h3{font-family:"Playfair Display",Georgia,serif; margin-top: 0; line-height: 1.1;}
@@ -114,11 +114,88 @@
   .btn{
     display:inline-block; padding:14px 28px; background:var(--sun); color:#000;
     font-weight:800; border-radius:50px; cursor:pointer; text-decoration:none; border:none;
-    font-size: 1rem; transition: transform 0.2s ease, background 0.2s;
+    font-size: 1rem; transition: transform 0.2s ease, background 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
   }
   .btn:hover{transform: translateY(-2px); background:var(--amber);}
   .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
   .btn.outline:hover{background: rgba(255,255,255,0.1); color: #fff;}
+
+  /* Premium sold-out styling */
+  .room-card.sold-out{
+    position: relative;
+    opacity: 0.9;
+    border-color: rgba(255,255,255,.18);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  }
+  .room-card.sold-out .room-media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45));
+    pointer-events:none;
+  }
+  .room-card.sold-out .room-media img{
+    filter: saturate(.72) brightness(.78);
+  }
+  .room-card.sold-out:hover .room-media img{
+    transform: scale(1.02);
+  }
+  .room-card.sold-out .room-title,
+  .room-card.sold-out .price{
+    color:#f0f0f0;
+  }
+  .room-card.sold-out .room-desc,
+  .room-card.sold-out .per-person{
+    opacity:.88;
+  }
+  .sold-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    z-index:2;
+    background: rgba(17,17,17,.88);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:8px 12px;
+    border-radius:999px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  }
+  .sold-note{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+    padding:8px 12px;
+    border-radius:999px;
+    background: rgba(255,255,255,0.08);
+    color:#fff;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .sold-note::before{
+    content:"•";
+    color:var(--sun);
+    font-size:1rem;
+    line-height:1;
+  }
+  .btn.sold-out-btn,
+  .btn.sold-out-btn:hover{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: rgba(255,255,255,0.55);
+    cursor:not-allowed;
+    pointer-events:none;
+    transform:none;
+  }
 
   /* --- Amenities --- */
   .amenities-grid{
@@ -183,18 +260,19 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
     min-width: 0;
   }
   .room-card:hover{ border-color: var(--teal); }
 
   .room-media { position: relative; height: 220px; overflow: hidden; cursor: pointer; background: #000; }
-  .room-media img { position: absolute; inset:0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .room-media img { position: absolute; inset:0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.3s ease; }
   .room-card:hover .room-media img { transform: scale(1.05); }
   .gallery-icon {
     position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7);
     color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
     pointer-events: none; display: flex; align-items: center; gap: 6px;
+    z-index:2;
   }
 
   .room-details{ padding: 20px; flex-grow: 1; display: flex; flex-direction: column; min-width: 0; }
@@ -220,7 +298,6 @@
   @media(min-width: 768px) { .hosts-grid { grid-template-columns: 1fr 1fr; } }
   .host-img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
 
-  /* ✅ FIX: pull hosts text off the edges on mobile WITHOUT changing desktop layout */
   .hosts-grid > div{
     padding: 0 14px;
     max-width: 680px;
@@ -299,7 +376,6 @@
   .marquee-track img:hover { opacity: 1; }
   @keyframes scroll { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
 
-  /* If user prefers reduced motion, show a scrollable strip instead */
   @media (prefers-reduced-motion: reduce){
     .marquee-section{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .marquee-track{ animation: none; padding: 0 10px; }
@@ -551,17 +627,21 @@
                 </div>
               </div>
 
-              <div class="room-card" data-room="prem_dbl">
+              <div class="room-card sold-out" data-room="prem_dbl">
                 <div class="room-media">
                   <img src="assets/PremSuiteDBL1.avif" alt="Premium Suite DBL">
+                  <div class="sold-badge">Sold Out</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
                   <div class="room-title">Premium Suite (DBL with Ocean View)</div>
-                  <div class="room-desc">Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers. Sleeps 2.</div>
+                  <div class="room-desc">
+                    Spacious suite with King-size bed. Private bathroom, A/C, fan. Large terrace with hanging bed and loungers. Sleeps 2.
+                    <div class="sold-note">This room category is no longer available</div>
+                  </div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1445</div><div class="per-person">$722.50/pp (sharing)</div></div>
-                    <button class="btn outline open-application">Apply</button>
+                    <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
                   </div>
                 </div>
               </div>
@@ -888,7 +968,6 @@
         </div>
       </div>
 
-      <!-- ✅ Requested: legal line above the email line -->
       <p style="text-align:center; margin-top: 40px; color:#d9e2ea;">
         <strong>The legal stuff</strong> – <a href="https://www.nudebeachtrips.com/terms.html" id="termsLink" class="link">full terms and conditions here</a>
       </p>
@@ -917,7 +996,6 @@
       <img src="assets/Zipo11.jpg" alt="">
       <img src="assets/Budamar7.jpg" alt="">
 
-      <!-- Duplicate set for seamless scroll -->
       <img src="assets/Zipo1.jpg" alt="">
       <img src="assets/Budamar1.jpg" alt="">
       <img src="assets/Zipo2.webp" alt="">
@@ -936,7 +1014,6 @@
   </section>
 </main>
 
-<!-- ✅ PORTED FOOTER WITH 4 MODAL LINKS + INF -->
 <footer>
   <div class="footer-inner">
     <div class="footer-slab">
@@ -1137,13 +1214,13 @@
     d.addEventListener('click', (e)=>{ if(e.target === d) d.close(); });
   });
 
-  // Footer (ported links)
+  // Footer links
   document.getElementById('respectLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
   document.getElementById('cancelLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openDialog('cancelDialog'); });
   document.getElementById('privacyLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openDialog('privacyDialog'); });
   document.getElementById('liabilityLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
 
-  // In-body respect triggers (FAQ)
+  // In-body respect triggers
   document.querySelectorAll('.respect-trigger').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1151,7 +1228,7 @@
     });
   });
 
-  // --- TERMS POPUP (both places) ---
+  // --- TERMS POPUP ---
   const termsDialog = document.getElementById('termsDialog');
   const termsClose = document.getElementById('termsClose');
   const termsLink = document.getElementById('termsLink');
@@ -1226,7 +1303,6 @@
     tryNext();
   }
 
-  // Apply fallback to all page images
   document.querySelectorAll("img").forEach(img => {
     const src = img.getAttribute("src");
     if(src) setImgWithFallback(img, src);
