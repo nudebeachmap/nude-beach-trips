@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Indian Arm Clothing-Optional Cruise – Nude Beach Trips</title>
 
-<meta name="description" content="A calm, body-positive, clothing-optional cruise from Port Moody to Indian Arm hosted by Nude Beach Map. 19+ only. Limited capacity." />
+<meta name="description" content="A calm, body-positive, clothing-optional cruise from Port Moody into Indian Arm hosted by Nude Beach Map. 19+ only. Limited capacity." />
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
@@ -31,6 +31,7 @@
     flex-direction:column;
   }
 
+  /* ===== ONE SINGLE PAGE BACKGROUND ===== */
   body::before{
     content:"";
     position:fixed;
@@ -60,6 +61,7 @@
   h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
   a{color:var(--teal);text-decoration:none}
 
+  /* ===== Header ===== */
   .site-header{
     position:fixed;top:0;left:0;right:0;z-index:99;
     display:flex;justify-content:space-between;align-items:center;
@@ -76,6 +78,7 @@
     text-decoration:none;
   }
 
+  /* ===== Hero ===== */
   .hero{position:relative;height:72vh;overflow:hidden}
   .hero::after{
     content:"";
@@ -112,10 +115,12 @@
   }
   .hero p{font-size:1.15rem;color:var(--muted);margin:0}
 
+  /* ===== Sections ===== */
   .section{padding:84px 0}
   .section.sep{border-top:1px solid rgba(255,255,255,.10)}
   .section.tight{padding:72px 0}
 
+  /* ===== 3-image strip ===== */
   .strip{
     max-width:980px;margin:38px auto 0;
     display:grid;grid-template-columns:repeat(3,1fr);
@@ -132,6 +137,7 @@
     .strip img{height:210px}
   }
 
+  /* ===== Soft panel surface ===== */
   .panel{
     background: rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.16);
@@ -144,10 +150,12 @@
   .bullets{color:var(--muted);margin:0;padding-left:18px;text-align:left;display:inline-block}
   .bullets li{margin:6px 0}
 
+  /* ===== Experience block ===== */
   .experience{max-width:900px;margin:0 auto}
   .experience .meta{margin:0 auto 22px;color:var(--muted)}
   .experience strong{color:#fff}
 
+  /* ===== Boat section ===== */
   .yacht-grid{
     display:grid;
     grid-template-columns: 1.25fr 1fr;
@@ -178,6 +186,7 @@
     .yacht-img img{height:320px}
   }
 
+  /* ===== Ticket card ===== */
   .ticket-card{
     max-width:460px;margin:0 auto;
     background:rgba(255,255,255,.06);
@@ -197,6 +206,7 @@
   }
   .fine{font-size:.85rem;opacity:.8;margin-top:10px;color:var(--muted)}
 
+  /* ===== FAQ ===== */
   .faq-wrap{max-width:860px;margin:0 auto}
   .faq-item{border-bottom:1px solid rgba(255,255,255,.14)}
   .faq-header{
@@ -209,6 +219,7 @@
   .faq-content{padding:0 0 20px;color:var(--muted)}
   .faq-content p{margin:0 0 12px}
 
+  /* ===== Footer ===== */
   footer{
     border-top:1px solid rgba(255,255,255,.14);
     padding:40px 20px;
@@ -219,6 +230,7 @@
   .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
   .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
+  /* ===== Modals ===== */
   dialog.policy{
     border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
     max-width:780px;width:92%;
@@ -280,6 +292,7 @@
 
 <main>
 
+<!-- HERO -->
 <section class="hero" aria-label="Indian Arm cruise hero">
   <div class="hero-slide pos-bottom active" style="background-image:url('assets/harbour1.jpg')"></div>
   <div class="hero-slide pos-center" style="background-image:url('assets/harbour2.jpg')"></div>
@@ -293,6 +306,7 @@
   </div>
 </section>
 
+<!-- INTRO -->
 <section class="section wrap">
   <div class="text-container">
     <h2>A Floating Nude Beach</h2>
@@ -319,24 +333,30 @@
   </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section class="section sep wrap">
   <div class="text-container">
     <h2>The Experience</h2>
 
     <div class="experience panel">
       <p class="meta">
-        Cruise departs and returns from <strong>Port Moody, 12pm–4pm</strong>. We’ll head into beautiful Indian Arm and anchor in a quiet spot for swim time, with the exact location depending on weather and water conditions.
+        Departing from <strong>Port Moody, 12pm–4pm</strong>, this is a relaxed afternoon cruise into beautiful <strong>Indian Arm</strong> — with time to swim, float, unwind, and enjoy one of the most scenic stretches of water near Vancouver.
       </p>
 
       <p>
-        Starting from Port Moody means we can get out onto the water quickly and spend more of the day enjoying the scenery rather than sitting in city harbour traffic. Once we’re away from the busier areas — and conditions allow — the captain will give the go-ahead for clothing-optional time onboard.
+        Leaving from Port Moody means less time getting out of the city and more time actually enjoying the setting. We’ll cruise into Indian Arm, settle into the scenery, and anchor in a quiet spot for swim time, with the exact location depending on weather and water conditions.
+      </p>
+
+      <p>
+        There’ll be a DJ onboard providing the soundtrack for the afternoon — relaxed, summery, and in tune with the setting. Think good energy, great scenery, and a laid-back atmosphere rather than a full-on party cruise. Once we’re away from busier public areas and conditions allow, the captain will give the go-ahead for clothing-optional time onboard.
       </p>
 
       <ul class="bullets" aria-label="Cruise highlights">
         <li>Clothing optional</li>
-        <li>Scenic cruise through Burrard Inlet into Indian Arm</li>
+        <li>Scenic cruise from Port Moody into Indian Arm</li>
         <li>Swim stop at anchor in a beautiful natural setting</li>
         <li>BYO drinks, snacks &amp; floaties</li>
+        <li>DJ onboard setting a laid-back summer atmosphere</li>
         <li>Hosted &amp; moderated by Nude Beach Map</li>
         <li>Strict respect &amp; consent culture</li>
       </ul>
@@ -344,6 +364,7 @@
   </div>
 </section>
 
+<!-- WHAT THE DAY LOOKS LIKE -->
 <section class="section sep wrap">
   <div class="text-container">
     <h2>What the Day Looks Like</h2>
@@ -351,7 +372,7 @@
     <div class="panel" style="max-width:860px;margin:0 auto;text-align:left">
       <ul class="bullets" style="max-width:780px">
         <li><strong>12:00pm</strong> – Departure from Port Moody</li>
-        <li>Scenic cruising through Burrard Inlet into <strong>Indian Arm</strong></li>
+        <li>A scenic cruise from Port Moody into the sheltered waters of <strong>Indian Arm</strong></li>
         <li>Anchoring in a quiet bay or sheltered stretch for swim time</li>
         <li><strong>Clothing-Optional</strong> – once the captain confirms it’s appropriate, we strip off</li>
         <li>Time to swim, float, relax, and take in the scenery</li>
@@ -368,6 +389,7 @@
   </div>
 </section>
 
+<!-- THE BOAT -->
 <section class="section sep wrap" id="boat">
   <div class="text-container">
     <h2>The Boat</h2>
@@ -394,6 +416,7 @@
   </div>
 </section>
 
+<!-- TICKETS -->
 <section class="section sep wrap" id="tickets">
   <div class="text-container">
     <h2>Tickets</h2>
@@ -409,6 +432,7 @@
   </div>
 </section>
 
+<!-- FAQ -->
 <section class="section sep wrap" id="faq">
   <div class="text-container">
     <h2>FAQ</h2>
@@ -542,6 +566,7 @@
   </div>
 </footer>
 
+<!-- Respect Policy Modal -->
 <dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
   <div class="policy-header">
     <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
@@ -572,14 +597,16 @@
   </div>
 </dialog>
 
+<!-- APPLY MODAL -->
 <dialog id="applicationModal" aria-label="Application form">
   <iframe
     src="https://form.jotform.com/260291679217261"
     style="width:100%;height:80vh;border:none"
-    title="Harbour cruise application"></iframe>
+    title="Indian Arm cruise application"></iframe>
 </dialog>
 
 <script>
+  /* Hero slider */
   (function(){
     let i=0;
     const slides=document.querySelectorAll('.hero-slide');
@@ -595,10 +622,12 @@
     }, 5200);
   })();
 
+  /* FAQ toggles */
   document.querySelectorAll('.faq-header').forEach(h=>{
     h.addEventListener('click', ()=> h.parentElement.classList.toggle('open'));
   });
 
+  /* Dialog helpers */
   function openDialog(id){ document.getElementById(id).showModal(); }
   function closeDialog(id){ document.getElementById(id).close(); }
 
@@ -616,6 +645,7 @@
   document.getElementById('respectLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
   document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
 
+  /* Application modal */
   const appModal=document.getElementById('applicationModal');
   document.querySelectorAll('.open-application').forEach(b=>{
     b.addEventListener('click', ()=> appModal.showModal());
