@@ -207,7 +207,11 @@
   .fine{font-size:.85rem;opacity:.8;margin-top:10px;color:var(--muted)}
 
   /* ===== FAQ ===== */
-  .faq-wrap{max-width:860px;margin:0 auto}
+  .faq-wrap{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 14px;
+  }
   .faq-item{border-bottom:1px solid rgba(255,255,255,.14)}
   .faq-header{
     display:flex;justify-content:space-between;gap:12px;
@@ -272,6 +276,15 @@
     background:#0b2a3d;
   }
   dialog#applicationModal::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+
+  @media (max-width:640px){
+    .faq-wrap{
+      padding:0 18px;
+    }
+    .faq-header{
+      padding:18px 0;
+    }
+  }
 
   @media (prefers-reduced-motion: reduce){
     .hero-slide{transition:none}
@@ -339,28 +352,28 @@
     <h2>The Experience</h2>
 
     <div class="experience panel">
-  <p class="meta">
-    Departing from <strong>Port Moody at 11:30am</strong>, this relaxed 4-hour cruise heads into one of the most scenic, tucked-away waterways near Vancouver — with time to swim, float, unwind, and fully switch off.
-  </p>
+      <p class="meta">
+        Departing from <strong>Port Moody at 11:30am</strong>, this relaxed 4-hour cruise heads into one of the most scenic, tucked-away waterways near Vancouver. Plenty of time to relax, float, unwind, and fully switch off.
+      </p>
 
-  <p>
-    Starting from Port Moody means less time getting out of the city and more time actually enjoying the setting. We’ll cruise through calm waters, take in the scenery, and anchor in a quiet, sheltered spot for a swim. The exact location will depend on the conditions on the day.
-  </p>
+      <p>
+        Starting from Port Moody means less time getting out of the city and more time actually enjoying the setting. We’ll cruise through calm waters, take in the scenery, and anchor in a quiet, sheltered spot for a swim. The exact location will depend on the conditions on the day.
+      </p>
 
-  <p>
-    There’ll be a DJ onboard setting the tone for the afternoon — relaxed, summery, and in tune with the surroundings. It’s more about good energy and great views than a full-on party. Once we’re clear of busier areas and conditions allow, the captain will give the go-ahead for clothing-optional time onboard.
-  </p>
+      <p>
+        There’ll be a DJ onboard setting the tone for the afternoon - relaxed, summery, and in tune with the surroundings. It’s more about good energy and great views than a full-on party. Once we’re clear of busier areas and conditions allow, the captain will give the go-ahead for clothing-optional time onboard.
+      </p>
 
-  <ul class="bullets" aria-label="Cruise highlights">
-    <li>Clothing optional</li>
-    <li>Scenic cruise from Port Moody into a quiet, sheltered waterway</li>
-    <li>Swim stop at anchor in a beautiful natural setting</li>
-    <li>BYO drinks, snacks &amp; floaties</li>
-    <li>DJ onboard setting a laid-back summer atmosphere</li>
-    <li>Hosted &amp; moderated by Nude Beach Map</li>
-    <li>Strict respect &amp; consent culture</li>
-  </ul>
-</div>
+      <ul class="bullets" aria-label="Cruise highlights">
+        <li>Clothing optional</li>
+        <li>Scenic cruise from Port Moody into a quiet, sheltered waterway</li>
+        <li>Swim stop at anchor in a beautiful natural setting</li>
+        <li>BYO drinks, snacks &amp; floaties</li>
+        <li>DJ onboard setting a laid-back summer atmosphere</li>
+        <li>Hosted &amp; moderated by Nude Beach Map</li>
+        <li>Strict respect &amp; consent culture</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -370,22 +383,22 @@
     <h2>What the Day Looks Like</h2>
 
     <div class="panel" style="max-width:860px;margin:0 auto;text-align:left">
-  <ul class="bullets" style="max-width:780px">
-    <li><strong>11:30am</strong> – Departure from Port Moody</li>
-    <li>We head out for a scenic cruise into calm, sheltered waters just outside the city</li>
-    <li>We’ll find a quiet spot to anchor, depending on the conditions on the day</li>
-    <li><strong>Clothing-Optional</strong> – once the captain confirms it’s appropriate, you’re free to strip off if you feel like it</li>
-    <li>Plenty of time to swim, float, relax, and take in the surroundings</li>
-    <li><strong>4:00pm</strong> – Return to Port Moody</li>
-  </ul>
+      <ul class="bullets" style="max-width:780px">
+        <li><strong>11:30am</strong> – Departure from Port Moody</li>
+        <li>We head out for a scenic cruise into calm, sheltered waters just outside the city</li>
+        <li>We’ll find a quiet spot to anchor, depending on the conditions on the day</li>
+        <li><strong>Clothing-Optional</strong> – once the captain confirms it’s appropriate, you’re free to strip off if you feel like it</li>
+        <li>Plenty of time to swim, float, relax, and take in the surroundings</li>
+        <li><strong>4:00pm</strong> – Return to Port Moody</li>
+      </ul>
 
-  <hr style="border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0">
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0">
 
-  <p style="margin:0;color:var(--muted)">
-    Some people jump straight in, others take their time — both are completely fine.
-    The vibe is friendly, respectful, and very beginner-friendly. It feels more like a floating nude beach than a typical boat party.
-  </p>
-</div>
+      <p style="margin:0;color:var(--muted)">
+        Some people jump straight in, others take their time — both are completely fine.
+        The vibe is friendly, respectful, and very beginner-friendly. It feels more like a floating nude beach than a typical boat party.
+      </p>
+    </div>
   </div>
 </section>
 
