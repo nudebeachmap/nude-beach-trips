@@ -63,25 +63,9 @@
   h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
   a{color:var(--teal);text-decoration:none}
 
-  /* ===== Top urgent bar ===== */
-  .top-alert{
-    position:fixed;
-    top:0;left:0;right:0;
-    z-index:120;
-    background:linear-gradient(180deg,var(--urgent),var(--urgent-dark));
-    color:#fff;
-    text-align:center;
-    font-weight:800;
-    letter-spacing:.2px;
-    padding:10px 16px;
-    font-size:.95rem;
-    text-transform:uppercase;
-    box-shadow:0 6px 18px rgba(0,0,0,.24);
-  }
-
   /* ===== Header ===== */
   .site-header{
-    position:fixed;top:44px;left:0;right:0;z-index:99;
+    position:fixed;top:0;left:0;right:0;z-index:99;
     display:flex;justify-content:space-between;align-items:center;
     padding:14px 20px;
     background:linear-gradient(180deg,rgba(0,0,0,.65),transparent);
@@ -123,7 +107,32 @@
     display:grid;
     place-items:center;
     text-align:center;
-    padding-top:118px;
+    padding-top:72px;
+  }
+
+  .hero-badge-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-bottom:16px;
+  }
+
+  .hero-urgent{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 18px;
+    border-radius:999px;
+    background:linear-gradient(180deg,var(--urgent),var(--urgent-dark));
+    color:#fff;
+    font-weight:800;
+    font-size:.92rem;
+    line-height:1.2;
+    text-transform:uppercase;
+    letter-spacing:.25px;
+    box-shadow:0 12px 28px rgba(0,0,0,.28);
+    border:1px solid rgba(255,255,255,.14);
   }
 
   .hero-date{
@@ -131,7 +140,6 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-    margin:0 0 16px;
     padding:10px 16px;
     border-radius:999px;
     background:rgba(255,255,255,.10);
@@ -322,7 +330,6 @@
 
   @media (max-width:640px){
     .site-header{
-      top:42px;
       padding:12px 16px;
       gap:12px;
     }
@@ -337,10 +344,19 @@
       height:76vh;
     }
     .hero-content{
-      padding-top:138px;
+      padding-top:96px;
+    }
+    .hero-badge-wrap{
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .hero-urgent{
+      font-size:.78rem;
+      padding:9px 14px;
+      max-width:92vw;
+      text-align:center;
     }
     .hero-date{
-      margin-bottom:14px;
       padding:9px 14px;
       font-size:.9rem;
     }
@@ -359,15 +375,8 @@
   }
 
   @media (max-width:460px){
-    .top-alert{
-      font-size:.78rem;
-      padding:9px 12px;
-    }
-    .site-header{
-      top:39px;
-    }
     .hero-content{
-      padding-top:146px;
+      padding-top:108px;
     }
     .hero p{
       max-width:300px;
@@ -382,8 +391,6 @@
 </head>
 
 <body>
-
-<div class="top-alert">Early bird sale on now for a limited time</div>
 
 <header class="site-header">
   <a href="/" class="header-left">
@@ -403,7 +410,10 @@
 
   <div class="hero-content wrap">
     <div>
-      <div class="hero-date">Sat 15 Aug, 2026</div>
+      <div class="hero-badge-wrap">
+        <div class="hero-urgent">Early bird sale on now - until sold out</div>
+        <div class="hero-date">Sat 15 Aug, 2026</div>
+      </div>
       <h1>Harbour Cruise</h1>
       <p>Clothing-Optional • 11.30am–4pm • Port Moody Return • 19+ • Limited Capacity</p>
     </div>
