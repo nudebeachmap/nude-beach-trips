@@ -16,6 +16,8 @@
     --bgBase:#0b2a3d;
     --line: rgba(255,255,255,.22);
     --muted:#d9e2ea;
+    --urgent:#d93a2f;
+    --urgent-dark:#b92a20;
   }
 
   *{box-sizing:border-box}
@@ -61,9 +63,25 @@
   h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
   a{color:var(--teal);text-decoration:none}
 
+  /* ===== Top urgent bar ===== */
+  .top-alert{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:120;
+    background:linear-gradient(180deg,var(--urgent),var(--urgent-dark));
+    color:#fff;
+    text-align:center;
+    font-weight:800;
+    letter-spacing:.2px;
+    padding:10px 16px;
+    font-size:.95rem;
+    text-transform:uppercase;
+    box-shadow:0 6px 18px rgba(0,0,0,.24);
+  }
+
   /* ===== Header ===== */
   .site-header{
-    position:fixed;top:0;left:0;right:0;z-index:99;
+    position:fixed;top:44px;left:0;right:0;z-index:99;
     display:flex;justify-content:space-between;align-items:center;
     padding:14px 20px;
     background:linear-gradient(180deg,rgba(0,0,0,.65),transparent);
@@ -76,6 +94,7 @@
     padding:10px 18px;border-radius:999px;
     font-weight:800;border:0;cursor:pointer;
     text-decoration:none;
+    white-space:nowrap;
   }
 
   /* ===== Hero ===== */
@@ -104,8 +123,27 @@
     display:grid;
     place-items:center;
     text-align:center;
-    padding-top:44px;
+    padding-top:118px;
   }
+
+  .hero-date{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin:0 0 16px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;
+    font-weight:800;
+    font-size:.98rem;
+    line-height:1.2;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
+  }
+
   .hero h1{
     font-size:clamp(44px,8.5vw,90px);
     text-transform:uppercase;
@@ -113,7 +151,12 @@
     margin:0 0 10px;
     letter-spacing:.5px;
   }
-  .hero p{font-size:1.15rem;color:var(--muted);margin:0}
+  .hero p{
+    font-size:1.15rem;
+    color:var(--muted);
+    margin:0;
+    max-width:900px;
+  }
 
   /* ===== Sections ===== */
   .section{padding:84px 0}
@@ -278,11 +321,56 @@
   dialog#applicationModal::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
 
   @media (max-width:640px){
+    .site-header{
+      top:42px;
+      padding:12px 16px;
+      gap:12px;
+    }
+    .logo-word{
+      font-size:1rem;
+    }
+    .cta{
+      padding:9px 14px;
+      font-size:.92rem;
+    }
+    .hero{
+      height:76vh;
+    }
+    .hero-content{
+      padding-top:138px;
+    }
+    .hero-date{
+      margin-bottom:14px;
+      padding:9px 14px;
+      font-size:.9rem;
+    }
+    .hero p{
+      font-size:1rem;
+      max-width:340px;
+      margin:0 auto;
+      line-height:1.55;
+    }
     .faq-wrap{
       padding:0 18px;
     }
     .faq-header{
       padding:18px 0;
+    }
+  }
+
+  @media (max-width:460px){
+    .top-alert{
+      font-size:.78rem;
+      padding:9px 12px;
+    }
+    .site-header{
+      top:39px;
+    }
+    .hero-content{
+      padding-top:146px;
+    }
+    .hero p{
+      max-width:300px;
     }
   }
 
@@ -294,6 +382,8 @@
 </head>
 
 <body>
+
+<div class="top-alert">Early bird sale on now for a limited time</div>
 
 <header class="site-header">
   <a href="/" class="header-left">
@@ -313,6 +403,7 @@
 
   <div class="hero-content wrap">
     <div>
+      <div class="hero-date">Sat 15 Aug, 2026</div>
       <h1>Harbour Cruise</h1>
       <p>Clothing-Optional • 11.30am–4pm • Port Moody Return • 19+ • Limited Capacity</p>
     </div>
