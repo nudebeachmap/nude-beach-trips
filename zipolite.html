@@ -153,9 +153,9 @@
     top:14px;
     left:14px;
     z-index:2;
-    background: rgba(17,17,17,.88);
+    background: linear-gradient(135deg, #ff3b3b, #b30000);
     color:#fff;
-    border:1px solid rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.25);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     font-size:12px;
@@ -164,7 +164,23 @@
     text-transform:uppercase;
     padding:8px 12px;
     border-radius:999px;
-    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+    box-shadow: 0 10px 24px rgba(179,0,0,.4);
+  }
+  .limited-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    z-index:2;
+    background: linear-gradient(135deg, #f8c014, #e49d25);
+    color:#000;
+    border:1px solid rgba(0,0,0,.2);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:8px 12px;
+    border-radius:999px;
+    box-shadow: 0 8px 20px rgba(248,192,20,.35);
   }
   .sold-note{
     display:inline-flex;
@@ -183,7 +199,7 @@
   }
   .sold-note::before{
     content:"•";
-    color:var(--sun);
+    color:#ff4d4d;
     font-size:1rem;
     line-height:1;
   }
@@ -612,17 +628,18 @@
           <div class="accordion-content">
             <div class="room-grid">
 
-              <div class="room-card" data-room="quad_ocean">
+              <div class="room-card sold-out" data-room="quad_ocean">
                 <div class="room-media">
                   <img src="assets/PremSuite5.avif" alt="Premium Suite Ocean">
+                  <div class="sold-badge">Sold Out</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
                   <div class="room-title">Quad Suite (Ocean View)</div>
-                  <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. 2 King-size beds, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views.Sleeps 4</div>
+                  <div class="room-desc"><strong>420 sq ft.</strong> The best rooms in the house. 2 King-size beds, sitting area, A/C, Desk, Safe. Terrace with hanging bed and sea views. Sleeps 4<div class="sold-note">This room category is no longer available</div></div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1670</div><div class="per-person">$417.50/pp (sharing)</div></div>
-                    <button class="btn outline open-application">Apply</button>
+                    <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
                   </div>
                 </div>
               </div>
@@ -653,7 +670,7 @@
                 </div>
                 <div class="room-details">
                   <div class="room-title">Quadruple Room (Pool View)</div>
-                  <div class="room-desc"><strong>323 sq ft.</strong> Great for groups. <strong>2 King Beds and 1 single bed</strong>. Sitting area. A/C and fan. Terrace with pool view. Sleeps 4.</div>
+                  <div class="room-desc"><strong>323 sq ft.</strong> One of the largest rooms on the property — ideal for friends or couples travelling together. <strong>2 King beds + 1 single bed</strong>, generous living space, A/C and fan. Private terrace overlooking the pool. Sleeps 4.</div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1300</div><div class="per-person">$325/pp (sharing)</div></div>
                     <button class="btn outline open-application">Apply</button>
@@ -662,38 +679,39 @@
               </div>
 
               <div class="room-card sold-out" data-room="std_ocean">
-  <div class="room-media">
-    <img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean">
-    <div class="sold-badge">Sold Out</div>
-    <div class="gallery-icon">📷 Photos</div>
-  </div>
-  <div class="room-details">
-    <div class="room-title">Standard Suite (Ocean View)</div>
-    <div class="room-desc">
-      <strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views. Sleeps 2.
-      <div class="sold-note">This room category is no longer available</div>
-    </div>
-    <div class="room-meta">
-      <div>
-        <div class="price"><span>TOTAL (4 NIGHTS)</span>$1255</div>
-        <div class="per-person">$628/pp (sharing)</div>
-      </div>
-      <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
-    </div>
-  </div>
-</div>
+                <div class="room-media">
+                  <img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean">
+                  <div class="sold-badge">Sold Out</div>
+                  <div class="gallery-icon">📷 Photos</div>
+                </div>
+                <div class="room-details">
+                  <div class="room-title">Standard Suite (Ocean View)</div>
+                  <div class="room-desc">
+                    <strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views. Sleeps 2.
+                    <div class="sold-note">This room category is no longer available</div>
+                  </div>
+                  <div class="room-meta">
+                    <div>
+                      <div class="price"><span>TOTAL (4 NIGHTS)</span>$1255</div>
+                      <div class="per-person">$628/pp (sharing)</div>
+                    </div>
+                    <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
+                  </div>
+                </div>
+              </div>
 
-              <div class="room-card" data-room="std_pool">
+              <div class="room-card sold-out" data-room="std_pool">
                 <div class="room-media">
                   <img src="assets/StdSuitePool1.avif" alt="Room">
+                  <div class="sold-badge">Sold Out</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
                   <div class="room-title">Standard Suite (Pool View)</div>
-                  <div class="room-desc">King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with partial ocean view. Sleeps 2.</div>
+                  <div class="room-desc">King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Faces the pool with partial ocean view. Sleeps 2.<div class="sold-note">This room category is no longer available</div></div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$1225</div><div class="per-person">$613/pp (sharing)</div></div>
-                    <button class="btn outline open-application">Apply</button>
+                    <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
                   </div>
                 </div>
               </div>
@@ -716,6 +734,7 @@
               <div class="room-card" data-room="std_dbl">
                 <div class="room-media">
                   <img src="assets/StdDblPool1.avif" alt="Standard Room">
+                  <div class="limited-badge">Only 1 Left</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
@@ -723,7 +742,7 @@
                   <div class="room-desc"><strong>194 sq ft.</strong> Simple and comfortable. 1 Double bed, private bathroom, A/C, safe. Pool view. Sleeps 2.</div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$915</div><div class="per-person">$458/pp (sharing)</div></div>
-                    <button class="btn outline open-application">Apply</button>
+                    <button class="btn outline open-application">Secure It</button>
                   </div>
                 </div>
               </div>
@@ -746,6 +765,7 @@
               <div class="room-card" data-room="shared_cabin">
                 <div class="room-media">
                   <img src="assets/FamCabinSharedB1.avif" alt="Shared Cabin">
+                  <div class="limited-badge">Only 1 Left</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
@@ -753,7 +773,7 @@
                   <div class="room-desc">The budget adventurer option. 2 Double beds, fan only. <strong>Shared external bathroom.</strong> Safe and Desk included. Sleeps 4</div>
                   <div class="room-meta">
                     <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$830</div><div class="per-person">$208/pp (sharing)</div></div>
-                    <button class="btn outline open-application">Apply</button>
+                    <button class="btn outline open-application">Secure It</button>
                   </div>
                 </div>
               </div>
@@ -1324,53 +1344,86 @@
     quad:       ['QuadRoom1.avif', 'QuadRoom2.avif', 'QuadRoom3.jpg', 'QuadRoom4.avif', 'QuadRoom5.avif'],
     triple:     ['TripleRoom1.avif', 'TripleRoom2.avif', 'TripleRoom3.avif', 'TripleRoom4.jpg'],
     std_dbl:    ['StdDblPool1.avif', 'StdDblPool2.jpg', 'StdDblPool3.avif', 'StdDblPool4.jpg', 'StdDblPool5.jpg', 'StdDblPool6.jpg', 'StdDblPool7.jpg'],
-    cabin:      ['FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif'],
-    shared_cabin: ['FamCabinSharedB1.avif', 'FamCabinSharedB2.jpg', 'FamCabinSharedB3.avif', 'FamCabinSharedB4.avif', 'FamCabinSharedB5.avif']
+    cabin:      ['FamCabinSharedB2.jpg', 'FamCabinPrivB1.jpg', 'FamCabinPrivB3.jpg', 'FamCabinPrivB4.jpg'],
+    shared_cabin:['FamCabinSharedB1.avif', 'FamCabinSharedB3.jpg', 'FamCabinSharedB4.jpg', 'FamCabinSharedB5.jpg']
   };
 
-  // Hero Slider
-  let heroIdx = 0;
-  const heroes = document.querySelectorAll('.hero-slide');
-  setInterval(() => {
-    heroes[heroIdx].classList.remove('active');
-    heroIdx = (heroIdx + 1) % heroes.length;
-    heroes[heroIdx].classList.add('active');
-  }, 5000);
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
 
-  // Lightbox Trigger
+  let currentImgs = [];
+  let currentIndex = 0;
+
+  function openLightbox(images, idx = 0){
+    currentImgs = images || [];
+    currentIndex = idx;
+    showLightboxImage();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function showLightboxImage(){
+    if(!currentImgs.length) return;
+    const src = `assets/${currentImgs[currentIndex]}`;
+    setImgWithFallback(lbImg, src);
+  }
+
+  function prevImage(){
+    if(!currentImgs.length) return;
+    currentIndex = (currentIndex - 1 + currentImgs.length) % currentImgs.length;
+    showLightboxImage();
+  }
+
+  function nextImage(){
+    if(!currentImgs.length) return;
+    currentIndex = (currentIndex + 1) % currentImgs.length;
+    showLightboxImage();
+  }
+
   document.querySelectorAll('.room-card').forEach(card => {
-    const key = card.dataset.room;
-    const mediaContainer = card.querySelector('.room-media');
-    const images = roomImages[key];
-    if(!images || images.length === 0) return;
-
-    mediaContainer.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLightbox(images);
+    const media = card.querySelector('.room-media');
+    if(!media) return;
+    media.addEventListener('click', () => {
+      const key = card.dataset.room;
+      const images = roomImages[key];
+      if(images && images.length) openLightbox(images, 0);
     });
   });
 
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  let currentLbImages = [];
-  let currentLbIdx = 0;
+  lbClose?.addEventListener('click', closeLightbox);
+  lbPrev?.addEventListener('click', prevImage);
+  lbNext?.addEventListener('click', nextImage);
 
-  function openLightbox(images) {
-    currentLbImages = images;
-    currentLbIdx = 0;
-    updateLb();
-    lb.classList.add('open');
-  }
+  lightbox?.addEventListener('click', (e) => {
+    if(e.target === lightbox) closeLightbox();
+  });
 
-  function updateLb() {
-    const file = currentLbImages[currentLbIdx];
-    setImgWithFallback(lbImg, 'assets/' + file);
-  }
+  document.addEventListener('keydown', (e) => {
+    if(lightbox.classList.contains('open')){
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prevImage();
+      if(e.key === 'ArrowRight') nextImage();
+    }
+  });
 
-  document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
-  document.getElementById('lbNext').onclick = () => { currentLbIdx = (currentLbIdx + 1) % currentLbImages.length; updateLb(); };
-  document.getElementById('lbPrev').onclick = () => { currentLbIdx = (currentLbIdx - 1 + currentLbImages.length) % currentLbImages.length; updateLb(); };
-  lb.onclick = (e) => { if(e.target === lb) lb.classList.remove('open'); };
+  // --- HERO SLIDER ---
+  const slides = document.querySelectorAll('.hero-slide');
+  let slideIndex = 0;
+  setInterval(() => {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }, 5000);
 </script>
 </body>
 </html>
