@@ -114,7 +114,7 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:14px;
+    gap:12px;
     margin-bottom:16px;
   }
 
@@ -150,6 +150,33 @@
     line-height:1.2;
     backdrop-filter:blur(10px);
     box-shadow:0 10px 24px rgba(0,0,0,.18);
+  }
+
+  .hero-suburgent{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    padding:11px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;
+    line-height:1.2;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
+  }
+  .hero-suburgent strong{
+    font-size:1rem;
+    font-weight:800;
+    color:#fff;
+  }
+  .hero-suburgent span{
+    font-size:.88rem;
+    font-weight:700;
+    color:var(--muted);
   }
 
   .hero h1{
@@ -249,6 +276,21 @@
   }
   .ticket-price{font-size:2.4rem;font-weight:800;color:var(--sun)}
   .ticket-meta{opacity:.86;font-size:.95rem;margin-top:8px;color:var(--muted)}
+  .ticket-release{
+    margin:0 0 28px;
+    color:var(--muted);
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    align-items:center;
+  }
+  .ticket-release strong{
+    color:#fff;
+    font-weight:800;
+  }
+  .ticket-release span{
+    font-size:.95rem;
+  }
   .btn{
     display:inline-block;margin-top:18px;
     background:var(--sun);color:#000;
@@ -347,7 +389,7 @@
       padding-top:96px;
     }
     .hero-badge-wrap{
-      gap:12px;
+      gap:10px;
       margin-bottom:14px;
     }
     .hero-urgent{
@@ -359,6 +401,17 @@
     .hero-date{
       padding:9px 14px;
       font-size:.9rem;
+    }
+    .hero-suburgent{
+      padding:10px 14px;
+      max-width:92vw;
+      text-align:center;
+    }
+    .hero-suburgent strong{
+      font-size:.95rem;
+    }
+    .hero-suburgent span{
+      font-size:.82rem;
     }
     .hero p{
       font-size:1rem;
@@ -411,8 +464,12 @@
   <div class="hero-content wrap">
     <div>
       <div class="hero-badge-wrap">
-        <div class="hero-urgent">Early bird sale on now - until sold out</div>
+        <div class="hero-urgent">First release tickets now open</div>
         <div class="hero-date">Sat 15 Aug, 2026</div>
+        <div class="hero-suburgent">
+          <strong>9 remaining</strong>
+          <span>Limited release tickets</span>
+        </div>
       </div>
       <h1>Harbour Cruise</h1>
       <p>Clothing-Optional • 11.30am–4pm • Port Moody Return • 19+ • Limited Capacity</p>
@@ -534,7 +591,10 @@
 <section class="section sep wrap" id="tickets">
   <div class="text-container">
     <h2>Tickets</h2>
-    <p style="color:var(--muted);margin:0 0 28px">Early bird pricing available</p>
+    <p class="ticket-release">
+      <strong>First release tickets now open</strong>
+      <span>9 remaining • Limited release tickets</span>
+    </p>
 
     <div class="ticket-card">
       <h3 style="margin:0 0 10px">Harbour Cruise Ticket</h3>
@@ -635,7 +695,7 @@
       <div class="faq-header">Where do we anchor? <span>+</span></div>
       <div class="faq-body">
         <div class="faq-content">
-          Somewhere in Indian Arm, depending on weather and water conditions. We’ll aim for a quiet, scenic spot with good privacy and safe swimming conditions.
+          Somewhere away from the city, depending on weather and water conditions. We’ll aim for a quiet, scenic spot with good privacy and safe swimming conditions.
         </div>
       </div>
     </div>
