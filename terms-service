@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Terms of Service – Nude Beach Trips</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
+<style>
+  :root{
+    --ink:#26150e;
+    --sun:#f8c014;
+    --bg1:#0b2a3d;
+    --white:#ffffff;
+    --line: rgba(255,255,255,.22);
+  }
+
+  body{
+    margin:0;
+    background:var(--bg1);
+    color:var(--white);
+    font-family:Inter,system-ui;
+    line-height:1.7;
+    padding:40px 20px;
+    text-align:center;
+  }
+
+  .wrap{
+    max-width:700px;
+    margin:0 auto;
+    background:rgba(0,0,0,0.4);
+    padding:40px;
+    border-radius:16px;
+    border:1px solid var(--line);
+  }
+
+  h1{
+    font-family:"Playfair Display",serif;
+    color:var(--sun);
+    margin-top:0;
+  }
+
+  h2{
+    margin-top:34px;
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--sun);
+  }
+
+  p{
+    text-align:left;
+  }
+
+  ul{
+    text-align:left;
+    padding-left:20px;
+    margin-top:16px;
+  }
+
+  li{
+    margin-bottom:14px;
+  }
+
+  a{
+    color:var(--sun);
+  }
+
+  .btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 24px;
+    background:var(--sun);
+    color:#000;
+    text-decoration:none;
+    font-weight:800;
+    border-radius:50px;
+  }
+
+  .btn:hover{
+    background:#e49d25;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <h1>Terms of Service</h1>
+
+  <p>
+    Welcome to Nude Beach Trips. By using this website, booking a trip,
+    creating an account, or accessing services connected to Nude Beach Trips
+    or Nude Beach Map, you agree to the following Terms of Service.
+  </p>
+
+  <h2>Who We Are</h2>
+
+  <p>
+    Nude Beach Trips is operated by <strong>Nude Beach Map</strong>,
+    a Canadian-based travel and media business focused on clothing-optional
+    travel experiences, community content, and related services.
+  </p>
+
+  <h2>Eligibility</h2>
+
+  <p>
+    You must be at least 18 years old to create an account, make a booking,
+    or participate independently in our trips or membership services.
+  </p>
+
+  <p>
+    Minors may participate in selected trips only when accompanied by
+    a parent or legal guardian.
+  </p>
+
+  <h2>Accounts & Facebook Login</h2>
+
+  <p>
+    Users may sign in using third-party authentication services including
+    Facebook Login.
+  </p>
+
+  <p>
+    By using Facebook Login, you authorize us to access basic profile
+    information such as your name, email address, and profile image,
+    in accordance with our Privacy Policy.
+  </p>
+
+  <h2>Acceptable Conduct</h2>
+
+  <p>
+    Users agree to behave respectfully toward other members, travellers,
+    accommodation providers, and staff.
+  </p>
+
+  <ul>
+    <li>Harassment, discrimination, or abusive behaviour is prohibited</li>
+    <li>Illegal activity is prohibited</li>
+    <li>Sexually explicit, exploitative, or non-consensual behaviour is prohibited</li>
+    <li>Users must comply with local laws and venue rules</li>
+  </ul>
+
+  <h2>Bookings & Payments</h2>
+
+  <p>
+    Certain bookings or memberships may be processed through trusted
+    third-party providers including Stripe and WeTravel.
+  </p>
+
+  <p>
+    Prices, availability, cancellation terms, and inclusions may vary
+    depending on the specific trip, resort, or event.
+  </p>
+
+  <h2>Content & Intellectual Property</h2>
+
+  <p>
+    All website content, branding, videos, text, graphics, and logos
+    associated with Nude Beach Trips and Nude Beach Map remain the property
+    of their respective owners unless otherwise stated.
+  </p>
+
+  <p>
+    Users may not reproduce or redistribute content without permission.
+  </p>
+
+  <h2>Disclaimer</h2>
+
+  <p>
+    Nude Beach Trips and Nude Beach Map provide travel information,
+    community services, and event coordination services.
+  </p>
+
+  <p>
+    While we aim to provide accurate information, we do not guarantee
+    uninterrupted service, availability, or suitability of third-party
+    venues, providers, or destinations.
+  </p>
+
+  <h2>Limitation of Liability</h2>
+
+  <p>
+    To the maximum extent permitted by law, Nude Beach Trips and Nude Beach Map
+    are not liable for indirect, incidental, or consequential damages arising
+    from use of this website, bookings, travel participation, or third-party services.
+  </p>
+
+  <h2>Privacy</h2>
+
+  <p>
+    Your use of this website is also governed by our Privacy Policy
+    and Data Deletion Policy.
+  </p>
+
+  <h2>Changes</h2>
+
+  <p>
+    We may update these Terms of Service from time to time.
+    Continued use of the website or services constitutes acceptance
+    of any updated terms.
+  </p>
+
+  <h2>Contact</h2>
+
+  <p>
+    Questions regarding these Terms of Service may be sent to:
+    <br><br>
+    <strong>admin@nudebeachmap.com</strong>
+  </p>
+
+  <a href="javascript:window.close()" class="btn">Close Window</a>
+
+</div>
+
+</body>
+</html>
