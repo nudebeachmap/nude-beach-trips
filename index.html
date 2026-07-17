@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nude Beach Trips</title>
+<meta name="description" content="Respectful, small-group nude beach getaways. Respectful, fun, and chill." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
+<!-- HubSpot forms -->
+<script src="https://js.hsforms.net/forms/v2.js"></script>
+
+<style>
+  /* ===== Brand palette ===== */
+  :root{
+    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --charcoal:#343537; --lemon:#fff200; --white:#ffffff;
+    --bg1:#0b2a3d; --accent: var(--sun); --line: rgba(255,255,255,.22);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--white);
+    background: radial-gradient(1200px 700px at 50% 10%, rgba(12,186,180,.25), transparent 60%) , #0b2a3d;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  h1,h2{font-family:"Playfair Display", Georgia, serif;margin:0 0 .5rem;line-height:1.1}
+  a{color:var(--white)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ===== Header ===== */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;
+    background:linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0));
+  }
+  .header-left{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-img{height:38px;width:auto;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+  .logo-word{font-weight:800;letter-spacing:.5px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-size:1.1rem}
+  .cta{background:var(--accent);color:#000;padding:10px 14px;border-radius:999px;font-weight:800;text-decoration:none;border:0;cursor:pointer}
+
+  /* ===== Hero (video) ===== */
+  .hero{position:relative;height:100svh;display:grid;place-items:center;overflow:hidden}
+  .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08)}
+  .hero .overlay{position:absolute;inset:0;background: radial-gradient(90% 70% at 50% 70%, rgba(11,42,61,.05), rgba(11,42,61,.85))}
+  .hero .teal-wash{position:absolute;inset:0;background:linear-gradient(180deg, rgba(12,186,180,.15), rgba(12,186,180,.02));mix-blend:soft-light}
+  .hero-content{position:relative;text-align:center;padding:0 20px}
+  .hero h1{font-size:clamp(36px,7.5vw,86px);text-transform:uppercase;letter-spacing:.5px}
+
+  /* Byline */
+  .byline{
+    display:flex;gap:14px;align-items:center;justify-content:center;
+    margin:14px 0 22px;color:#e8f7f6;
+    font-size:clamp(18px,2.6vw,28px);
+    font-weight:700;
+  }
+  .byline a{display:inline-flex;align-items:center}
+  .byline img{height:68px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+
+  .hero p{max-width:740px;margin:14px auto 26px;color:#d9e2ea}
+  .stack-rotate{display:grid;gap:6px;font-size:clamp(18px,2.6vw,28px);font-weight:800;letter-spacing:.12em}
+  .stack-rotate span{opacity:0;transform:translateY(10px);animation:fadeUp 8s infinite}
+  .stack-rotate span:nth-child(1){animation-delay:0s}
+  .stack-rotate span:nth-child(2){animation-delay:2.7s}
+  .stack-rotate span:nth-child(3){animation-delay:5.4s}
+  @keyframes fadeUp{0%{opacity:0;transform:translateY(12px)}10%,30%{opacity:1;transform:none}40%,100%{opacity:0}}
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.22);font-weight:800;text-decoration:none}
+  .btn.primary{background:var(--accent);border-color:transparent;color:#000}
+  .btn.ghost{background:transparent}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero video{display:none}
+    .poster{display:block}
+    .stack-rotate span{animation:none;opacity:1}
+  }
+
+  /* ===== Dates ===== */
+  .section{padding:80px 0}
+  .dates .wrap{max-width:820px}
+  .dates h2{text-align:center;font-size:clamp(28px,4.5vw,46px);margin-bottom:18px}
+  .dates p.lead{text-align:center;color:#d9e2ea;margin:0 0 24px}
+  .board{border:1px solid rgba(255,255,255,.22);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
+  .row{display:grid;grid-template-columns:2fr auto 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.22)}
+  .row:last-child{border-bottom:0}
+
+  /* City + flags */
+  .city{font-weight:800;display:flex;align-items:center;gap:10px;min-width:0}
+  .city .city-text{min-width:0;overflow:hidden}
+  .flagimg{
+    width:20px;height:14px;border-radius:3px;
+    box-shadow:0 1px 6px rgba(0,0,0,.35);
+    vertical-align:middle;margin-left:8px;
+  }
+  .city .city-text .line{display:inline}
+
+  .date{color:#d9e2ea}
+  .trip-status{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:4px 9px;border-radius:999px;
+    font-size:.68rem;font-weight:800;letter-spacing:.07em;
+    text-transform:uppercase;white-space:nowrap;
+  }
+  .trip-status.sold-out{
+    background:rgba(248,192,20,.14);
+    color:var(--sun);
+    border:1px solid rgba(248,192,20,.38);
+  }
+  .more{border:1px solid rgba(255,255,255,.3);padding:8px 12px;border-radius:8px;background:transparent;color:#fff;cursor:pointer}
+  .details{display:none;padding:16px;border-top:1px dashed rgba(255,255,255,.25);background:rgba(0,0,0,.18)}
+  .row.open + .details{display:block}
+  .soon{display:grid;place-items:center;padding:36px 16px;font-weight:900;letter-spacing:.35em;color:#000;background:linear-gradient(180deg,var(--sun),var(--amber));text-transform:uppercase}
+
+  /* Mobile: show city as two lines + give it room */
+  @media (max-width: 640px){
+    .row{grid-template-columns:1.4fr auto 1fr auto;gap:8px}
+    .city .city-text{white-space:normal;line-height:1.05}
+    .city .city-text .line{display:block}
+    .flagimg{margin-left:6px}
+  }
+
+  /* ===== Feature overlay strip ===== */
+  .feature{position:relative;margin:80px 0 0}
+  .feature-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0b2a3d}
+  .feature-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);filter:contrast(1.05) saturate(1.08)}
+  .feature-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);pointer-events:none}
+
+  /* === NEW: rotating images (NBT01..NBT04) === */
+  .media-rotator{position:relative;width:100%;height:100%}
+  .media-rotator img{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 900ms ease;
+    will-change: opacity;
+  }
+  .media-rotator img.is-active{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .media-rotator img{transition:none}
+  }
+
+  .float-card{position:relative;max-width:900px;margin:-70px auto 0;background:rgba(11,42,61,.75);border:1px solid var(--line);backdrop-filter: blur(10px);border-radius:16px;padding:24px;display:grid;gap:16px}
+  .float-card h3{font-size:clamp(22px,3.2vw,30px);margin:0;font-family:"Playfair Display", Georgia, serif}
+  .float-card p{margin:0;color:#d9e2ea}
+  .float-row{display:grid;gap:18px;grid-template-columns:2fr 1fr}
+
+  /* Badges: unified typography */
+  .float-badge{
+    display:inline-flex;gap:8px;align-items:center;
+    padding:8px 12px;border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(12,186,180,.18);
+    font-weight:800;width:max-content;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    font-size:14px;
+    line-height:1;
+  }
+  button.float-badge{
+    appearance:none;-webkit-appearance:none;
+    background:rgba(12,186,180,.18);
+    color:#fff;
+    border:1px solid var(--line);
+    cursor:pointer;
+  }
+  .float-badge.btnlike{cursor:pointer;color:#fff;text-decoration:none}
+  .float-badge.btnlike:hover{transform:translateY(-1px)}
+  .brand-dot{width:10px;height:10px;border-radius:50%}
+  @media (max-width: 820px){.float-row{grid-template-columns:1fr}.float-card{margin:-50px 16px 0}}
+
+  /* ===== Reveal on scroll ===== */
+  .reveal{opacity:0; transform:translateY(24px)}
+  .reveal.show{opacity:1; transform:none; transition:opacity .8s ease, transform .8s ease}
+  @media (prefers-reduced-motion: reduce){
+    .reveal,.reveal.show{opacity:1; transform:none}
+  }
+
+  /* ===== Footer (two-tone background aligned with content) ===== */
+  footer{
+    padding:42px 0 54px;
+    text-align:center;
+    color:#d9e2ea;
+    border-top:1px solid var(--line);
+    background:
+      radial-gradient(900px 260px at 50% 0%, rgba(12,186,180,.10), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
+  }
+  .footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
+
+  .footer-slab{
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.10);
+  }
+  .footer-top-slab{
+    padding:22px 18px 18px;
+    background:
+      radial-gradient(800px 220px at 50% 0%, rgba(12,186,180,.16), transparent 68%),
+      linear-gradient(180deg, rgba(3,34,40,.55), rgba(3,34,40,.72));
+  }
+  .footer-bottom-slab{
+    padding:18px 18px 22px;
+    background: linear-gradient(180deg, rgba(12,186,180,.14), rgba(3,34,40,.88));
+  }
+
+  .footer-top{display:grid;gap:10px;justify-items:center}
+  .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
+  .fineprint{
+    opacity:.82;
+    font-size:.95rem;
+    max-width:900px;
+    margin:0 auto;
+    line-height:1.55;
+  }
+
+  .footer-bottom{
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.14);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .inf-text{
+    font-size:.95rem;
+    opacity:.92;
+    text-align:left;
+    max-width:560px;
+    line-height:1.3;
+  }
+  .inf-logo{display:inline-flex;align-items:center;text-decoration:none}
+  .inf-logo img{
+    height:72px; width:auto;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);
+    padding:8px;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,.38));
+  }
+  .inf-logo img:hover{transform:translateY(-1px)}
+  @media (max-width: 640px){
+    .footer-top-slab,.footer-bottom-slab{padding-left:16px;padding-right:16px}
+    .footer-bottom{justify-content:center}
+    .inf-text{text-align:center}
+    .inf-logo img{height:86px}
+  }
+
+  /* ===== Modals ===== */
+  dialog.policy{
+    border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
+    max-width:780px;width:92%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    border: 1px solid var(--line);
+  }
+  dialog.policy::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  .policy-header{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .policy-body{padding:18px;color:#d9e2ea}
+  .policy-body p{margin:0 0 10px}
+  .policy-body ul{margin:8px 0 12px 18px}
+  .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+
+  dialog.newsletter{
+    border:none;border-radius:16px;padding:30px;background:#0b2a3d;color:#fff;
+    max-width:500px;width:90%;
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
+    border:1px solid var(--line);
+  }
+  dialog.newsletter::backdrop{ background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+  .newsletter-header{text-align:center;margin-bottom:20px}
+  .newsletter-header h3{color:var(--sun);font-size:1.8rem;margin-bottom:8px}
+  .newsletter-header p{opacity:0.8;font-size:0.95rem}
+
+  .hs-form-frame .hs-form label{display:block;font-size:14px;color:#d9e2ea;margin:0 0 6px}
+  .hs-form-frame .hs-form input[type="email"]{
+    width:100%;padding:14px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(255,255,255,0.05);color:#fff;outline:none;
+  }
+  .hs-form-frame .hs-form input[type="submit"],
+  .hs-form-frame .hs-form .hs-button{
+    display:inline-block !important;width:100% !important;
+    padding:14px !important;border-radius:10px !important;border:0 !important;
+    background:var(--accent) !important;color:#000 !important;
+    font-weight:800 !important;cursor:pointer !important;margin-top:16px !important;
+    text-transform:uppercase !important;letter-spacing:1px !important;
+    font-family:'Inter', sans-serif !important;
+  }
+  .hs-form-frame .hs-form input[type="submit"]:hover,
+  .hs-form-frame .hs-form .hs-button:hover{
+    background:var(--amber) !important;transform:translateY(-2px);
+  }
+  .hs-form iframe + div, .hs-form .legal-consent-container + div{display:none !important}
+
+  .cta-box{
+    text-align:center;margin-top:40px;padding:40px;
+    background:rgba(255,255,255,0.03);border-radius:16px;border:1px solid var(--line);
+  }
+  .cta-big{
+    background:var(--teal);color:#000;font-size:1.2rem;padding:16px 32px;
+    border-radius:50px;font-weight:800;border:none;cursor:pointer;
+    transition:transform 0.2s ease;
+  }
+  .cta-big:hover{transform:scale(1.05);background:#fff}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="#" class="header-left">
+    <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
+    <div class="logo-word">Nude Beach Trips</div>
+  </a>
+  <button id="navJoin" class="cta">Join the list</button>
+</header>
+
+<section class="hero" aria-label="Video hero">
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
+    <source src="/assets/hero.mp4" type="video/mp4">
+  </video>
+  <img class="poster" src="/assets/hero-poster.jpg" alt="" aria-hidden="true" style="display:none">
+  <div class="overlay"></div>
+  <div class="teal-wash"></div>
+
+  <div class="hero-content">
+    <h1>NUDE BEACH TRIPS</h1>
+    <p class="byline">
+      by
+      <a href="https://nudebeachmap.com" target="_blank" rel="noopener">
+        <img src="/assets/nude-beach-map-logo.gif" alt="Nude Beach Map logo">
+      </a>
+    </p>
+    <div class="stack-rotate" aria-live="polite">
+      <span>RELAX.</span>
+      <span>SUN.</span>
+      <span>SEA.</span>
+    </div>
+    <p style="max-width:740px;margin:14px auto 26px">Small groups, great locations. Zero awkward vibes.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#dates">Tour Dates</a>
+      <a class="btn ghost" href="#about">About</a>
+    </div>
+  </div>
+</section>
+
+<section id="dates" class="dates section">
+  <div class="wrap">
+    <h2>Tour Dates</h2>
+    <p class="lead">We're scouting and adding more events soon. Be the first to know.</p>
+    <div id="board" class="board" role="list"></div>
+
+    <div class="cta-box">
+      <button id="open-newsletter" class="cta-big">Get on the list</button>
+      <p style="margin-top:12px; font-size: 0.9rem; opacity:0.7">Spots are limited on our boutique tours. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-label="Community vibe">
+  <div class="wrap" style="padding:0 20px">
+    <div class="feature-media reveal" role="img" aria-label="Happy group relaxing by the sea" data-reveal>
+      <div class="media-rotator" data-rotator data-interval="3000" aria-hidden="true">
+        <img src="/assets/NBT01.jpg" alt="" class="is-active">
+        <img src="/assets/NBT02.jpg" alt="">
+        <img src="/assets/NBT03.jpg" alt="">
+        <img src="/assets/NBT04.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="float-card reveal" data-reveal>
+      <div class="float-row">
+        <div>
+          <h3>Clothing optional, friendly, naturist.</h3>
+          <p>We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
+        </div>
+        <div>
+          <div class="float-badge"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</div><br>
+          <div class="float-badge"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</div><br>
+          <button class="float-badge btnlike" id="respectBadge" type="button">
+            <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    <p style="max-width:760px;color:#d9e2ea">
+      By <a class="link" href="https://nudebeachmap.com" target="_blank" rel="noopener">Nude Beach Map</a>.
+      Curated trips for newbies and naturist experts. Beautiful places, respectful vibes.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-slab">
+      <div class="footer-top-slab">
+        <div class="footer-top">
+          <div>© 2026 Nude Beach Trips</div>
+          <div class="footer-links">
+            <a href="#" id="respectLink" class="link">Respect policy</a>
+            <a href="#" id="cancelLink" class="link">Cancellation & refunds</a>
+            <a href="#" id="privacyLink" class="link">Privacy</a>
+            <a href="#" id="liabilityLink" class="link">Liability</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-slab">
+        <div class="fineprint">
+          Nude Beach Trips is operated by Nude Beach Map, BN 709086508BC0001.<br>
+          Payment securely processed by Stripe Canada.
+        </div>
+
+        <div class="footer-bottom" aria-label="INF corporate partner">
+          <div class="inf-text">An official corporate partner of the INF - upholding naturist values</div>
+          <a class="inf-logo" href="https://inf-fni.org/corporate-partners/" target="_blank" rel="noopener">
+            <img
+              src="https://inf-fni.org/wp-content/uploads/2025/05/INF-Logo-Partner-cmyk-1018x1024.jpg"
+              alt="INF corporate partner logo"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Respect Policy Modal ===== -->
+<dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
+  <div class="policy-header">
+    <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
+    <button class="close-btn" data-close="policyDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p><strong>Clothing optional, friendly, naturist.</strong><br>
+    We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
+
+    <p style="margin-top:12px">
+      <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#0cbab4"></span> Small groups</span>
+      <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px"><span class="brand-dot" style="background:#f8c014"></span> Beautiful spots</span>
+      <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex"><span class="brand-dot" style="background:#e49d25"></span> Respect policy</span>
+    </p>
+
+    <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
+
+    <p>• Nudity may be expected in some settings for the comfort of others. Participate at your own pace.</p>
+    <p>• We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.</p>
+    <p>• This is not a dating trip or a “lifestyle” trip. It’s about community, comfort, and body freedom.</p>
+    <p>• Respect others. Ask before photos, give personal space, and leave no trace.</p>
+  </div>
+</dialog>
+
+<!-- ===== Cancellation Modal ===== -->
+<dialog class="policy" id="cancelDialog" aria-labelledby="cancelTitle">
+  <div class="policy-header">
+    <strong id="cancelTitle">Cancellation & Refunds</strong>
+    <button class="close-btn" data-close="cancelDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p><strong>Unless otherwise stated on a specific trip page, the following applies:</strong></p>
+    <ul>
+      <li><strong>90+ days before the event:</strong> Full refund <em>(minus card processing fees)</em>.</li>
+      <li><strong>60 to 90 days before the event:</strong> 50% refund of amounts paid.</li>
+      <li><strong>60 days or less</strong> No refund.</li>
+    </ul>
+    <p>At our discretion, we may offer a one-time transfer to a future trip (subject to availability) in place of a cash refund.<p>
+    <p>We strongly recommend <strong>private travel insurance</strong> that covers cancellations, medical care, and unexpected changes.</p>
+    <p>If a trip is cancelled by us due to operational, safety, or unforeseen circumstances, participants will receive a full refund of all amounts paid to us (Deposits/Event Fees). Where appropriate, we may also offer the option to transfer payments to a future trip or receive a credit, at the participant’s choice. Nude Beach Trips is not responsible for any additional costs incurred by participants, including flights, accommodation outside the trip, travel insurance, or other personal expenses.</p>
+  </div>
+</dialog>
+
+<!-- ===== Privacy Modal ===== -->
+<dialog class="policy" id="privacyDialog" aria-labelledby="privacyTitle">
+  <div class="policy-header">
+    <strong id="privacyTitle">Privacy</strong>
+    <button class="close-btn" data-close="privacyDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p>We collect only the information needed to run trips and communicate with you (e.g., name, email, and any trip-related details you provide).</p>
+    <p><strong>How we use it:</strong> trip administration, updates, participant approvals (where applicable), and customer support.</p>
+    <p><strong>Marketing emails:</strong> If you join the list, you can unsubscribe anytime.</p>
+    <p><strong>Sharing:</strong> We don’t sell your personal data. We may share limited details with essential providers only when required to deliver the trip (e.g., check-in lists), and only to the extent needed.</p>
+    <p><strong>Photos:</strong> We have a strict consent-first culture. No one should be photographed without permission.</p>
+  </div>
+</dialog>
+
+<!-- ===== Liability Modal ===== -->
+<dialog class="policy" id="liabilityDialog" aria-labelledby="liabilityTitle">
+  <div class="policy-header">
+    <strong id="liabilityTitle">Liability & Assumption of Risk</strong>
+    <button class="close-btn" data-close="liabilityDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p>By participating in an event/trip, you acknowledge that travel and outdoor activities can involve risks (including illness, injury, weather, ocean conditions, transportation disruptions, and the actions of third parties).</p>
+    <p>You agree that you participate at your own risk and are responsible for:</p>
+    <ul>
+      <li>your own health/fitness and medical needs,</li>
+      <li>your travel documents (passport/visas),</li>
+      <li>your conduct and compliance with local laws and venue rules,</li>
+      <li>your personal property and valuables.</li>
+    </ul>
+    <p>We are not responsible for services provided by third parties (e.g., accommodation, transport operators, restaurants, excursions) beyond what is explicitly stated in the trip inclusions.</p>
+    <p>We strongly recommend travel insurance that includes medical coverage and trip interruption/cancellation.</p>
+  </div>
+</dialog>
+
+<!-- ===== Newsletter Modal (HubSpot) ===== -->
+<dialog class="newsletter" id="newsletterDialog" aria-label="Join the list">
+  <button class="close-btn" data-close="newsletterDialog" style="float:right; margin-top:-10px;">✕</button>
+  <div class="newsletter-header">
+    <h3>Join Our Community</h3>
+    <p>Get insider access to the best naturist destinations.</p>
+  </div>
+  <div id="hubspot-form" class="hs-form-frame"></div>
+</dialog>
+
+<script>
+  // --- Tour Dates Data ---
+  const trips = [
+    {
+      city: "Vancouver, Canada",
+      flagCode: "ca",
+      date: "Sat 15th August, 2026",
+      blurb: "First-ever nude beach cruise in Vancouver. Relaxed and scenic.",
+      img: "/assets/vancouver-thumb.jpg",
+      link: "harbour-cruise.html",
+      status: "Sold Out"
+    },
+    {
+      city: "Zipolite, Mexico",
+      flagCode: "mx",
+      date: "Jan 24–28, 2027",
+      blurb: "4 Nights at Mexico's famous clothing-optional beach. Perfect for newbie nudies. Enjoy curated activities or just chill on the beach. You choose!",
+      img: "/assets/zipolite-thumb.jpg",
+      link: "zipolite.html"
+    }
+  ];
+
+  const flagURL = (code) => code ? `https://flagcdn.com/w20/${String(code).toLowerCase()}.png` : "";
+
+  const board = document.getElementById('board');
+  if (!trips.length){
+    const soon = document.createElement('div');
+    soon.className='soon';
+    soon.textContent='COMING SOON';
+    board.appendChild(soon);
+  } else {
+    trips.forEach((t,i)=>{
+      const row=document.createElement('div');
+      row.className='row';
+      row.setAttribute('role','listitem');
+
+      const clickable = t.link ? `onclick="window.location='${t.link}'" style='cursor:pointer'` : "";
+
+      const flagImg = t.flagCode
+        ? `<img class="flagimg" src="${flagURL(t.flagCode)}" alt="" aria-hidden="true" loading="lazy" decoding="async">`
+        : ``;
+
+      const parts = String(t.city).split(',').map(s => s.trim()).filter(Boolean);
+      const cityHTML = parts.length >= 2
+        ? `<span class="line">${parts[0]},</span><span class="line">${parts.slice(1).join(', ')}</span>`
+        : `<span class="line">${t.city}</span>`;
+
+      const statusHTML = t.status
+        ? `<div class="trip-status sold-out">${t.status}</div>`
+        : `<div></div>`;
+
+      row.innerHTML=`
+        <div class="city" ${clickable}>
+          <img src="${t.img}" alt="${t.city}" style="height:36px;width:36px;border-radius:6px;vertical-align:middle;object-fit:cover;flex:0 0 auto">
+          <div class="city-text">${cityHTML}${flagImg}</div>
+        </div>
+        ${statusHTML}
+        <div class="date">${t.date}</div>
+        <button class="more" aria-expanded="false" aria-controls="d-${i}">Details</button>
+      `;
+
+      const details=document.createElement('div');
+      details.className='details';
+      details.id=`d-${i}`;
+      details.innerHTML=`
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;align-items:center">
+          <img src="${t.img}" alt="${t.city}" style="width:100%;border-radius:10px;border:1px solid var(--line)">
+          <div>
+            <p style="margin:0 0 12px">${t.blurb}</p>
+            <a class="btn primary" href="${t.link || '#dates'}">Learn More</a>
+          </div>
+        </div>
+      `;
+
+      board.appendChild(row);
+      board.appendChild(details);
+
+      row.querySelector('.more').addEventListener('click', e=>{
+        const open=row.classList.toggle('open');
+        e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
+  function openDialog(id){ document.getElementById(id).showModal(); }
+  function closeDialog(id){ document.getElementById(id).close(); }
+
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-close]');
+    if (!btn) return;
+    closeDialog(btn.getAttribute('data-close'));
+  });
+
+  ['policyDialog','cancelDialog','privacyDialog','liabilityDialog','newsletterDialog'].forEach(id=>{
+    const d = document.getElementById(id);
+    d.addEventListener('click', (e)=>{ if(e.target === d) d.close(); });
+  });
+
+  document.getElementById('respectLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('policyDialog'); });
+  document.getElementById('cancelLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('cancelDialog'); });
+  document.getElementById('privacyLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('privacyDialog'); });
+  document.getElementById('liabilityLink').addEventListener('click', (e)=>{ e.preventDefault(); openDialog('liabilityDialog'); });
+
+  document.getElementById('respectBadge').addEventListener('click', ()=> openDialog('policyDialog'));
+
+  const newsModal = document.getElementById('newsletterDialog');
+  const newsOpen = document.getElementById('open-newsletter');
+  const newsNav = document.getElementById('navJoin');
+  const openNews = () => newsModal.showModal();
+  newsOpen.addEventListener('click', openNews);
+  newsNav.addEventListener('click', (e)=>{ e.preventDefault(); openNews(); });
+
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.25});
+  els.forEach(el=> io.observe(el));
+
+  (function waitHS(){
+    if (!window.hbspt || !hbspt.forms) return setTimeout(waitHS, 80);
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "45610755",
+      formId: "d44bc7d9-db7f-4142-93ca-f2f7d1e522e2",
+      target: "#hubspot-form"
+    });
+  })();
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const observer = new MutationObserver(() => {
+      const emailInput = document.querySelector('.hs-form input[type="email"]');
+      if (emailInput && !emailInput.placeholder) emailInput.placeholder = 'you@email.com';
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+
+  // ===== NEW: Feature image rotator (NBT01..NBT04) =====
+  (function initRotators(){
+    const rotators = document.querySelectorAll('[data-rotator]');
+    rotators.forEach(rotator => {
+      const imgs = Array.from(rotator.querySelectorAll('img'));
+      if (!imgs.length) return;
+
+      let current = imgs.findIndex(img => img.classList.contains('is-active'));
+      if (current < 0) current = 0;
+      imgs.forEach((img, idx) => img.classList.toggle('is-active', idx === current));
+
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced || imgs.length === 1) return;
+
+      const interval = Math.max(1500, parseInt(rotator.getAttribute('data-interval') || '3000', 10));
+
+      setInterval(() => {
+        imgs[current].classList.remove('is-active');
+        current = (current + 1) % imgs.length;
+        imgs[current].classList.add('is-active');
+      }, interval);
+    });
+  })();
+</script>
+</body>
+</html>
