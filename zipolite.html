@@ -134,6 +134,23 @@
   .btn.outline{background:transparent; border: 1px solid var(--line); color: #fff;}
   .btn.outline:hover{background: rgba(255,255,255,0.1); color: #fff;}
 
+  /* Keep every available-room CTA consistent */
+  .btn.open-application,
+  .btn.outline.open-application{
+    background: linear-gradient(135deg, #f8c014, #e49d25);
+    color:#111;
+    border-color:transparent;
+    box-shadow:0 10px 24px rgba(248,192,20,.20);
+  }
+
+  .btn.open-application:hover,
+  .btn.outline.open-application:hover{
+    background:#ffd54a;
+    color:#000;
+    border-color:transparent;
+    transform:translateY(-2px) scale(1.02);
+  }
+
   /* Premium sold-out styling */
   .room-card.sold-out{
     position: relative;
