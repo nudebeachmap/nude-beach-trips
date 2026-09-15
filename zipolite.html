@@ -196,6 +196,44 @@
     border-radius:999px;
     box-shadow: 0 8px 20px rgba(248,192,20,.35);
   }
+
+  /* Last-room treatment: premium urgency without the hard-sell look */
+  .room-card.last-room{
+    position:relative;
+    border-color:rgba(248,192,20,.62);
+    background:
+      radial-gradient(700px 220px at 50% -20%, rgba(248,192,20,.14), transparent 58%),
+      rgba(255,255,255,.055);
+    box-shadow:0 18px 45px rgba(0,0,0,.22), 0 0 0 1px rgba(248,192,20,.08) inset;
+  }
+  .room-card.last-room:hover{
+    transform:translateY(-4px);
+    border-color:var(--sun);
+    box-shadow:0 24px 55px rgba(0,0,0,.30), 0 0 30px rgba(248,192,20,.08);
+  }
+  .room-card.last-room .limited-badge{
+    background:linear-gradient(135deg, #ffe06a, #f8c014 55%, #e49d25);
+    box-shadow:0 10px 26px rgba(248,192,20,.42);
+    animation:scarcityPulse 2.8s ease-in-out infinite;
+  }
+  .room-card.last-room .btn.open-application{
+    background:linear-gradient(135deg, #f8c014, #e49d25);
+    color:#111;
+    border-color:transparent;
+    box-shadow:0 10px 24px rgba(248,192,20,.20);
+  }
+  .room-card.last-room .btn.open-application:hover{
+    background:#ffd54a;
+    color:#000;
+    transform:translateY(-2px) scale(1.02);
+  }
+  @keyframes scarcityPulse{
+    0%,100%{ transform:scale(1); box-shadow:0 10px 26px rgba(248,192,20,.34); }
+    50%{ transform:scale(1.035); box-shadow:0 12px 30px rgba(248,192,20,.52); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .room-card.last-room .limited-badge{ animation:none; }
+  }
   .sold-note{
     display:inline-flex;
     align-items:center;
@@ -698,24 +736,23 @@
   </div>
 </div>
 
-              <div class="room-card sold-out" data-room="std_ocean">
+              <div class="room-card last-room" data-room="std_ocean">
                 <div class="room-media">
                   <img src="assets/StdSuiteOcean1.avif" alt="Standard Suite Ocean">
-                  <div class="sold-badge">Sold Out</div>
+                  <div class="limited-badge">Only 1 Left</div>
                   <div class="gallery-icon">📷 Photos</div>
                 </div>
                 <div class="room-details">
                   <div class="room-title">Standard Suite (Ocean View)</div>
                   <div class="room-desc">
                     <strong>215 sq ft.</strong> King-size bed, private bathroom, A/C, fan, safe. Terrace with hanging bed. Stunning ocean views. Sleeps 2.
-                    <div class="sold-note">This room category is no longer available</div>
                   </div>
                   <div class="room-meta">
                     <div>
                       <div class="price"><span>TOTAL (4 NIGHTS)</span>$1255</div>
                       <div class="per-person">$628/pp (sharing)</div>
                     </div>
-                    <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
+                    <button class="btn outline open-application">Secure It</button>
                   </div>
                 </div>
               </div>
@@ -758,21 +795,20 @@
   </div>
 </div>
 
-<div class="room-card sold-out" data-room="std_dbl">
+<div class="room-card last-room" data-room="std_dbl">
   <div class="room-media">
     <img src="assets/StdDblPool1.avif" alt="Standard Room">
-    <div class="sold-badge">Sold Out</div>
+    <div class="limited-badge">Only 1 Left</div>
     <div class="gallery-icon">📷 Photos</div>
   </div>
   <div class="room-details">
     <div class="room-title">Standard Room (Pool View)</div>
     <div class="room-desc">
       <strong>194 sq ft.</strong> Simple and comfortable. 1 Double bed, private bathroom, A/C, safe. Pool view. Sleeps 2.
-      <div class="sold-note">This room category is no longer available</div>
     </div>
     <div class="room-meta">
       <div><div class="price"><span>TOTAL (4 NIGHTS)</span>$915</div><div class="per-person">$458/pp (sharing)</div></div>
-      <button class="btn outline sold-out-btn" disabled aria-disabled="true">Sold Out</button>
+      <button class="btn outline open-application">Secure It</button>
     </div>
   </div>
 </div>
