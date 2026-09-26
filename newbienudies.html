@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Newbie Nudies at AetherHaus – Nude Beach Trips</title>
+<meta name="description" content="Newbie Nudies at AetherHaus Vancouver — a private, beginner-friendly clothing-optional sauna and Aufguss experience hosted by Nude Beach Map." />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/gif" href="assets/nude-beach-map-logo.gif">
+
+<style>
+  :root{
+    --ink:#26150e; --teal:#0cbab4; --sun:#f8c014; --amber:#e49d25; --white:#ffffff;
+    --bgBase:#0b2a3d;
+    --line:rgba(255,255,255,.22);
+    --muted:#d9e2ea;
+    --urgent:#d88b1c;
+    --urgent-dark:#b86e12;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--white);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    line-height:1.7;
+    background:var(--bgBase);
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ===== ONE SINGLE PAGE BACKGROUND ===== */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(1200px 700px at 50% 10%, rgba(12,186,180,.25), transparent 60%),
+      radial-gradient(900px 420px at 20% 70%, rgba(248,192,20,.10), transparent 65%),
+      linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
+      var(--bgBase);
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,0) 30%, rgba(0,0,0,.22));
+    opacity:.55;
+  }
+
+  main{flex:1}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  .text-container{max-width:820px;margin:0 auto;text-align:center}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin-top:0;line-height:1.1}
+  h2{color:var(--sun);font-size:clamp(2rem,4vw,3rem)}
+  a{color:var(--teal);text-decoration:none}
+
+  /* ===== Header ===== */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:99;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 20px;
+    background:linear-gradient(180deg,rgba(0,0,0,.65),transparent);
+  }
+  .header-left{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-img{height:38px;width:auto;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+  .logo-word{font-weight:800;letter-spacing:.5px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-size:1.1rem}
+  .cta{
+    background:var(--sun);color:#000;
+    padding:10px 18px;border-radius:999px;
+    font-weight:800;border:0;cursor:pointer;
+    text-decoration:none;white-space:nowrap;
+  }
+  .cta:hover{background:#fff}
+
+  /* ===== Hero ===== */
+  .hero{position:relative;height:76vh;overflow:hidden}
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(90% 70% at 50% 70%, rgba(11,42,61,.08), rgba(11,42,61,.86));
+    pointer-events:none;
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center;
+    opacity:0;transition:opacity 1.6s ease;
+    filter:contrast(1.05) saturate(1.08) brightness(.62);
+    transform:scale(1.02);
+  }
+  .hero-slide.active{opacity:1}
+  .hero-slide.pos-top{background-position:center top}
+  .hero-slide.pos-center{background-position:center center}
+  .hero-slide.pos-bottom{background-position:center bottom}
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding-top:72px;
+  }
+  .hero-badge-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:16px;
+  }
+  .hero-urgent{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:11px 18px;border-radius:999px;
+    background:linear-gradient(180deg,var(--urgent),var(--urgent-dark));
+    color:#fff;font-weight:800;font-size:.92rem;line-height:1.2;
+    text-transform:uppercase;letter-spacing:.25px;
+    box-shadow:0 12px 28px rgba(0,0,0,.28);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .hero-date{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 16px;border-radius:999px;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+    color:#fff;font-weight:800;font-size:.98rem;line-height:1.2;
+    backdrop-filter:blur(10px);box-shadow:0 10px 24px rgba(0,0,0,.18);
+  }
+  .hero h1{
+    font-size:clamp(44px,8.5vw,90px);
+    text-transform:uppercase;
+    text-shadow:0 4px 20px rgba(0,0,0,.55);
+    margin:0 0 10px;
+    letter-spacing:.5px;
+  }
+  .hero p{font-size:1.15rem;color:var(--muted);margin:0 auto;max-width:900px}
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .hero-btn{
+    display:inline-block;padding:12px 20px;border-radius:999px;font-weight:800;border:0;cursor:pointer;
+    background:var(--sun);color:#000;text-decoration:none;
+  }
+  .hero-btn.secondary{background:rgba(255,255,255,.11);color:#fff;border:1px solid rgba(255,255,255,.22)}
+  .hero-btn:hover{background:#fff;color:#000}
+
+  /* ===== Sections ===== */
+  .section{padding:84px 0}
+  .section.sep{border-top:1px solid rgba(255,255,255,.10)}
+  .section.tight{padding:72px 0}
+
+  /* ===== 3-image strip ===== */
+  .strip{max-width:980px;margin:38px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .strip img{
+    width:100%;height:220px;object-fit:cover;
+    border-radius:16px;border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+    filter:contrast(1.03) saturate(1.05);
+  }
+  @media (max-width:820px){.strip{grid-template-columns:1fr;max-width:560px}.strip img{height:240px}}
+
+  /* ===== Soft panel surface ===== */
+  .panel{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:18px;padding:26px;
+    box-shadow:0 18px 44px rgba(0,0,0,.25);
+    backdrop-filter:blur(10px);
+  }
+  .panel p{color:var(--muted)}
+  .bullets{color:var(--muted);margin:0;padding-left:18px;text-align:left;display:inline-block}
+  .bullets li{margin:8px 0}
+
+  /* ===== Experience ===== */
+  .experience{max-width:900px;margin:0 auto}
+  .experience .meta{margin:0 auto 22px;color:var(--muted)}
+  .experience strong{color:#fff}
+
+  /* ===== Newbie block ===== */
+  .newbie-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;
+    max-width:1020px;margin:0 auto;
+  }
+  .newbie-img{
+    border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+    background:rgba(0,0,0,.15);box-shadow:0 18px 44px rgba(0,0,0,.25);
+  }
+  .newbie-img img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block}
+  .newbie-card{text-align:left}
+  .newbie-card h3{margin:0 0 12px;font-size:1.7rem;color:#fff}
+  @media (max-width:920px){.newbie-grid{grid-template-columns:1fr;max-width:720px}.newbie-img img{height:360px;min-height:0}}
+
+  /* ===== Ticket card ===== */
+  .ticket-card{
+    max-width:520px;margin:0 auto;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:18px;padding:30px;
+    text-align:center;box-shadow:0 18px 44px rgba(0,0,0,.25);
+    backdrop-filter:blur(10px);
+  }
+  .ticket-price{font-size:2.6rem;font-weight:800;color:var(--sun);line-height:1.1}
+  .ticket-meta{opacity:.9;font-size:.98rem;margin-top:8px;color:var(--muted)}
+  .ticket-member{
+    margin:20px 0 0;padding:18px;border-radius:14px;
+    background:rgba(12,186,180,.12);border:1px solid rgba(12,186,180,.32);
+  }
+  .ticket-member strong{color:#fff}
+  .ticket-member a{font-weight:800;text-decoration:underline;text-underline-offset:3px}
+  .apply-btn{
+    display:inline-block;width:100%;margin-top:22px;padding:15px 22px;border:0;border-radius:999px;
+    background:var(--sun);color:#000;font-weight:800;font-size:1.05rem;cursor:pointer;
+  }
+  .apply-btn:hover{background:#fff}
+  .fine{font-size:.85rem;opacity:.8;margin-top:10px;color:var(--muted)}
+
+  /* ===== FAQ ===== */
+  .faq-wrap{max-width:860px;margin:0 auto;padding:0 14px}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.14)}
+  .faq-header{display:flex;justify-content:space-between;gap:12px;padding:22px 0;cursor:pointer;font-weight:700}
+  .faq-header span{opacity:.8}
+  .faq-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-item.open .faq-body{max-height:620px}
+  .faq-content{padding:0 0 20px;color:var(--muted)}
+  .faq-content p{margin:0 0 12px}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid rgba(255,255,255,.14);
+    padding:40px 20px;text-align:center;color:var(--muted);
+    background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22));
+  }
+  .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .link{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+  /* ===== Modals ===== */
+  dialog.policy{
+    border:none;border-radius:14px;padding:0;background:rgba(11,42,61,.96);color:#fff;
+    max-width:780px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,0.7);border:1px solid var(--line);
+  }
+  dialog.policy::backdrop{background:rgba(0,0,0,0.7);backdrop-filter:blur(4px)}
+  .policy-header{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .policy-body{padding:18px;color:var(--muted)}
+  .policy-body p{margin:0 0 10px}
+  .close-btn{background:transparent;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+
+  dialog.application{
+    border:none;border-radius:16px;padding:0;background:#0b2a3d;color:#fff;
+    width:min(760px,94vw);max-width:760px;overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,.75);border:1px solid var(--line);
+  }
+  dialog.application::backdrop{background:rgba(0,0,0,.76);backdrop-filter:blur(5px)}
+  .application-header{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.04);
+  }
+  .application-header strong{font-size:1.05rem}
+  .application-frame{width:100%;height:80vh;border:0;display:block;background:#fff}
+
+  .float-badge{
+    display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;
+    border:1px solid var(--line);background:rgba(12,186,180,.18);font-weight:800;width:max-content;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:14px;line-height:1;
+  }
+  button.float-badge{
+    appearance:none;-webkit-appearance:none;background:rgba(12,186,180,.18);color:#fff;
+    border:1px solid var(--line);cursor:pointer;
+  }
+  .brand-dot{width:10px;height:10px;border-radius:50%}
+
+  @media (max-width:640px){
+    .site-header{padding:12px 16px;gap:12px}
+    .logo-word{font-size:1rem}
+    .cta{padding:9px 14px;font-size:.92rem}
+    .hero{height:80vh}
+    .hero-content{padding-top:96px}
+    .hero-badge-wrap{gap:12px;margin-bottom:14px}
+    .hero-urgent{font-size:.78rem;padding:9px 14px;max-width:92vw;text-align:center}
+    .hero-date{padding:9px 14px;font-size:.9rem}
+    .hero p{font-size:1rem;max-width:340px;line-height:1.55}
+    .hero-actions{margin-top:18px}
+    .faq-wrap{padding:0 18px}
+    .faq-header{padding:18px 0}
+    .application-frame{height:82vh}
+  }
+
+  @media (max-width:460px){.hero-content{padding-top:108px}.hero p{max-width:310px}}
+  @media (prefers-reduced-motion: reduce){.hero-slide{transition:none}.faq-body{transition:none}}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="/" class="header-left">
+    <img src="assets/nude-beach-map-logo.gif" alt="Nude Beach Map" class="logo-img">
+    <span class="logo-word">Nude Beach Trips</span>
+  </a>
+  <button class="cta" type="button" data-apply>Apply Now</button>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" aria-label="Newbie Nudies at AetherHaus hero">
+  <div class="hero-slide pos-center active" style="background-image:url('assets/Aether01.jpg')"></div>
+  <div class="hero-slide pos-center" style="background-image:url('assets/Aether02.jpg')"></div>
+  <div class="hero-slide pos-center" style="background-image:url('assets/Aether03.webp')"></div>
+  <div class="hero-slide pos-center" style="background-image:url('assets/Aether04.webp')"></div>
+
+  <div class="hero-content wrap">
+    <div>
+      <div class="hero-badge-wrap">
+        <div class="hero-urgent">Our First Ever Newbie Nudies</div>
+        <div class="hero-date">Fri 20 Nov, 2026 • 7:25–8:55pm</div>
+      </div>
+      <h1>Newbie Nudies</h1>
+      <p>Private AetherHaus Takeover • Davie St, Vancouver • Clothing Optional • 18+ • Just 30 Spots</p>
+      <div class="hero-actions">
+        <button class="hero-btn" type="button" data-apply>Apply Now</button>
+        <a class="hero-btn secondary" href="#experience">What to Expect</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section wrap">
+  <div class="text-container">
+    <h2>Cold Outside. Less On Inside.</h2>
+
+    <p style="color:var(--muted);max-width:780px;margin:0 auto 16px">
+      We’ve never done anything quite like this before — and we’re already missing the beach. So while Vancouver gets cold and wet outside, we thought: why not bring a little clothing-optional freedom indoors?
+    </p>
+
+    <p style="color:var(--muted);max-width:780px;margin:0 auto 22px">
+      <strong style="color:#fff">Newbie Nudies</strong> is a private 90-minute clothing-optional sauna experience at AetherHaus on Davie St, created for anyone who’s curious, new to naturism, or just wants a relaxed place to try something different. Nude Beach Map has booked the entire space for our group.
+    </p>
+
+    <div style="margin-top:18px">
+      <button class="float-badge" id="respectBadge" type="button">
+        <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+      </button>
+    </div>
+
+    <div class="strip" aria-label="AetherHaus photo strip">
+      <img src="assets/Aether02.jpg" alt="AetherHaus sauna experience" loading="lazy" decoding="async">
+      <img src="assets/Aether03.webp" alt="AetherHaus wellness space" loading="lazy" decoding="async">
+      <img src="assets/Aether04.webp" alt="AetherHaus Vancouver" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section sep wrap" id="experience">
+  <div class="text-container">
+    <h2>The Experience</h2>
+
+    <div class="experience panel">
+      <p class="meta">
+        The evening is hosted by <strong>Megan &amp; Matt from Nude Beach Map</strong>, with the Aufguss experience led by the team at <strong>AetherHaus</strong>.
+      </p>
+
+      <p>
+        Inspired by the German tradition of <strong style="color:#fff">Aufguss</strong>, the session combines sauna heat, scented steam, music and guided elements — with plenty of space to relax, cool down and enjoy the experience at your own pace.
+      </p>
+
+      <p style="margin-bottom:0">
+        We’ve booked the space for our group, with just 30 guest spots. Bathing suits are optional for the evening.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THE NIGHT LOOKS LIKE -->
+<section class="section sep wrap">
+  <div class="text-container">
+    <h2>What the Night Looks Like</h2>
+
+    <div class="panel" style="max-width:860px;margin:0 auto;text-align:left">
+      <ul class="bullets" style="max-width:780px">
+        <li><strong>7:25pm</strong> – Newbie Nudies begins at AetherHaus on Davie St</li>
+        <li>Settle in, get comfortable and meet the group</li>
+        <li>Enjoy the space at your own pace — bathing suits are optional</li>
+        <li>AetherHaus leads us through its Aufguss experience with music, scented steam and heat</li>
+        <li>Time to sauna, cool down, relax and just enjoy being there</li>
+        <li><strong>8:55pm</strong> – Session wraps up</li>
+        <li>If anyone’s keen, we may head next door afterwards for a quick cold beer</li>
+      </ul>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0">
+
+      <p style="margin:0;color:var(--muted)">
+        There’s no pressure to arrive feeling confident or experienced. The whole point is to make trying a clothing-optional social space feel easy, normal and welcoming.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWBIES -->
+<section class="section sep wrap">
+  <div class="text-container">
+    <h2>Never Done This Before?</h2>
+    <p style="color:var(--muted);max-width:760px;margin:0 auto 28px">
+      Perfect. That’s exactly who Newbie Nudies is for.
+    </p>
+  </div>
+
+  <div class="newbie-grid">
+    <div class="newbie-img">
+      <img src="assets/Aether01.jpg" alt="AetherHaus sauna space" loading="lazy" decoding="async">
+    </div>
+
+    <div class="panel newbie-card">
+      <h3>Come curious. Go at your own pace.</h3>
+      <p>
+        Maybe you’ve been to nude beaches before. Maybe you’ve thought about it but never quite taken the plunge. Or maybe this is completely new territory.
+      </p>
+      <p>
+        We’ve never done Newbie Nudies before either. We wanted to try something different indoors and enjoy it with a small group of people who are new, curious or still finding their feet.
+      </p>
+      <p>
+        You don’t need to know anyone or arrive feeling completely confident. Megan &amp; Matt will be there to host, answer questions and experience the night alongside everyone else.
+      </p>
+      <button class="float-badge btnlike" id="newbieRespectBadge" type="button">
+        <span class="brand-dot" style="background:#e49d25"></span> Read our respect policy
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="section sep wrap" id="tickets">
+  <div class="text-container">
+    <h2>Tickets</h2>
+    <p style="color:var(--muted);max-width:680px;margin:0 auto 28px">
+      Just 30 guest spots are available for this private event. Applications are open now.
+    </p>
+
+    <div class="ticket-card">
+      <h3 style="margin:0 0 12px">Newbie Nudies at AetherHaus</h3>
+      <div class="ticket-price">$59 CAD</div>
+      <div class="ticket-meta">No tax added • Friday, November 20 • 7:25–8:55pm • 18+</div>
+
+      <div class="ticket-member">
+        <strong>Beach Bums save 10%</strong><br>
+        Beach Bum members save 10% on this event — and on every Nude Beach Trips event and trip.<br>
+        <a href="https://members.nudebeachmap.com" target="_blank" rel="noopener">Join Beach Bums</a>
+      </div>
+
+      <button class="apply-btn" type="button" data-apply>Apply Now</button>
+      <p class="fine">Applying is the first step. We curate the guest list to help create a comfortable, welcoming and balanced group.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section sep wrap" id="faq">
+  <div class="text-container">
+    <h2>FAQ</h2>
+  </div>
+
+  <div class="faq-wrap">
+
+    <div class="faq-item">
+      <div class="faq-header">Do I have to get naked? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          <p><strong>No.</strong> Bathing suits are optional for this private session.</p>
+          <p>The event is designed for people who are genuinely curious about naturism, so come with an open mind and participate at your own pace.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">I’ve never been to a naturist event. Is that okay? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Absolutely. Newbie Nudies was created specifically to make that first experience easier. You won’t be the only person doing something like this for the first time.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">What is Aufguss? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Aufguss is a German-style sauna ritual using heat, scented steam and music. The AetherHaus team will guide the ritual while still giving you space to relax and enjoy the session at your own pace.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Where is it? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          AetherHaus on Davie St in Vancouver. Approved guests will receive the final event details before the night.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">What should I bring? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          We’ll send approved guests the final arrival information and what-to-bring details before the event.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Why do you screen guests? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Because it’s a small private event, we curate the guest list to create a comfortable mix of men and women and a welcoming atmosphere for first-timers. Singles are absolutely welcome.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">Are singles welcome? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Yes. Single men and women are welcome. The application process simply helps us maintain the relaxed, respectful atmosphere we want for everyone.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">What’s the phone and photo policy? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Consent first, always. No photos or video of anyone else without clear permission, and make sure nobody appears in the background of your own photos without their consent.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">What happens after the sauna? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          The AetherHaus session ends at 8:55pm. If people are keen, we may head next door afterwards for a casual beer. Totally optional.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header">How much is it? <span>+</span></div>
+      <div class="faq-body">
+        <div class="faq-content">
+          Tickets are <strong>$59 CAD</strong> with no tax added. Beach Bum members save 10% on this event and every Nude Beach Trips event and trip.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Nude Beach Trips · Operated by Nude Beach Map
+  <div class="footer-links">
+    <a href="#" id="respectLink" class="link">Respect policy</a>
+    <a href="https://members.nudebeachmap.com" target="_blank" rel="noopener" class="link">Beach Bums</a>
+  </div>
+</footer>
+
+<!-- Respect Policy Modal -->
+<dialog class="policy" id="policyDialog" aria-labelledby="policyTitle">
+  <div class="policy-header">
+    <strong id="policyTitle">Nude Beach Trips Respect Policy</strong>
+    <button class="close-btn" data-close="policyDialog" aria-label="Close">Close</button>
+  </div>
+  <div class="policy-body">
+    <p><strong>Clothing optional, friendly, naturist.</strong><br>
+    We keep it laid-back. Clear etiquette, respectful culture, and good humans.</p>
+
+    <p style="margin-top:12px">
+      <span class="float-badge" style="background:rgba(12,186,180,.18);display:inline-flex;margin-right:8px">
+        <span class="brand-dot" style="background:#0cbab4"></span> Small groups
+      </span>
+      <span class="float-badge" style="background:rgba(248,192,20,.12);display:inline-flex;margin-right:8px">
+        <span class="brand-dot" style="background:#f8c014"></span> Welcoming spaces
+      </span>
+      <span class="float-badge" style="background:rgba(228,157,37,.12);display:inline-flex">
+        <span class="brand-dot" style="background:#e49d25"></span> Respect policy
+      </span>
+    </p>
+
+    <hr style="border:0;border-top:1px solid rgba(255,255,255,.18);margin:14px 0">
+
+    <p>• Participate at your own pace. Bathing suits are optional for this event.</p>
+    <p>• We reserve the right to approve participants to maintain a respectful mix — single men and women are welcome.</p>
+    <p>• This is not a dating event or a “lifestyle” event. It’s about community, comfort and body freedom.</p>
+    <p>• Respect others. Ask before photos, give personal space, and follow AetherHaus venue rules.</p>
+  </div>
+</dialog>
+
+<!-- Application Modal -->
+<dialog class="application" id="applicationModal" aria-label="Newbie Nudies application form">
+  <div class="application-header">
+    <strong>Apply for Newbie Nudies</strong>
+    <button class="close-btn" data-close="applicationModal" aria-label="Close application">Close</button>
+  </div>
+  <iframe
+    class="application-frame"
+    src="https://form.jotform.com/262678048631262"
+    title="Newbie Nudies application"
+    loading="lazy"
+    allow="geolocation; microphone; camera; fullscreen; payment"
+  ></iframe>
+</dialog>
+
+<script>
+  /* Hero slider */
+  (function(){
+    let i=0;
+    const slides=document.querySelectorAll('.hero-slide');
+    if(!slides.length) return;
+    const prefersReduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(prefersReduced) return;
+    setInterval(()=>{
+      slides[i].classList.remove('active');
+      i=(i+1)%slides.length;
+      slides[i].classList.add('active');
+    },5200);
+  })();
+
+  /* FAQ toggles */
+  document.querySelectorAll('.faq-header').forEach(h=>{
+    h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
+  });
+
+  /* Dialog helpers */
+  function openDialog(id){ document.getElementById(id).showModal(); }
+  function closeDialog(id){ document.getElementById(id).close(); }
+
+  document.addEventListener('click',(e)=>{
+    const btn=e.target.closest('[data-close]');
+    if(!btn) return;
+    closeDialog(btn.getAttribute('data-close'));
+  });
+
+  ['policyDialog','applicationModal'].forEach(id=>{
+    const d=document.getElementById(id);
+    d.addEventListener('click',(e)=>{ if(e.target===d) d.close(); });
+  });
+
+  document.getElementById('respectLink').addEventListener('click',(e)=>{e.preventDefault();openDialog('policyDialog');});
+  document.getElementById('respectBadge').addEventListener('click',()=>openDialog('policyDialog'));
+  document.getElementById('newbieRespectBadge').addEventListener('click',()=>openDialog('policyDialog'));
+  document.querySelectorAll('[data-apply]').forEach(btn=>{
+    btn.addEventListener('click',()=>openDialog('applicationModal'));
+  });
+</script>
+
+</body>
+</html>
