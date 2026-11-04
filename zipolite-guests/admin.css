@@ -2,3 +2,17 @@ body{background:#f3f7f3}.admin-shell{width:min(1200px,calc(100% - 36px));margin:
 
 /* Individual WhatsApp invitation management */
 .whatsapp-admin{margin:0 0 19px}.wa-admin-header{display:flex;align-items:center;justify-content:space-between;gap:16px}.wa-admin-header h2{margin:7px 0 4px}.wa-admin-header p{margin:0}.wa-admin-header .btn{font-size:12px;padding:10px 14px;white-space:nowrap}.wa-admin-toolbar{display:flex;align-items:center;gap:10px;margin:18px 0 4px}.wa-admin-toolbar label{font-size:12px;font-weight:700;color:#55746a}.wa-admin-toolbar select{padding:10px 12px;border-radius:10px;border:1px solid #cfded6;background:#fcfffc;min-width:225px}.wa-table-wrap{overflow-x:auto}.wa-invite-table td{vertical-align:middle}.wa-invite-table small{font-size:11px;color:#87978e}.wa-invite-table .wa-number-text{white-space:nowrap;font-weight:700;color:#144b43}.wa-invite-table .wa-kind{white-space:nowrap}.adm-tag.attention{background:#fff1df;color:#aa571c}.wa-date{display:block;margin-top:5px}.wa-row-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.wa-row-actions .wa-open{background:#e1f5ed;color:#087965;text-decoration:none;font-size:11px;font-weight:800;padding:7px 10px;border-radius:8px;white-space:nowrap}.wa-row-actions button{white-space:nowrap}.wa-row-actions .wa-reset{background:#f5f0ee;color:#775952}@media(max-width:650px){.wa-admin-header{display:block}.wa-admin-header .btn{margin-top:12px}.wa-invite-table{min-width:710px}}
+
+/* Organizers: safe booking and preference editing */
+.admin-edit{background:#f9fcfa;border:1px solid #dfebe3;padding:17px;border-radius:13px;margin-top:12px}
+.admin-edit h3{font-size:19px;margin:0 0 13px}.admin-edit p{color:#6c8177;font-size:12px;margin:8px 0 16px}
+.admin-edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.admin-edit-grid label{display:block;font-weight:800;color:#416a5a;font-size:11px;text-transform:capitalize}
+.admin-edit-grid input,.admin-edit-grid select,.admin-edit textarea{width:100%;margin-top:6px;padding:10px;border:1px solid #cfe2d7;background:white;border-radius:8px;color:#234c3c;font-size:12px}
+.admin-edit-grid .wide{grid-column:1/-1}.admin-edit .btn{margin:4px 7px 4px 0;font-size:11px}
+.admin-edit-guest{background:white;border:1px solid #e1eee6;padding:13px;border-radius:12px;margin:15px 0}
+.admin-edit-tours{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.admin-edit-tours label{font-size:11px;color:#315c4f;display:flex;align-items:center;gap:6px}.admin-edit-tours input{accent-color:#08aaa0}
+.admin-textarea-label{font-weight:800;color:#416a5a;font-size:11px}.admin-edit textarea{display:block}
+.btn.danger{background:#a74a42;color:white;border-color:#a74a42}
+@media(max-width:540px){.admin-edit-grid{grid-template-columns:1fr}.admin-edit{padding:12px}}

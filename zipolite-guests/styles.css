@@ -21,3 +21,17 @@
 
 /* Per-guest WhatsApp invitation cards */
 .wa-guest-card{background:#fff;border:1px solid #dbe9e2;border-radius:17px;padding:17px;margin:14px 0;box-shadow:0 3px 12px #124b3408}.wa-guest-heading{display:flex;align-items:center;gap:11px;padding-bottom:12px;border-bottom:1px solid #edf1ed;margin-bottom:12px}.wa-guest-heading .guest-avatar{flex:none}.wa-guest-heading strong{display:block;color:#18463b;font-family:Outfit,sans-serif;font-size:17px}.wa-guest-heading small{display:block;color:#7d9285;font-size:11px;margin-top:2px}.wa-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.wa-options .whatsapp-option{margin:0;align-items:start;padding:10px;min-height:102px}.wa-options .whatsapp-option input{margin-top:4px;flex:none}.wa-options .whatsapp-option small{margin-top:5px;line-height:1.4}.wa-number{margin-top:14px}.wa-number small{font-size:11px;color:#7b8f82;margin-top:6px;display:block}@media(max-width:750px){.wa-options{grid-template-columns:1fr}.wa-options .whatsapp-option{min-height:0}.wa-guest-card{padding:13px}}
+
+/* Branded guest authentication and account controls */
+.nbm-logo{width:48px;height:48px;max-width:48px;object-fit:contain;flex-shrink:0;background:#fff;border-radius:9px}
+.signout-link{border:1px solid #cfe5db;background:#fff;color:#126457;border-radius:8px;padding:8px 11px;font-size:11px;font-weight:800}
+.login-layout{position:relative;z-index:3;width:min(1160px,calc(100% - 44px));margin:-32px auto 45px;display:flex;justify-content:center}
+.login-panel{width:min(100%,540px);padding:35px 40px;border-radius:23px}
+.login-panel .field{margin:13px 0}.login-panel .field input{width:100%;border:1px solid #d7e7dc;border-radius:11px;background:#fafffc;padding:13px;font-size:14px}
+.login-panel .btn{width:100%;margin-top:8px}
+.login-links{display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap;margin-top:17px}
+.login-change{border:0;background:transparent;color:#0b877f;text-decoration:underline;font-weight:800;font-size:12px;cursor:pointer;padding:9px 2px}
+.login-footnote{font-size:12px;color:#82958a;margin-top:23px;line-height:1.6}
+.booking-select{width:100%;border:1px solid #d9eade;background:#fafffc;text-align:left;padding:16px;border-radius:11px;margin-bottom:9px;color:#285e50}
+.booking-select span{float:right;color:#79998c;font-size:12px}
+@media(max-width:760px){.nbm-logo{width:40px;height:40px}.login-layout{margin-top:-25px;width:calc(100% - 32px)}.login-panel{padding:24px 20px}}
