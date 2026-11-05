@@ -139,7 +139,25 @@ function noBookingView(){
   document.getElementById('app').innerHTML=`${topbar()}${hero()}<main class="container login-layout"><section class="main-card login-panel"><div class="section-eyebrow">FIRST VISIT · YOUR GUEST DETAILS</div><h2 class="section-title">Tell us about your booking.</h2><p class="section-subtitle">Welcome! Please fill in the lead guest name and the total number of travellers in your confirmed Nude Beach Trips booking. You'll complete each person's preferences on the next screen.</p>${error?`<div class="error" role="alert">${esc(error)}</div>`:''}<form id="guest-create-booking-form"><div class="field"><label for="booking-lead-name">Lead guest's full name</label><input id="booking-lead-name" name="lead_name" type="text" minlength="2" maxlength="120" autocomplete="name" required placeholder="First and last name" /></div><div class="field"><label for="booking-guest-count">Number of guests in your booking</label><select id="booking-guest-count" name="guest_count" required>${Array.from({length:8},(_,i)=>`<option value="${i+1}" ${i===1?'selected':''}>${i+1} ${i===0?'person':'people'}</option>`).join('')}</select></div><label class="checkline"><input type="checkbox" name="confirmed_booking" required /><span>I confirm I have an existing Nude Beach Trips reservation and I'm completing preferences on behalf of everyone in my booking.</span></label><button type="submit" class="btn" ${isSaving?'disabled':''}>${isSaving?'Creating guest record…':'Continue to preferences →'}</button></form><p class="login-footnote">Using <b>${esc(guestEmail)}</b>. This form does not book accommodation. If your reservation is under a different email, <button type="button" class="login-change" data-guest-signout>sign out</button>.</p></section></main>`;
 }
 function selectBooking(id){const record=matchedBookings.find(x=>x.id===id);if(!record)return;selectedBookingId=id;booking=record.booking;state=normalizeState(record.response?.payload,booking.guest_count);if(!state.guests[0]?.name && booking.lead_name)state.guests[0].name=booking.lead_name;lastSavedAt=record.response?.updated_at||'';activeStep=0;hasSubmitted=false;error='';render();}
-async function loadGuest(){isLoading=true;render();try{const data=await guestApi('GET');matchedBookings=data.bookings||[];guestEmail=data.email||guestEmail;if(guestSession){guestSession.email=guestEmail;sessionStorage.setItem('nbt_guest_session',JSON.stringify(guestSession));}isLoading=false;if(matchedBookings.length===1)selectBooking(matchedBookings[0].id);else if(matchedBookings.length>1)chooseBookingView();else noBookingView();}catch(err){isLoading=false;error=err.message||'Unable to load your booking.';loginStage='login';loginView();}}
+async function loadGuest() {
+  isLoading = true;
+  render();
+
+  try {
+    const data = await guestApi('GET');
+
+    matchedBookings = data.bookings || [];
+    guestEmail = data.email || guestEmail;
+
+    if (guestSession) {
+      guestSession.email = guestEmail;
+      sessionStorage.setItem(
+        'nbt_guest_session',
+        JSON.stringify(guestSession)
+      );
+    }
+
+    isLoading = 
 async function loginWithPassword(email,password){
   signInEmail=email;isSaving=true;error='';loginView();
   try {const res=await authRequest('/token?grant_type=password',{email,password});if(!res.access_token)throw Error('Could not sign in.');storeSession(res,email);await loadGuest();}
