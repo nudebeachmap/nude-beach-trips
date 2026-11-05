@@ -42,7 +42,7 @@ const TOUR_DATA = [
   }
 ];
 
-const MEZCAL_PRICE = 1000;
+const MEZCAL_PRICE = 1400;
 const RATE = 0.053129; // Indicative MXN to USD, Nov 3 2026
 const DEADLINE = 'December 15, 2026';
 
